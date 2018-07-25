@@ -1,0 +1,691 @@
+﻿body {
+    FONT-FAMILY: Bankinter;
+    BACKGROUND-COLOR: white;
+}
+
+
+/*form1 {
+    margin: 20px;
+}*/
+
+input:invalid {
+    border-color: lightblue;
+}
+
+/*span, label{
+    font-family: Bankinter Text;
+    width: 150px;
+    float: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-right: 5px;
+}*/
+
+.bklabel, .bkspan {
+    font-family: Bankinter Text;
+    width: 150px;
+    float: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-right: 5px;
+}
+
+.datepicker {
+    width: 75px;
+}
+
+.datepickerIcon {
+    margin-top: 12px;
+    margin-left: 5px;
+    width: 20px;
+}
+
+input[name^="btn"] {
+    margin-right: 10px;
+}
+
+/*input:not([type=image]):not([type=radio]):not([type=checkbox]), select {
+    font-family: Bankinter Text;
+    //width: 150px;
+    float: left;
+    margin-top: 10px;
+    //padding-left:10px;
+    //padding-top:10px;
+}*/
+
+input[type=radio] {
+    float: left;
+    margin-top: 3px;
+    margin-right: 10px;
+}
+
+input[type=checkbox] {
+    margin-top: 15px;
+}
+/*input[type='checkbox'] {
+    margin-top:0px;
+}*/
+.checkBoxList {
+    display: inline-block;
+    margin-top: 0px;
+}
+
+select {
+    width: 154px;
+}
+
+h1, h4 {
+    color: #F56600;
+}
+
+TABLE.main {
+    WIDTH: 100%;
+    HEIGHT: 80%;
+}
+
+#EndBottons {
+    margin-top: 20px;
+}
+
+.linkbutton {
+    background-color: lightgray;
+    padding: 5px;
+    border: solid;
+    border-color: black;
+    border-width: thin;
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+    font-family: 'Bankinter Text';
+}
+
+.header, .lberror {
+    width: 100%;
+    color: red;
+    text-align: center;
+}
+
+.txtHead {
+    PADDING-RIGHT: 7px;
+    PADDING-LEFT: 7px;
+    CURSOR: hand;
+    COLOR: white;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: #000000;
+}
+
+.titMenu {
+    BORDER-RIGHT: #afafaf groove;
+    PADDING-RIGHT: 3px;
+    BORDER-TOP: thin;
+    PADDING-LEFT: 3px;
+    FONT-WEIGHT: 600;
+    FONT-SIZE: 13px;
+    PADDING-BOTTOM: 3px;
+    MARGIN-LEFT: 15px;
+    BORDER-LEFT: thin;
+    COLOR: white;
+    PADDING-TOP: 3px;
+    BORDER-BOTTOM: #afafaf groove;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: #000000;
+    TEXT-ALIGN: center;
+}
+
+.txtMenu {
+    BORDER-RIGHT: thin;
+    BORDER-TOP: #6f6f6f thin solid;
+    MARGIN-TOP: 10px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: 500;
+    FONT-SIZE: 11px;
+    MARGIN-LEFT: 25px;
+    BORDER-LEFT: #6f6f6f thin solid;
+    CURSOR: hand;
+    COLOR: #000000;
+    LINE-HEIGHT: 20px;
+    BORDER-BOTTOM: thin;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: #f7f7f7;
+}
+
+.bkgHead {
+    PADDING-LEFT: 15px;
+    FONT-WEIGHT: 800;
+    FONT-SIZE: 11px;
+    COLOR: white;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: #000000;
+}
+
+.footer {
+    FONT-SIZE: 10pt;
+    LEFT: 33%;
+    COLOR: #000000;
+    FONT-FAMILY: Arial;
+    POSITION: absolute;
+    TOP: 250mm;
+    BACKGROUND-COLOR: white;
+    TEXT-ALIGN: center;
+}
+
+.pagTitle {
+    FONT-SIZE: 40px;
+    COLOR: #000000;
+    BACKGROUND-REPEAT: repeat;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: white;
+    TEXT-ALIGN: center;
+}
+
+SPAN.psiCotacao {
+    COLOR: blue;
+    FONT-STYLE: italic;
+}
+
+.plink {
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 12px;
+    CURSOR: hand;
+    COLOR: #009ece;
+    FONT-FAMILY: Verdana;
+    TEXT-ALIGN: center;
+}
+
+DIV.DestaqueTitulo {
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 11px;
+    CURSOR: hand;
+    COLOR: #009ece;
+    FONT-FAMILY: Verdana;
+}
+
+DIV.MercadoTitulo {
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 11px;
+    CURSOR: hand;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana;
+}
+
+DIV.newsTitulo {
+    CURSOR: hand;
+    COLOR: blue;
+    TEXT-DECORATION: underline;
+}
+
+.required {
+    FONT-WEIGHT: bolder;
+    COLOR: blue;
+}
+
+.normaltxt {
+    COLOR: #000000;
+    FONT-WEIGHT: 900;
+    FONT-SIZE: 12px;
+}
+
+.normalEDC {
+    COLOR: #000000;
+    FONT-WEIGHT: 900;
+    FONT-SIZE: 11px;
+}
+
+.transparenttxt {
+    FONT-WEIGHT: 900;
+    FONT-SIZE: 11px;
+}
+
+.normaltxtArea {
+    COLOR: #000000;
+    FONT-WEIGHT: 900;
+    FONT-SIZE: 11px;
+    FONT-FAMILY: Verdana;
+}
+
+.headertxt {
+    font-weight: bolder;
+    font-size: 13px;
+    color: #009ece;
+    font-family: Verdana;
+    background-color: #edfbff;
+}
+
+.headertxtBlank {
+    font-weight: bolder;
+    font-size: 13px;
+    color: white;
+    font-family: Verdana;
+}
+
+.paggingButton {
+    color: #F56600;
+}
+
+    .paggingButton.PaggingLeft {
+        margin-right: 10px;
+    }
+
+    .paggingButton.PaggingRight {
+        margin-left: 10px;
+    }
+
+.normalButton {
+    color: White;
+    font-size: 11px;
+    font-weight: 900;
+    background-color: #F56600;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    padding: 4px;
+    width: 90px;
+}
+
+    .normalButton:disabled,
+    .normalButton[disabled] {
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+    }
+
+.normalMessage {
+    color: White;
+    font-size: 11px;
+    font-weight: 900;
+    background-color: #F56600;
+    text-align: center;
+    line-height: 120%;
+    vertical-align: middle;
+    border: none;
+    padding-top: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 0px;
+}
+
+.BkgApp {
+    background-color: #B1BFCA;
+    background: B1BFCA;
+}
+
+.CampoEnabled {
+    COLOR: #000000;
+    FONT-WEIGHT: 900;
+    FONT-SIZE: 11px;
+    border: solid 1px #7F9DB9;
+}
+
+.CampoDisabled {
+    FONT-WEIGHT: 900;
+    FONT-SIZE: 11px;
+    border: solid 1px #C9C7BA;
+    color: #C9C7BA;
+}
+
+.smalltxt {
+    font-size: 6.5pt;
+    font-family: Verdana;
+}
+
+.thumbsel {
+    border-right: #003366 3px solid;
+    border-top: #003366 3px solid;
+    border-left: #003366 3px solid;
+    border-bottom: #003366 3px solid;
+}
+
+.thumbnosel {
+    border-right: black 1px solid;
+    border-top: black 1px solid;
+    border-left: black 1px solid;
+    border-bottom: black 1px solid;
+}
+
+/*.inputtext_number {
+    COLOR: #000000;
+    FONT-WEIGHT: 900;
+    FONT-SIZE: 11px;
+    TEXT-ALIGN: right;
+}*/
+
+.clear {
+    clear: both;
+}
+
+.Table {
+    width: 100%;
+    display: table;
+    table-layout: fixed
+}
+
+    .Table.Grid {
+        border-style: solid;
+        border-width: 1px;
+        table-layout: fixed
+    }
+
+.Title {
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.Heading {
+    display: table-row;
+    font-weight: bold;
+    text-align: center;
+    overflow:auto;
+}
+
+    .Heading.Color {
+        background: #F56600;
+        color: white;
+        white-space: nowrap;
+        border-color: #DDDDDD;
+    }
+
+.Row {
+    display: table-row;
+    table-layout: fixed
+}
+
+.CellNoBorder {
+    display: table-cell;
+    border-width: thin;
+    /*padding-right: 5px;*/
+}
+
+.requiredField {
+    color: #FF0000;
+    float: left;
+    margin-right: 3px;
+    margin-top: 13px;
+}
+
+.requiredFieldEmpty {
+    color: #FF0000;
+    float: left;
+    margin-right: 11px;
+    margin-top: 13px;
+}
+
+.Cell {
+    display: table-cell;
+    table-layout: fixed
+}
+
+.Grid {
+    border-collapse: collapse;
+    padding-left: 5px;
+    padding-right: 5px;
+    /*text-align: center;*/
+    vertical-align: middle;
+    border-style: solid;
+    border-width: thin;
+    border-color: #DDDDDD;
+}
+
+.CodeTxt {
+    width: 60px;
+    margin-right: 5px;
+}
+
+.Even {
+    background-color: #ededed;
+    color: black;
+}
+
+.Odd {
+    background-color: white;
+    border-width: 1px;
+    border-style: solid;
+    color: black;
+}
+
+.preloader {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background: rgb(249,249,249) url('../images/loader_fixe.gif') no-repeat 50% 0%;
+    background-size: 71px;
+    opacity: .8;
+    pointer-events: none;
+}
+
+.displayNone {
+    display: none;
+}
+
+.treViewCatalogo {
+    /*max-width: 80%;
+    height: 500px;
+    overflow-y: scroll;
+    margin-top: 10px;
+    margin-left: 10px;*/
+}
+
+/*/------*/
+
+hr.hr {
+    /*background: rgb(245, 102, 0);
+    border: currentColor;
+    border-image: none;
+    height: 0.5px;
+    color: rgb(245, 102, 0);
+    border-color: #f56600;
+    clear:both;*/
+
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color:#f56600;
+  height: 1px;
+}
+
+.padding-row {
+    padding-bottom: 10px;
+}
+
+.padding-left {
+    padding-left: 100px;
+}
+
+.content {
+    font-family: Bankinter;
+    padding: 0 1.5%;
+    margin-right: 5px;
+    margin-left: auto;
+    color: #63544A;
+}
+
+.colorbck {
+    background-color: #eee;
+    padding: 0.7% 0;
+}
+
+button.btn {
+    background: rgb(253, 101, 0);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+}
+
+.div-btns {
+    padding: 1% 7% 1% 0;
+    float:right !important;
+}
+
+.btns-left {
+    margin-right: 1%;
+}
+
+.btns {
+    padding: 5px 10px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-family: Bankinter;
+    height: auto;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background: #F56600;
+    border: 1px solid #F56600;
+    text-decoration: none;
+    color: #FFF;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+    .btns:hover {
+        background: #cf6011;
+        border-color: #F56600;
+        text-decoration: none;
+        color: #FFF;
+    }
+
+.btns-alt {
+    min-width: 50px;
+    margin-right: 1%;
+    background: #ddd;
+    color: #555;
+}
+
+.btns-alt:hover {
+    background: #ccc;
+    color: #000;
+}
+
+.btns:disabled{
+    background-color: gray;
+}
+
+.titleAccordion {
+    background-color: rgb(245, 102, 0);
+    color: #FFF;
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    height: auto;
+    width: auto;
+    margin-top: 1%;
+}
+
+.titleTransaction {
+    background-color: rgb(245, 102, 0);
+    color: #FFF;
+    padding: 5px;
+    border: none;
+    font-family: Verdana;
+    text-align: center;
+    font-size: 14px;
+    outline: none;
+    transition: 0.4s;
+    margin: auto;
+    width: auto;
+    height: auto;
+}
+
+.text-field {
+    height: 22px;
+    line-height: 22px;
+    min-height: 22px;
+    font-size: 12px;
+    margin: 0;
+    padding: 0 0 0 0.2em;
+    border: 1px solid #999;
+    border-radius: 0;
+    color: black;
+    width: 50%;
+}
+
+input.dtField {
+    text-align: center;
+    background-image: url("./images/DatePickerBtn_16.png");
+    background-position: right 5px center;
+    background-repeat: no-repeat;
+    padding-right: 16px !important;
+}
+
+div.panel-accordion {
+    padding: 0 18px;
+    background-color: white;
+    transition: max-height 0.2s ease-out;
+}
+
+a.accordion {
+    background-color: rgb(253, 101, 0);
+    color: #FFF;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    text-decoration-line: none;
+    font-size: 14px;
+    text-decoration:none;
+}
+
+    a.accordion.active, a.accordion:hover {
+        text-decoration-line: none;
+        color: #ffffff;
+    }
+
+    a.accordion:after {
+        content: '\02795'; /* Unicode character for "plus" sign (+) */
+        float: right;
+        margin-left: 5px;
+    }
+
+    a.accordion.active:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+    }
+
+div.panel-accordion {
+    padding: 0 18px;
+    background-color: white;
+    transition: max-height 0.2s ease-out;
+}
+
+.lbl-margin {
+    margin-left: 2%;
+}
+
+.lbl {
+    margin-top: 5px !important;
+    color: #555;
+    font-family: 'Bankinter Text';
+    font-size: 14px;
+}
+
+/*//TABS NAVEGACAO*/
+.atab{
+    color: white;
+}
+.atabD{
+    color:gray;
+}
+
+div.Orange:not(:empty) {
+    background-color:#f69b02;
+
+}
+
+.Cell.Grid.col-6{
+    width:230px;
+    overflow:hidden;
+}
+
+.col-6{
+width:230px;
+    overflow:hidden;
+}
+        

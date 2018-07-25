@@ -1,0 +1,5 @@
+C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\bin\Release\MultilinhasObjects.dll
+C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\bin\Release\MultilinhasObjects.pdb
+C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\obj\Release\MultilinhasObjects.dll
+C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\obj\Release\MultilinhasObjects.pdb
+C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\obj\Release\MultilinhasObjects.csprojResolveAssemblyReference.cache

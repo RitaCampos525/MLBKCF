@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multilinha", "Multilinha\Multilinha.csproj", "{17BA6EE4-A35B-4928-AD50-0768C81E45B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultilinhasDataLayer", "MultilinhasDataLayer\MultilinhasDataLayer.csproj", "{4D0836D7-AE33-420C-B95B-75233BB221C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultilinhasObjects", "MultilinhasObjects\MultilinhasObjects.csproj", "{334C8AA4-4736-4C5C-B5AB-A9410F816551}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17BA6EE4-A35B-4928-AD50-0768C81E45B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17BA6EE4-A35B-4928-AD50-0768C81E45B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17BA6EE4-A35B-4928-AD50-0768C81E45B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17BA6EE4-A35B-4928-AD50-0768C81E45B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D0836D7-AE33-420C-B95B-75233BB221C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D0836D7-AE33-420C-B95B-75233BB221C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D0836D7-AE33-420C-B95B-75233BB221C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D0836D7-AE33-420C-B95B-75233BB221C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{334C8AA4-4736-4C5C-B5AB-A9410F816551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334C8AA4-4736-4C5C-B5AB-A9410F816551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334C8AA4-4736-4C5C-B5AB-A9410F816551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334C8AA4-4736-4C5C-B5AB-A9410F816551}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+C:\Projects\Multilinha\Multilinha\MultilinhasObjects\bin\Debug\MultilinhasObjects.dll
+C:\Projects\Multilinha\Multilinha\MultilinhasObjects\bin\Debug\MultilinhasObjects.pdb
+C:\Projects\Multilinha\Multilinha\MultilinhasObjects\obj\Debug\MultilinhasObjects.dll
+C:\Projects\Multilinha\Multilinha\MultilinhasObjects\obj\Debug\MultilinhasObjects.pdb
+C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\bin\Debug\MultilinhasObjects.dll
+C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\bin\Debug\MultilinhasObjects.pdb
+C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\obj\Debug\MultilinhasObjects.dll
+C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\obj\Debug\MultilinhasObjects.pdb
+C:\Projects\Roliveca\Multilinha\MultilinhasObjects\bin\Debug\MultilinhasObjects.dll
+C:\Projects\Roliveca\Multilinha\MultilinhasObjects\bin\Debug\MultilinhasObjects.pdb
+C:\Projects\Roliveca\Multilinha\MultilinhasObjects\obj\Debug\MultilinhasObjects.dll
+C:\Projects\Roliveca\Multilinha\MultilinhasObjects\obj\Debug\MultilinhasObjects.pdb
