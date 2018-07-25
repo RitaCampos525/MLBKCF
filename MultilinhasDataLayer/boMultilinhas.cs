@@ -182,7 +182,7 @@ namespace MultilinhasDataLayer
             return response;
         }
 
-       
+
 
         public LM33_ContratoML SearchML03(int _cliente, string _idworkflow)
         {
@@ -349,6 +349,24 @@ namespace MultilinhasDataLayer
 
             };
        }
+
+        public LM35AssociacaoContasDO SearchML35(int cliente, int idMult)
+        {
+            return new LM35AssociacaoContasDO()
+            {
+                Cliente = cliente,
+                idmultilinha = idMult,
+                Lista = new List<listaContaDO>
+                {
+                    new listaContaDO
+                    {
+                        Associado = false,
+                        DataAssociada = DateTime.Now,
+                        NumContaDO = "1234536789101"
+                    }
+                }
+            };
+        }
        
     }
 }

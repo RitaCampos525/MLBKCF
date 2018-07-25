@@ -31,8 +31,8 @@
         <td>
             <img id="logo" runat="server" src="images/logo.png" />
         </td>
-        <td align="right" style="height: 56px"> 
-            <font style='font-family:Bankinter;font-size:16px;' color="#63544A">Multilinhas&nbsp;&nbsp;</font>
+        <td align="right" style="height: 56px; "> 
+            <font style='font-family:Bankinter;font-size:16px; float: right; vertical-align: top; padding: 16px;' color="#63544A">Multilinhas&nbsp;&nbsp;</font>
         </td>
     </tr>
     <tr>
