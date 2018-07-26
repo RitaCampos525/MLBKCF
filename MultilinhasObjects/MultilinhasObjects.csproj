@@ -44,6 +44,7 @@
     <Compile Include="ABUtil.cs" />
     <Compile Include="ArvoreFamiliaProdutos.cs" />
     <Compile Include="ComboBox.cs" />
+    <Compile Include="LM35AssociacaoContasDO.cs" />
     <Compile Include="LogTypeName.cs" />
     <Compile Include="LM31_CatalogoProdutoML.cs" />
     <Compile Include="Constantes.cs" />
