@@ -182,8 +182,6 @@ namespace MultilinhasDataLayer
             return response;
         }
 
-       
-
         public LM33_ContratoML SearchML03(int _cliente, string _idworkflow)
         {
             return new LM33_ContratoML()

@@ -78,3 +78,14 @@ C:\Projects\Roliveca\Multilinha\Multilinha\bin\MultilinhasObjects.pdb
 C:\Projects\Roliveca\Multilinha\Multilinha\obj\Debug\Multilinha.csprojResolveAssemblyReference.cache
 C:\Projects\Roliveca\Multilinha\Multilinha\obj\Debug\Multilinha.dll
 C:\Projects\Roliveca\Multilinha\Multilinha\obj\Debug\Multilinha.pdb
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\ApplicationInsights.config
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\Multilinha.dll.config
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\Multilinha.dll
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\Multilinha.pdb
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasDataLayer.dll
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasObjects.dll
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasDataLayer.pdb
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasObjects.pdb
+C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.csprojResolveAssemblyReference.cache
+C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.dll
+C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.pdb
