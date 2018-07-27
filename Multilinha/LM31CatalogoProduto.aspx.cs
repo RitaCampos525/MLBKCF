@@ -33,6 +33,7 @@ namespace Multilinha
                 ddlIndRenovacao.DataSource = ML_Objectos.GetIndicadorRenovacao();
                 ddlIndRenovacao.DataBind();
 
+
                 //Show hide fields 
                 string op = Request.QueryString["OP"] ?? "FF";
                 switch (op.ToUpper())
@@ -49,6 +50,9 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr);
                         Helper.AddRemoveHidden(true, hr1);
 
+                        Helper.AddRemoveActive(true, liModificacao);
+                        lbModificacao.CssClass = lbModificacao.CssClass.Replace("atab", "atabD");
+
                         break;
                     case "C":
 
@@ -62,6 +66,10 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr);
                         Helper.AddRemoveHidden(true, hr1);
 
+                        Helper.AddRemoveActive(true, liPrameterizacao);
+                        lbPrameterizacao.CssClass = lbPrameterizacao.CssClass.Replace("atab", "atabD");
+
+
                         break;
                     case "V":
 
@@ -74,6 +82,9 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, acoes_ml01);
                         Helper.AddRemoveHidden(true, hr);
                         Helper.AddRemoveHidden(true, hr1);
+
+                        Helper.AddRemoveActive(true, liConsulta);
+                        lbConsulta.CssClass = lbConsulta.CssClass.Replace("atab", "atabD");
 
                         break;
                     default:

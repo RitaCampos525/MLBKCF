@@ -25,9 +25,21 @@
         <div class="clear"></div>
         <br />
         <div class="row titleTransaction">
-            <asp:Label ID="lblTransaction" runat="server">Parameterização de Multilinha</asp:Label>
+            <%--            <asp:Label ID="lblTransaction" runat="server">Parameterização de Multilinha</asp:Label>--%>
+            <ul class="nav navbar-nav menu">
+                <li id="liPrameterizacao" runat="server" class=" ">
+                    <asp:LinkButton CssClass="atab " ID="lbPrameterizacao" Enabled="false" runat="server" Text="Parameterização de Multilinha"></asp:LinkButton>
+                </li>
+                <li id="liModificacao" runat="server" class=" ">
+                    <asp:LinkButton CssClass="atab " ID="lbModificacao" Enabled="false" runat="server" Text="Modificação de Catálogo Multilinha"></asp:LinkButton>
+                </li>
+                <li id="liConsulta" runat="server" class=" "> 
+                    <asp:LinkButton CssClass="atab " ID="lbConsulta" Enabled="false" runat="server" Text="Consulta de Catálogo Multilinha"></asp:LinkButton>
+                </li>
+            </ul>
         </div>
         <div class="row colorbck">
+            <br />
             <div id="camposChave" runat="server">
                 <div class="row form-group padding-row ">
                     <div class="col-sm-4">

@@ -49,13 +49,58 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.Label lberror;
         
         /// <summary>
-        /// lblTransaction control.
+        /// liPrameterizacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTransaction;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liPrameterizacao;
+        
+        /// <summary>
+        /// lbPrameterizacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbPrameterizacao;
+        
+        /// <summary>
+        /// liModificacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liModificacao;
+        
+        /// <summary>
+        /// lbModificacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbModificacao;
+        
+        /// <summary>
+        /// liConsulta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liConsulta;
+        
+        /// <summary>
+        /// lbConsulta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbConsulta;
         
         /// <summary>
         /// camposChave control.

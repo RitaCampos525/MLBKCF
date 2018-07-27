@@ -19,4 +19,3 @@ C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\bin\Debug\MultilinhasOb
 C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.csproj.CoreCompileInputs.cache
 C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.dll
 C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.pdb
-C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.csprojAssemblyReference.cache

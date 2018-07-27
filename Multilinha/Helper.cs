@@ -22,6 +22,11 @@ namespace Multilinha
             AddRemoveCssClass(addHidden, "hidden", ctrls);
         }
 
+        public static void AddRemoveActive(bool add, params System.Web.UI.HtmlControls.HtmlControl[] ctrls)
+        {
+            AddRemoveCssClass(add, "active", ctrls);
+        }
+
         public static void AddRemoveCssClass(bool addRemoveClass, string cssClass, params System.Web.UI.HtmlControls.HtmlControl[] ctrls)
         {
             string className = "class", currCss;
