@@ -51,6 +51,8 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr1);
 
                         Helper.AddRemoveActive(true, liModificacao);
+                        Helper.AddRemoveActive(false, liPrameterizacao);
+                        Helper.AddRemoveActive(false, liConsulta);
                         lbModificacao.CssClass = lbModificacao.CssClass.Replace("atab", "atabD");
 
                         break;
@@ -67,6 +69,8 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr1);
 
                         Helper.AddRemoveActive(true, liPrameterizacao);
+                        Helper.AddRemoveActive(false, liModificacao);
+                        Helper.AddRemoveActive(false, liConsulta);
                         lbPrameterizacao.CssClass = lbPrameterizacao.CssClass.Replace("atab", "atabD");
 
 
@@ -84,6 +88,8 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr1);
 
                         Helper.AddRemoveActive(true, liConsulta);
+                        Helper.AddRemoveActive(false, liModificacao);
+                        Helper.AddRemoveActive(false, liPrameterizacao);
                         lbConsulta.CssClass = lbConsulta.CssClass.Replace("atab", "atabD");
 
                         break;
