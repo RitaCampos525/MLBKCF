@@ -44,7 +44,7 @@
     <Compile Include="ABUtil.cs" />
     <Compile Include="ArvoreFamiliaProdutos.cs" />
     <Compile Include="ComboBox.cs" />
-    <Compile Include="LM35AssociacaoContasDO.cs" />
+    <Compile Include="LM35_AssociacaoContasDO.cs" />
     <Compile Include="LM36_ContratosProduto.cs" />
     <Compile Include="LM37_SimulacaoMl.cs" />
     <Compile Include="LM38_HistoricoAlteracoes.cs" />

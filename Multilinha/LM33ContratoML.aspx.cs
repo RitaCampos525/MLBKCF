@@ -37,6 +37,8 @@ namespace Multilinha
                         lblTransactionM.CssClass = lblTransactionM.CssClass.Replace("atabD", "");
                         lblTransactionM.Enabled = true;
 
+                        bklIdworkflow.InnerText = "ID Multilinha:";
+
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
@@ -604,7 +606,7 @@ namespace Multilinha
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-
+            //Include id multilinha
         }
 
         protected void adicaoCP(string tipologia, ListView lview, LM34_SublimitesML LM34)
