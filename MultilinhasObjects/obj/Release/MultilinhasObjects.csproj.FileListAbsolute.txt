@@ -3,3 +3,8 @@ C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\bin\Release\Multilin
 C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\obj\Release\MultilinhasObjects.dll
 C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\obj\Release\MultilinhasObjects.pdb
 C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasObjects\obj\Release\MultilinhasObjects.csprojResolveAssemblyReference.cache
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\bin\Release\MultilinhasObjects.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\bin\Release\MultilinhasObjects.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Release\MultilinhasObjects.csproj.CoreCompileInputs.cache
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Release\MultilinhasObjects.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Release\MultilinhasObjects.pdb

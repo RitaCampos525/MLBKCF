@@ -18,7 +18,7 @@ namespace Multilinha
         {
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
             DataTable dtProdutos = TAT2.GetProdutos(Global.ConnectionStringDTAB, abargs);
-            
+
             if (!Page.IsPostBack)
             {
                 txtProductCode.Text = ConfigurationManager.AppSettings["CodigoProdutoML"];
@@ -33,9 +33,10 @@ namespace Multilinha
                 ddlIndRenovacao.DataSource = ML_Objectos.GetIndicadorRenovacao();
                 ddlIndRenovacao.DataBind();
 
+
                 //Show hide fields 
                 string op = Request.QueryString["OP"] ?? "FF";
-                switch(op.ToUpper())
+                switch (op.ToUpper())
                 {
                     case "M":
 
@@ -48,6 +49,9 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, acoes_ml01);
                         Helper.AddRemoveHidden(true, hr);
                         Helper.AddRemoveHidden(true, hr1);
+
+                        Helper.AddRemoveActive(true, liModificacao);
+                        lbModificacao.CssClass = lbModificacao.CssClass.Replace("atab", "atabD");
 
                         break;
                     case "C":
@@ -62,6 +66,10 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr);
                         Helper.AddRemoveHidden(true, hr1);
 
+                        Helper.AddRemoveActive(true, liPrameterizacao);
+                        lbPrameterizacao.CssClass = lbPrameterizacao.CssClass.Replace("atab", "atabD");
+
+
                         break;
                     case "V":
 
@@ -74,6 +82,9 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, acoes_ml01);
                         Helper.AddRemoveHidden(true, hr);
                         Helper.AddRemoveHidden(true, hr1);
+
+                        Helper.AddRemoveActive(true, liConsulta);
+                        lbConsulta.CssClass = lbConsulta.CssClass.Replace("atab", "atabD");
 
                         break;
                     default:
@@ -103,7 +114,7 @@ namespace Multilinha
         //    DataTable distinctProdutos = view.ToTable(true, colnodes); //select distinc nodes
 
         //    var a = distinctProdutos.Select(colnodes + " IN (" + arprd + ")"); //select produtos por tipologia de risco
-           
+
         //    //Faz os 1s Nodes - Produtos
         //    foreach (DataRow row in a)
         //    {
@@ -162,39 +173,50 @@ namespace Multilinha
             List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(tipologia);
 
             var familiaprodutos = lstF.Select(x => x.familiaProduto).Distinct();
+            
+            //nivel todos
+            TreeNode treeAll = new TreeNode(" - Todos");
+            
             foreach (string row in familiaprodutos)
             {
                 //Faz os 1s Nodes - Familia Produtos
-                TreeNode famProduto = new TreeNode(row);
+                TreeNode famProduto = new TreeNode(" - " + row);
                 famProduto.ShowCheckBox = true;
-              
+
                 //Faz os 2os Nodes - Produto e SubProduto
                 var dtSubProdutos = lstF.FindAll(x => x.familiaProduto == row);
                 TreeNode[] array = new TreeNode[dtSubProdutos.Count()];
                 for (int i = 0; i < dtSubProdutos.Count(); i++)
                 {
-                    
+
                     array[i] = new TreeNode(dtSubProdutos[i].descricao);
                     array[i].ShowCheckBox = true;
-                    array[i].Text = dtSubProdutos[i].produto.ToString() + dtSubProdutos[i].subproduto.ToString() + 
+                    array[i].Text = dtSubProdutos[i].produto.ToString() + dtSubProdutos[i].subproduto.ToString() +
                         " - " + dtSubProdutos[i].descricao.ToString(); //(codigo + descritivo)
 
                     famProduto.ChildNodes.Add(array[i]);
+                    
                 }
 
                 famProduto.ShowCheckBox = true;
-                tree.Nodes.Add(famProduto); //Adiciona o nó com os child nodes
+                treeAll.ChildNodes.Add(famProduto);
+                //treeAll.ChildNodes.Add(famProduto);
+                famProduto.CollapseAll();
             }
+
+            tree.Nodes.Add(treeAll); //Adiciona o nó com os child nodes
+            treeAll.Expanded = true;
+
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             lberror.Text = "";
-            if(Page.IsValid)
+            if (Page.IsValid)
             {
-               if(validaNProdutosCredito())
+                if (validaNProdutosCredito())
                 {
-                   
+
                     LM31_CatalogoProdutoML lm31 = new LM31_CatalogoProdutoML();
                     Helper.CopyPropertiesTo(this, lm31);
 
@@ -226,19 +248,20 @@ namespace Multilinha
             ddlSubProductCode.Enabled = true;
             ddlSubProdCode_TextChanged(sender, e);
 
-         
+
 
         }
 
         protected void ddlSubProdCode_TextChanged(object sender, EventArgs e)
         {
-           ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-           string subprodutodesc = TAT2.GetSubProdDescriptionByCode(txtProductCode.Text, ddlSubProductCode.SelectedValue, Global.ConnectionStringDTAB, abargs);
+            ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+            string subprodutodesc = TAT2.GetSubProdDescriptionByCode(txtProductCode.Text, ddlSubProductCode.SelectedValue, Global.ConnectionStringDTAB, abargs);
 
             txtSubProductDescription.Text = subprodutodesc;
 
             //for debug!
-            if (string.IsNullOrEmpty(subprodutodesc)){
+            if (string.IsNullOrEmpty(subprodutodesc))
+            {
 
                 txtSubProductDescription.Text = TAT2.SearchSubProdutDescriptionML(ddlSubProductCode.SelectedValue)[0].ToString();
             }
@@ -279,6 +302,23 @@ namespace Multilinha
 
                 Helper.SetEnableControler(camposChave, false);
 
+                #region arvore de produto de risco
+                makeTreeView2(Constantes.tipologiaRisco.RF, trtipologiaProdutosRFTree);
+                makeTreeView2(Constantes.tipologiaRisco.RA, trtipologiaProdutosRATree);
+                makeTreeView2(Constantes.tipologiaRisco.RC, trtipologiaProdutosRCTree);
+
+                trtipologiaProdutosRFTree.ShowExpandCollapse = true;
+                //trtipologiaProdutosRFTree.ExpandAll();
+                trtipologiaProdutosRFTree.NodeWrap = true;
+
+                trtipologiaProdutosRCTree.ShowExpandCollapse = true;
+                //trtipologiaProdutosRCTree.CollapseAll();
+                trtipologiaProdutosRCTree.NodeWrap = true;
+
+                trtipologiaProdutosRATree.ShowExpandCollapse = true;
+                //trtipologiaProdutosRATree.CollapseAll();
+                trtipologiaProdutosRATree.NodeWrap = true;
+                #endregion
 
                 switch (op.ToUpper())
                 {
@@ -293,28 +333,6 @@ namespace Multilinha
                         Helper.AddRemoveHidden(false, hr);
                         Helper.AddRemoveHidden(false, hr1);
 
-                        #region arvore de produto de risco
-
-                        makeTreeView2(Constantes.tipologiaRisco.RF, trtipologiaProdutosRFTree);
-
-                        makeTreeView2(Constantes.tipologiaRisco.RA, trtipologiaProdutosRATree);
-
-                        makeTreeView2(Constantes.tipologiaRisco.RC, trtipologiaProdutosRCTree);
-
-                        trtipologiaProdutosRFTree.ShowExpandCollapse = true;
-                        trtipologiaProdutosRFTree.CollapseAll();
-                        trtipologiaProdutosRFTree.NodeWrap = true;
-
-                        trtipologiaProdutosRCTree.ShowExpandCollapse = true;
-                        trtipologiaProdutosRCTree.CollapseAll();
-                        trtipologiaProdutosRCTree.NodeWrap = true;
-
-                        trtipologiaProdutosRATree.ShowExpandCollapse = true;
-                        trtipologiaProdutosRATree.CollapseAll();
-                        trtipologiaProdutosRATree.NodeWrap = true;
-
-                        #endregion
-
                         btnCriar.Visible = true;
                         break;
 
@@ -328,28 +346,6 @@ namespace Multilinha
                         Helper.AddRemoveHidden(false, acoes_ml01);
                         Helper.AddRemoveHidden(false, hr);
                         Helper.AddRemoveHidden(false, hr1);
-
-                        #region arvore de produto de risco
-
-                        makeTreeView2(Constantes.tipologiaRisco.RF, trtipologiaProdutosRFTree);
-
-                        makeTreeView2(Constantes.tipologiaRisco.RA, trtipologiaProdutosRATree);
-
-                        makeTreeView2(Constantes.tipologiaRisco.RC, trtipologiaProdutosRCTree);
-
-                        trtipologiaProdutosRFTree.ShowExpandCollapse = true;
-                        trtipologiaProdutosRFTree.CollapseAll();
-                        trtipologiaProdutosRFTree.NodeWrap = true;
-
-                        trtipologiaProdutosRCTree.ShowExpandCollapse = true;
-                        trtipologiaProdutosRCTree.CollapseAll();
-                        trtipologiaProdutosRCTree.NodeWrap = true;
-
-                        trtipologiaProdutosRATree.ShowExpandCollapse = true;
-                        trtipologiaProdutosRATree.CollapseAll();
-                        trtipologiaProdutosRATree.NodeWrap = true;
-
-                        #endregion
 
                         btnEdit.Visible = true;
                         break;
@@ -371,28 +367,6 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, acoes_ml01); //manter acoes escondidas
                         Helper.AddRemoveHidden(true, hr);
                         Helper.AddRemoveHidden(true, hr1);
-
-                        #region arvore de produto de risco
-
-                        makeTreeView2(Constantes.tipologiaRisco.RF, trtipologiaProdutosRFTree);
-
-                        makeTreeView2(Constantes.tipologiaRisco.RA, trtipologiaProdutosRATree);
-
-                        makeTreeView2(Constantes.tipologiaRisco.RC, trtipologiaProdutosRCTree);
-
-                        trtipologiaProdutosRFTree.ShowExpandCollapse = true;
-                        trtipologiaProdutosRFTree.CollapseAll();
-                        trtipologiaProdutosRFTree.NodeWrap = true;
-
-                        trtipologiaProdutosRCTree.ShowExpandCollapse = true;
-                        trtipologiaProdutosRCTree.CollapseAll();
-                        trtipologiaProdutosRCTree.NodeWrap = true;
-
-                        trtipologiaProdutosRATree.ShowExpandCollapse = true;
-                        trtipologiaProdutosRATree.CollapseAll();
-                        trtipologiaProdutosRATree.NodeWrap = true;
-
-                        #endregion
 
                         break;
                 }
@@ -522,7 +496,7 @@ namespace Multilinha
                                     subproduto = trch.Text.Split('-')[0].Substring(1, 2),
                                 }
                             );
-                        }
+                    }
                 }
             }
             //Risco Comercial
@@ -564,7 +538,7 @@ namespace Multilinha
                 }
             }
         }
-       
+
     }
-    
+
 }

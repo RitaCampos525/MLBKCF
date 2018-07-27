@@ -73,7 +73,7 @@
             <hr class="hr" id="hr1" runat="server" />
             <br />
             <div id="dpOK" runat="server">
-            <div class="row form-group padding-row">
+                <div class="row form-group padding-row">
                     <div class="col-sm-6">
                         <label id="lbNcontaDO" runat="server" class="col-sm-3 text-right lbl">* Nº Conta DO Principal: </label>
                         <div class="col-sm-4">
@@ -81,46 +81,46 @@
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqtxtNumContaDO" ValidationGroup="" ControlToValidate="txtncontado" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
-            </div>
-            <div class="row form-group padding-row text-center"">
-                <div class="col-sm-10 treViewCatalogo">
-                    <asp:ListView ID="lvAssociados" runat="server">
-                        <EmptyDataTemplate>Não existem resultados para a pesquisa efetuada.</EmptyDataTemplate>
-                        <LayoutTemplate>
-                            <div class="Table Grid" id="tbAssociados">
-                                <div class="Heading Color Row">
+                </div>
+                <div class="row form-group padding-row text-center"">
+                    <div class="col-sm-10 treViewCatalogo">
+                        <asp:ListView ID="lvAssociados" runat="server">
+                            <EmptyDataTemplate>Não existem resultados para a pesquisa efetuada.</EmptyDataTemplate>
+                            <LayoutTemplate>
+                                <div class="Table Grid" id="tbAssociados">
+                                    <div class="Heading Color Row">
+                                        <div class="Cell Grid col-6">
+                                            <label class="col-6" id="produto">Associado</label>
+                                        </div>
+                                        <div class="Cell Grid col-6">
+                                            <label class="col-6" id="subproduto">Nº Conta DO</label>
+                                        </div>
+                                        <div class="Cell Grid col-6">
+                                            <label class="col-6">Data de Associação</label>
+                                        </div>
+                                    </div>
+                                    <div class="Row" runat="server" id="itemPlaceholder">
+                                    </div>
+                                </div>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <div class="Row <%# Container.DataItemIndex % 2 == 0 ? "Even" : "Odd" %>">
                                     <div class="Cell Grid col-6">
-                                        <label class="col-6" id="produto">Associado</label>
+                                        <asp:CheckBox runat="server" ID="ckAssociado" CssClass="col-6" Checked='<%# Eval("Associado") %>'></asp:CheckBox>
                                     </div>
                                     <div class="Cell Grid col-6">
-                                        <label class="col-6" id="subproduto">Nº Conta DO</label>
+                                        <asp:Label runat="server" ID="lbNumcontaDO" CssClass="col-6" Text='<%# Eval("NumContaDO") %>'></asp:Label>
                                     </div>
-                                    <div class="Cell Grid col-6">
-                                        <label class="col-6">Data de Associação</label>
+                                    <div class="Cell Grid col-6 text-center">
+                                        <asp:Label runat="server" ID="lbdataAssociacao" CssClass="col-6" Text='<%# Eval("DataAssociada") %>'></asp:Label>
                                     </div>
                                 </div>
-                                <div class="Row" runat="server" id="itemPlaceholder">
-                                </div>
-                            </div>
-                        </LayoutTemplate>
-                        <ItemTemplate>
-                            <div class="Row <%# Container.DataItemIndex % 2 == 0 ? "Even" : "Odd" %>">
-                                <div class="Cell Grid col-6">
-                                    <asp:CheckBox runat="server" ID="ckAssociado" CssClass="col-6" Checked='<%# Eval("Associado") %>'></asp:CheckBox>
-                                </div>
-                                <div class="Cell Grid col-6">
-                                    <asp:Label runat="server" ID="lbNumcontaDO" CssClass="col-6" Text='<%# Eval("NumContaDO") %>'></asp:Label>
-                                </div>
-                                <div class="Cell Grid col-6 text-center">
-                                    <asp:Label runat="server" ID="lbdataAssociacao" CssClass="col-6" Text='<%# Eval("DataAssociada") %>'></asp:Label>
-                                </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:ListView>
+                            </ItemTemplate>
+                        </asp:ListView>
+                    </div>
                 </div>
             </div>
             <br />
-            </div>
             <hr class="hr" id="hr2" runat="server" />
              <div id="accoesfinais_criarlm35" runat="server">
                 <div class="row div-btns">

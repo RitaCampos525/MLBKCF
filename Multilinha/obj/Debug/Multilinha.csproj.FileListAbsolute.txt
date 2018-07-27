@@ -89,3 +89,17 @@ C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasObjects.pdb
 C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.csprojResolveAssemblyReference.cache
 C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.dll
 C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\obj\Debug\Multilinha.csprojAssemblyReference.cache
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\obj\Debug\Multilinha.csproj.CoreCompileInputs.cache
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\obj\Debug\Multilinha.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\obj\Debug\Multilinha.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\ApplicationInsights.config
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\Multilinha.dll.config
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\Multilinha.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\Multilinha.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\MultilinhasDataLayer.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\MultilinhasObjects.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\MultilinhasDataLayer.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\MultilinhasDataLayer.dll.config
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\MultilinhasObjects.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\obj\Debug\Multilinha.csproj.CopyComplete
