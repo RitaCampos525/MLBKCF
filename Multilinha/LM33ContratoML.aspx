@@ -24,22 +24,22 @@
         </div>
         <div class="clear"></div>
         <br />
-        <div class="row titleTransaction">
-            <ul class="list-inline">
+        <div class="row  titleTransaction">
+            <ul class="nav navbar-nav menu">
                 <li>
-                    <asp:LinkButton CssClass="atab atabD" ID="lblTransaction" Enabled="false" runat="server" Text="Criação de Contrato"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lblTransaction" Enabled="false" runat="server" Text="Criação de Contrato"></asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton CssClass="atab atabD" ID="lblTransactionM" Enabled="false" runat="server" Text="Modificação de Contrato"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lblTransactionM" Enabled="false" runat="server" Text="Modificação de Contrato"></asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton CssClass="atab atabD" ID="lblTransactionV" Enabled="false" runat="server" Text="Consulta de Contrato"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lblTransactionV" Enabled="false" runat="server" Text="Consulta de Contrato"></asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton CssClass="atab atabD" ID="lblTransactionD" Enabled="false" runat="server" Text="Denúncia / resolução de Contrato"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lblTransactionD" Enabled="false" runat="server" Text="Denúncia / resolução de Contrato"></asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton CssClass="atab atabD" ID="lblTransactionE" Enabled="false" runat="server" Text="Envio de cartas"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lblTransactionE" Enabled="false" runat="server" Text="Envio de cartas"></asp:LinkButton>
                 </li>
             </ul>
         </div>
