@@ -37,6 +37,8 @@ namespace MultilinhasObjects
             public string prodsubproduto { get; set; }
             public string descritivo { get; set; }
             public decimal sublimitecompremetido { get; set; } //Aquele q é editavel
+
+            public int zSeq { get; set; }
         }
 
 

@@ -70,5 +70,110 @@ namespace MultilinhasObjects
                 },
         };
         }
+
+        public static List<MultilinhaObjects.ComboBox> GetEstadosDoContratoML()
+        {
+            return new List<ComboBox>(){
+                 new ComboBox()
+                {
+                    Code = "EC",
+                    Description = "EM CRIACAO",
+                },
+                  new ComboBox()
+                {
+                    Code = "EA",
+                    Description = "EM APROVACAO",
+                },
+                new ComboBox()
+                {
+                    Code = "AP",
+                    Description = "APROVADO",
+                },
+                    new ComboBox()
+                {
+                    Code = "AC",
+                    Description = "ACTIVO",
+                },
+                    new ComboBox()
+                {
+                    Code = "EM",
+                    Description = "EM MODIFICACAO",
+                },
+        };
+        }
+
+        public static List<AlteracaoContratoML> GetMotivosAlteracaoContrato()
+        {
+            return new List<AlteracaoContratoML>(){
+                 new AlteracaoContratoML()
+                {
+                    Code = "A1",
+                    Description = "Limite",
+                },
+                  new AlteracaoContratoML()
+                {
+                    Code = "A2",
+                    Description = "Limite Risco",
+                },
+                new AlteracaoContratoML()
+                {
+                    Code = "A3",
+                    Description = "Prazo",
+                    tipoAlteracaoCodigo = "CG",
+                    tipoAlteracaoNome = "Condições Gerais"
+                },
+                    new AlteracaoContratoML()
+                {
+                    Code = "A4",
+                    Description = "Renovação",
+                    tipoAlteracaoCodigo = "CG",
+                    tipoAlteracaoNome = "Condições Gerais"
+                },
+                    new AlteracaoContratoML()
+                {
+                    Code = "A5",
+                    Description = "Denúncia",
+                    tipoAlteracaoCodigo = "CG",
+                    tipoAlteracaoNome = "Condições Gerais"
+                },
+                    new AlteracaoContratoML()
+                {
+                    Code = "A5",
+                    Description = "Resolução",
+                    tipoAlteracaoCodigo = "CG",
+                    tipoAlteracaoNome = "Condições Gerais"
+                },
+                    new AlteracaoContratoML()
+                {
+                    Code = "A6",
+                    Description = "Envio de Cartas",
+                    tipoAlteracaoCodigo = "CG",
+                    tipoAlteracaoNome = "Condições Gerais"
+                },
+                    new AlteracaoContratoML()
+                {
+                    Code = "A7",
+                    Description = "Sublimite Produto",
+                    tipoAlteracaoCodigo = "CP",
+                    tipoAlteracaoNome = "Condições Particulares"
+                },
+                    new AlteracaoContratoML()
+                {
+                    Code = "A8",
+                    Description = "Activação CP",
+                    tipoAlteracaoCodigo = "CP",
+                    tipoAlteracaoNome = "Condições Particulares"
+                }
+                    
+        };
+        }
+
+        public class AlteracaoContratoML
+        {
+            public string Code { get; set; }
+            public string Description { get; set; }
+            public string tipoAlteracaoNome { get; set; }
+            public string tipoAlteracaoCodigo { get; set; } 
+        }
     }
 }

@@ -347,6 +347,24 @@ namespace MultilinhasDataLayer
 
             };
        }
+
+        public LM35AssociacaoContasDO SearchML35(int cliente, int idMult)
+        {
+            return new LM35AssociacaoContasDO()
+            {
+                Cliente = cliente,
+                idmultilinha = idMult,
+                Lista = new List<listaContaDO>
+                {
+                    new listaContaDO
+                    {
+                        Associado = false,
+                        DataAssociada = DateTime.Now,
+                        NumContaDO = "1234536789101"
+                    }
+                }
+            };
+        }
        
     }
 }

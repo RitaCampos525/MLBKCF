@@ -54,6 +54,8 @@ namespace MultilinhasObjects
             public string familiaproduto { get; set; }
             public string prodsubproduto { get; set; }
             public string descritivo { get; set; }
+
+            public int zSeq { get; set; }
         }
 
         public List<ProdutoRiscoF> produtosRiscoF = new List<ProdutoRiscoF>();
@@ -64,6 +66,8 @@ namespace MultilinhasObjects
             public string familiaproduto { get; set; }
             public string prodsubproduto { get; set; }
             public string descritivo { get; set; }
+
+            public int zSeq { get; set; }
         }
 
         public List<ProdutoRiscoC> produtosRiscoC = new List<ProdutoRiscoC>();
@@ -74,6 +78,8 @@ namespace MultilinhasObjects
             public string familiaproduto { get; set; }
             public string prodsubproduto { get; set; }
             public string descritivo { get; set; }
+
+            public int zSeq { get; set; }
         }
 
     }

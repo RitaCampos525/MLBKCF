@@ -49,7 +49,7 @@
                     <div class="col-sm-4">
                         <label id="bkCliente" runat="server" class="col-sm-4 text-right lbl">* Cliente: </label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtCliente" MaxLength="9" onkeypress="return isNumber(event)" AutoPostBack="true" OnTextChanged="txtCliente_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtCliente" MaxLength="7" onkeypress="return isNumber(event)" AutoPostBack="true" OnTextChanged="txtCliente_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChaves" ID="reqCliente" ControlToValidate="txtCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
