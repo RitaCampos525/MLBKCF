@@ -5,3 +5,13 @@ C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasDataLayer\bin\Release\Multil
 C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasDataLayer\obj\Release\MultilinhasDataLayer.csprojResolveAssemblyReference.cache
 C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasDataLayer\obj\Release\MultilinhasDataLayer.dll
 C:\Users\sp00959\Source\Repos\Multilinha\MultilinhasDataLayer\obj\Release\MultilinhasDataLayer.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasDataLayer\bin\Release\MultilinhasDataLayer.dll.config
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasDataLayer\bin\Release\MultilinhasDataLayer.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasDataLayer\bin\Release\MultilinhasDataLayer.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasDataLayer\bin\Release\MultilinhasObjects.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasDataLayer\bin\Release\MultilinhasObjects.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasDataLayer\obj\Release\MultilinhasDataLayer.csprojAssemblyReference.cache
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasDataLayer\obj\Release\MultilinhasDataLayer.csproj.CoreCompileInputs.cache
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasDataLayer\obj\Release\MultilinhasDataLayer.csproj.CopyComplete
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasDataLayer\obj\Release\MultilinhasDataLayer.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasDataLayer\obj\Release\MultilinhasDataLayer.pdb

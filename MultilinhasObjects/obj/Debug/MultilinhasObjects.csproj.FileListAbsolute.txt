@@ -15,3 +15,9 @@ C:\Projects\Roliveca\MLBKCF\MultilinhasObjects\bin\Debug\MultilinhasObjects.pdb
 C:\Projects\Roliveca\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.csprojResolveAssemblyReference.cache
 C:\Projects\Roliveca\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.dll
 C:\Projects\Roliveca\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\bin\Debug\MultilinhasObjects.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\bin\Debug\MultilinhasObjects.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.csproj.CoreCompileInputs.cache
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.csprojAssemblyReference.cache

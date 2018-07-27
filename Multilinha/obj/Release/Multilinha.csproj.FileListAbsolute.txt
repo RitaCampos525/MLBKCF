@@ -21,3 +21,17 @@ C:\Users\sp00959\Source\Repos\Multilinha\Multilinha\bin\MultilinhasObjects.pdb
 C:\Users\sp00959\Source\Repos\Multilinha\Multilinha\obj\Release\Multilinha.csprojResolveAssemblyReference.cache
 C:\Users\sp00959\Source\Repos\Multilinha\Multilinha\obj\Release\Multilinha.dll
 C:\Users\sp00959\Source\Repos\Multilinha\Multilinha\obj\Release\Multilinha.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\ApplicationInsights.config
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\Multilinha.dll.config
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\Multilinha.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\Multilinha.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\MultilinhasDataLayer.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\MultilinhasObjects.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\MultilinhasDataLayer.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\MultilinhasDataLayer.dll.config
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\bin\MultilinhasObjects.pdb
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\obj\Release\Multilinha.csprojAssemblyReference.cache
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\obj\Release\Multilinha.csproj.CoreCompileInputs.cache
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\obj\Release\Multilinha.csproj.CopyComplete
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\obj\Release\Multilinha.dll
+C:\Users\jdiascos\Source\Repos\MLBKCF\Multilinha\obj\Release\Multilinha.pdb
