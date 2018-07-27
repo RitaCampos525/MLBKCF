@@ -60,6 +60,15 @@
             </div>
             <hr class="hr" id="hr1" runat="server" />
             <br />
+            <div class="row form-group padding-row ">
+                    <div class="col-sm-6">
+                        <label id="lblNumContaBO" runat="server" class="col-sm-6 text-right lbl">Nº Conta BO Principal: </label>
+                        <div class="col-sm-4">
+                            <asp:TextBox ID="txtNumContaBO" MaxLength="10" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="RequiredFieldValidator1" ValidationGroup="ChaveProdutos" ControlToValidate="txtIDMultinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </div>
             <div class="row form-group padding-row text-center"">
                 <div class="col-sm-10 treViewCatalogo">
                     <asp:ListView ID="lvAssociados" runat="server">
