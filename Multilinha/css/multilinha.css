@@ -376,7 +376,7 @@ DIV.newsTitulo {
     display: table-row;
     font-weight: bold;
     text-align: center;
-    overflow:auto;
+    overflow: auto;
 }
 
     .Heading.Color {
@@ -480,13 +480,12 @@ hr.hr {
     color: rgb(245, 102, 0);
     border-color: #f56600;
     clear:both;*/
-
-  border: 0;
-  clear:both;
-  display:block;
-  width: 96%;               
-  background-color:#f56600;
-  height: 1px;
+    border: 0;
+    clear: both;
+    display: block;
+    width: 96%;
+    background-color: #f56600;
+    height: 1px;
 }
 
 .padding-row {
@@ -520,7 +519,7 @@ button.btn {
 
 .div-btns {
     padding: 1% 7% 1% 0;
-    float:right !important;
+    float: right !important;
 }
 
 .btns-left {
@@ -558,12 +557,12 @@ button.btn {
     color: #555;
 }
 
-.btns-alt:hover {
-    background: #ccc;
-    color: #000;
-}
+    .btns-alt:hover {
+        background: #ccc;
+        color: #000;
+    }
 
-.btns:disabled{
+.btns:disabled {
     background-color: gray;
 }
 
@@ -632,7 +631,7 @@ a.accordion {
     outline: none;
     text-decoration-line: none;
     font-size: 14px;
-    text-decoration:none;
+    text-decoration: none;
 }
 
     a.accordion.active, a.accordion:hover {
@@ -668,25 +667,30 @@ div.panel-accordion {
 }
 
 /*//TABS NAVEGACAO*/
-.atab{
+.atab {
     color: white;
+    text-decoration: none;
 }
-.atabD{
-    color:gray;
+
+.atabD {
+    color: gray;
+    text-decoration: none;
 }
 
 div.Orange:not(:empty) {
-    background-color:#f69b02;
-
+    background-color: #f69b02;
 }
 
-.Cell.Grid.col-6{
-    width:230px;
-    overflow:hidden;
+.Cell.Grid.col-6 {
+    width: 230px;
+    overflow: hidden;
 }
 
-.col-6{
-width:230px;
-    overflow:hidden;
+.col-6 {
+    width: 230px;
+    overflow: hidden;
 }
-        
+
+.menu {
+    margin-left: 22% !important;
+}
