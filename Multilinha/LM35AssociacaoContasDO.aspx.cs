@@ -99,7 +99,7 @@ namespace Multilinha
             Helper.AddRemoveHidden(false, hr1);
             Helper.AddRemoveHidden(false, hr2);
 
-            MultilinhasObjects.LM35AssociacaoContasDO lst =  TAT2.SearchML35(1, 2);
+            MultilinhasObjects.LM35_AssociacaoContasDO lst =  TAT2.SearchML35(1, 2);
             lvAssociados.DataSource = lst.Lista;
             lvAssociados.DataBind();
         }

@@ -71,6 +71,7 @@
     <Content Include="LM33ContratoML.aspx" />
     <Content Include="LM34DefinicaoSublimites.aspx" />
     <Content Include="LM35AssociacaoContasDO.aspx" />
+    <Content Include="LM36ContratosProduto.aspx" />
     <Content Include="ucCancelamentoContrato.ascx" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -135,6 +136,13 @@
     </Compile>
     <Compile Include="LM35AssociacaoContasDO.aspx.designer.cs">
       <DependentUpon>LM35AssociacaoContasDO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LM36ContratosProduto.aspx.cs">
+      <DependentUpon>LM36ContratosProduto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LM36ContratosProduto.aspx.designer.cs">
+      <DependentUpon>LM36ContratosProduto.aspx</DependentUpon>
     </Compile>
     <Compile Include="ucCancelamentoContrato.ascx.cs">
       <DependentUpon>ucCancelamentoContrato.ascx</DependentUpon>

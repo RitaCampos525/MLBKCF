@@ -348,9 +348,9 @@ namespace MultilinhasDataLayer
             };
        }
 
-        public LM35AssociacaoContasDO SearchML35(int cliente, int idMult)
+        public LM35_AssociacaoContasDO SearchML35(int cliente, int idMult)
         {
-            return new LM35AssociacaoContasDO()
+            return new LM35_AssociacaoContasDO()
             {
                 Cliente = cliente,
                 idmultilinha = idMult,
