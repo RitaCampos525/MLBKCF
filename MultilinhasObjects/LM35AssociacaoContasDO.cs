@@ -17,7 +17,7 @@ namespace MultilinhasObjects
 
         public string Nome { get; set; }
 
-        public string NumContaDO { get; set; }
+        public string ncontado { get; set; }
 
         public List<listaContaDO> Lista
         {

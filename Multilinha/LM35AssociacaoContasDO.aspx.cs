@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MultilinhasObjects;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -13,7 +14,6 @@ namespace Multilinha
         public DateTime dtfechas = Global.dtfechasG;
         MultilinhasDataLayer.boMultilinhas TAT2 = new MultilinhasDataLayer.boMultilinhas();
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!Page.IsPostBack)
@@ -23,14 +23,23 @@ namespace Multilinha
                 op = string.IsNullOrEmpty(op) ? "FF" : op;
                 ViewState["Op"] = op;
 
+                //hide and show fields
                 switch (op.ToUpper())
                 {
                     case "M":
+                        lblTransaction.CssClass = lblTransaction.CssClass.Replace("atabD", "");
+                        lblTransaction.Enabled = true;
+
+                        Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm35);
                         Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
                         break;
                     case "C":
+                        lblTransaction.CssClass = lblTransaction.CssClass.Replace("atabD", "");
+                        lblTransaction.Enabled = true;
+
+                        Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm35);
                         Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
@@ -38,6 +47,10 @@ namespace Multilinha
                     case "A":
                         break;
                     case "V":
+                        lblTransaction.CssClass = lblTransaction.CssClass.Replace("atabD", "");
+                        lblTransaction.Enabled = true;
+
+                        Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm35);
                         Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
@@ -47,6 +60,15 @@ namespace Multilinha
                         new Dictionary<string, object>() {
                                  { "Op", "C" } });
                         break;
+                }
+
+                //Populate fields
+
+                if (Context.Items["ContratoCriado"] is MultilinhasObjects.LM34_SublimitesML)
+                {
+                    LM34_SublimitesML lm34c = Context.Items["ContratoCriado"] as LM34_SublimitesML;
+                    Helper.CopyObjectToControls(lm35C, lm34c);
+                    ViewState["ContratoCriado"] = lm34c;
                 }
 
             }
@@ -62,9 +84,9 @@ namespace Multilinha
 
         protected void btnLimpar_Click(object sender, EventArgs e)
         {
-            txtNumCliente.Text = "";
-            txtIDMultinha.Text = "";
-            txtClienteDescription.Text = "";
+            txtCliente.Text = "";
+            txtidmultilinha.Text = "";
+            txtNome.Text = "";
         }
 
         protected void btnConsultar_Click(object sender, EventArgs e)
@@ -72,6 +94,7 @@ namespace Multilinha
             //Call ML35
             //if sucess
 
+            Helper.AddRemoveHidden(false, dpOK);
             Helper.AddRemoveHidden(false, accoesfinais_criarlm35);
             Helper.AddRemoveHidden(false, hr1);
             Helper.AddRemoveHidden(false, hr2);
@@ -81,10 +104,12 @@ namespace Multilinha
             lvAssociados.DataBind();
         }
 
-        protected void btnOk_Click(object sender, EventArgs e)
+        protected void btnEnviarContrato(object sender, EventArgs e)
         {
 
+            //Apanhar DOS e enviar para a LM35 - C
 
+            //Call LM35
         }
 
     }

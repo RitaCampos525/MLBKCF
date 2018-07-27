@@ -115,7 +115,9 @@
                             </div>
                         </div>
                 </div>
-        
+             <div class="row form-group padding-row ">
+                 <asp:HiddenField ID="ncontado" runat="server" />
+             </div>
             <hr class="hr2" id="hr2" runat="server" />
             </div>
         </div>

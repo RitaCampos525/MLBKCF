@@ -647,6 +647,23 @@ namespace Multilinha
                     }
                 }
             }
+            else if (controls is HiddenField)
+            {
+                string controlId = controls.ID;
+                var result = props.Where(x => controlId.Contains(x.Name)).FirstOrDefault();
+                if (result != null)
+                {
+                    if (result.PropertyType == typeof(string))
+                    {
+                        var target = result.GetValue(dest, null);
+                        if (target != null)
+                        {
+                            (controls as HiddenField).Value = target.ToString();
+                            controls.DataBind();
+                        }
+                    }
+                }
+            }
 
             if (controls.Controls.Count > 0)
             {
