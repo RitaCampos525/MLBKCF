@@ -44,7 +44,7 @@
                 <div class="col-sm-4">
                     <label id="bkCliente" runat="server" class="col-sm-4 text-right lbl">* Cliente: </label>
                     <div class="col-sm-6">
-                        <asp:TextBox ID="txtCliente" MaxLength="9" Enabled="false" ReadOnly="true" onkeypress="return isNumber(event)" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtCliente" MaxLength="7" Enabled="false" ReadOnly="true" onkeypress="return isNumber(event)" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="reqCliente" ControlToValidate="txtCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                     </div>
                 </div>
@@ -115,7 +115,9 @@
                             </div>
                         </div>
                 </div>
-        
+             <div class="row form-group padding-row ">
+                 <asp:HiddenField ID="ncontado" runat="server" />
+             </div>
             <hr class="hr2" id="hr2" runat="server" />
             </div>
         </div>

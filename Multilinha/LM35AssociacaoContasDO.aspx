@@ -25,21 +25,29 @@
         <div class="clear"></div>
         <br />
         <div class="row titleTransaction">
-            <asp:Label ID="lblTransaction" runat="server">Manutenção Associação de Contas DO</asp:Label>
-        </div>
+                    <ul class="nav navbar-nav menu">
+                        <li>
+                            <asp:LinkButton CssClass="atab atabD" ID="lblTransaction" Enabled="false" runat="server" Text="Associação de contas DO"></asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton CssClass="atab atabD" ID="lblTransactionH" Enabled="false" runat="server" Text="Historico de Associação de Contas DO"></asp:LinkButton>
+                        </li>
+                    </ul>
+            </div>
+        <div id="lm35C" runat="server">
         <div class="row colorbck">
             <div id="camposChave" runat="server">
                 <div class="row form-group padding-row ">
                     <div class="col-sm-6">
                         <label id="lbCliente" runat="server" class="col-sm-3 text-right lbl">* Cliente: </label>
-                        <div class="col-sm-3">
-                            <asp:TextBox ID="txtNumCliente" MaxLength="9" pattern="[A-Za-z0-9]{9}" OnTextChanged="txtNumCliente_TextChanged" title="Deve inserir um numéro de cliente"
+                        <div class="col-sm-4">
+                            <asp:TextBox ID="txtCliente" Enabled="false" ReadOnly="false" MaxLength="7" pattern="[A-Za-z0-9]{7}" OnTextChanged="txtNumCliente_TextChanged" title="Deve inserir um numéro de cliente"
                                 oninvalid="setCustomValidity('Deve inserir um numéro  de cliente válido')"
                                 onchange="try{setCustomValidity('')}catch(e){}" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="ChaveProdutos" ID="reqNumCliente" ControlToValidate="txtNumCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="ChaveProdutos" ID="reqNumCliente" ControlToValidate="txtCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-sm-6">
-                            <asp:TextBox ID="txtClienteDescription" runat="server" Enabled="false" CssClass="form-control text-field"></asp:TextBox>
+                        <div class="col-sm-2">
+                            <asp:TextBox ID="txtNome" runat="server" Enabled="false" CssClass="form-control text-field"></asp:TextBox>
                         </div>
                     </div>
 
@@ -47,28 +55,33 @@
                 <div class="row form-group padding-row ">
                     <div class="col-sm-6">
                         <label id="lblIdMultinha" runat="server" class="col-sm-3 text-right lbl">* ID Multinha: </label>
-                        <div class="col-sm-3">
-                            <asp:TextBox ID="txtIDMultinha" MaxLength="10" CssClass="form-control text-field" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqIDMultinha" ValidationGroup="ChaveProdutos" ControlToValidate="txtIDMultinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                        <div class="col-sm-4">
+                            <asp:TextBox ID="txtidmultilinha" Enabled="false" ReadOnly="false" MaxLength="10" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqIDMultinha" ValidationGroup="ChaveProdutos" ControlToValidate="txtidmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="col-sm-6"><div class="col-sm-4"></div></div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-4 row div-btns">
+                            <asp:Button ID="btnLimpar" class="btns btns-alt " Text="Limpar" OnClick="btnLimpar_Click" CausesValidation="true" ValidationGroup="manterestecampo" runat="server"></asp:Button>
+                            <asp:Button ID="btnConsultar" class="btns " runat="server" CausesValidation="true" ValidationGroup="ChaveProdutos" AutoPostBack="true" OnClick="btnConsultar_Click" Text="Consultar"></asp:Button>
                         </div>
                     </div>
                 </div>
-                <div class="row div-btns">
-                    <asp:Button ID="btnLimpar" class="btns btns-alt " Text="Limpar" OnClick="btnLimpar_Click" CausesValidation="true" ValidationGroup="manterestecampo" runat="server"></asp:Button>
-                    <asp:Button ID="btnConsultar" class="btns " runat="server" CausesValidation="true" ValidationGroup="ChaveProdutos" AutoPostBack="true" OnClick="btnConsultar_Click" Text="Consultar"></asp:Button>
-                </div>
+                
             </div>
             <hr class="hr" id="hr1" runat="server" />
             <br />
-            <div class="row form-group padding-row ">
+            <div id="dpOK" runat="server">
+            <div class="row form-group padding-row">
                     <div class="col-sm-6">
-                        <label id="lblNumContaBO" runat="server" class="col-sm-6 text-right lbl">Nº Conta BO Principal: </label>
+                        <label id="lbNcontaDO" runat="server" class="col-sm-3 text-right lbl">* Nº Conta DO Principal: </label>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="txtNumContaBO" MaxLength="10" CssClass="form-control text-field" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="RequiredFieldValidator1" ValidationGroup="ChaveProdutos" ControlToValidate="txtIDMultinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtncontado" Enabled="false" ReadOnly="false" MaxLength="10" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqtxtNumContaDO" ValidationGroup="" ControlToValidate="txtncontado" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
-                </div>
+            </div>
             <div class="row form-group padding-row text-center"">
                 <div class="col-sm-10 treViewCatalogo">
                     <asp:ListView ID="lvAssociados" runat="server">
@@ -107,12 +120,16 @@
                 </div>
             </div>
             <br />
+            </div>
             <hr class="hr" id="hr2" runat="server" />
-            <div class="row div-btns">
-                <asp:Button ID="btnOk" class="btns " runat="server" CausesValidation="true" AutoPostBack="true" OnClick="btnOk_Click" Text="Enviar Contrato para aprovação"></asp:Button>
+             <div id="accoesfinais_criarlm35" runat="server">
+                <div class="row div-btns">
+                    <asp:Button ID="btnOk" class="btns " runat="server" CausesValidation="true" AutoPostBack="true" OnClick="btnEnviarContrato" Text="Enviar Contrato para aprovação"></asp:Button>
+                </div>
             </div>
         </div>
-        <br />
+        </div>
+            <br />
     </form>
 </body>
 </html>

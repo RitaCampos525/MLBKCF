@@ -55,7 +55,25 @@ namespace Multilinha {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTransaction;
+        protected global::System.Web.UI.WebControls.LinkButton lblTransaction;
+        
+        /// <summary>
+        /// lblTransactionH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lblTransactionH;
+        
+        /// <summary>
+        /// lm35C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lm35C;
         
         /// <summary>
         /// camposChave control.
@@ -76,13 +94,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbCliente;
         
         /// <summary>
-        /// txtNumCliente control.
+        /// txtCliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumCliente;
+        protected global::System.Web.UI.WebControls.TextBox txtCliente;
         
         /// <summary>
         /// reqNumCliente control.
@@ -94,13 +112,13 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNumCliente;
         
         /// <summary>
-        /// txtClienteDescription control.
+        /// txtNome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClienteDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtNome;
         
         /// <summary>
         /// lblIdMultinha control.
@@ -112,13 +130,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblIdMultinha;
         
         /// <summary>
-        /// txtIDMultinha control.
+        /// txtidmultilinha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIDMultinha;
+        protected global::System.Web.UI.WebControls.TextBox txtidmultilinha;
         
         /// <summary>
         /// reqIDMultinha control.
@@ -200,6 +218,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl hr2;
+        
+        /// <summary>
+        /// accoesfinais_criarlm35 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl accoesfinais_criarlm35;
         
         /// <summary>
         /// btnOk control.

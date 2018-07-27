@@ -234,7 +234,7 @@ namespace Multilinha
                 Page.Transfer(ConfigurationManager.AppSettings["AssociacaoContasDO"],
                new Dictionary<string, object>() {
                                   { "Op", "C" },
-                                  { "SublimitesCriados", lm34 },
+                                  { "ContratoCriado", lm34 },
                });
             }
         }
