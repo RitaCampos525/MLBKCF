@@ -175,31 +175,40 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl hr1;
         
         /// <summary>
-        /// lblNumContaBO control.
+        /// dpOK control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNumContaBO;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dpOK;
         
         /// <summary>
-        /// txtNumContaBO control.
+        /// lbNcontaDO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumContaBO;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbNcontaDO;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// txtncontado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.TextBox txtncontado;
+        
+        /// <summary>
+        /// reqtxtNumContaDO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqtxtNumContaDO;
         
         /// <summary>
         /// lvAssociados control.
