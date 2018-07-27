@@ -130,11 +130,8 @@ namespace Multilinha
             switch (op.ToUpper())
             {
                 case "C":
-
-
                     //Call ML03 para obtencao dos dados do contrato da proposta workflow
                     LM33_ContratoML LM33C = TAT2.SearchML03(Convert.ToInt32(txtCliente.Text), txtIdworkflow.Text);
-
                     Helper.CopyObjectToControls(this.Page, LM33C);
 
                     if (string.IsNullOrEmpty(LM33C.idproposta))
@@ -147,14 +144,13 @@ namespace Multilinha
                         Helper.SetEnableControler(camposChave, false);
                         Helper.AddRemoveHidden(false, dpOK);
                         Helper.AddRemoveHidden(false, hr1);
-                        //Helper.AddRemoveHidden(false, hr2);
-
+                        
                         //Get DOs Cliente
                         //For debug
                         ddlncontado.DataSource = bo.SearchDOCliente("");
                         ddlncontado.DataBind();
 
-                        //Save in view stati Produtos e SubProdutos
+                        //Save in view state Produtos e SubProdutos
                         ViewState["LM33C"] = LM33C;
                     }
 
@@ -177,11 +173,10 @@ namespace Multilinha
                     else
                     {
                         Helper.SetEnableControler(camposChave, true);
-                        btnLimpar_Click(sender, e); //desabilita produto e subproduto
+                        btnLimpar_Click(sender, e); 
                         Helper.AddRemoveHidden(false, dpOK);
                         Helper.SetEnableControler(dpOK, false);
                         Helper.AddRemoveHidden(false, hr1);
-                        //Helper.AddRemoveHidden(false, hr2);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
                         Helper.SetEnableControler(divRiscoFinanceiro, false);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
@@ -198,13 +193,13 @@ namespace Multilinha
                         // e Popular CG
 
                         List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, M03V);
+                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, M03V, false);
 
                         List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, M03V);
+                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, M03V, false);
 
                         List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, M03V);
+                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, M03V, false);
 
                         #endregion
 
@@ -231,7 +226,6 @@ namespace Multilinha
                         btnLimpar_Click(sender, e); //desabilita produto e subproduto
                         Helper.AddRemoveHidden(false, dpOK);
                         Helper.AddRemoveHidden(false, hr1);
-                        //Helper.AddRemoveHidden(false, hr2);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
@@ -246,15 +240,15 @@ namespace Multilinha
                         #region tabelas de produtos de riscos
 
                         //Get Produtos
-                        // e Popular CG
+                        // e Popula CG e CP . Quando seleccionado ficam enable! Não é possivel deseleccionar
                         List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, M03M);
+                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, M03M, false);
 
                         List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, M03M);
+                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, M03M, false);
 
                         List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, M03M);
+                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, M03M, false);
 
                         #endregion
                     }
@@ -292,13 +286,13 @@ namespace Multilinha
                     //Get Produtos
 
                     List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM23);
+                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM23, true);
 
                     List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM23);
+                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM23, true);
 
                     List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM23);
+                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM23, true);
 
                     #endregion
 
@@ -320,46 +314,65 @@ namespace Multilinha
 
         }
 
-        protected void listViewProdutos(List<ArvoreFamiliaProdutos> lstF, string tipologia, ListView lst, LM33_ContratoML LM33)
+        protected void listViewProdutos(List<ArvoreFamiliaProdutos> lstF, string tipologia, ListView lst, LM33_ContratoML LM33, bool mudaCG)
         {
             List<itemTreeProduto> _lst = new List<itemTreeProduto>();
 
             //Selecionar familia produtos
-            var familiaprodutos = lstF.Select(x => x.familiaProduto).Distinct();
-
+            IEnumerable<string> familiaprodutos = Enumerable.Empty<string>();
+            if (tipologia == Constantes.tipologiaRisco.RF)
+            {
+                 familiaprodutos = LM33.produtosRiscoF.Select(x => x.familiaproduto).Distinct();
+            }
+            if (tipologia == Constantes.tipologiaRisco.RA)
+            {
+                 familiaprodutos = LM33.ProdutosRiscoAssinatura.Select(x => x.familiaproduto).Distinct();
+            }
+            if (tipologia == Constantes.tipologiaRisco.RC)
+            {
+                 familiaprodutos = LM33.produtosRiscoC.Select(x => x.familiaproduto).Distinct();
+            }
             //Adicionar item à lista
             foreach (var row in familiaprodutos)
             {
                 itemTreeProduto item = new itemTreeProduto();
 
                 item.produto = row;
+                //Selecciona
+                item.isGeral = true;
+                item.cGEnable = mudaCG;
                 item.cPEnable = false; //fecha seleccao as condicoes particulares
-                item.cGEnable = true; //abre seleccao as condicoes gerais
-                if (tipologia == Constantes.tipologiaRisco.RF)
-                {
-                    if (LM33.produtosRiscoF != null && LM33.produtosRiscoF.Exists(x => x.familiaproduto == row))
-                    {
-                        item.isGeral = true;
-                    }
-                }
-                if (tipologia == Constantes.tipologiaRisco.RA)
-                {
-                    if (LM33.produtosRiscoC != null && LM33.produtosRiscoC.Exists(x => x.familiaproduto == row))
-                    {
-                        item.isGeral = true;
-                    }
-                }
-                if (tipologia == Constantes.tipologiaRisco.RC)
-                {
-                    if (LM33.ProdutosRiscoAssinatura != null && LM33.ProdutosRiscoAssinatura.Exists(x => x.familiaproduto == row))
-                    {
-                        item.isGeral = true;
-                    }
-                }
+
+                //if (tipologia == Constantes.tipologiaRisco.RF)
+                //{
+                //    if (LM33.produtosRiscoF != null && LM33.produtosRiscoF.Exists(x => x.familiaproduto == row))
+                //    {
+                //        //Se encontra produto na LM33, seleccionada e nao deixa modificar
+                //        item.isGeral = true;
+                //        item.cGEnable = false;
+                //    }
+                //}
+                //if (tipologia == Constantes.tipologiaRisco.RA)
+                //{
+                //    if (LM33.produtosRiscoC != null && LM33.produtosRiscoC.Exists(x => x.familiaproduto == row))
+                //    {
+                //        item.isGeral = true;
+                //        item.cGEnable = false;
+                //    }
+                //}
+                //if (tipologia == Constantes.tipologiaRisco.RC)
+                //{
+                //    if (LM33.ProdutosRiscoAssinatura != null && LM33.ProdutosRiscoAssinatura.Exists(x => x.familiaproduto == row))
+                //    {
+                //        item.isGeral = true;
+                //        item.cGEnable = false;
+                //    }
+                //}
 
 
                 _lst.Add(item);
 
+                //Procura subprodutos da familia
                 var dtSubProdutos = lstF.FindAll(x => x.familiaProduto == row);
 
                 //nivel 2
@@ -373,7 +386,7 @@ namespace Multilinha
                     subitem.isParticular = false;
                     subitem.isGeral = false;
 
-                    subitem.cGEnable = false;  //fecha seleccao as condicoes geriais
+                    subitem.cGEnable = false;  //fecha seleccao as condicoes gerais
                     subitem.cPEnable = true;  //abre seleccao as condicoes particulares
 
                     _lst.Add(subitem);
@@ -613,7 +626,7 @@ namespace Multilinha
         {
             lberror.Text = "";
 
-            //Valida se Produtos estão selecionados
+            //Valida se Produtos estão selecionados 
             foreach (var tr in lview.Items)
             {
                 CheckBox ch = tr.FindControl("lbCParticular") as CheckBox;

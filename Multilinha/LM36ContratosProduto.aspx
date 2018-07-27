@@ -26,7 +26,7 @@
         <div class="row titleTransaction">
                     <ul class="nav navbar-nav menu">
                         <li>
-                            <asp:LinkButton CssClass="atab atabD" ID="lblTransaction" Enabled="false" runat="server" Text="Contrato ML - Contratos de Produtos Associados"></asp:LinkButton>
+                            <asp:LinkButton CssClass="atab" ID="lblTransaction" Enabled="false" runat="server" Text="Contrato ML - Contratos de Produtos Associados"></asp:LinkButton>
                         </li>
                     </ul>
         </div>
@@ -37,7 +37,7 @@
                     <div class="col-sm-6">
                         <label id="lbCliente" runat="server" class="col-sm-3 text-right lbl">* Cliente: </label>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="txtCliente" Enabled="false" ReadOnly="false" MaxLength="7" pattern="[A-Za-z0-9]{7}" OnTextChanged="txtNumCliente_TextChanged" title="Deve inserir um numéro de cliente"
+                            <asp:TextBox ID="txtCliente" MaxLength="7" pattern="[A-Za-z0-9]{7}" OnTextChanged="txtCliente_TextChanged" title="Deve inserir um numéro de cliente"
                                 oninvalid="setCustomValidity('Deve inserir um numéro  de cliente válido')"
                                 onchange="try{setCustomValidity('')}catch(e){}" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="ChaveProdutos" ID="reqNumCliente" ControlToValidate="txtCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
@@ -52,7 +52,7 @@
                     <div class="col-sm-6">
                         <label id="lblIdMultinha" runat="server" class="col-sm-3 text-right lbl">* ID Multinha: </label>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="txtidmultilinha" Enabled="false" ReadOnly="false" MaxLength="10" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtidmultilinha" MaxLength="10" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqIDMultinha" ValidationGroup="ChaveProdutos" ControlToValidate="txtidmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
