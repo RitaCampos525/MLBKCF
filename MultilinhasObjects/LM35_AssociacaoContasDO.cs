@@ -19,6 +19,15 @@ namespace MultilinhasObjects
 
         public string ncontado { get; set; }
 
+        public DateTime DataAssociada { get; set; }
+
+        public DateTime DataFimAssociacao { get; set; }
+
+        public string ConsultaHistorico { get; set; }
+
+        public string IndAprov { get; set; }
+
+
         public List<listaContaDO> Lista
         {
             get;
@@ -34,6 +43,10 @@ namespace MultilinhasObjects
         public string NumContaDO { get; set; }
 
         public DateTime DataAssociada { get; set; }
+
+        public DateTime DataFimAssociacao { get; set; }
+
+        public int zSeq { get; set; }
 
     }
 }
