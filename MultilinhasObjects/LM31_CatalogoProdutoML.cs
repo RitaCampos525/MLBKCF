@@ -21,9 +21,9 @@ namespace MultilinhasObjects
         public decimal LimiteMaximoCredito { get; set; } //18
         public string Estado { get; set; }
         public int NDiasIncumprimento { get; set; }
+        public int NDiasPreAviso { get; set; }
         public string IndRenovacao { get; set; }
         public int PrazoRenovacao { get; set; }
-        public int NDiasPreAviso { get; set; }
         public string tipologiaRiscoF { get; set; } //F ou vazio - length 1
         public string tipologiaRiscoA { get; set; } //A ou vazio - length 1
         public string tipologiaRiscoC { get; set; } //C ou vazio - length 1
