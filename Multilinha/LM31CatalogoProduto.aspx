@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row form-group padding-row ">
+                <div class="row form-group padding-row col-sm-12">
                     <div class="col-sm-4">
                         <label id="lblDtInicio" runat="server" class="col-sm-4 text-right lbl">* Data início comercialização: </label>
                         <div class="col-sm-6">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row form-group padding-row ">
+                <div class="row form-group padding-row col-sm-12">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4 div-btns text-center">
@@ -106,14 +106,14 @@
                 <div class="row form-group padding-row ">
                     <div class="col-sm-6">
                         <label id="lblPrazoMinimo" runat="server" class="col-sm-4 text-right lbl">* Prazo mínimo (meses):</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <asp:TextBox ID="txtPrazoMinimo" MaxLength="3" Text="6" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqPrazoMinimo" ControlToValidate="txtPrazoMinimo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <label id="lbPrazoMax" runat="server" class="col-sm-4 text-right lbl">* Prazo máximo (meses):</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <asp:TextBox ID="txtPrazoMaximo" MaxLength="5" Text="12" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" runat="server" ID="reqtxtPrazoMaximo" CssClass="bklabel" ControlToValidate="txtPrazoMaximo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
@@ -123,7 +123,7 @@
                 <div class="row form-group padding-row ">
                     <div class="col-sm-6">
                         <label id="lblNumProd" runat="server" class="col-sm-4 text-right lbl">* Número mínimo de produtos ativar:</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <asp:TextBox ID="txtNumeroMinimoProdutos" MaxLength="2" CssClass="form-control text-field" title="Insira um valor de 2 a 17" OnTextChanged="txtNumeroMinimoProdutos_TextChanged" value="1" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqNMinimoProdutosAtivar" ControlToValidate="txtNumeroMinimoProdutos" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
@@ -135,14 +135,14 @@
                 <div class="row form-group padding-row ">
                     <div class="col-sm-6">
                         <label id="lblLimiteMin" runat="server" class="col-sm-4 text-right lbl">* Limite minimo crédito:</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <asp:TextBox ID="txtLimiteMinimoCredito" CssClass="form-control text-field number" MaxLength="18" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqLimMinCredito" ControlToValidate="txtLimiteMinimoCredito" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <label id="lblLimiteMax" runat="server" class="col-sm-4 text-right lbl">* Limite máximo crédito:</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <asp:TextBox ID="txtLimiteMaximoCredito" CssClass="form-control text-field number" MaxLength="18" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" runat="server" ID="reqLimMaxCredito" CssClass="bklabel" ControlToValidate="txtLimiteMaximoCredito" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
@@ -153,14 +153,14 @@
                     
                     <div class="col-sm-6">
                         <label id="lblNumIncum" runat="server" class="col-sm-4 text-right lbl">* Nº dias incumprimento para inibição:</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <asp:TextBox ID="txtNDiasIncumprimento" onkeypress="return isNumber(event)" MaxLength="3" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" runat="server" ID="reqNdiasIncumprimento" CssClass="bklabel" ControlToValidate="txtNDiasIncumprimento" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <label id="lbNdiaspreAviso" runat="server" class="col-sm-4 text-right lbl">* Nº dias de pré-aviso denúncia:</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <asp:TextBox ID="txtNDiasPreAviso" onkeypress="return isNumber(event)" MaxLength="3" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" runat="server" ID="reqtxtNDiasPreAviso" CssClass="bklabel" ControlToValidate="txtNDiasPreAviso" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
