@@ -23,14 +23,19 @@ namespace Multilinha
                 op = string.IsNullOrEmpty(op) ? "FF" : op;
                 ViewState["Op"] = op;
 
+                //dev
+                op = Request.QueryString["OP"] ?? "FF";
+
+
                 Helper.AddRemoveActive(true, liTransaction);
+                Helper.AddRemoveActive(false, liTransactionH);
                 lblTransaction.CssClass = lblTransaction.CssClass.Replace("atab", "atabD");
 
                 //hide and show fields
                 switch (op.ToUpper())
                 {
                     case "M":
-                        lblTransaction.CssClass = lblTransaction.CssClass.Replace("atabD", "");
+
                         lblTransaction.Enabled = true;
 
                         Helper.AddRemoveHidden(true, dpOK);
@@ -40,7 +45,7 @@ namespace Multilinha
 
                         break;
                     case "C":
-                        lblTransaction.CssClass = lblTransaction.CssClass.Replace("atabD", "");
+
                         lblTransaction.Enabled = true;
 
                         Helper.AddRemoveHidden(true, dpOK);
@@ -51,13 +56,14 @@ namespace Multilinha
                     case "A":
                         break;
                     case "V":
-                        lblTransaction.CssClass = lblTransaction.CssClass.Replace("atabD", "");
+ 
                         lblTransaction.Enabled = true;
 
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm35);
                         Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
+
                         break;
                     default:
                         Page.Transfer(ConfigurationManager.AppSettings["ContratoML"] + "?Op=C", //Sem contexto redireciona para lm33 - modo criar C

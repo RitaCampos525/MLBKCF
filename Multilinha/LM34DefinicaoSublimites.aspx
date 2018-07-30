@@ -21,19 +21,19 @@
         </div>
         <div class="clear"></div>
         <br />
-        <div class="row titleTransaction">
-            <ul class="list-inline">
+        <div class="row titleTransaction menu">
+            <ul>
                 <li>
-                    <asp:LinkButton CssClass="atab atabD"  ID="lblTransaction" Enabled="false" runat="server" Text="Definição de Sublimites"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab "  ID="lblTransaction" Enabled="false" runat="server" Text="Definição de Sublimites"></asp:LinkButton>
                 </li>               
                 <li >               
-                    <asp:LinkButton CssClass="atab atabD" ID="lblTransactionV" Enabled="false" runat="server" Text="Consulta de Sublimites"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lblTransactionV" Enabled="false" runat="server" Text="Consulta de Sublimites"></asp:LinkButton>
                </li>                
                <li >                
-                    <asp:LinkButton CssClass="atab atabD" ID="lblTransactionAp" Enabled="false" runat="server" Text="Lista de contratos para aprovação"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lblTransactionAp" Enabled="false" runat="server" Text="Lista de contratos para aprovação"></asp:LinkButton>
                </li>                                
                <li >                
-                    <asp:LinkButton CssClass="atab atabD" ID="lblTransactionM" Enabled="false" runat="server" Text="Modificação de Sublimites"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lblTransactionM" Enabled="false" runat="server" Text="Modificação de Sublimites"></asp:LinkButton>
                </li>
             </ul>
         </div>

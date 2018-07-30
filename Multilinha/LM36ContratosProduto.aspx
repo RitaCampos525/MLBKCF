@@ -23,10 +23,10 @@
         </div>
         <div class="clear"></div>
         <br />
-        <div class="row titleTransaction">
-                    <ul class="nav navbar-nav menu">
+        <div class="row titleTransaction menu">
+                    <ul>
                         <li>
-                            <asp:LinkButton CssClass="atab" ID="lblTransaction" Enabled="false" runat="server" Text="Contrato ML - Contratos de Produtos Associados"></asp:LinkButton>
+                            <asp:LinkButton CssClass="atab " ID="lblTransaction" Enabled="false" runat="server" Text="Contrato ML - Contratos de Produtos Associados"></asp:LinkButton>
                         </li>
                     </ul>
         </div>

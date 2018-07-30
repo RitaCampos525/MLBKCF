@@ -692,18 +692,30 @@ div.Orange:not(:empty) {
 }
 
 .menu {
-    margin-left: 22% !important;
-    list-style: none;
+    text-align: center;
 }
 
-    .menu > li {
-        float: left;
+    .menu ul {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        /* For IE, the outcast */
+        zoom: 1;
         position: relative;
-        display: block;
-
+        list-style: none;
     }
 
-        .menu > li > a {
+    .menu li {
+        float: left;
+        padding: 2px 5px;
+    }
+
+        .menu li.active {
+            background-color: #eee;
+            text-decoration: none;
+        }
+
+        .menu li a {
             padding-top: 15px;
             padding-bottom: 15px;
             line-height: 20px;
@@ -711,10 +723,4 @@ div.Orange:not(:empty) {
             display: block;
             padding: 10px 15px;
             text-decoration: none;
-            
         }
-
-li.active {
-    background-color: #eee;
-    text-decoration: none;
-}

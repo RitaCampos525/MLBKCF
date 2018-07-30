@@ -67,6 +67,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.LinkButton lblTransaction;
         
         /// <summary>
+        /// liTransactionH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liTransactionH;
+        
+        /// <summary>
         /// lblTransactionH control.
         /// </summary>
         /// <remarks>

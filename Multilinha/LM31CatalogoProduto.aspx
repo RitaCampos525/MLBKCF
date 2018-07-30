@@ -24,9 +24,9 @@
         </div>
         <div class="clear"></div>
         <br />
-        <div class="row titleTransaction">
+        <div class="row titleTransaction menu">
             <%--            <asp:Label ID="lblTransaction" runat="server">Parameterização de Multilinha</asp:Label>--%>
-            <ul class="menu">
+            <ul>
                 <li id="liPrameterizacao" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lbPrameterizacao" Enabled="false" runat="server" Text="Parameterização de Multilinha"></asp:LinkButton>
                 </li>
