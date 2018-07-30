@@ -176,16 +176,16 @@
             <div class="col-sm-12">
                 <div class="row colorbck">
                     <div class="row form-group padding-row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <label id="lbIndicadorRenova" runat="server" class="col-sm-4 text-right lbl">* Indicador de renovação:</label>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <asp:DropDownList ID="ddlIndRenovacao" OnTextChanged="ddlIndicadorRenovacao_TextChanged" DataTextField="Description" DataValueField="Code" runat="server" CssClass="form-control text-field">
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <label id="lbPrazoRenova" runat="server" class="col-sm-4 text-right lbl">Prazo renovação (meses):</label>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <asp:TextBox ID="txtPrazoRenovacao" onkeypress="return isNumber(event)" value="12" runat="server" CssClass="form-control text-field"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqPrazoRenovacao" ControlToValidate="txtPrazoRenovacao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
