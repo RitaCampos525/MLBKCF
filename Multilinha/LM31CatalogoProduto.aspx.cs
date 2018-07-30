@@ -30,6 +30,8 @@ namespace Multilinha
                 //dropdownlist
                 ddlPeriocidadeCobranca.DataSource = ML_Objectos.GetPeriocidade();
                 ddlPeriocidadeCobranca.DataBind();
+                ddlPeriocidadeCobrancaRenovacao.DataSource = ML_Objectos.GetPeriocidade();
+                ddlPeriocidadeCobrancaRenovacao.DataBind();
                 ddlIndRenovacao.DataSource = ML_Objectos.GetIndicadorRenovacao();
                 ddlIndRenovacao.DataBind();
 

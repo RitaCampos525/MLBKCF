@@ -256,6 +256,24 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl reqDataFimComercializacao;
         
         /// <summary>
+        /// lblEstadoParam control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEstadoParam;
+        
+        /// <summary>
+        /// txtEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEstado;
+        
+        /// <summary>
         /// btnLimpar control.
         /// </summary>
         /// <remarks>
@@ -418,24 +436,6 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqLimMaxCredito;
         
         /// <summary>
-        /// lblEstadoParam control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEstadoParam;
-        
-        /// <summary>
-        /// txtEstado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEstado;
-        
-        /// <summary>
         /// lblNumIncum control.
         /// </summary>
         /// <remarks>
@@ -461,6 +461,33 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNdiasIncumprimento;
+        
+        /// <summary>
+        /// lbNdiaspreAviso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbNdiaspreAviso;
+        
+        /// <summary>
+        /// txtNDiasPreAviso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNDiasPreAviso;
+        
+        /// <summary>
+        /// reqtxtNDiasPreAviso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqtxtNDiasPreAviso;
         
         /// <summary>
         /// dvtitleAcordionRenovacao control.
@@ -533,33 +560,6 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqPrazoRenovacao;
-        
-        /// <summary>
-        /// lbNDiasPreAviso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbNDiasPreAviso;
-        
-        /// <summary>
-        /// txtNDiasPreAviso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNDiasPreAviso;
-        
-        /// <summary>
-        /// reqNDiasPreAviso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNDiasPreAviso;
         
         /// <summary>
         /// dvtitleAcordionRFinanceiro control.
@@ -679,13 +679,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPeriocidadeCobranca;
         
         /// <summary>
-        /// ddlPeriocidadeCobranca control.
+        /// ddlPeriocidadeCobrancaRenovacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPeriocidadeCobranca;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPeriocidadeCobrancaRenovacao;
         
         /// <summary>
         /// reqPeriocidadeCobranca control.
@@ -695,6 +695,24 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqPeriocidadeCobranca;
+        
+        /// <summary>
+        /// ddlPeriocidadeCobranca control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPeriocidadeCobranca;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// hr control.

@@ -41,7 +41,7 @@
         <div class="row colorbck">
             <br />
             <div id="camposChave" runat="server">
-                <div class="row form-group padding-row ">
+                <div class="row form-group padding-row col-sm-12 ">
                     <div class="col-sm-4">
                         <label id="lbProduto" runat="server" class="col-sm-4 text-right lbl">* Produto: </label>
                         <div class="col-sm-6">
@@ -84,26 +84,37 @@
                             <label class="requiredFieldEmpty" style="display: none;" id="reqDataFimComercializacao" runat="server">Formato incorreto</label>
                         </div>
                     </div>
+                    <div class="col-sm-4">
+                        <label id="lblEstadoParam" runat="server" class="col-sm-4 text-right lbl">* Estado da parameterização:</label>
+                        <div class="col-sm-6">
+                            <asp:TextBox ID="txtEstado" Enabled="false" CssClass="form-control text-field" MaxLength="30" value="PENDENTE" runat="server"></asp:TextBox>
+                        </div>
+                    </div>
                 </div>
-                <div class="row div-btns">
-                    <asp:Button ID="btnLimpar" class="btns btns-alt " Text="Limpar" OnClick="btnLimpar_Click" CausesValidation="true" ValidationGroup="manterestecampo" runat="server"></asp:Button>
-                    <asp:Button ID="btnConsultar" class="btns " runat="server" CausesValidation="true" ValidationGroup="ChaveProdutos" AutoPostBack="true" OnClick="btnConsultar_Click" Text="Consultar"></asp:Button>
-                </div>
+                <div class="row form-group padding-row ">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4 div-btns text-center">
+                        <asp:Button ID="btnLimpar" class="btns btns-alt " Text="Limpar" OnClick="btnLimpar_Click" CausesValidation="true" ValidationGroup="manterestecampo" runat="server"></asp:Button>
+                        <asp:Button ID="btnConsultar" class="btns " runat="server" CausesValidation="true" ValidationGroup="ChaveProdutos" AutoPostBack="true" OnClick="btnConsultar_Click" Text="Consultar"></asp:Button>
+                    </div>
+                 </div>
             </div>
 
             <div id="divdpConsulta" runat="server">
+                <div class="col-sm-12">
                 <div class="row form-group padding-row ">
                     <div class="col-sm-6">
                         <label id="lblPrazoMinimo" runat="server" class="col-sm-4 text-right lbl">* Prazo mínimo (meses):</label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtPrazoMinimo" MaxLength="3" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
+                            <asp:TextBox ID="txtPrazoMinimo" MaxLength="3" Text="6" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqPrazoMinimo" ControlToValidate="txtPrazoMinimo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <label id="lbPrazoMax" runat="server" class="col-sm-4 text-right lbl">* Prazo máximo (meses):</label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtPrazoMaximo" MaxLength="5" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
+                            <asp:TextBox ID="txtPrazoMaximo" MaxLength="5" Text="12" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" runat="server" ID="reqtxtPrazoMaximo" CssClass="bklabel" ControlToValidate="txtPrazoMaximo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
@@ -139,12 +150,7 @@
                 </div>
 
                 <div class="row form-group padding-row ">
-                    <div class="col-sm-6">
-                        <label id="lblEstadoParam" runat="server" class="col-sm-4 text-right lbl">* Estado da parameterização:</label>
-                        <div class="col-sm-6">
-                            <asp:TextBox ID="txtEstado" Enabled="false" CssClass="form-control text-field" MaxLength="30" value="PENDENTE" runat="server"></asp:TextBox>
-                        </div>
-                    </div>
+                    
                     <div class="col-sm-6">
                         <label id="lblNumIncum" runat="server" class="col-sm-4 text-right lbl">* Nº dias incumprimento para inibição:</label>
                         <div class="col-sm-6">
@@ -152,7 +158,15 @@
                             <asp:RequiredFieldValidator Display="Dynamic" runat="server" ID="reqNdiasIncumprimento" CssClass="bklabel" ControlToValidate="txtNDiasIncumprimento" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
+                    <div class="col-sm-6">
+                        <label id="lbNdiaspreAviso" runat="server" class="col-sm-4 text-right lbl">* Nº dias de pré-aviso denúncia:</label>
+                        <div class="col-sm-6">
+                            <asp:TextBox ID="txtNDiasPreAviso" onkeypress="return isNumber(event)" MaxLength="3" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator Display="Dynamic" runat="server" ID="reqtxtNDiasPreAviso" CssClass="bklabel" ControlToValidate="txtNDiasPreAviso" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
                 </div>
+                 </div>
             </div>
         </div>
         <div class="row titleAccordion" id="dvtitleAcordionRenovacao" runat="server" onclick="fAccordionController();">
@@ -174,13 +188,6 @@
                             <div class="col-sm-6">
                                 <asp:TextBox ID="txtPrazoRenovacao" onkeypress="return isNumber(event)" value="12" runat="server" CssClass="form-control text-field"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqPrazoRenovacao" ControlToValidate="txtPrazoRenovacao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <label id="lbNDiasPreAviso" runat="server" class="col-sm-4 text-right lbl">Nº de dias de pré-aviso:</label>
-                            <div class="col-sm-6">
-                                <asp:TextBox ID="txtNDiasPreAviso" onkeypress="return isNumber(event)" value="12" runat="server" CssClass="form-control text-field"></asp:TextBox>
-                                <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqNDiasPreAviso" ControlToValidate="txtNDiasPreAviso" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
@@ -228,11 +235,17 @@
         <br />
         <div id="divPeriocidadeCobranca" runat="server" class="row ">
             <div class="col-sm-6">
-                <label class="col-sm-6 text-right lbl">* Periocidade de cobrança comissão de gestão (meses):</label>
+                <label class="col-sm-6 text-right lbl">* Periocidade de cobrança da comissão de renovação (meses):</label>
                 <div class="col-sm-6">
-                    <%--<asp:TextBox ID="txtPeriocidadeCobranca" MaxLength="3" value="1" CssClass="form-control text-field" runat="server"></asp:TextBox>--%>
+                    <asp:DropDownList runat="server" ID="ddlPeriocidadeCobrancaRenovacao" CssClass="form-control text-field" DataTextField="Description" DataValueField="Code"></asp:DropDownList>
+                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqPeriocidadeCobranca" ControlToValidate="ddlPeriocidadeCobrancaRenovacao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+             <div class="col-sm-6">
+                <label class="col-sm-6 text-right lbl">* Periocidade de cobrança da comissão de gestão (meses):</label>
+                <div class="col-sm-6">
                     <asp:DropDownList runat="server" ID="ddlPeriocidadeCobranca" CssClass="form-control text-field" DataTextField="Description" DataValueField="Code"></asp:DropDownList>
-                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqPeriocidadeCobranca" ControlToValidate="ddlPeriocidadeCobranca" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="RequiredFieldValidator1" ControlToValidate="ddlPeriocidadeCobranca" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                 </div>
             </div>
         </div>
