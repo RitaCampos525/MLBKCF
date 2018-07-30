@@ -673,8 +673,9 @@ div.panel-accordion {
 }
 
 .atabD {
-    color: gray;
+    color: #428bca !important;
     text-decoration: none;
+    
 }
 
 div.Orange:not(:empty) {
@@ -723,4 +724,14 @@ div.Orange:not(:empty) {
             display: block;
             padding: 10px 15px;
             text-decoration: none;
+        }
+         .menu li a:hover {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            line-height: 20px;
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color:white;
         }
