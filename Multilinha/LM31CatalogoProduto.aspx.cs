@@ -72,7 +72,8 @@ namespace Multilinha
                         Helper.AddRemoveActive(false, liModificacao);
                         Helper.AddRemoveActive(false, liConsulta);
                         lbPrameterizacao.CssClass = lbPrameterizacao.CssClass.Replace("atab", "atabD");
-
+                        lbModificacao.CssClass = lbModificacao.CssClass.Replace("atabD", "atab");
+                        lbConsulta.CssClass = lbConsulta.CssClass.Replace("atabD", "atab");
 
                         break;
                     case "V":
@@ -91,6 +92,8 @@ namespace Multilinha
                         Helper.AddRemoveActive(false, liModificacao);
                         Helper.AddRemoveActive(false, liPrameterizacao);
                         lbConsulta.CssClass = lbConsulta.CssClass.Replace("atab", "atabD");
+                        lbModificacao.CssClass = lbModificacao.CssClass.Replace("atabD", "atab");
+                        lbPrameterizacao.CssClass = lbPrameterizacao.CssClass.Replace("atabD", "atab");
 
                         break;
                     default:

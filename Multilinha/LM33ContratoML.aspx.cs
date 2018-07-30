@@ -52,6 +52,11 @@ namespace Multilinha
 
                         btnSimulacao.Enabled = true;
 
+                        Helper.AddRemoveActive(true, liModificacao);
+                        Helper.AddRemoveActive(false, liPrameterizacao);
+                        Helper.AddRemoveActive(false, liConsulta);
+                        lblTransactionM.CssClass = lblTransactionM.CssClass.Replace("atab", "atabD");
+
                         break;
                     case "C":
                         lblTransaction.CssClass = lblTransaction.CssClass.Replace("atabD", "");
@@ -70,16 +75,26 @@ namespace Multilinha
 
                         btnCriar.Visible = true;
 
+                        Helper.AddRemoveActive(true, liPrameterizacao);
+                        Helper.AddRemoveActive(false, liModificacao);
+                        Helper.AddRemoveActive(false, liConsulta);
+                        lblTransaction.CssClass = lblTransaction.CssClass.Replace("atab", "atabD");
+                        
                         break;
                     case "A":
-                        lblTransactionD.CssClass = lblTransactionD.CssClass.Replace("atabD", "");
                         lblTransactionD.Enabled = true;
-                        lblTransactionE.CssClass = lblTransactionD.CssClass.Replace("atabD", "");
                         lblTransactionE.Enabled = true;
 
                         Helper.AddRemoveHidden(true, lm33C); //hide controls criar
                         Helper.AddRemoveHidden(false, ml03V_denuncia); //Show controls visualizar
                         ml03V_denuncia.Visible = true;
+
+                        Helper.AddRemoveActive(true, liDenuncia);
+                        Helper.AddRemoveActive(false, liPrameterizacao);
+                        Helper.AddRemoveActive(false, liModificacao);
+                        Helper.AddRemoveActive(false, liConsulta);
+                        lblTransactionD.CssClass = lblTransactionD.CssClass.Replace("atab", "atabD");
+
                         break;
                     case "V":
                         lblTransactionV.CssClass = lblTransactionV.CssClass.Replace("atabD", "");
@@ -98,6 +113,12 @@ namespace Multilinha
                         //Helper.AddRemoveHidden(true, hr2);
                         Helper.AddRemoveHidden(true, hr3);
                         Helper.AddRemoveHidden(true, hr4);
+
+                        Helper.AddRemoveActive(true, liConsulta);
+                        Helper.AddRemoveActive(false, liModificacao);
+                        Helper.AddRemoveActive(false, liPrameterizacao);
+                        lblTransactionV.CssClass = lblTransactionV.CssClass.Replace("atab", "atabD");
+
                         break;
                     default:
                         lberror.Text = "Página sem contexto. Execute a transação na Aplicação Bancária";

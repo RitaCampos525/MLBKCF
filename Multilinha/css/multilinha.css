@@ -693,10 +693,28 @@ div.Orange:not(:empty) {
 
 .menu {
     margin-left: 22% !important;
+    list-style: none;
 }
+
+    .menu > li {
+        float: left;
+        position: relative;
+        display: block;
+
+    }
+
+        .menu > li > a {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            line-height: 20px;
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            
+        }
 
 li.active {
     background-color: #eee;
     text-decoration: none;
-    
 }

@@ -23,6 +23,9 @@ namespace Multilinha
                 op = string.IsNullOrEmpty(op) ? "FF" : op;
                 ViewState["Op"] = op;
 
+                Helper.AddRemoveActive(true, liTransaction);
+                lblTransaction.CssClass = lblTransaction.CssClass.Replace("atab", "atabD");
+
                 //hide and show fields
                 switch (op.ToUpper())
                 {
@@ -34,6 +37,7 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm35);
                         Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
+
                         break;
                     case "C":
                         lblTransaction.CssClass = lblTransaction.CssClass.Replace("atabD", "");

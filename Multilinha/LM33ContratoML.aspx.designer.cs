@@ -49,6 +49,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.Label lberror;
         
         /// <summary>
+        /// liPrameterizacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liPrameterizacao;
+        
+        /// <summary>
         /// lblTransaction control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lblTransaction;
+        
+        /// <summary>
+        /// liModificacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liModificacao;
         
         /// <summary>
         /// lblTransactionM control.
@@ -67,6 +85,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.LinkButton lblTransactionM;
         
         /// <summary>
+        /// liConsulta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liConsulta;
+        
+        /// <summary>
         /// lblTransactionV control.
         /// </summary>
         /// <remarks>
@@ -76,6 +103,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.LinkButton lblTransactionV;
         
         /// <summary>
+        /// liDenuncia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liDenuncia;
+        
+        /// <summary>
         /// lblTransactionD control.
         /// </summary>
         /// <remarks>
@@ -83,6 +119,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lblTransactionD;
+        
+        /// <summary>
+        /// liEnvioCartas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liEnvioCartas;
         
         /// <summary>
         /// lblTransactionE control.

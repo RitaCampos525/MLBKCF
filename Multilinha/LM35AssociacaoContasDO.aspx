@@ -26,11 +26,11 @@
         <br />
         <div class="row titleTransaction">
                     <ul class="nav navbar-nav menu">
-                        <li>
-                            <asp:LinkButton CssClass="atab atabD" ID="lblTransaction" Enabled="false" runat="server" Text="Associação de contas DO"></asp:LinkButton>
+                       <li id="liTransaction" runat="server" class=" ">
+                            <asp:LinkButton CssClass="atab " ID="lblTransaction" Enabled="false" runat="server" Text="Associação de contas DO"></asp:LinkButton>
                         </li>
                         <li>
-                            <asp:LinkButton CssClass="atab atabD" ID="lblTransactionH" Enabled="false" runat="server" Text="Historico de Associação de Contas DO"></asp:LinkButton>
+                            <asp:LinkButton CssClass="atab " ID="lblTransactionH" Enabled="false" runat="server" Text="Historico de Associação de Contas DO"></asp:LinkButton>
                         </li>
                     </ul>
             </div>

@@ -25,20 +25,20 @@
         <div class="clear"></div>
         <br />
         <div class="row  titleTransaction">
-            <ul class="nav navbar-nav menu">
-                <li>
+            <ul class="menu">
+                <li id="liPrameterizacao" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lblTransaction" Enabled="false" runat="server" Text="Criação de Contrato"></asp:LinkButton>
                 </li>
-                <li>
+                <li id="liModificacao" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lblTransactionM" Enabled="false" runat="server" Text="Modificação de Contrato"></asp:LinkButton>
                 </li>
-                <li>
+                <li id="liConsulta" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lblTransactionV" Enabled="false" runat="server" Text="Consulta de Contrato"></asp:LinkButton>
                 </li>
-                <li>
+                <li id="liDenuncia" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lblTransactionD" Enabled="false" runat="server" Text="Denúncia / resolução de Contrato"></asp:LinkButton>
                 </li>
-                <li>
+                <li id="liEnvioCartas" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lblTransactionE" Enabled="false" runat="server" Text="Envio de cartas"></asp:LinkButton>
                 </li>
             </ul>
