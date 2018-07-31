@@ -62,7 +62,7 @@ namespace Multilinha
 
                         //tabs navegacao
                         Helper.AddRemoveActive(true, liModificacao);
-                        Helper.AddRemoveActive(false, liPrameterizacao);
+                        Helper.AddRemoveActive(false, liParameterizacao);
                         Helper.AddRemoveActive(false, liConsulta);
                         lblTransactionM.CssClass = lblTransactionM.CssClass.Replace("atab", "atabD");
 
@@ -83,7 +83,7 @@ namespace Multilinha
 
                         btnCriar.Visible = true;
 
-                        Helper.AddRemoveActive(true, liPrameterizacao);
+                        Helper.AddRemoveActive(true, liParameterizacao);
                         Helper.AddRemoveActive(false, liModificacao);
                         Helper.AddRemoveActive(false, liConsulta);
                         lblTransaction.CssClass = lblTransaction.CssClass.Replace("atab", "atabD");
@@ -98,7 +98,7 @@ namespace Multilinha
                         ml03V_denuncia.Visible = true;
 
                         Helper.AddRemoveActive(true, liDenuncia);
-                        Helper.AddRemoveActive(false, liPrameterizacao);
+                        Helper.AddRemoveActive(false, liParameterizacao);
                         Helper.AddRemoveActive(false, liModificacao);
                         Helper.AddRemoveActive(false, liConsulta);
                         lblTransactionD.CssClass = lblTransactionD.CssClass.Replace("atab", "atabD");
@@ -120,7 +120,7 @@ namespace Multilinha
 
                         Helper.AddRemoveActive(true, liConsulta);
                         Helper.AddRemoveActive(false, liModificacao);
-                        Helper.AddRemoveActive(false, liPrameterizacao);
+                        Helper.AddRemoveActive(false, liParameterizacao);
                         lblTransactionV.CssClass = lblTransactionV.CssClass.Replace("atab", "atabD");
 
                         break;

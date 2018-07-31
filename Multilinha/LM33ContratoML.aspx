@@ -26,7 +26,7 @@
         <br />
         <div class="row  titleTransaction menu">
             <ul>
-                <li id="liPrameterizacao" runat="server" class=" ">
+                <li id="liParameterizacao" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lblTransaction" Enabled="false" runat="server" Text="Criação de Contrato"></asp:LinkButton>
                 </li>
                 <li id="liModificacao" runat="server" class=" ">

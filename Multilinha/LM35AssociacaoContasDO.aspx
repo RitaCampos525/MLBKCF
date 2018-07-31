@@ -47,7 +47,7 @@
                                 onchange="try{setCustomValidity('')}catch(e){}" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="ChaveProdutos" ID="reqNumCliente" ControlToValidate="txtCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <asp:TextBox ID="txtNome" runat="server" Enabled="false" ReadOnly="true" CssClass="form-control text-field"></asp:TextBox>
                         </div>
                     </div>

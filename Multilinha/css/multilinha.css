@@ -673,7 +673,7 @@ div.panel-accordion {
 }
 
 .atabD {
-    color: #428bca !important;
+    color: #f69b02 !important;
     text-decoration: none;
     
 }
@@ -696,42 +696,43 @@ div.Orange:not(:empty) {
     text-align: center;
 }
 
-    .menu ul {
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-        /* For IE, the outcast */
-        zoom: 1;
+.menu ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    /* For IE, the outcast */
+    zoom: 1;
+    position: relative;
+    list-style: none;
+}
+
+.menu li {
+    float: left;
+    padding: 2px 5px;
+}
+
+.menu li.active {
+        background-color: #eee;
+        text-decoration: none;
+    }
+
+.menu li a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        line-height: 20px;
         position: relative;
-        list-style: none;
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
     }
-
-    .menu li {
-        float: left;
-        padding: 2px 5px;
+    
+.menu li a:hover {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        line-height: 20px;
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color:white;
     }
-
-        .menu li.active {
-            background-color: #eee;
-            text-decoration: none;
-        }
-
-        .menu li a {
-            padding-top: 15px;
-            padding-bottom: 15px;
-            line-height: 20px;
-            position: relative;
-            display: block;
-            padding: 10px 15px;
-            text-decoration: none;
-        }
-         .menu li a:hover {
-            padding-top: 15px;
-            padding-bottom: 15px;
-            line-height: 20px;
-            position: relative;
-            display: block;
-            padding: 10px 15px;
-            text-decoration: none;
-            color:white;
-        }

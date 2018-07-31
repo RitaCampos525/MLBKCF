@@ -76,30 +76,48 @@ namespace MultilinhasObjects
             return new List<ComboBox>(){
                  new ComboBox()
                 {
-                    Code = "EC",
+                    Code = "1",
                     Description = "EM CRIACAO",
                 },
                   new ComboBox()
                 {
-                    Code = "EA",
-                    Description = "EM APROVACAO",
-                },
-                new ComboBox()
-                {
-                    Code = "AP",
-                    Description = "APROVADO",
-                },
-                    new ComboBox()
-                {
-                    Code = "AC",
+                    Code = "2",
                     Description = "ACTIVO",
                 },
                     new ComboBox()
                 {
-                    Code = "EM",
+                    Code = "3",
                     Description = "EM MODIFICACAO",
                 },
-        };
+                  new ComboBox()
+                {
+                    Code = "4",
+                    Description = "EM APROVACAO",
+                },
+                new ComboBox()
+                {
+                    Code = "5",
+                    Description = "APROVADO",
+                },
+                   
+         };
+        }
+
+        public static List<MultilinhaObjects.ComboBox> GetTiposPedidoML()
+        {
+            return new List<ComboBox>(){
+                 new ComboBox()
+                {
+                    Code = "CTR",
+                    Description = "Contratação",
+                },
+                  new ComboBox()
+                {
+                    Code = "ALT",
+                    Description = "Alteração",
+                },
+               
+            };
         }
 
         public static List<AlteracaoContratoML> GetMotivosAlteracaoContrato()

@@ -148,22 +148,13 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqCliente;
         
         /// <summary>
-        /// bkClienteNome control.
+        /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bkClienteNome;
-        
-        /// <summary>
-        /// txtNome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNome;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
         /// bkidmultilinha control.
@@ -292,24 +283,6 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.TextBox txtDescritivo;
         
         /// <summary>
-        /// bkEstadoContrato control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bkEstadoContrato;
-        
-        /// <summary>
-        /// txtEstadoContrato control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEstadoContrato;
-        
-        /// <summary>
         /// bklimitecomprometido control.
         /// </summary>
         /// <remarks>
@@ -335,6 +308,24 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqlimitecomprometido;
+        
+        /// <summary>
+        /// bkEstadoContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bkEstadoContrato;
+        
+        /// <summary>
+        /// txtEstadoContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEstadoContrato;
         
         /// <summary>
         /// ncontado control.

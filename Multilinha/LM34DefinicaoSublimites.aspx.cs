@@ -99,6 +99,7 @@ namespace Multilinha
                     Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
                     Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
                     Helper.AddRemoveHidden(false, accoesfinais_criarlm24);
+                    btnCriar.Visible = true;
                     Helper.AddRemoveHidden(false, hr1);
                     Helper.AddRemoveHidden(false, hr2);
 
@@ -108,6 +109,55 @@ namespace Multilinha
                     //For debug - lm34
                     LM34_SublimitesML lm34 = TAT2.SearchML04(lm33.Cliente, lm33.idmultilinha, 0);
                     
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, lm34);
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RA, lvProdutosRiscoA, lm34);
+
+                    break;
+
+                case "M":
+
+                    Helper.AddRemoveHidden(false, dpOK);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                    Helper.AddRemoveHidden(false, accoesfinais_criarlm24);
+                    btnModificar.Visible = true;
+                    Helper.AddRemoveHidden(false, hr1);
+                    Helper.AddRemoveHidden(false, hr2);
+
+                    //context da transacao anterior
+                     lm33 = ViewState["ContratoCriado"] as LM34_SublimitesML;
+
+                    //For debug - lm34
+                    lm34 = TAT2.SearchML04(123, 099, 0);
+
+                    Helper.CopyObjectToControls(ml04_criar, lm34);
+
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, lm34);
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RA, lvProdutosRiscoA, lm34);
+
+                    
+
+                    break;
+
+                case "V":
+
+                    Helper.AddRemoveHidden(false, dpOK);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                    Helper.AddRemoveHidden(false, accoesfinais_criarlm24);
+                    Helper.AddRemoveHidden(false, hr1);
+                    Helper.AddRemoveHidden(false, hr2);
+
+                    //context da transacao anterior
+                    lm33 = ViewState["ContratoCriado"] as LM34_SublimitesML;
+
+                    //For debug - lm34
+                    lm34 = TAT2.SearchML04(lm33.Cliente, lm33.idmultilinha, 0);
+
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, lm34);
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RA, lvProdutosRiscoA, lm34);

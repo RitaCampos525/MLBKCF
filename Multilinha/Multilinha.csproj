@@ -68,6 +68,7 @@
     <Content Include="css\jquery-ui-1.10.4.custom.css" />
     <Content Include="css\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="LM32PedidosAprovacaoML.aspx" />
     <Content Include="LM33ContratoML.aspx" />
     <Content Include="LM34DefinicaoSublimites.aspx" />
     <Content Include="LM35AssociacaoContasDO.aspx" />
@@ -115,6 +116,13 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LM32PedidosAprovacaoML.aspx.cs">
+      <DependentUpon>LM32PedidosAprovacaoML.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LM32PedidosAprovacaoML.aspx.designer.cs">
+      <DependentUpon>LM32PedidosAprovacaoML.aspx</DependentUpon>
     </Compile>
     <Compile Include="LM33ContratoML.aspx.cs">
       <DependentUpon>LM33ContratoML.aspx</DependentUpon>

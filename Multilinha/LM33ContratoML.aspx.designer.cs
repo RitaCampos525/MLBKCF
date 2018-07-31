@@ -49,13 +49,13 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.Label lberror;
         
         /// <summary>
-        /// liPrameterizacao control.
+        /// liParameterizacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liPrameterizacao;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liParameterizacao;
         
         /// <summary>
         /// lblTransaction control.
