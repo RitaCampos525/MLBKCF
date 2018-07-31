@@ -17,20 +17,30 @@ namespace Multilinha
         {
             if (!Page.IsPostBack)
             {
-                //get context of operation (C,V,M) from lm33
-                string op = Context.Items["Op"] as string;
-                op = string.IsNullOrEmpty(op) ? "FF" : op;
+                //get context of operation (C,V,M)
+                string op = Helper.getTransactionMode(Context, Request);
                 ViewState["Op"] = op;
 
                 switch (op.ToUpper())
                 {
                     case "M":
-                        lblTransactionM.CssClass = lblTransactionM.CssClass.Replace("atabD", "");
+                        Helper.AddRemoveActive(true, liModificacao);
+                        lblTransactionM.CssClass = lblTransactionM.CssClass.Replace("atab", "atabD");
                         lblTransactionM.Enabled = true;
+
+                        Helper.SetEnableControler(camposChaveSubLim, true);
+                        Helper.AddRemoveHidden(true, dpOK);
+                        Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
+                        Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
+                        Helper.AddRemoveHidden(true, dvtitleAcordionRComercial);
+                        Helper.AddRemoveHidden(true, accoesfinais_criarlm24);
+                        Helper.AddRemoveHidden(true, hr1);
+                        Helper.AddRemoveHidden(true, hr2);
 
                         break;
                     case "C":
-                        lblTransaction.CssClass = lblTransaction.CssClass.Replace("atabD", "");
+                        Helper.AddRemoveActive(true, liCriacao);
+                        lblTransaction.CssClass = lblTransaction.CssClass.Replace("atab", "atabD");
                         lblTransaction.Enabled = true;
 
                         Helper.AddRemoveHidden(true, dpOK);
@@ -46,10 +56,18 @@ namespace Multilinha
                     case "A":
                         break;
                     case "V":
-                        lblTransactionV.CssClass = lblTransactionV.CssClass.Replace("atabD", "");
+                        Helper.AddRemoveActive(true, liVisualizacao);
+                        lblTransactionV.CssClass = lblTransactionV.CssClass.Replace("atab", "atabD");
                         lblTransactionV.Enabled = true;
-                        lblTransactionAp.CssClass = lblTransactionAp.CssClass.Replace("atabD", "");
-                        lblTransactionAp.Enabled = true;
+
+                        Helper.SetEnableControler(camposChaveSubLim, true);
+                        Helper.AddRemoveHidden(true, dpOK);
+                        Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
+                        Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
+                        Helper.AddRemoveHidden(true, dvtitleAcordionRComercial);
+                        Helper.AddRemoveHidden(true, accoesfinais_criarlm24);
+                        Helper.AddRemoveHidden(true, hr1);
+                        Helper.AddRemoveHidden(true, hr2);
 
                         break;
                     default:
@@ -96,6 +114,51 @@ namespace Multilinha
 
                     break;
             }
+        }
+
+        protected void btnCriar_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                if (valSomaLimites())
+                {
+                    //Cal LM34
+
+                    lberror.Text = Constantes.Mensagens.LM34SublimiteCriado;
+                    lberror.Visible = true;
+                    lberror.ForeColor = System.Drawing.Color.Green;
+
+                    Helper.SetEnableControler(this, false);
+
+                    btnSeguinte.Enabled = true;
+                }
+            }
+        }
+
+        protected void btnSeguinte_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+
+                LM34_SublimitesML lm34 = new LM34_SublimitesML();
+                Helper.CopyPropertiesTo(ml04_criar, lm34);
+
+                //zona produtos
+                //adicaoCP(Constantes.tipologiaRisco.RF, lvProdutosRisco, lm34);
+                //adicaoCP(Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, lm34);
+                //adicaoCP(Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, lm34);
+
+                Page.Transfer(ConfigurationManager.AppSettings["AssociacaoContasDO"],
+               new Dictionary<string, object>() {
+                                  { "Op", "C" },
+                                  { "ContratoCriado", lm34 },
+               });
+            }
+        }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+
         }
 
         protected void listViewFamProdutosESubLim(string tipologia, ListView lst, LM34_SublimitesML LM34)
@@ -199,44 +262,31 @@ namespace Multilinha
 
         }
 
-        protected void btnCriar_Click(object sender, EventArgs e)
+        protected void txtCliente_TextChanged(object sender, EventArgs e)
         {
-            if (Page.IsValid)
+            //desabilita / habilita os require fields
+            if (!string.IsNullOrEmpty(txtCliente.Text))
             {
-                if (valSomaLimites())
-                {
-                    //Cal LM34
+                reqidmultilinha.Enabled = false;
+            }
+            else
+                reqidmultilinha.Enabled = true;
+        }
 
-                    lberror.Text = Constantes.Mensagens.LM34SublimiteCriado;
-                    lberror.Visible = true;
-                    lberror.ForeColor = System.Drawing.Color.Green;
+        protected void txtIdworkflow_TextChanged(object sender, EventArgs e)
+        {
+            //desabilita / habilita os require fields
+            if (!string.IsNullOrEmpty(txtidmultilinha.Text))
+            {
+                reqCliente.Enabled = false;
+            }
+            else
+            {
+                reqCliente.Enabled = true;
 
-                    Helper.SetEnableControler(this, false);
-
-                    btnSeguinte.Enabled = true;
-                }
             }
         }
 
-        protected void btnSeguinte_Click(object sender, EventArgs e)
-        {
-            if (Page.IsValid)
-            {
 
-                LM34_SublimitesML lm34 = new LM34_SublimitesML();
-                Helper.CopyPropertiesTo(ml04_criar, lm34);
-
-                //zona produtos
-                //adicaoCP(Constantes.tipologiaRisco.RF, lvProdutosRisco, lm34);
-                //adicaoCP(Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, lm34);
-                //adicaoCP(Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, lm34);
-
-                Page.Transfer(ConfigurationManager.AppSettings["AssociacaoContasDO"],
-               new Dictionary<string, object>() {
-                                  { "Op", "C" },
-                                  { "ContratoCriado", lm34 },
-               });
-            }
-        }
     }
 }

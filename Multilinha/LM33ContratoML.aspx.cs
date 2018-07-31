@@ -328,6 +328,69 @@ namespace Multilinha
             }
         }
 
+        protected void btnCriar_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                //for debug
+                if (string.IsNullOrEmpty(txtdatafimcontrato.Text))
+                {
+                    txtdatafimcontrato.Text = "9999-12-31";
+                }
+
+                //Verificar que pelo menos dois produtos estão selecionados!
+                bool val = validacaoCP();
+                //Verificar data fim de contrato
+                bool val2 = true; //validacaoDtProximaCobrabca();
+
+                if (val && val2)
+                {
+                    //Call LM33 - C
+
+                    lberror.Text = Constantes.Mensagens.LM33ContratoCriado;
+                    lberror.ForeColor = System.Drawing.Color.Green;
+                    lberror.Visible = true;
+
+                    Helper.SetEnableControler(this, false);
+
+                    btnSeguinte.Enabled = true;
+                }
+            }
+        }
+
+        protected void btnSeguinte_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+
+                LM34_SublimitesML lm34 = new LM34_SublimitesML();
+                Helper.CopyPropertiesTo(lm33C, lm34);
+
+                //zona produtos
+                //adicaoCP(Constantes.tipologiaRisco.RF, lvProdutosRisco, lm34);
+                //adicaoCP(Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, lm34);
+                //adicaoCP(Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, lm34);
+
+                Page.Transfer(ConfigurationManager.AppSettings["DefinicaoSublimites"],
+               new Dictionary<string, object>() {
+                                  { "Op", "C" },
+                                  { "ContratoCriado", lm34 },
+               });
+
+                //Server.Transfer(ConfigurationManager.AppSettings["DefinicaoSublimites"]);
+            }
+        }
+
+        protected void btnSimulacao_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            //Include id multilinha
+        }
+
         protected void txtPeriocidadeCobranca_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtdatafimcontrato.Text))
@@ -350,15 +413,15 @@ namespace Multilinha
             IEnumerable<string> familiaprodutos = Enumerable.Empty<string>();
             if (tipologia == Constantes.tipologiaRisco.RF)
             {
-                 familiaprodutos = LM33.produtosRiscoF.Select(x => x.familiaproduto).Distinct();
+                familiaprodutos = LM33.produtosRiscoF.Select(x => x.familiaproduto).Distinct();
             }
             if (tipologia == Constantes.tipologiaRisco.RA)
             {
-                 familiaprodutos = LM33.ProdutosRiscoAssinatura.Select(x => x.familiaproduto).Distinct();
+                familiaprodutos = LM33.ProdutosRiscoAssinatura.Select(x => x.familiaproduto).Distinct();
             }
             if (tipologia == Constantes.tipologiaRisco.RC)
             {
-                 familiaprodutos = LM33.produtosRiscoC.Select(x => x.familiaproduto).Distinct();
+                familiaprodutos = LM33.produtosRiscoC.Select(x => x.familiaproduto).Distinct();
             }
             //Adicionar item à lista
             foreach (var row in familiaprodutos)
@@ -448,59 +511,6 @@ namespace Multilinha
 
         }
 
-        protected void btnCriar_Click(object sender, EventArgs e)
-        {
-            if (Page.IsValid)
-            {
-                //for debug
-                if (string.IsNullOrEmpty(txtdatafimcontrato.Text))
-                {
-                    txtdatafimcontrato.Text = "9999-12-31";
-                }
-
-                //Verificar que pelo menos dois produtos estão selecionados!
-                bool val = validacaoCP();
-                //Verificar data fim de contrato
-                bool val2 = true; //validacaoDtProximaCobrabca();
-
-                if (val && val2)
-                {
-                    //Call LM33 - C
-
-                    lberror.Text = Constantes.Mensagens.LM33ContratoCriado;
-                    lberror.ForeColor = System.Drawing.Color.Green;
-                    lberror.Visible = true;
-
-                    Helper.SetEnableControler(this, false);
-
-                    btnSeguinte.Enabled = true;
-                }
-            }
-        }
-
-        protected void btnSeguinte_Click(object sender, EventArgs e)
-        {
-            if (Page.IsValid)
-            {
-
-                LM34_SublimitesML lm34 = new LM34_SublimitesML();
-                Helper.CopyPropertiesTo(lm33C, lm34);
-
-                //zona produtos
-                //adicaoCP(Constantes.tipologiaRisco.RF, lvProdutosRisco, lm34);
-                //adicaoCP(Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, lm34);
-                //adicaoCP(Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, lm34);
-
-                Page.Transfer(ConfigurationManager.AppSettings["DefinicaoSublimites"],
-               new Dictionary<string, object>() {
-                                  { "Op", "C" },
-                                  { "ContratoCriado", lm34 },
-               });
-
-                //Server.Transfer(ConfigurationManager.AppSettings["DefinicaoSublimites"]);
-            }
-        }
-
         internal bool validacaoCP()
         {
             lberror.Text = "";
@@ -547,6 +557,53 @@ namespace Multilinha
 
             return val;
 
+        }
+
+        protected void adicaoCP(string tipologia, ListView lview, LM34_SublimitesML LM34)
+        {
+            lberror.Text = "";
+
+            //Valida se Produtos estão selecionados 
+            foreach (var tr in lview.Items)
+            {
+                CheckBox ch = tr.FindControl("lbCParticular") as CheckBox;
+                if (ch.Checked)
+                {
+                    if (tipologia == Constantes.tipologiaRisco.RF)
+                    {
+                        LM34.produtosRiscoF.Add(
+                            new LM34_SublimitesML.ProdutosRisco
+                            {
+                                familiaproduto = (tr.FindControl("lbProduto") as Label).Text,
+                                prodsubproduto = (tr.FindControl("lbSubproduto") as Label).Text,
+                                tipologia = "F"
+                            }
+                        );
+                    }
+
+                    if (tipologia == Constantes.tipologiaRisco.RA)
+                    {
+                        LM34.ProdutosRiscoAssinatura.Add(
+                            new LM34_SublimitesML.ProdutosRisco
+                            {
+                                familiaproduto = (tr.FindControl("lbProduto") as Label).Text,
+                                prodsubproduto = (tr.FindControl("lbSubproduto") as Label).Text,
+                                tipologia = "A"
+                            });
+                    }
+
+                    if (tipologia == Constantes.tipologiaRisco.RC)
+                    {
+                        LM34.produtosRiscoC.Add(
+                            new LM34_SublimitesML.ProdutosRisco
+                            {
+                                familiaproduto = (tr.FindControl("lbProduto") as Label).Text,
+                                prodsubproduto = (tr.FindControl("lbSubproduto") as Label).Text,
+                                tipologia = "C"
+                            });
+                    };
+                }
+            }
         }
 
         internal bool validacaoDtProximaCobranca()
@@ -612,6 +669,7 @@ namespace Multilinha
 
             lkComissaoAbertura.HRef = ConfigurationManager.AppSettings["LinqComissaoAberturaNegociacao"] + urlQueries;
             lkComissaoGestao.HRef = ConfigurationManager.AppSettings["LinqComissaoGestaoContratoNegociacao"] + urlQueries;
+            lkComissaorenovacao.HRef = ConfigurationManager.AppSettings["LinqComissaoGestaoRenovacaoNegociacao"] + urlQueries;
 
         }
 
@@ -645,62 +703,9 @@ namespace Multilinha
                 reqIdWorkflow.Enabled = true;
         }
 
-        protected void adicaoCP(string tipologia, ListView lview, LM34_SublimitesML LM34)
-        {
-            lberror.Text = "";
+    
 
-            //Valida se Produtos estão selecionados 
-            foreach (var tr in lview.Items)
-            {
-                CheckBox ch = tr.FindControl("lbCParticular") as CheckBox;
-                if (ch.Checked)
-                {
-                    if (tipologia == Constantes.tipologiaRisco.RF)
-                    {
-                        LM34.produtosRiscoF.Add(
-                            new LM34_SublimitesML.ProdutosRisco
-                            {
-                                familiaproduto = (tr.FindControl("lbProduto") as Label).Text,
-                                prodsubproduto = (tr.FindControl("lbSubproduto") as Label).Text,
-                                tipologia = "F"
-                            }
-                        );
-                    }
-
-                    if (tipologia == Constantes.tipologiaRisco.RA)
-                    {
-                        LM34.ProdutosRiscoAssinatura.Add(
-                            new LM34_SublimitesML.ProdutosRisco
-                            {
-                                familiaproduto = (tr.FindControl("lbProduto") as Label).Text,
-                                prodsubproduto = (tr.FindControl("lbSubproduto") as Label).Text,
-                                tipologia = "A"
-                            });
-                    }
-
-                    if (tipologia == Constantes.tipologiaRisco.RC)
-                    {
-                        LM34.produtosRiscoC.Add(
-                            new LM34_SublimitesML.ProdutosRisco
-                            {
-                                familiaproduto = (tr.FindControl("lbProduto") as Label).Text,
-                                prodsubproduto = (tr.FindControl("lbSubproduto") as Label).Text,
-                                tipologia = "C"
-                            });
-                    };
-                 }
-                }
-            }
-
-        protected void btnSimulacao_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnModificar_Click(object sender, EventArgs e)
-        {
-            //Include id multilinha
-        }
+       
 
     }
 }

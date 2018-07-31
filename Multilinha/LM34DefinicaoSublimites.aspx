@@ -23,16 +23,16 @@
         <br />
         <div class="row titleTransaction menu">
             <ul>
-                <li>
+                <li id="liCriacao" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab "  ID="lblTransaction" Enabled="false" runat="server" Text="Definição de Sublimites"></asp:LinkButton>
                 </li>               
-                <li >               
+                <li id="liVisualizacao" runat="server" class=" ">               
                     <asp:LinkButton CssClass="atab " ID="lblTransactionV" Enabled="false" runat="server" Text="Consulta de Sublimites"></asp:LinkButton>
                </li>                
-               <li >                
+               <%--<li >                
                     <asp:LinkButton CssClass="atab " ID="lblTransactionAp" Enabled="false" runat="server" Text="Lista de contratos para aprovação"></asp:LinkButton>
-               </li>                                
-               <li >                
+               </li>   --%>                             
+               <li id="liModificacao" runat="server" class=" ">                
                     <asp:LinkButton CssClass="atab " ID="lblTransactionM" Enabled="false" runat="server" Text="Modificação de Sublimites"></asp:LinkButton>
                </li>
             </ul>
@@ -44,14 +44,14 @@
                 <div class="col-sm-4">
                     <label id="bkCliente" runat="server" class="col-sm-4 text-right lbl">* Cliente: </label>
                     <div class="col-sm-6">
-                        <asp:TextBox ID="txtCliente" MaxLength="7" Enabled="false" ReadOnly="true" onkeypress="return isNumber(event)" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtCliente" MaxLength="7" Enabled="false" onkeypress="return isNumber(event)" OnTextChanged="txtCliente_TextChanged" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="reqCliente" ControlToValidate="txtCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <Label id="bkClienteNome" runat="server" class="col-sm-4 text-right lbl"></Label>
                     <div class="col-sm-6">
-                        <asp:TextBox ID="txtNome" CssClass="form-control text-field" Enabled="false" MaxLength="40" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNome" CssClass="form-control text-field" ReadOnly="true" Enabled="false" MaxLength="40" runat="server"></asp:TextBox>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <div class="col-sm-4">
                     <label id="bkidmultilinha" runat="server" class="col-sm-4 text-right lbl">* ID Multilinha: </label>
                     <div class="col-sm-6">
-                        <asp:TextBox ID="txtidmultilinha" MaxLength="12" Enabled="false" ReadOnly="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtidmultilinha" MaxLength="12" Enabled="false" AutoPostBack="true" OnTextChanged="txtIdworkflow_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="reqidmultilinha" ControlToValidate="txtidmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                     </div>
 
@@ -298,7 +298,8 @@
 
         <div id="accoesfinais_criarlm24" runat="server">
                 <div class="row text-right div-btns">
-                    <asp:button id="btnCriar" CssClass="btns" runat="server" Text="Criar Sublimite" OnClick="btnCriar_Click" causesvalidation="true" ValidationGroup="sublimitesValGrp"></asp:button>
+                    <asp:button id="btnCriar" CssClass="btns" runat="server" Visible="false" Text="Criar Sublimite" OnClick="btnCriar_Click" causesvalidation="true" ValidationGroup="sublimitesValGrp"></asp:button>
+                     <asp:button id="btnModificar" CssClass="btns" runat="server" Visible="false" Text="Modificar Sublimite" OnClick="btnModificar_Click" causesvalidation="true" ValidationGroup="sublimitesValGrp"></asp:button>
                     <asp:button id="btnSeguinte" CssClass="btns" runat="server" Text="Seguinte" Enabled="false" OnClick="btnSeguinte_Click" causesvalidation="true"></asp:button>
                 </div>
         </div>

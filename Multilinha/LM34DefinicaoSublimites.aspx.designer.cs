@@ -49,6 +49,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.Label lberror;
         
         /// <summary>
+        /// liCriacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liCriacao;
+        
+        /// <summary>
         /// lblTransaction control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lblTransaction;
+        
+        /// <summary>
+        /// liVisualizacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liVisualizacao;
         
         /// <summary>
         /// lblTransactionV control.
@@ -67,13 +85,13 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.LinkButton lblTransactionV;
         
         /// <summary>
-        /// lblTransactionAp control.
+        /// liModificacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lblTransactionAp;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liModificacao;
         
         /// <summary>
         /// lblTransactionM control.
@@ -569,6 +587,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCriar;
+        
+        /// <summary>
+        /// btnModificar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModificar;
         
         /// <summary>
         /// btnSeguinte control.

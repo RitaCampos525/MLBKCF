@@ -681,5 +681,23 @@ namespace Multilinha
                 }
             }
         }
+
+        public static string getTransactionMode(HttpContext pagecontext, HttpRequest request)
+        {
+            string op = "";
+
+            //Lê contexto da transação anterior (C,V,M)
+            op = pagecontext.Items["Op"] as string;
+            op = string.IsNullOrEmpty(op) ? "FF" : op;
+           
+
+            //Se não tiver contexto lê querystring
+            if (op == "FF")
+            {
+                op = request.QueryString["OP"] ?? "FF";
+            }
+
+            return op;
+        }
     }
 }

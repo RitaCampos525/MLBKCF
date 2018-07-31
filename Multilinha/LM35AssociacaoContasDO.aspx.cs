@@ -18,26 +18,21 @@ namespace Multilinha
         {
             if(!Page.IsPostBack)
             {
-                //get context of operation (C,V,M) from lm34
-                string op = Context.Items["Op"] as string;
-                op = string.IsNullOrEmpty(op) ? "FF" : op;
+                string op = Helper.getTransactionMode(Context, Request);
                 ViewState["Op"] = op;
 
-                //dev
-                op = Request.QueryString["OP"] ?? "FF";
-
-
+                //Manter as duas tabs ativas
                 Helper.AddRemoveActive(true, liTransaction);
-                Helper.AddRemoveActive(false, liTransactionH);
+                Helper.AddRemoveActive(true, liTransactionH);
                 lblTransaction.CssClass = lblTransaction.CssClass.Replace("atab", "atabD");
+                lblTransactionH.CssClass = lblTransactionH.CssClass.Replace("atab", "atabD");
 
                 //hide and show fields
                 switch (op.ToUpper())
                 {
                     case "M":
 
-                        lblTransaction.Enabled = true;
-
+                        Helper.SetEnableControler(camposChave, true);
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm35);
                         Helper.AddRemoveHidden(true, hr1);
@@ -45,8 +40,6 @@ namespace Multilinha
 
                         break;
                     case "C":
-
-                        lblTransaction.Enabled = true;
 
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm35);
@@ -56,9 +49,9 @@ namespace Multilinha
                     case "A":
                         break;
                     case "V":
- 
-                        lblTransaction.Enabled = true;
 
+                        Helper.SetEnableControler(camposChave, true);
+                        Helper.AddRemoveHidden(false, camposChave);
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm35);
                         Helper.AddRemoveHidden(true, hr1);

@@ -27,10 +27,11 @@
         <div class="row titleTransaction menu">
                     <ul>
                        <li id="liTransaction" runat="server" class=" ">
-                            <asp:LinkButton CssClass="atab " ID="lblTransaction" Enabled="false" runat="server" Text="Associação de contas DO"></asp:LinkButton>
+                            <asp:LinkButton CssClass="atab " ID="lblTransaction" runat="server" Text="Associação de contas DO"></asp:LinkButton>
                         </li>
+                        <li></li>
                         <li id="liTransactionH" runat="server" class=" ">
-                            <asp:LinkButton CssClass="atab " ID="lblTransactionH" Enabled="false" runat="server" Text="Historico de Associação de Contas DO"></asp:LinkButton>
+                            <asp:LinkButton CssClass="atab " ID="lblTransactionH" runat="server" Text="Historico de Associação de Contas DO"></asp:LinkButton>
                         </li>
                     </ul>
             </div>
@@ -47,7 +48,7 @@
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="ChaveProdutos" ID="reqNumCliente" ControlToValidate="txtCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtNome" runat="server" Enabled="false" CssClass="form-control text-field"></asp:TextBox>
+                            <asp:TextBox ID="txtNome" runat="server" Enabled="false" ReadOnly="true" CssClass="form-control text-field"></asp:TextBox>
                         </div>
                     </div>
 
