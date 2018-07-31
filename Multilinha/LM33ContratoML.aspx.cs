@@ -29,6 +29,10 @@ namespace Multilinha
                 //dropdownlists
                 ddlIndicadorRenovacao.DataSource = ML_Objectos.GetIndicadorRenovacao();
                 ddlIndicadorRenovacao.DataBind();
+                ddlPeriocidadeCobrancagestcontrato.DataSource = ML_Objectos.GetPeriocidade();
+                ddlPeriocidadeCobrancagestcontrato.DataBind();
+                ddlPeriocidadeCobrancagestRenovacao.DataSource = ML_Objectos.GetPeriocidade();
+                ddlPeriocidadeCobrancagestRenovacao.DataBind();
 
                 string op = Request.QueryString["OP"] ?? "FF";
                 switch (op.ToUpper())
@@ -44,14 +48,19 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRComercial);
                         Helper.AddRemoveHidden(true, dvtitleComissoes);
-                        Helper.AddRemoveHidden(true, accoesfinais_criarml03);
-                        Helper.AddRemoveHidden(true, hr1);
-                        //Helper.AddRemoveHidden(true, hr2);
                         Helper.AddRemoveHidden(true, hr3);
                         Helper.AddRemoveHidden(true, hr4);
+                        Helper.AddRemoveHidden(true, divVersoesML);
 
+                        //show fields
                         btnSimulacao.Enabled = true;
+                        txtIdSimulacao.Enabled = true;
 
+                        Helper.AddRemoveHidden(true, accoesfinais_criarml03);
+
+                        btnModificar.Visible = true;
+
+                        //tabs navegacao
                         Helper.AddRemoveActive(true, liModificacao);
                         Helper.AddRemoveActive(false, liPrameterizacao);
                         Helper.AddRemoveActive(false, liConsulta);
@@ -68,10 +77,9 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, dvtitleAcordionRComercial);
                         Helper.AddRemoveHidden(true, dvtitleComissoes);
                         Helper.AddRemoveHidden(true, accoesfinais_criarml03);
-                        Helper.AddRemoveHidden(true, hr1);
-                        //Helper.AddRemoveHidden(true, hr2);
                         Helper.AddRemoveHidden(true, hr3);
                         Helper.AddRemoveHidden(true, hr4);
+                        Helper.AddRemoveHidden(true, divVersoesML);
 
                         btnCriar.Visible = true;
 
@@ -100,19 +108,15 @@ namespace Multilinha
                         lblTransactionV.CssClass = lblTransactionV.CssClass.Replace("atabD", "");
                         lblTransactionV.Enabled = true;
 
-                        btnLimpar_Click(sender, e);
-
-
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRComercial);
                         Helper.AddRemoveHidden(true, dvtitleComissoes);
                         Helper.AddRemoveHidden(true, accoesfinais_criarml03);
-                        Helper.AddRemoveHidden(true, hr1);
-                        //Helper.AddRemoveHidden(true, hr2);
                         Helper.AddRemoveHidden(true, hr3);
                         Helper.AddRemoveHidden(true, hr4);
+                        Helper.AddRemoveHidden(true, divVersoesML);
 
                         Helper.AddRemoveActive(true, liConsulta);
                         Helper.AddRemoveActive(false, liModificacao);
@@ -130,7 +134,7 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, dvtitleAcordionRComercial);
                         Helper.AddRemoveHidden(true, dvtitleComissoes);
                         Helper.AddRemoveHidden(true, accoesfinais_criarml03);
-                        Helper.AddRemoveHidden(true, hr1);
+                        //Helper.AddRemoveHidden(true, hr1);
                         //Helper.AddRemoveHidden(true, hr2);
                         Helper.AddRemoveHidden(true, hr3);
                         Helper.AddRemoveHidden(true, hr4);
@@ -164,7 +168,7 @@ namespace Multilinha
                     {
                         Helper.SetEnableControler(camposChave, false);
                         Helper.AddRemoveHidden(false, dpOK);
-                        Helper.AddRemoveHidden(false, hr1);
+                        //Helper.AddRemoveHidden(false, hr1);
                         
                         //Get DOs Cliente
                         //For debug
@@ -197,7 +201,6 @@ namespace Multilinha
                         btnLimpar_Click(sender, e); 
                         Helper.AddRemoveHidden(false, dpOK);
                         Helper.SetEnableControler(dpOK, false);
-                        Helper.AddRemoveHidden(false, hr1);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
                         Helper.SetEnableControler(divRiscoFinanceiro, false);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
@@ -206,7 +209,12 @@ namespace Multilinha
                         Helper.SetEnableControler(divRiscoComercial, false);
                         Helper.AddRemoveHidden(false, dvtitleComissoes);
                         Helper.SetEnableControler(divComissoes, false);
+                        Helper.SetEnableControler(divVersoesML, false);
+                        Helper.AddRemoveHidden(false, divVersoesML);
                         Helper.AddRemoveHidden(false, hr4);
+                        //show fields acoes
+                        Helper.AddRemoveHidden(false, accoesfinais_criarml03);
+                        Helper.SetEnableControler(accoesfinais_criarml03, true);
 
                         #region tabelas de produtos de riscos
 
@@ -246,7 +254,7 @@ namespace Multilinha
                         Helper.SetEnableControler(camposChave, false);
                         btnLimpar_Click(sender, e); //desabilita produto e subproduto
                         Helper.AddRemoveHidden(false, dpOK);
-                        Helper.AddRemoveHidden(false, hr1);
+                       // Helper.AddRemoveHidden(false, hr1);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
@@ -254,7 +262,7 @@ namespace Multilinha
                         Helper.AddRemoveHidden(false, accoesfinais_criarml03);
                         Helper.AddRemoveHidden(false, hr3);
                         Helper.AddRemoveHidden(false, hr4);
-
+                        Helper.AddRemoveHidden(false, divVersoesML);
                         btnConfirmar.Enabled = false;
 
 
@@ -293,10 +301,9 @@ namespace Multilinha
                     Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
                     Helper.AddRemoveHidden(false, dvtitleComissoes);
                     Helper.AddRemoveHidden(false, accoesfinais_criarml03);
-                    Helper.AddRemoveHidden(false, hr1);
-                    //Helper.AddRemoveHidden(false, hr2);
                     Helper.AddRemoveHidden(false, hr3);
                     Helper.AddRemoveHidden(false, hr4);
+                    Helper.AddRemoveHidden(false, divVersoesML);
 
 
                     //Call M03 (ViewState) para obtencao de produtos do produto ML introduzido! E seleccionar CP correspondentes
@@ -330,8 +337,8 @@ namespace Multilinha
                 return;
             }
 
-            int meses = Convert.ToInt32(txtPeriocidadeCobranca.Text);
-            txtdataproximacobranca.Text = Convert.ToDateTime(txtdatafimcontrato.Text).AddMonths(meses).ToString("yyyy-MM-dd");
+            int meses = Convert.ToInt32(txtdataproximacobrancagestcontrato.Text);
+            txtdataproximacobrancagestcontrato.Text = Convert.ToDateTime(txtdatafimcontrato.Text).AddMonths(meses).ToString("yyyy-MM-dd");
 
         }
 
@@ -544,7 +551,7 @@ namespace Multilinha
 
         internal bool validacaoDtProximaCobranca()
         {
-            bool dtval = (!string.IsNullOrEmpty(txtdataproximacobranca.Text) && !txtdataproximacobranca.Text.Equals("9999-12-31"));
+            bool dtval = (!string.IsNullOrEmpty(txtdataproximacobrancagestcontrato.Text) && !txtdataproximacobrancagestcontrato.Text.Equals("9999-12-31"));
             lberror.Text = "Data fim de contrato inválida";
             lberror.Visible = true;
 
@@ -638,11 +645,6 @@ namespace Multilinha
                 reqIdWorkflow.Enabled = true;
         }
 
-        protected void btnModificar_Click(object sender, EventArgs e)
-        {
-            //Include id multilinha
-        }
-
         protected void adicaoCP(string tipologia, ListView lview, LM34_SublimitesML LM34)
         {
             lberror.Text = "";
@@ -694,5 +696,11 @@ namespace Multilinha
         {
 
         }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            //Include id multilinha
+        }
+
     }
-    }
+}

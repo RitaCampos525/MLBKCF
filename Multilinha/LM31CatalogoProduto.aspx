@@ -134,7 +134,7 @@
 
                 <div class="row form-group padding-row ">
                     <div class="col-sm-6">
-                        <label id="lblLimiteMin" runat="server" class="col-sm-4 text-right lbl">* Limite minimo crédito:</label>
+                        <label id="lblLimiteMin" runat="server" class="col-sm-4 text-right lbl">* Limite mínimo crédito:</label>
                         <div class="col-sm-4">
                             <asp:TextBox ID="txtLimiteMinimoCredito" CssClass="form-control text-field number" MaxLength="18" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqLimMinCredito" ControlToValidate="txtLimiteMinimoCredito" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
@@ -252,7 +252,7 @@
 
         <hr class="hr" id="hr" runat="server" />
 
-        <div id="acoes_ml01" runat="server" class="row text-right div-btns">
+        <div id="acoes_ml01" runat="server" class="row  div-btns text-left">
             <asp:Button ID="btnCriar" CssClass="btns " runat="server" Text="Criar" Visible="false" OnClick="btnCreate_Click"></asp:Button>
             <asp:Button ID="btnEdit" CssClass="btns " runat="server" OnClick="btnEdit_Click" Visible="false" Text="Modificar"></asp:Button>
         </div>

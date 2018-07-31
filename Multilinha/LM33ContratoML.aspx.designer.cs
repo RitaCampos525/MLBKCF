@@ -184,15 +184,6 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqCliente;
         
         /// <summary>
-        /// bklClienteNome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bklClienteNome;
-        
-        /// <summary>
         /// txtNome control.
         /// </summary>
         /// <remarks>
@@ -274,33 +265,6 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.TextBox txtDescritivo;
         
         /// <summary>
-        /// bklIdworkflow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bklIdworkflow;
-        
-        /// <summary>
-        /// txtIdworkflow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdworkflow;
-        
-        /// <summary>
-        /// reqIdWorkflow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqIdWorkflow;
-        
-        /// <summary>
         /// lbIdSimulacao control.
         /// </summary>
         /// <remarks>
@@ -346,15 +310,6 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.Button btnSearchDO;
         
         /// <summary>
-        /// hr1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hr1;
-        
-        /// <summary>
         /// dpOK control.
         /// </summary>
         /// <remarks>
@@ -389,6 +344,51 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqddlncontado;
+        
+        /// <summary>
+        /// bklIdworkflow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bklIdworkflow;
+        
+        /// <summary>
+        /// txtIdworkflow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtIdworkflow;
+        
+        /// <summary>
+        /// reqIdWorkflow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqIdWorkflow;
+        
+        /// <summary>
+        /// bklEstadoContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bklEstadoContrato;
+        
+        /// <summary>
+        /// ddlEstadoContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ddlEstadoContrato;
         
         /// <summary>
         /// bkldtiniciocontrato control.
@@ -535,24 +535,6 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.TextBox txtdatarenovacao;
         
         /// <summary>
-        /// bklEstadoContrato control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bklEstadoContrato;
-        
-        /// <summary>
-        /// ddlEstadoContrato control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ddlEstadoContrato;
-        
-        /// <summary>
         /// bklndiasincumprimento control.
         /// </summary>
         /// <remarks>
@@ -578,6 +560,33 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqndiasincumprimento;
+        
+        /// <summary>
+        /// lbNdiaspreAviso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbNdiaspreAviso;
+        
+        /// <summary>
+        /// txtNDiasPreAviso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNDiasPreAviso;
+        
+        /// <summary>
+        /// reqNDiasPreAviso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNDiasPreAviso;
         
         /// <summary>
         /// bkllimglobalmultilinha control.
@@ -1003,13 +1012,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl bkLPeriocidadeCobranca;
         
         /// <summary>
-        /// txtPeriocidadeCobranca control.
+        /// ddlPeriocidadeCobrancagestcontrato control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPeriocidadeCobranca;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPeriocidadeCobrancagestcontrato;
         
         /// <summary>
         /// reqPeriocidadeCobranca control.
@@ -1030,22 +1039,139 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl bkLdataproximacobranca;
         
         /// <summary>
-        /// txtdataproximacobranca control.
+        /// txtdataproximacobrancagestcontrato control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdataproximacobranca;
+        protected global::System.Web.UI.WebControls.TextBox txtdataproximacobrancagestcontrato;
         
         /// <summary>
-        /// accoesfinais_criarml03 control.
+        /// lbrenovacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl accoesfinais_criarml03;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbrenovacao;
+        
+        /// <summary>
+        /// txtcomissaorenovacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtcomissaorenovacao;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// lbvalorimpostocomgestrenovacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbvalorimpostocomgestrenovacao;
+        
+        /// <summary>
+        /// txtvalorimpostocomgestrenovacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtvalorimpostocomgestrenovacao;
+        
+        /// <summary>
+        /// lbbaseincidenciacomgestrenovacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbbaseincidenciacomgestrenovacao;
+        
+        /// <summary>
+        /// txtbaseincidenciacomgestrenovacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtbaseincidenciacomgestrenovacao;
+        
+        /// <summary>
+        /// A1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
+        
+        /// <summary>
+        /// lbPeriocidadeCobrancagestRenovacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbPeriocidadeCobrancagestRenovacao;
+        
+        /// <summary>
+        /// ddlPeriocidadeCobrancagestRenovacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPeriocidadeCobrancagestRenovacao;
+        
+        /// <summary>
+        /// reqPeriocidadeCobrancagestRenovacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqPeriocidadeCobrancagestRenovacao;
+        
+        /// <summary>
+        /// lbdataproximacobrancagestrenovacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbdataproximacobrancagestrenovacao;
+        
+        /// <summary>
+        /// txtdataproximacobrancagestrenovacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtdataproximacobrancagestrenovacao;
+        
+        /// <summary>
+        /// divVersoesML control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divVersoesML;
         
         /// <summary>
         /// txtidmultilinha control.
@@ -1057,6 +1183,24 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.TextBox txtidmultilinha;
         
         /// <summary>
+        /// txtNMinutaContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNMinutaContrato;
+        
+        /// <summary>
+        /// reqtxtNMinutaContrato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqtxtNMinutaContrato;
+        
+        /// <summary>
         /// hr4 control.
         /// </summary>
         /// <remarks>
@@ -1064,6 +1208,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl hr4;
+        
+        /// <summary>
+        /// accoesfinais_criarml03 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl accoesfinais_criarml03;
         
         /// <summary>
         /// btnCriar control.

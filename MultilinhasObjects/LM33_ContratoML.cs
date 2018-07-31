@@ -23,6 +23,7 @@ namespace MultilinhasObjects
         public DateTime datarenovacao { get; set; }
         public string EstadoContrato { get; set; }
         public int ndiasincumprimento { get; set; }
+        public int NDiasPreAviso { get; set; }
         public int graumorosidade { get; set; }
         public decimal limiteglobalmultilinha { get; set; }
         public decimal sublimiteriscoFinanceiro { get; set; }
@@ -39,12 +40,21 @@ namespace MultilinhasObjects
         public decimal comissaogestaocontrato { get; set; }
         public decimal valorimpostocomgestcontrato { get; set; }
         public decimal baseincidenciacomgestcontrato { get; set; }
-        public string PeriocidadeCobranca { get; set; }
-        public DateTime dataproximacobranca { get; set; }
+        public string PeriocidadeCobrancagestcontrato { get; set; }
+        public DateTime dataproximacobrancagestcontrato { get; set; }
+
+        public decimal comissaorenovacao { get; set; }
+        public decimal valorimpostocomgestrenovacao { get; set; }
+        public decimal baseincidenciacomgestrenovacao { get; set; }
+        public string PeriocidadeCobrancagestRenovacao { get; set; }
+        public DateTime dataproximacobrancagestrenovacao { get; set; }
+
         public DateTime dataProcessamento { get; set; }
         public bool indicadorAcaoCancelamento { get; set; }
         public bool indicadorAcaoEnvioCartas { get; set; }
         public bool indicadorAcaoSimulacao { get; set; }
+
+        public int NMinutaContrato { get; set; }
 
         public List<ProdutosRiscoA> ProdutosRiscoAssinatura = new List<ProdutosRiscoA>();
         [Serializable]
