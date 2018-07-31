@@ -488,7 +488,7 @@
 
                             </div>
                             <div class="col-sm-1">
-                                <a id="A1" href="#" class="btn" target="_blank" title="Link para negociação da comissão de gestão contrato" runat="server">>></a>
+                                <a id="lkComissaorenovacao" href="#" class="btn" target="_blank" title="Link para negociação da comissão de renovação" runat="server">>></a>
                             </div>
                         </div>
                      </div>
