@@ -177,6 +177,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MultilinhaBusinessLayer\MultilinhaBusinessLayer.csproj">
+      <Project>{79063a82-edad-4446-95ca-77bb711e725d}</Project>
+      <Name>MultilinhaBusinessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MultilinhasDataLayer\MultilinhasDataLayer.csproj">
       <Project>{4d0836d7-ae33-420c-b95b-75233bb221c5}</Project>
       <Name>MultilinhasDataLayer</Name>

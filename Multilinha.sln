@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultilinhasDataLayer", "Mul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultilinhasObjects", "MultilinhasObjects\MultilinhasObjects.csproj", "{334C8AA4-4736-4C5C-B5AB-A9410F816551}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultilinhaBusinessLayer", "MultilinhaBusinessLayer\MultilinhaBusinessLayer.csproj", "{79063A82-EDAD-4446-95CA-77BB711E725D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{334C8AA4-4736-4C5C-B5AB-A9410F816551}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{334C8AA4-4736-4C5C-B5AB-A9410F816551}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{334C8AA4-4736-4C5C-B5AB-A9410F816551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79063A82-EDAD-4446-95CA-77BB711E725D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79063A82-EDAD-4446-95CA-77BB711E725D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79063A82-EDAD-4446-95CA-77BB711E725D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79063A82-EDAD-4446-95CA-77BB711E725D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

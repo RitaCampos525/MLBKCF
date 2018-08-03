@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MultilinhasObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,9 @@ namespace Multilinha
         {
             if (!Page.IsPostBack)
             {
+                ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.PageLoad, this.Page.AppRelativeVirtualPath, abargs.USERNT, abargs.SN_HOSTNAME);
+
                 //Show hide fields 
                 string op = Request.QueryString["OP"] ?? "FF";
                 switch (op.ToUpper())

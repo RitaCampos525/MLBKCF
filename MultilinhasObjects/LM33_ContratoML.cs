@@ -15,6 +15,7 @@ namespace MultilinhasObjects
         public string Descritivo { get; set; }
         public string idproposta { get; set; }
         public string ncontado { get; set; }
+        public int NumeroMinimoProdutos { get; set; } //2
         public DateTime datainiciocontrato { get; set; }
         public int prazocontrato { get; set; }
         public DateTime datafimcontrato { get; set; }

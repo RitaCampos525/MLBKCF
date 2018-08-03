@@ -18,7 +18,7 @@ namespace MultilinhasObjects
         public int PrazoMaximo { get; set; }
         public int NumeroMinimoProdutos { get; set; } //2
         public decimal LimiteMinimoCredito { get; set; }
-        public decimal LimiteMaximoCredito { get; set; } //18
+        public decimal LimiteMaximoCredito { get; set; } //13
         public string Estado { get; set; }
         public int NDiasIncumprimento { get; set; }
         public int NDiasPreAviso { get; set; }

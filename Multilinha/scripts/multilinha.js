@@ -207,7 +207,6 @@ $(".dtField").datepicker({
     changeYear: true,
 });
 
-
 $("#dpBeginDate").datepicker({
     dateFormat: 'yy-mm-dd',
     changeMonth: true,
@@ -282,6 +281,9 @@ $("#btnPesquisar").click(function () {
 
     }
 })
+
+///MULTILINHA
+$('#txtdatainiciocontrato').datepicker("setDate", dtFechasStr)
 
 function ValidaDatas() {
     var $regexname = /^([1-9][0-9]{3})[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/;

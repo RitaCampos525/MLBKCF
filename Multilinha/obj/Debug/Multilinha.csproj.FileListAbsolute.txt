@@ -103,3 +103,5 @@ C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasObjects.pdb
 C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.csprojResolveAssemblyReference.cache
 C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.dll
 C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.pdb
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhaBusinessLayer.dll
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhaBusinessLayer.pdb

@@ -16,11 +16,14 @@ namespace Multilinha
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            DataTable dtProdutos = TAT2.GetProdutos(Global.ConnectionStringDTAB, abargs);
-
             if (!Page.IsPostBack)
             {
+                ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.PageLoad, this.Page.AppRelativeVirtualPath, abargs.USERNT, abargs.SN_HOSTNAME);
+
+                //do TOOO
+                DataTable dtProdutos = TAT2.GetProdutos(Global.ConnectionStringMaster, abargs);
+
                 txtProductCode.Text = ConfigurationManager.AppSettings["CodigoProdutoML"];
                 txtProductCode_TextChanged(sender, e);
 
@@ -116,69 +119,6 @@ namespace Multilinha
             }
         }
 
-        //protected void makeTreeView(DataTable dtnodesandchilds, string colnodes, string colsecondNode, string descritivo,  string tipologia, TreeView tree)
-        //{
-        //    string arprd = Helper.getProdutosTipologia(tipologia);
-
-        //    //TreeView Produtos
-        //    DataView view = dtnodesandchilds.AsDataView();
-        //    DataTable distinctProdutos = view.ToTable(true, colnodes); //select distinc nodes
-
-        //    var a = distinctProdutos.Select(colnodes + " IN (" + arprd + ")"); //select produtos por tipologia de risco
-
-        //    //Faz os 1s Nodes - Produtos
-        //    foreach (DataRow row in a)
-        //    {
-        //        string stproduto = row[colnodes].ToString();
-        //        TreeNode produto = new TreeNode(stproduto);
-
-        //        DataRow[] dtSubProdutos = dtnodesandchilds.Select(colnodes + " = '" + stproduto + "'");
-
-        //        //Faz os 2os Nodes - SubProduto
-        //        TreeNode[] array = new TreeNode[dtSubProdutos.Length];
-        //        for (int i = 0; i < dtSubProdutos.Length; i++)
-        //        {
-        //            array[i] = new TreeNode(dtSubProdutos[i][colsecondNode].ToString());
-        //            array[i].ShowCheckBox = true;
-        //            array[i].Text = dtSubProdutos[i][colsecondNode].ToString() + " - " + dtSubProdutos[i][descritivo].ToString(); //(codigo + descritivo)
-        //            produto.ChildNodes.Add(array[i]);
-        //        }
-
-        //        produto.ShowCheckBox = true;
-        //        tree.Nodes.Add(produto); //Adiciona o nó com os child nodes
-        //    }
-        //}
-
-        //protected void makeTreeView(DataTable dtnodesandchilds, string colnodes, string colsecondNode, string descritivo, TreeView tree)
-        //{
-
-        //    //TreeView Produtos
-        //    DataView view = dtnodesandchilds.AsDataView();
-        //    DataTable distinctProdutos = view.ToTable(true, colnodes); //select distinc nodes
-
-        //    //Faz os 1s Nodes - Produtos
-        //    foreach (DataRow row in distinctProdutos.Rows)
-        //    {
-        //        string stproduto = row[colnodes].ToString();
-        //        TreeNode produto = new TreeNode(stproduto);
-
-        //        DataRow[] dtSubProdutos = dtnodesandchilds.Select(colnodes + " = '" + stproduto + "'");
-
-        //        //Faz os 2os Nodes - SubProduto
-        //        TreeNode[] array = new TreeNode[dtSubProdutos.Length];
-        //        for (int i = 0; i < dtSubProdutos.Length; i++)
-        //        {
-        //            array[i] = new TreeNode(dtSubProdutos[i][colsecondNode].ToString());
-        //            array[i].ShowCheckBox = true;
-        //            array[i].Text = dtSubProdutos[i][colsecondNode].ToString() + " - " +  dtSubProdutos[i][descritivo].ToString(); //(codigo + descritivo)
-        //            produto.ChildNodes.Add(array[i]);
-        //        }
-
-        //        produto.ShowCheckBox = true;
-        //        tree.Nodes.Add(produto); //Adiciona o nó com os child nodes
-        //    }
-        //}
-
         protected void makeTreeView2(string tipologia, TreeView tree)
         {
             List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(tipologia);
@@ -211,7 +151,6 @@ namespace Multilinha
 
                 famProduto.ShowCheckBox = true;
                 treeAll.ChildNodes.Add(famProduto);
-                //treeAll.ChildNodes.Add(famProduto);
                 famProduto.CollapseAll();
             }
 
@@ -225,9 +164,10 @@ namespace Multilinha
             lberror.Text = "";
             if (Page.IsValid)
             {
-                if (validaNProdutosCredito())
+                int nprodutoml;
+                Int32.TryParse(txtNumeroMinimoProdutos.Text, out nprodutoml);
+                if (validaNProdutosCredito(nprodutoml))
                 {
-
                     LM31_CatalogoProdutoML lm31 = new LM31_CatalogoProdutoML();
                     Helper.CopyPropertiesTo(this, lm31);
 
@@ -245,7 +185,7 @@ namespace Multilinha
         protected void txtProductCode_TextChanged(object sender, EventArgs e)
         {
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            List<string> lstsubprodutos = TAT2.GetSubProdByProdCode(txtProductCode.Text, Global.ConnectionStringDTAB, abargs);
+            List<string> lstsubprodutos = TAT2.GetSubProdByProdCode(txtProductCode.Text, Global.ConnectionStringMaster, abargs);
 
             //for debug!!
             if (lstsubprodutos.Count < 1)
@@ -259,14 +199,12 @@ namespace Multilinha
             ddlSubProductCode.Enabled = true;
             ddlSubProdCode_TextChanged(sender, e);
 
-
-
         }
 
         protected void ddlSubProdCode_TextChanged(object sender, EventArgs e)
         {
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            string subprodutodesc = TAT2.GetSubProdDescriptionByCode(txtProductCode.Text, ddlSubProductCode.SelectedValue, Global.ConnectionStringDTAB, abargs);
+            string subprodutodesc = TAT2.GetSubProdDescriptionByCode(txtProductCode.Text, ddlSubProductCode.SelectedValue, Global.ConnectionStringMaster, abargs);
 
             txtSubProductDescription.Text = subprodutodesc;
 
@@ -393,12 +331,12 @@ namespace Multilinha
                 txtNDiasIncumprimento.Text = "";
         }
 
-        protected bool validaNProdutosCredito()
+        protected bool validaNProdutosCredito(int nMinimoASeleccionar)
         {
             bool nprodutosValid = true;
             lberror.Text = "";
 
-            //Valida se Produtos estão selecionados - Valida n de familias. Não é por nº de subproduto
+            //Valida se Produtos estão selecionados - Valida o nº de familias. Não é por nº de subproduto
             int countSel = 0;
             foreach (TreeNode tr in trtipologiaProdutosRFTree.Nodes)
             {
@@ -424,9 +362,22 @@ namespace Multilinha
                 }
             }
 
+            //Validacao Numero Minimo de Produtos a seleccionar 
+            if ((countSel + countSel2 + countSel3) < nMinimoASeleccionar)
+            {
+                string[] args = { nMinimoASeleccionar.ToString() };
+                lberror.Text = Constantes.NovaMensagem(Constantes.Mensagens.NMinimoProdutosML, args);
+                lberror.Visible = true;
+                lberror.ForeColor = System.Drawing.Color.Red;
+
+                nprodutosValid = false;
+
+            }
+
+            //de acordo com a Tipologia de Produto Base ou Avançada))
             if (txtSubProductDescription.Text.Contains("Base"))
             {
-                if ((countSel + countSel2 + countSel3) < 9)
+                if ((countSel + countSel2 + countSel3) > 9)
                 {
                     lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoB;
                     lberror.Visible = true;
@@ -437,7 +388,7 @@ namespace Multilinha
             }
             else if (txtSubProductDescription.Text.Contains("Avançado"))
             {
-                if ((countSel + countSel2 + countSel3) < 17)
+                if ((countSel + countSel2 + countSel3) > 17)
                 {
                     lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoA;
                     lberror.Visible = true;
@@ -463,11 +414,13 @@ namespace Multilinha
         {
             if (Page.IsValid)
             {
-                if (validaNProdutosCredito())
+                int nprodutoml;
+                Int32.TryParse(txtNumeroMinimoProdutos.Text, out nprodutoml);
+                if (validaNProdutosCredito(nprodutoml))
                 {
                     //TO DO Chamar ML01 - M
 
-                    lberror.Text = "Produto ML modificado em Catalogo.";
+                    lberror.Text = Constantes.Mensagens.LM31CatalogoModificado;
                     lberror.Visible = true;
                     lberror.ForeColor = System.Drawing.Color.Green;
                 }

@@ -18,6 +18,9 @@ namespace Multilinha
         {
             if(!Page.IsPostBack)
             {
+                ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.PageLoad, this.Page.AppRelativeVirtualPath, abargs.USERNT, abargs.SN_HOSTNAME);
+
                 string op = Helper.getTransactionMode(Context, Request);
                 ViewState["Op"] = op;
 

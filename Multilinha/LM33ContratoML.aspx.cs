@@ -11,16 +11,19 @@ namespace Multilinha
 {
     public partial class LM33ContratoMLaspx : System.Web.UI.Page
     {
-        MultilinhasDataLayer.boMultilinhas bo = new MultilinhasDataLayer.boMultilinhas();
 
         public DateTime dtfechas = Global.dtfechasG;
         MultilinhasDataLayer.boMultilinhas TAT2 = new MultilinhasDataLayer.boMultilinhas();
+        MultilinhaBusinessLayer.BLMultilinha bl = new MultilinhaBusinessLayer.BLMultilinha();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             if (!Page.IsPostBack)
             {
+                ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.PageLoad, this.Page.AppRelativeVirtualPath, abargs.USERNT, abargs.SN_HOSTNAME);
+
                 txtProdutoml.Text = ConfigurationManager.AppSettings["CodigoProdutoML"];
                 txtproduto_TextChanged(sender, e);
 
@@ -33,15 +36,20 @@ namespace Multilinha
                 ddlPeriocidadeCobrancagestcontrato.DataBind();
                 ddlPeriocidadeCobrancagestRenovacao.DataSource = ML_Objectos.GetPeriocidade();
                 ddlPeriocidadeCobrancagestRenovacao.DataBind();
+                //DataProcessamento
+                txtdataProcessamento.Text = dtfechas.ToString();
 
                 string op = Request.QueryString["OP"] ?? "FF";
+                ViewState["OPLM33"] = op;
                 switch (op.ToUpper())
                 {
                     case "M":
                         lblTransactionM.CssClass = lblTransactionM.CssClass.Replace("atabD", "");
                         lblTransactionM.Enabled = true;
 
-                        bklIdworkflow.InnerText = "ID Multilinha:";
+                        divIDMultilinha.Visible = true;
+                        divIDSimulacao.Visible = true;
+                        divProduto.Visible = false;
 
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
@@ -55,9 +63,9 @@ namespace Multilinha
                         //show fields
                         btnSimulacao.Enabled = true;
                         txtIdSimulacao.Enabled = true;
+                        btnSimulacao.Visible = true;
 
                         Helper.AddRemoveHidden(true, accoesfinais_criarml03);
-
                         btnModificar.Visible = true;
 
                         //tabs navegacao
@@ -70,6 +78,12 @@ namespace Multilinha
                     case "C":
                         lblTransaction.CssClass = lblTransaction.CssClass.Replace("atabD", "");
                         lblTransaction.Enabled = true;
+
+                        divIDSimulacao.Visible = false;
+                        divIDMultilinha.Visible = false;
+                        divProduto.Visible = true;
+                        txtNMinutaContrato.Visible = false;
+                        txtidmultilinha.Visible = false;
 
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
@@ -108,6 +122,10 @@ namespace Multilinha
                         lblTransactionV.CssClass = lblTransactionV.CssClass.Replace("atabD", "");
                         lblTransactionV.Enabled = true;
 
+                        divIDMultilinha.Visible = true;
+                        divIDSimulacao.Visible = false;
+                        divProduto.Visible = false;
+
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
@@ -134,11 +152,9 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, dvtitleAcordionRComercial);
                         Helper.AddRemoveHidden(true, dvtitleComissoes);
                         Helper.AddRemoveHidden(true, accoesfinais_criarml03);
-                        //Helper.AddRemoveHidden(true, hr1);
-                        //Helper.AddRemoveHidden(true, hr2);
                         Helper.AddRemoveHidden(true, hr3);
                         Helper.AddRemoveHidden(true, hr4);
-                        btnSearchDO.Enabled = false;
+                        btnSearch.Enabled = false;
                         break;
                 }
             }
@@ -151,33 +167,32 @@ namespace Multilinha
 
         protected void btnSearchDO_Click(object sender, EventArgs e)
         {
+            ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+
             string op = Request.QueryString["OP"] ?? "FF";
             switch (op.ToUpper())
             {
                 case "C":
-                    //Call ML03 para obtencao dos dados do contrato da proposta workflow
-                    LM33_ContratoML LM33C = TAT2.SearchML03(Convert.ToInt32(txtCliente.Text), txtIdworkflow.Text);
+
+                    //Chamada ML03 para obtencao dos dados do contrato da proposta workflow
+                    int ncliente;
+                    Int32.TryParse(txtCliente.Text, out ncliente);
+                    LM33_ContratoML LM33C = TAT2.SearchML03(ncliente, txtIdworkflow.Text);
+
                     Helper.CopyObjectToControls(this.Page, LM33C);
+                    Helper.SetEnableControler(camposChave, false);
+                    Helper.AddRemoveHidden(false, dpOK);
 
-                    if (string.IsNullOrEmpty(LM33C.idproposta))
-                    {
-                        lberror.Text = Constantes.Mensagens.LM33PropostaInexistente;
-                        return;
-                    }
-                    else
-                    {
-                        Helper.SetEnableControler(camposChave, false);
-                        Helper.AddRemoveHidden(false, dpOK);
-                        //Helper.AddRemoveHidden(false, hr1);
-                        
-                        //Get DOs Cliente
-                        //For debug
-                        ddlncontado.DataSource = bo.SearchDOCliente("");
-                        ddlncontado.DataBind();
+                    //Get DOs Cliente
+                    //For debug
+                    //ddlncontado.DataSource = MultilinhasDataLayer.
+                    //ddlncontado.DataBind();
 
-                        //Save in view state Produtos e SubProdutos
-                        ViewState["LM33C"] = LM33C;
-                    }
+                    ddlncontado.DataSource = bl.CL55Request(ncliente, abargs).ResultResult.AsEnumerable();
+                    ddlncontado.DataBind();
+
+                    //Save in view state Produtos e SubProdutos
+                    ViewState["LM33C"] = LM33C;
 
                     break;
 
@@ -185,7 +200,8 @@ namespace Multilinha
 
 
                     //Call ML03 para preencher o ecra com os dados
-                    LM33_ContratoML M03V = TAT2.SearchML03(Convert.ToInt32(txtCliente.Text), txtIdworkflow.Text);
+                    Int32.TryParse(txtCliente.Text, out ncliente);
+                    LM33_ContratoML M03V = TAT2.SearchML03(ncliente, txtIdworkflow.Text);
 
                     Helper.CopyObjectToControls(this.Page, M03V);
 
@@ -198,7 +214,7 @@ namespace Multilinha
                     else
                     {
                         Helper.SetEnableControler(camposChave, true);
-                        btnLimpar_Click(sender, e); 
+                        //btnLimpar_Click(sender, e); 
                         Helper.AddRemoveHidden(false, dpOK);
                         Helper.SetEnableControler(dpOK, false);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
@@ -239,7 +255,8 @@ namespace Multilinha
                 case "M":
 
                     //CALL ML03
-                    LM33_ContratoML M03M = TAT2.SearchML03(Convert.ToInt32(txtCliente.Text), txtIdworkflow.Text);
+                    Int32.TryParse(txtCliente.Text, out ncliente);
+                    LM33_ContratoML M03M = TAT2.SearchML03(ncliente, txtIdworkflow.Text);
 
                     Helper.CopyObjectToControls(this.Page, M03M);
 
@@ -252,7 +269,7 @@ namespace Multilinha
                     {
 
                         Helper.SetEnableControler(camposChave, false);
-                        btnLimpar_Click(sender, e); //desabilita produto e subproduto
+                        //btnLimpar_Click(sender, e); //desabilita produto e subproduto
                         Helper.AddRemoveHidden(false, dpOK);
                        // Helper.AddRemoveHidden(false, hr1);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
@@ -332,17 +349,19 @@ namespace Multilinha
         {
             if (Page.IsValid)
             {
-                //for debug
+                //Selecção de alguns campos 
                 if (string.IsNullOrEmpty(txtdatafimcontrato.Text))
                 {
                     txtdatafimcontrato.Text = "9999-12-31";
                 }
 
-                //Verificar que pelo menos dois produtos estão selecionados!
-                bool val = validacaoCP();
-                //Verificar data fim de contrato
-                bool val2 = true; //validacaoDtProximaCobrabca();
+                //Validações
+                //1º: Verificar que o nº minimo de produtos está selecionado
+                int nMinimoProdutosAtivar = 2;
+                Int32.TryParse(txtNumeroMinimoProdutos.Text, out nMinimoProdutosAtivar);
+                bool val = validacaoCP(nMinimoProdutosAtivar);
 
+                bool val2 = true; //validacaoDtProximaCobrabca();
                 if (val && val2)
                 {
                     //Call LM33 - C
@@ -352,7 +371,6 @@ namespace Multilinha
                     lberror.Visible = true;
 
                     Helper.SetEnableControler(this, false);
-
                     btnSeguinte.Enabled = true;
                 }
             }
@@ -371,9 +389,10 @@ namespace Multilinha
                 //adicaoCP(Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, lm34);
                 //adicaoCP(Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, lm34);
 
+                string op = ViewState["OPLM33"] as string;
                 Page.Transfer(ConfigurationManager.AppSettings["DefinicaoSublimites"],
                new Dictionary<string, object>() {
-                                  { "Op", "C" },
+                                  { "Op", op },
                                   { "ContratoCriado", lm34 },
                });
 
@@ -389,6 +408,13 @@ namespace Multilinha
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             //Include id multilinha
+
+            lberror.Text = Constantes.Mensagens.LM33ContratoModificado;
+            lberror.ForeColor = System.Drawing.Color.Green;
+            lberror.Visible = true;
+
+            Helper.SetEnableControler(this, false);
+            btnSeguinte.Enabled = true;
         }
 
         protected void txtPeriocidadeCobranca_TextChanged(object sender, EventArgs e)
@@ -511,7 +537,7 @@ namespace Multilinha
 
         }
 
-        internal bool validacaoCP()
+        internal bool validacaoCP(int nMinimoProdutosAtivar)
         {
             lberror.Text = "";
             bool val = false;
@@ -545,9 +571,10 @@ namespace Multilinha
             }
 
 
-            if ((countSel + countSel2 + countSel3) < 2)
+            if ((countSel + countSel2 + countSel3) < nMinimoProdutosAtivar)
             {
-                lberror.Text = "Aceite as condições particulares de dois sub-produtos de uma tipologia de risco";
+                string[] args = { nMinimoProdutosAtivar.ToString() };
+                lberror.Text = Constantes.NovaMensagem(Constantes.Mensagens.NMinimoProdutosML_CP, args);
                 lberror.Visible = true;
                 lberror.ForeColor = System.Drawing.Color.Red;
                 val = false;
@@ -618,7 +645,7 @@ namespace Multilinha
         protected void ddlSubProdCode_TextChanged(object sender, EventArgs e)
         {
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            string subprodutodesc = TAT2.GetSubProdDescriptionByCode(txtProdutoml.Text, ddlSubprodutoml.SelectedValue, Global.ConnectionStringDTAB, abargs);
+            string subprodutodesc = TAT2.GetSubProdDescriptionByCode(txtProdutoml.Text, ddlSubprodutoml.SelectedValue, Global.ConnectionStringMaster, abargs);
 
             txtDescritivo.Text = subprodutodesc;
 
@@ -633,7 +660,7 @@ namespace Multilinha
         protected void txtproduto_TextChanged(object sender, EventArgs e)
         {
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            List<string> lstsubprodutos = TAT2.GetSubProdByProdCode(txtProdutoml.Text, Global.ConnectionStringDTAB, abargs);
+            List<string> lstsubprodutos = TAT2.GetSubProdByProdCode(txtProdutoml.Text, Global.ConnectionStringMaster, abargs);
 
             //for debug!!
             if (lstsubprodutos.Count < 1)
@@ -647,20 +674,6 @@ namespace Multilinha
             ddlSubprodutoml.Enabled = true;
             ddlSubProdCode_TextChanged(sender, e);
 
-        }
-
-        protected void txtIdworkflow_TextChanged(object sender, EventArgs e)
-        {
-            //desabilita / habilita os require fields
-            if (!string.IsNullOrEmpty(txtIdworkflow.Text))
-            {
-                reqCliente.Enabled = false;
-            }
-            else
-            {
-                reqCliente.Enabled = true;
-
-            }
         }
 
         protected void linqsComissoes()
@@ -678,14 +691,13 @@ namespace Multilinha
             //limpa e disable produto
             txtProdutoml.Text = "";
             txtProdutoml.Enabled = false;
-            reqProductCode.Enabled = false;
+            reqProdutoml.Enabled = false;
 
             //limpa e disable subproduto
             List<string> emptylst = new List<string> { " " };
             ddlSubprodutoml.DataSource = emptylst;
             ddlSubprodutoml.DataBind();
             ddlSubprodutoml.Enabled = false;
-            reqSubProdCode.Enabled = false;
 
             //limpa e disable descricao
             txtDescritivo.Text = "";
@@ -697,15 +709,26 @@ namespace Multilinha
             //desabilita / habilita os require fields
             if (!string.IsNullOrEmpty(txtCliente.Text))
             {
-                reqIdWorkflow.Enabled = false;
+                reqidmultilinha.Enabled = false;
             }
             else
-                reqIdWorkflow.Enabled = true;
+            {
+                reqidmultilinha.Enabled = true;
+            }
         }
 
-    
+        protected void txt_idmultilinha_TextChanged(object sender, EventArgs e)
+        {
+            //desabilita / habilita os require fields
+            if (!string.IsNullOrEmpty(txt_idmultilinha.Text))
+            {
+                reqCliente.Enabled = false;
+            }
+            else
+            {
+                reqCliente.Enabled = true;
 
-       
-
+            }
+        }
     }
 }

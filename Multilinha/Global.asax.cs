@@ -14,8 +14,7 @@ namespace Multilinha
 {
     public class Global : System.Web.HttpApplication
     {
-            public static string ConnectionStringDTAB;
-           // public static string ConnectionStringABL;
+            public static string ConnectionStringMaster;
             public static DateTime dtfechasG;
 
             MultilinhasDataLayer.boMultilinhas TAT2 = new MultilinhasDataLayer.boMultilinhas();
@@ -25,27 +24,7 @@ namespace Multilinha
             {
 
                 OdbcConnection con = new OdbcConnection(ConfigurationManager.ConnectionStrings["MASTERDB2LOCAL"].ConnectionString);
-                ConnectionStringDTAB = ConfigurationManager.ConnectionStrings["MASTERDB2LOCAL"].ConnectionString;
-
-                #region ConnectionStringABL
-                try
-                {
-                    //DataSet ds = new DataSet();
-                    //OdbcDataAdapter ad = new OdbcDataAdapter("SELECT VALOR FROM AB_WEB_CONFIGURACOES WHERE NOME = 'ConnectionStringSITABL'", con);
-                    //ad.Fill(ds);
-
-                    //ConnectionStringABL = ds.Tables["Table"].Rows[0][0].ToString();
-
-                }
-                catch (Exception ex)
-                {
-                    //MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Error, "Application_Start", ex, "null", "null");
-                }
-                finally
-                {
-                    con.Close();
-                }
-                #endregion
+                ConnectionStringMaster = ConfigurationManager.ConnectionStrings["MASTERDB2LOCAL"].ConnectionString;
 
             }
 
@@ -62,26 +41,26 @@ namespace Multilinha
                 ABUtil.ABCommandArgs abargs = SetUserInfo();
                 Session["ABCommandArgs"] = abargs;
 
-            //MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.AppStart, "Session Start", abargs.USERNT, abargs.SN_HOSTNAME);
-            //MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.AppStart, "Current session:" + HttpContext.Current.Session["SessionGUID"], abargs.USERNT, abargs.SN_HOSTNAME);
-            //MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.AppStart, "Foram carregados os seguintes dados de utilizador:" +
-            //" T.AB_ADDRESS: " + abargs.AB_ADDRESS +
-            //"; T.SN_HOSTNAME: " + abargs.SN_HOSTNAME +
-            //"; T.FQDN_HOSTNAME: " + abargs.FQDN_HOSTNAME +
-            //"; T.HOSTIP: " + abargs.HOSTIP +
-            //"; T.PORT: " + abargs.PORT +
-            //"; T.AB_SESSION_ID: " + abargs.AB_SESSION_ID +
-            //"; T.CUTILIZA: " + abargs.CUTILIZA +
-            //"; T.CODBALCAO: " + abargs.CODBALCAO +
-            //"; T.CTERM: " + abargs.CTERM +
-            //"; T.CPERFIL: " + abargs.CPERFIL +
-            //"; T.USERNT: " + abargs.USERNT +
-            //"; T.DOMAIN: " + abargs.DOMAIN + ".",
-            //abargs.USERNT, abargs.SN_HOSTNAME);
+                MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.AppStart, "Session Start", abargs.USERNT, abargs.SN_HOSTNAME);
+                MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.AppStart, "Current session:" + HttpContext.Current.Session["SessionGUID"], abargs.USERNT, abargs.SN_HOSTNAME);
+                MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.AppStart, "Foram carregados os seguintes dados de utilizador:" +
+                " T.AB_ADDRESS: " + abargs.AB_ADDRESS +
+                "; T.SN_HOSTNAME: " + abargs.SN_HOSTNAME +
+                "; T.FQDN_HOSTNAME: " + abargs.FQDN_HOSTNAME +
+                "; T.HOSTIP: " + abargs.HOSTIP +
+                "; T.PORT: " + abargs.PORT +
+                "; T.AB_SESSION_ID: " + abargs.AB_SESSION_ID +
+                "; T.CUTILIZA: " + abargs.CUTILIZA +
+                "; T.CODBALCAO: " + abargs.CODBALCAO +
+                "; T.CTERM: " + abargs.CTERM +
+                "; T.CPERFIL: " + abargs.CPERFIL +
+                "; T.USERNT: " + abargs.USERNT +
+                "; T.DOMAIN: " + abargs.DOMAIN + ".",
+                abargs.USERNT, abargs.SN_HOSTNAME);
 
-            #region dataFechas
-            //Set variavel global - data operacao
-            dtfechasG = TAT2.DataOperacao_Fechas(abargs, abargs.CODBALCAO).Date;
+                 #region dataFechas
+                //Set variavel global - data operacao
+                dtfechasG = TAT2.DataOperacao_Fechas(abargs, abargs.CODBALCAO).Date;
                 #endregion
             }
 
@@ -98,7 +77,7 @@ namespace Multilinha
             protected void Session_End(object sender, EventArgs e)
             {
                 ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                //Helpers.Helper.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.AppStart, "Fim da sessão!", abargs.USERNT, abargs.SN_HOSTNAME);
+                MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.AppStart, "Fim da sessão!", abargs.USERNT, abargs.SN_HOSTNAME);
             }
 
             protected void Application_End(object sender, EventArgs e)
@@ -154,7 +133,7 @@ namespace Multilinha
                         AbArgs.CTERM = request.QueryString["cTerminal"];
                         AbArgs.ZCLIENTE = request.QueryString["cCliente"];
 
-                        //log.Info("Global.asax QueryString And ReadQueryString Input: " + HttpContext.Current.Request.QueryString);
+                    MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.AppStart,  "Global.asax QueryString And ReadQueryString Input: " + HttpContext.Current.Request.QueryString, AbArgs.USERNT, AbArgs.SN_HOSTNAME );
 
                     }
 
@@ -162,7 +141,7 @@ namespace Multilinha
 
                 catch (Exception ex)
                 {
-                   // MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.AppStart, ex.Message, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                   MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.AppStart, ex.Message, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
                 }
 
                 return AbArgs;

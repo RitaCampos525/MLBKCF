@@ -55,6 +55,7 @@
     <Compile Include="LM33_ContratoML.cs" />
     <Compile Include="LM34_SublimitesML.cs" />
     <Compile Include="LM_EstadosContrato.cs" />
+    <Compile Include="MensagemOutput.cs" />
     <Compile Include="ML_Objectos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
