@@ -53,10 +53,10 @@
                     <div class="col-sm-4">
                         <label id="lblSubProduto" runat="server" class="col-sm-4 text-right lbl">* Sub-Produto: </label>
                         <div class="col-sm-6">
-                            <asp:DropDownList ID="ddlSubProductCode" Enabled="false" AutoPostBack="true" pattern="[0-9]{2}"
+                            <asp:DropDownList ID="ddlSubProdutoCode" Enabled="false" AutoPostBack="true" pattern="[0-9]{2}"
                                 MaxLength="2" CssClass="form-control text-field" runat="server" OnTextChanged="ddlSubProdCode_TextChanged" DataTextField="">
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" ValidationGroup="ChaveProdutos" runat="server" ID="reqSubProdCode" ControlToValidate="ddlSubProductCode" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" ValidationGroup="ChaveProdutos" runat="server" ID="reqSubProdCode" ControlToValidate="ddlSubProdutoCode" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -108,7 +108,7 @@
                     <div class="col-sm-4">
                         <label id="lblEstadoParam" runat="server" class="col-sm-4 text-right lbl">* Estado da parameterização:</label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtEstado" Enabled="false" CssClass="form-control text-field" MaxLength="30" value="PENDENTE" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtEstado" Enabled="false" CssClass="form-control text-field" MaxLength="30" value="PENDENTE" Text="PENDENTE" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -152,8 +152,9 @@
                     <div class="col-sm-4">
                         <label id="lblLimiteMax" runat="server" class="col-sm-4 text-right lbl">* Limite máximo crédito:</label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtLimiteMaximoCredito" CssClass="form-control text-field number" MaxLength="18" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtLimiteMaximoCredito" CssClass="form-control text-field number" MaxLength="18"  runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" runat="server" ID="reqLimMaxCredito" CssClass="bklabel" ControlToValidate="txtLimiteMaximoCredito" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            <asp:Label ID="lberrorlim" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
                         </div>
                     </div>
                 </div>
@@ -296,7 +297,6 @@
 
     <script type='text/javascript'>
         var dtfechas = "<%=this.dtfechas %>";
-        $('#dpEndDate').datepicker('setDate', '9999-12-31');
     </script>
     <script src="scripts/multilinha.js"></script>
 

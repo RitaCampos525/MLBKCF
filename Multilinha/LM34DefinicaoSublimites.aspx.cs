@@ -255,6 +255,9 @@ namespace Multilinha
             bool valid = true;
             lberror.Text = "";
 
+            //Limite Global contrato
+            decimal limGl = Convert.ToDecimal(txtlimiteglobalmultilinha.Text);
+
             //Sublimites contratados
             decimal sublimA = Convert.ToDecimal(txtsublimiteriscoAssinatura.Text);
             decimal sublimF = Convert.ToDecimal(txtsublimiteriscoFinanceiro.Text);
@@ -306,6 +309,15 @@ namespace Multilinha
             if (SumFs > sublimF)
             {
                 lberror.Text = Constantes.Mensagens.SomaSublimitesComprometidosFinanceiroInvalida;
+                lberror.Visible = true;
+                lberror.ForeColor = System.Drawing.Color.Red;
+                return valid = false;
+            }
+
+            //Soma de sublimites deve ser igual ao Limite Global
+            if(SumCs + SumFs + SumlAs != limGl)
+            {
+                lberror.Text = Constantes.Mensagens.SomaTotalSublimitesComprometidosInvalida;
                 lberror.Visible = true;
                 lberror.ForeColor = System.Drawing.Color.Red;
                 return valid = false;

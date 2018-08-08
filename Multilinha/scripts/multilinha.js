@@ -283,6 +283,7 @@ $("#btnPesquisar").click(function () {
 })
 
 ///MULTILINHA
+$('#txtDataInicioComercializacao').datepicker('setDate', dtFechasStr);
 $('#txtdatainiciocontrato').datepicker("setDate", dtFechasStr)
 
 function ValidaDatas() {

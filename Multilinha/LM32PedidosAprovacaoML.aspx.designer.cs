@@ -67,6 +67,24 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.LinkButton lblTransaction;
         
         /// <summary>
+        /// liAprovacaoPedido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liAprovacaoPedido;
+        
+        /// <summary>
+        /// lblTransactionAp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lblTransactionAp;
+        
+        /// <summary>
         /// lm32V control.
         /// </summary>
         /// <remarks>
@@ -182,6 +200,24 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchCont;
+        
+        /// <summary>
+        /// btnAprovarPedido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAprovarPedido;
+        
+        /// <summary>
+        /// btnRejeitarPedido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRejeitarPedido;
         
         /// <summary>
         /// hr1 control.

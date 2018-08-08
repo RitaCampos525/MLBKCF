@@ -121,24 +121,6 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.LinkButton lblTransactionD;
         
         /// <summary>
-        /// liEnvioCartas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liEnvioCartas;
-        
-        /// <summary>
-        /// lblTransactionE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lblTransactionE;
-        
-        /// <summary>
         /// lm33C control.
         /// </summary>
         /// <remarks>

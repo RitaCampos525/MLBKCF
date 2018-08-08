@@ -148,13 +148,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSubProduto;
         
         /// <summary>
-        /// ddlSubProductCode control.
+        /// ddlSubProdutoCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubProductCode;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubProdutoCode;
         
         /// <summary>
         /// reqSubProdCode control.
@@ -452,6 +452,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqLimMaxCredito;
+        
+        /// <summary>
+        /// lberrorlim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lberrorlim;
         
         /// <summary>
         /// lblNumIncum control.

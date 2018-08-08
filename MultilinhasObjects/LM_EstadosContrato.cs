@@ -16,30 +16,35 @@ namespace MultilinhasObjects
                     Code = "01",
                     Description = "ATIVO",
                 },
-                new ComboBox()
+                 new ComboBox()
                 {
                     Code = "02",
-                    Description = "EM RENOVACAO",
+                    Description = "PENDENTE",
                 },
-                 new ComboBox()
+                new ComboBox()
                 {
                     Code = "03",
-                    Description = "DENUNCIADO",
-                },
-                new ComboBox()
-                {
-                    Code = "04",
-                    Description = "DENUNCIADO - EM MORA",
+                    Description = "EM APROVAÇÃO",
                 },
                  new ComboBox()
                 {
-                    Code = "05",
-                    Description = "EM MORA",
+                    Code = "04",
+                    Description = "EM RENOVAÇÃO",
                 },
                 new ComboBox()
                 {
+                    Code = "05",
+                    Description = "DENUNCIADO",
+                },
+                 new ComboBox()
+                {
                     Code = "06",
-                    Description = "EM MORA - CLAUSULA SUSPENSAO ATIVA",
+                    Description = "DENUNCIADO - LIQUIDADO",
+                },
+                new ComboBox()
+                {
+                    Code = "07",
+                    Description = "DENUNCIADO - EM MORA",
                 },
                 new ComboBox()
                 {
@@ -49,12 +54,22 @@ namespace MultilinhasObjects
                 new ComboBox()
                 {
                     Code = "08",
-                    Description = "WRITE OFF",
+                    Description = "EM MORA",
                 },
                 new ComboBox()
                 {
                     Code = "09",
-                    Description = "ARQUIVADO",
+                    Description = "EM MORA - CLÁUSULA SUSPENSÃO ATIVA",
+                },
+                new ComboBox()
+                {
+                    Code = "10",
+                    Description = "CHARGE OFF",
+                },
+                new ComboBox()
+                {
+                    Code = "11",
+                    Description = "WRITE OFF",
                 },
             };
         }

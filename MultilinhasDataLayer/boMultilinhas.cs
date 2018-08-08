@@ -106,6 +106,60 @@ namespace MultilinhasDataLayer
             }
         }
 
+        public DataTable GetCodMensagens(ABUtil.ABCommandArgs AbArgs)
+        {
+            try
+            {
+                DataTable CodMsgs = cache["CodigosMensagens"] as DataTable;
+
+                WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.TAT2Request, "CodigosMensagens  - SYT05L", AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+
+
+                if (CodMsgs == null)
+                {
+                    //Vai lêr à tabela
+
+                    OdbcConnection connection = new OdbcConnection(ConfigurationManager.ConnectionStrings["MASTERDB2LOCAL"].ConnectionString);
+                    DataSet ds = new DataSet();
+
+                    try
+                    {
+                        OdbcDataAdapter ad = new OdbcDataAdapter("SELECT CELEMTAB2, NELEMC01 FROM SYT05L WHERE CELEMTAB1 = 'PR' AND CELEMTAB3 = 'PO'", connection); //Tabela sistema SYT05
+                        ad.Fill(ds);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.TAT2Request, "Setting cache for [CodigosMensagens]", AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+
+                    //Set Cache
+                    CacheItemPolicy policy = new CacheItemPolicy();
+                    policy.AbsoluteExpiration = DateTimeOffset.Now.AddDays(1);
+                    cache.Set("CodigosMensagens", ds.Tables[0], policy);
+
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.TAT2Request, "Retun value count: " + ds.Tables[0].Rows.Count, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+
+                    return ds.Tables[0];
+                }
+                //Devolver valor em cache
+                else
+                {
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.TAT2Request, "Cache found for [CodigosMensagens] : " + CodMsgs.Rows.Count, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+
+                    return CodMsgs;
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.TAT2Request, ex, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                DataTable dt = new DataTable();
+
+                return dt;
+            }
+        }
+
         public string GetSubProdDescriptionByCode(string productCode, string subProductCode, string connection, ABUtil.ABCommandArgs AbArgs)
         {
             WriteLog.Log(System.Diagnostics.TraceLevel.Info, MultilinhasObjects.LogTypeName.Internal, "GetSubProdDescriptionByCode", AbArgs.USERNT, AbArgs.SN_HOSTNAME);
@@ -145,6 +199,36 @@ namespace MultilinhasDataLayer
 
             }
             return subprods;
+        }
+
+        public string GetMsgErroTATDescription(string msg, ABUtil.ABCommandArgs Abargs)
+        {
+            string outmsg = msg;
+
+            try
+            {
+                WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.Internal, "GetMsgErroTATDescription", Abargs.USERNT, Abargs.SN_HOSTNAME);
+
+                //Tabela de codigos de mensagem
+                DataTable CodMsgs = GetCodMensagens(Abargs);
+
+                if (CodMsgs != null && CodMsgs.Rows.Count > 0)
+                {
+                    //Encontra rows com descrição do codigo de erro
+                    DataRow[] drs = CodMsgs.Select("CELEMTAB2 = '" + msg.PadLeft(3, '0') + "'");
+                    if (drs.Count() > 0)
+                    {
+                        //Select first or default
+                        outmsg = drs[0][1].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.TAT2Request, ex, Abargs.USERNT, Abargs.SN_HOSTNAME);
+            }
+
+            return outmsg;
         }
 
         //FOR debug

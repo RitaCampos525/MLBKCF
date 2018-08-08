@@ -546,6 +546,15 @@
     <None Include="Service References\BCDWSProxy\MultilinhasDataLayer.BCDWSProxy.KK79Transaction.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BCDWSProxy\MultilinhasDataLayer.BCDWSProxy.LM31Transaction.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BCDWSProxy\MultilinhasDataLayer.BCDWSProxy.LM33Transaction.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BCDWSProxy\MultilinhasDataLayer.BCDWSProxy.LM34Transaction.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BCDWSProxy\MultilinhasDataLayer.BCDWSProxy.LM58Transaction.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

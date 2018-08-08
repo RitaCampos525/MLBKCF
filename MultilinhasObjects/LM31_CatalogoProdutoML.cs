@@ -10,7 +10,7 @@ namespace MultilinhasObjects
     {
 
         public string ProductCode { get; set; }
-        public string SubProductCode { get; set; }
+        public string SubProdutoCode { get; set; }
         public string SubProductDescription { get; set; }
         public DateTime DataInicioComercializacao { get; set; }
         public DateTime DataFimComercializacao { get; set; }
@@ -33,6 +33,7 @@ namespace MultilinhasObjects
 
         public class ProdutoRisco
         {
+            public string familia { get; set; }
             public string tipologia { get; set; }
             public string produto { get; set; }
             public string subproduto { get; set; }

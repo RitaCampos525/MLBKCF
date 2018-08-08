@@ -38,9 +38,9 @@
                 <li id="liDenuncia" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lblTransactionD" Enabled="false" runat="server" Text="Denúncia / resolução de Contrato"></asp:LinkButton>
                 </li>
-                <li id="liEnvioCartas" runat="server" class=" ">
+               <%-- <li id="liEnvioCartas" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lblTransactionE" Enabled="false" runat="server" Text="Envio de cartas"></asp:LinkButton>
-                </li>
+                </li>--%>
             </ul>
         </div>
         <div id="lm33C" runat="server">

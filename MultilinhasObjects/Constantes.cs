@@ -19,6 +19,7 @@ namespace MultilinhasObjects
         {
             #region ML
 
+            public const string LM31CatalogoCriado =  "Produto ML criado em Catalogo.";
             public const string LM31CatalogoModificado = "Produto ML modificado em Catalogo";
             public const string LM33ContratoCriado = "Contrato Criado. Continue o processo seleccionando 'Seguinte'";
             public const string LM33ContratoModificado = "Contrato ML modificado. Continue o processo seleccionando 'Seguinte'";
@@ -27,11 +28,15 @@ namespace MultilinhasObjects
             public const string ProdutoMLNIdentificado = "Produto não identificado como produto Multilinha. A descrição do produto deverá indicar se o produto é Base ou Avançado";
             public const string NMinimoProdutosRiscoA = "Selecione no máximo 17 produtos de risco";
             public const string NMinimoProdutosRiscoB = "Selecione no máximo 9 produtos de risco";
-            public const string NMinimoProdutosML = "Selecione no mínimo {0} produtos de crédito";
-            public const string NMinimoProdutosML_CP = "Aceite as condições particulares de {0} sub-produtos de crédito";
+            public const string NMinimoProdutosRiscoF = "Selecione no máximo 60 subprodutos de risco financeiro";
+            public const string NMinimoProdutosRiscoAs = "Selecione no máximo 20 subprodutos de risco assinatura";
+            public const string NMinimoProdutosRiscoC = "Selecione no máximo 20 subprodutos de risco comercial";
+            public const string NMinimoProdutosML = "Selecione no mínimo {0} produto(s) de crédito";
+            public const string NMinimoProdutosML_CP = "Aceite as condições particulares de {0} subproduto(s) de crédito";
             public const string SomaSublimitesComprometidosAssinaturaInvalida = "Verifique os valores de sublimites comprometidos. O sublimite de risco assinatura foi ultrapassado";
             public const string SomaSublimitesComprometidosComercialInvalida = "Verifique os valores de sublimites comprometidos. O sublimite de risco comercial foi ultrapassado";
             public const string SomaSublimitesComprometidosFinanceiroInvalida = "Verifique os valores de sublimites comprometidos. O sublimite de risco financeiro foi ultrapassado";
+            public const string SomaTotalSublimitesComprometidosInvalida = "Verifique os valores de sublimites comprometidos. A soma dos sublimites deverá ser igual ao Limite Global comprometido";
 
             #endregion
 

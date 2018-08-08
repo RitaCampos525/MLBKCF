@@ -13,15 +13,35 @@ namespace Multilinha
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
+            if (!Page.IsPostBack)
             {
-                //dropdownlists
-                ddlTipoPedido.DataSource = ML_Objectos.GetTiposPedidoML();
-                ddlTipoPedido.DataBind();
+                string op = Helper.getTransactionMode(Context, Request);
+                switch(op.ToUpper())
+                {
+                    case "V":
+                    //dropdownlists
+                    ddlTipoPedido.DataSource = ML_Objectos.GetTiposPedidoML();
+                    ddlTipoPedido.DataBind();
 
-                //navigation
-                Helper.AddRemoveActive(true, liPedidosAprovacao);
-                lblTransaction.CssClass = lblTransaction.CssClass.Replace("atab", "atabD");
+                    //navigation
+                    Helper.AddRemoveActive(true, liPedidosAprovacao);
+                    lblTransaction.CssClass = lblTransaction.CssClass.Replace("atab", "atabD");
+                    break;
+                    case "M":
+                        //setenablecontrolers to false
+                        Helper.SetEnableControler(this, false);
+                        btnAprovarPedido.Visible = true;
+                        btnRejeitarPedido.Visible = true;
+                        btnSearchCont.Visible = false;
+                        
+
+                        //navigation
+                        Helper.AddRemoveActive(true, liAprovacaoPedido);
+                        lblTransactionAp.CssClass = lblTransactionAp.CssClass.Replace("atab", "atabD");
+
+                        
+                        break;
+                }
             }
 
         }
@@ -62,6 +82,16 @@ namespace Multilinha
         }
 
         protected void btnSearchCont_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAprovarPedido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnRejeitarPedido_Click(object sender, EventArgs e)
         {
 
         }

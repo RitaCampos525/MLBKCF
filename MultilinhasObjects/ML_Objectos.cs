@@ -71,35 +71,57 @@ namespace MultilinhasObjects
         };
         }
 
-        public static List<MultilinhaObjects.ComboBox> GetEstadosDoContratoML()
+        //public static List<MultilinhaObjects.ComboBox> GetEstadosDoContratoML()
+        //{
+        //    return new List<ComboBox>(){
+        //         new ComboBox()
+        //        {
+        //            Code = "1",
+        //            Description = "EM CRIACAO",
+        //        },
+        //          new ComboBox()
+        //        {
+        //            Code = "2",
+        //            Description = "ACTIVO",
+        //        },
+        //            new ComboBox()
+        //        {
+        //            Code = "3",
+        //            Description = "EM MODIFICACAO",
+        //        },
+        //          new ComboBox()
+        //        {
+        //            Code = "4",
+        //            Description = "EM APROVACAO",
+        //        },
+        //        new ComboBox()
+        //        {
+        //            Code = "5",
+        //            Description = "APROVADO",
+        //        },
+                   
+        // };
+        //}
+
+        public static List<MultilinhaObjects.ComboBox> GetEstadosDoCatalogo()
         {
             return new List<ComboBox>(){
                  new ComboBox()
                 {
-                    Code = "1",
-                    Description = "EM CRIACAO",
+                    Code = "AT",
+                    Description = "ATIVO",
                 },
                   new ComboBox()
                 {
-                    Code = "2",
-                    Description = "ACTIVO",
+                    Code = "PD",
+                    Description = "PENDENTE",
                 },
-                    new ComboBox()
+                      new ComboBox()
                 {
-                    Code = "3",
-                    Description = "EM MODIFICACAO",
+                    Code = "IN",
+                    Description = "INATIVO",
                 },
-                  new ComboBox()
-                {
-                    Code = "4",
-                    Description = "EM APROVACAO",
-                },
-                new ComboBox()
-                {
-                    Code = "5",
-                    Description = "APROVADO",
-                },
-                   
+
          };
         }
 

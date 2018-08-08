@@ -13,5 +13,8 @@ namespace MultilinhaBusinessLayer
     {
         [OperationContract]
         MensagemOutput<List<string>> CL55Request();
+
+        [OperationContract]
+        MensagemOutput<List<string>> LM31Request();
     }
 }

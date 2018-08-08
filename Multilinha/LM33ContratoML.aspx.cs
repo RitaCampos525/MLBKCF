@@ -6,6 +6,7 @@ using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Linq;
+using MultilinhasDataLayer.BCDWSProxy;
 
 namespace Multilinha
 {
@@ -105,7 +106,7 @@ namespace Multilinha
                         break;
                     case "A":
                         lblTransactionD.Enabled = true;
-                        lblTransactionE.Enabled = true;
+                        //lblTransactionE.Enabled = true;
 
                         Helper.AddRemoveHidden(true, lm33C); //hide controls criar
                         Helper.AddRemoveHidden(false, ml03V_denuncia); //Show controls visualizar
@@ -167,6 +168,7 @@ namespace Multilinha
 
         protected void btnSearchDO_Click(object sender, EventArgs e)
         {
+            lberror.Text = "";
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
 
             string op = Request.QueryString["OP"] ?? "FF";
@@ -183,13 +185,17 @@ namespace Multilinha
                     Helper.SetEnableControler(camposChave, false);
                     Helper.AddRemoveHidden(false, dpOK);
 
-                    //Get DOs Cliente
-                    //For debug
-                    //ddlncontado.DataSource = MultilinhasDataLayer.
-                    //ddlncontado.DataBind();
+                    //Chamada CL55 para Get DOs Cliente
 
+                    MensagemOutput<List<string>> trans = bl.CL55Request(ncliente, abargs);
                     ddlncontado.DataSource = bl.CL55Request(ncliente, abargs).ResultResult.AsEnumerable();
                     ddlncontado.DataBind();
+                    if(trans.mensagem != null)
+                    {
+                        lberror.Text = trans.mensagem;
+                        lberror.Visible = true;
+                        lberror.ForeColor = System.Drawing.Color.Red;
+                    }
 
                     //Save in view state Produtos e SubProdutos
                     ViewState["LM33C"] = LM33C;

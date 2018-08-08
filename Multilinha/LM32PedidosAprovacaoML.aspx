@@ -28,6 +28,9 @@
                         <li id="liPedidosAprovacao" runat="server" class=" ">
                             <asp:LinkButton CssClass="atab " ID="lblTransaction" Enabled="false" runat="server" Text="Contratos ML - Pedidos de Aprovação"></asp:LinkButton>
                         </li>
+                         <li id="liAprovacaoPedido" runat="server" class=" ">
+                            <asp:LinkButton CssClass="atab " ID="lblTransactionAp" Enabled="false" runat="server" Text="Contratos ML - Aprovação de Pedido"></asp:LinkButton>
+                        </li>
                     </ul>
         </div>
         <div id="lm32V" runat="server">
@@ -68,8 +71,10 @@
                             <asp:DropDownList ID="ddlTipoPedido" DataTextField="Description" DataValueField="Code"  CssClass="form-control text-field" runat="server"></asp:DropDownList>
                         </div>
                     </div>
-                     <div class="col-sm-2 div-btns" >   
+                     <div class="row div-btns" >   
                         <asp:button id="btnSearchCont" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
+                         <asp:button id="btnAprovarPedido" class="btns text-center" runat="server" Visible="false" noChange="" OnClick="btnAprovarPedido_Click"  Text="Aprovar Pedido" ></asp:button>
+                         <asp:button id="btnRejeitarPedido" class="btns text-center" runat="server" Visible="false" noChange=""  OnClick="btnRejeitarPedido_Click"  Text="Rejeitar Pedido" ></asp:button>
                     </div> 
                 </div>
                 

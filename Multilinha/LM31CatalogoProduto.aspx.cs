@@ -13,6 +13,7 @@ namespace Multilinha
     {
         public DateTime dtfechas = Global.dtfechasG;
         MultilinhasDataLayer.boMultilinhas TAT2 = new MultilinhasDataLayer.boMultilinhas();
+        MultilinhaBusinessLayer.BLMultilinha bl = new MultilinhaBusinessLayer.BLMultilinha();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -164,20 +165,35 @@ namespace Multilinha
             lberror.Text = "";
             if (Page.IsValid)
             {
+                
                 int nprodutoml;
                 Int32.TryParse(txtNumeroMinimoProdutos.Text, out nprodutoml);
-                if (validaNProdutosCredito(nprodutoml))
+                if (validaNProdutosCredito(nprodutoml) && validaLimiteMaximoCredito())
                 {
                     LM31_CatalogoProdutoML lm31 = new LM31_CatalogoProdutoML();
                     Helper.CopyPropertiesTo(this, lm31);
 
                     getprodutostoLM31(lm31);
 
-                    //TO DO Chamar ML01 - C
+                    if (validaNSubProdutosCredito(lm31))
+                    {
+                        //Chamar ML01 - C
+                        ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                        MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "C");
 
-                    lberror.Text = "Produto ML criado em Catalogo.";
-                    lberror.Visible = true;
-                    lberror.ForeColor = System.Drawing.Color.Green;
+                        if (response.ResultResult != null && response.ResultResult.ProductCode != null)
+                        {
+                            lberror.Text = Constantes.Mensagens.LM31CatalogoCriado;
+                            lberror.Visible = true;
+                            lberror.ForeColor = System.Drawing.Color.Green;
+                        }
+                        else
+                        {
+                            lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                            lberror.Visible = true;
+                            lberror.ForeColor = System.Drawing.Color.Red;
+                        }
+                    }
                 }
             }
         }
@@ -188,15 +204,15 @@ namespace Multilinha
             List<string> lstsubprodutos = TAT2.GetSubProdByProdCode(txtProductCode.Text, Global.ConnectionStringMaster, abargs);
 
             //for debug!!
-            if (lstsubprodutos.Count < 1)
-            {
-                lstsubprodutos = TAT2.SearchSubProdutML("");
-            }
+            //if (lstsubprodutos.Count < 1)
+            //{
+            //    lstsubprodutos = TAT2.SearchSubProdutML("");
+            //}
 
-            ddlSubProductCode.DataSource = lstsubprodutos;
-            ddlSubProductCode.DataBind();
+            ddlSubProdutoCode.DataSource = lstsubprodutos;
+            ddlSubProdutoCode.DataBind();
 
-            ddlSubProductCode.Enabled = true;
+            ddlSubProdutoCode.Enabled = true;
             ddlSubProdCode_TextChanged(sender, e);
 
         }
@@ -204,16 +220,16 @@ namespace Multilinha
         protected void ddlSubProdCode_TextChanged(object sender, EventArgs e)
         {
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            string subprodutodesc = TAT2.GetSubProdDescriptionByCode(txtProductCode.Text, ddlSubProductCode.SelectedValue, Global.ConnectionStringMaster, abargs);
+            string subprodutodesc = TAT2.GetSubProdDescriptionByCode(txtProductCode.Text, ddlSubProdutoCode.SelectedValue, Global.ConnectionStringMaster, abargs);
 
             txtSubProductDescription.Text = subprodutodesc;
 
             //for debug!
-            if (string.IsNullOrEmpty(subprodutodesc))
-            {
+            //if (string.IsNullOrEmpty(subprodutodesc))
+            //{
 
-                txtSubProductDescription.Text = TAT2.SearchSubProdutDescriptionML(ddlSubProductCode.SelectedValue)[0].ToString();
-            }
+            //    txtSubProductDescription.Text = TAT2.SearchSubProdutDescriptionML(ddlSubProductCode.SelectedValue)[0].ToString();
+            //}
         }
 
         protected void btnLimpar_Click(object sender, EventArgs e)
@@ -223,14 +239,12 @@ namespace Multilinha
 
             //limpa subproduto
             List<string> emptylst = new List<string> { " " };
-            ddlSubProductCode.DataSource = emptylst;
-            ddlSubProductCode.DataBind();
+            ddlSubProdutoCode.DataSource = emptylst;
+            ddlSubProdutoCode.DataBind();
 
             //limpa descricao
             txtSubProductDescription.Text = "";
-
-            //enable subproduto
-            ddlSubProductCode.Enabled = false;
+            ddlSubProdutoCode.Enabled = false;
 
             //Datas comercializacao
             txtDataFimComercializacao.Text = "";
@@ -246,7 +260,7 @@ namespace Multilinha
                 //TODO Chamar ML01 
 
                 //Modo Criar:
-                //IF: Resposta com produto Já Parameterizado-> Alertar utilizador
+                //IF: Resposta com produto Já Parameterizado e Ativo-> Alertar utilizador
                 //Else: Abrir campos e desabilitar os campos chave de consulta
 
                 Helper.SetEnableControler(camposChave, false);
@@ -331,21 +345,23 @@ namespace Multilinha
                 txtNDiasIncumprimento.Text = "";
         }
 
-        protected bool validaNProdutosCredito(int nMinimoASeleccionar)
+        internal bool validaNProdutosCredito(int nMinimoASeleccionar)
         {
             bool nprodutosValid = true;
             lberror.Text = "";
 
             //Valida se Produtos estão selecionados - Valida o nº de familias. Não é por nº de subproduto
             int countSel = 0;
-            foreach (TreeNode tr in trtipologiaProdutosRFTree.Nodes)
+            TreeNode todosF = trtipologiaProdutosRFTree.Nodes[0];
+            foreach (TreeNode tr in todosF.ChildNodes)
             {
                 if (tr.Checked)
                     countSel++;
             }
 
             int countSel2 = 0;
-            foreach (TreeNode tr in trtipologiaProdutosRCTree.Nodes)
+            TreeNode todosC = trtipologiaProdutosRCTree.Nodes[0];
+            foreach (TreeNode tr in todosC.ChildNodes)
             {
                 if (tr.Checked)
                 {
@@ -354,7 +370,8 @@ namespace Multilinha
             }
 
             int countSel3 = 0;
-            foreach (TreeNode tr in trtipologiaProdutosRFTree.Nodes)
+            TreeNode todosA = trtipologiaProdutosRATree.Nodes[0];
+            foreach (TreeNode tr in todosA.ChildNodes)
             {
                 if (tr.Checked)
                 {
@@ -375,9 +392,9 @@ namespace Multilinha
             }
 
             //de acordo com a Tipologia de Produto Base ou Avançada))
-            if (txtSubProductDescription.Text.Contains("Base"))
+            if (txtSubProductDescription.Text.ToUpper().Contains("BASE"))
             {
-                if ((countSel + countSel2 + countSel3) > 9)
+                if ((countSel + countSel2 + countSel3) > Convert.ToInt32(ConfigurationManager.AppSettings["NMaxProdutoMLBase"]))
                 {
                     lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoB;
                     lberror.Visible = true;
@@ -386,9 +403,9 @@ namespace Multilinha
                     nprodutosValid = false;
                 }
             }
-            else if (txtSubProductDescription.Text.Contains("Avançado"))
+            else if (txtSubProductDescription.Text.ToUpper().Contains("AVANCADO"))
             {
-                if ((countSel + countSel2 + countSel3) > 17)
+                if ((countSel + countSel2 + countSel3) > Convert.ToInt32(ConfigurationManager.AppSettings["NMaxProdutoMLAvancada"]))
                 {
                     lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoA;
                     lberror.Visible = true;
@@ -408,6 +425,62 @@ namespace Multilinha
 
             return nprodutosValid;
 
+        }
+
+        internal bool validaNSubProdutosCredito(LM31_CatalogoProdutoML lm31)
+        {
+            bool nsubprodutosValid = true;
+
+            //de acordo com a Area de arquitectura
+            decimal countSel = lm31.produtosF.Count();
+            if (countSel > 60)
+            {
+                lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoF;
+                lberror.Visible = true;
+                lberror.ForeColor = System.Drawing.Color.Red;
+
+                nsubprodutosValid = false;
+            }
+            decimal countSel2 = lm31.produtosC.Count();
+            if (countSel2 > 20)
+            {
+                lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoC;
+                lberror.Visible = true;
+                lberror.ForeColor = System.Drawing.Color.Red;
+
+                nsubprodutosValid = false;
+            }
+            decimal countSel3 = lm31.produtosA.Count();
+            if (countSel3 > 20)
+            {
+                lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoAs;
+                lberror.Visible = true;
+                lberror.ForeColor = System.Drawing.Color.Red;
+
+                nsubprodutosValid = false;
+            }
+            return nsubprodutosValid;
+
+        }
+
+        internal bool validaLimiteMaximoCredito()
+        {
+            decimal limMax = Convert.ToDecimal(txtLimiteMaximoCredito.Text);
+            decimal limMin = Convert.ToDecimal(txtLimiteMinimoCredito.Text);
+
+            if (limMax < limMin)
+            {
+                lberrorlim.Text = "Limite máximo inferior ao limite mínimo";
+                lberrorlim.Visible = true;
+
+                return false;
+            }
+            else
+            {
+                lberrorlim.Text = "";
+                lberrorlim.Visible = false;
+                return true;
+            }
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
@@ -444,8 +517,11 @@ namespace Multilinha
             lm31.produtosC = new List<LM31_CatalogoProdutoML.ProdutoRisco>();
             lm31.produtosA = new List<LM31_CatalogoProdutoML.ProdutoRisco>();
 
+            
+
             //Risco Financeiro
-            foreach (TreeNode tr in trtipologiaProdutosRFTree.Nodes)
+            TreeNode todosF = trtipologiaProdutosRFTree.Nodes[0];
+            foreach (TreeNode tr in todosF.ChildNodes)
             {
                 foreach (TreeNode trch in tr.ChildNodes)
                 {
@@ -456,15 +532,18 @@ namespace Multilinha
                             (
                                 new LM31_CatalogoProdutoML.ProdutoRisco
                                 {
-                                    produto = trch.Text.Split('-')[0].Substring(0, 2),
-                                    subproduto = trch.Text.Split('-')[0].Substring(1, 2),
+                                    produto = trch.Text.Split('-')[0].Length >= 2 ? trch.Text.Split('-')[0].Substring(0, 2) : "",
+                                    subproduto = trch.Text.Split('-')[0].Length >= 2 ? trch.Text.Split('-')[0].Substring(2, 2) : "",
+                                    familia = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FirstOrDefault(x => x.familiaProduto == tr.Text.Replace("-","").Trim()).codfamiliaProduto.ToString(), //trch.Text.Split('-')[1].Replace("-", ""),
+                                    tipologia = "F"
                                 }
                             );
                     }
                 }
             }
             //Risco Comercial
-            foreach (TreeNode tr in trtipologiaProdutosRCTree.Nodes)
+            TreeNode todosC = trtipologiaProdutosRCTree.Nodes[0];
+            foreach (TreeNode tr in todosC.ChildNodes)
             {
                 foreach (TreeNode trch in tr.ChildNodes)
                 {
@@ -475,15 +554,18 @@ namespace Multilinha
                             (
                                 new LM31_CatalogoProdutoML.ProdutoRisco
                                 {
-                                    produto = trch.Text.Split('-')[0].Substring(0, 2),
-                                    subproduto = trch.Text.Split('-')[0].Substring(1, 2),
+                                    produto = trch.Text.Split('-')[0].Length >= 2 ? trch.Text.Split('-')[0].Substring(0, 2) : "",
+                                    subproduto = trch.Text.Split('-')[0].Length >= 2 ? trch.Text.Split('-')[0].Substring(2, 2) : "",
+                                    familia = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC).FirstOrDefault(x => x.familiaProduto == tr.Text.Replace("-", "").Trim()).codfamiliaProduto.ToString(), 
+                                    tipologia = "C"
                                 }
                             );
                     }
                 }
             }
             //Risco Assinatura
-            foreach (TreeNode tr in trtipologiaProdutosRATree.Nodes)
+            TreeNode todosA = trtipologiaProdutosRATree.Nodes[0];
+            foreach (TreeNode tr in todosA.ChildNodes)
             {
                 foreach (TreeNode trch in tr.ChildNodes)
                 {
@@ -494,8 +576,10 @@ namespace Multilinha
                             (
                                 new LM31_CatalogoProdutoML.ProdutoRisco
                                 {
-                                    produto = trch.Text.Split('-')[0].Substring(0, 2),
-                                    subproduto = trch.Text.Split('-')[0].Substring(1, 2),
+                                    produto = trch.Text.Split('-')[0].Length >= 2 ? trch.Text.Split('-')[0].Substring(0, 2) : "",
+                                    subproduto = trch.Text.Split('-')[0].Length >= 2 ? trch.Text.Split('-')[0].Substring(2, 2) : "",
+                                    familia = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA).FirstOrDefault(x => x.familiaProduto == tr.Text.Replace("-", "").Trim()).codfamiliaProduto.ToString(),
+                                    tipologia = "A"
                                 }
                             );
                     }
@@ -503,6 +587,25 @@ namespace Multilinha
             }
         }
 
+        //protected void txtLimiteMaximoCredito_TextChanged(object sender, EventArgs e)
+        //{
+        //    decimal limMax = Convert.ToDecimal(txtLimiteMaximoCredito.Text);
+        //    decimal limMin = Convert.ToDecimal(txtLimiteMinimoCredito.Text);
+
+        //    if (limMax < limMin)
+        //    {
+        //        lberrorlim.Text = "Limite máximo inferior ao limite mínimo";
+        //        lberrorlim.Visible = true;
+                
+        //        return;
+
+        //    }
+        //    else
+        //    {
+        //        lberrorlim.Text = "";
+        //        lberrorlim.Visible = false;
+        //    }
+        //}
     }
 
 }
