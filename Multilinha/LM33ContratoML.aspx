@@ -19,6 +19,7 @@
 <uc1:header runat="server" ID="header" />
 <body>
     <form id="form1" class="content container-fluid form-horizontal" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div id="dvError" runat="server">
             <asp:Label runat="server" ID="lberror" CssClass="col-md-12 col-sm-12 lbl" Visible="false ">Occur an error</asp:Label>
         </div>
@@ -43,7 +44,8 @@
                 </li>--%>
             </ul>
         </div>
-        <div id="lm33C" runat="server">
+        <div id="MC33C" runat="server">
+            <asp:updatepanel id="upMC03" runat="server" UpdateMode="Conditional"><ContentTemplate>
             <div class="row colorbck" id="camposChave" runat="server">
                 <div class="row form-group padding-row col-sm-12">
                     <div class="col-sm-4">
@@ -155,7 +157,7 @@
                         <div class="col-sm-4">
                             <label id="bklbprazocontrato" runat="server" class="col-sm-4 text-right lbl">* Prazo contrato (meses):</label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtprazocontrato" MaxLength="3" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
+                                <asp:TextBox ID="txtprazocontrato" MaxLength="3" CssClass="form-control text-field" OnTextChanged="txtprazocontrato_TextChanged" AutoPostBack="true" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" ValidationGroup="valChavesClienteContrato" runat="server" ID="reqPrazoContrato" ControlToValidate="txtprazocontrato" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
@@ -176,14 +178,14 @@
                         <div class="col-sm-4">
                             <label id="bklindicadorrenovacao" runat="server" class="col-sm-4 text-right lbl">* Indicador de renovação: </label>
                             <div class="col-sm-4">
-                                <asp:DropDownList ID="ddlIndicadorRenovacao" runat="server" CssClass="form-control text-field" DataTextField="Description" DataValueField="Code">
+                                <asp:DropDownList ID="ddlIndRenovacao" runat="server" CssClass="form-control text-field" DataTextField="Description" DataValueField="Code">
                                 </asp:DropDownList>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <label id="bklprazorenovacao" runat="server" class="col-sm-4 text-right lbl">* Prazo renovação (meses):</label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtprazorenovacao" MaxLength="3" Enabled="false" ReadOnly="true" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
+                                <asp:TextBox ID="txtPrazoRenovacao" MaxLength="3" Enabled="false" ReadOnly="true" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtprazocontrato" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
@@ -198,8 +200,8 @@
                         <div class="col-sm-4">
                             <label id="bklndiasincumprimento" runat="server" class="col-sm-4 text-right lbl">* Nº dias incumprimento:</label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtndiasincumprimento" MaxLength="3" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
-                                <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqndiasincumprimento" ControlToValidate="txtndiasincumprimento" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="txtNDiasIncumprimento" MaxLength="3" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
+                                <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqndiasincumprimento" ControlToValidate="txtNDiasIncumprimento" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -221,7 +223,7 @@
                         <div class="col-sm-4">
                             <label id="bklgraumorosidade" runat="server" class="col-sm-4 text-right lbl">* Grau Morosidade:</label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtgraumorosidade" MaxLength="3" ReadOnly="true" Text="Por DEFINIR" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtgraumorosidade" MaxLength="3" ReadOnly="true" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqgraumorosidade" ControlToValidate="txtgraumorosidade" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
@@ -556,6 +558,8 @@
 
                 </div>
             </div>
+        </ContentTemplate></asp:updatepanel>
+        </div>
         <div id="ml03V_denuncia" visible="false" runat="server">
             <uc1:ucCancelamentoContrato runat="server" ID="ucCancelamentoContrato" />
         </div>

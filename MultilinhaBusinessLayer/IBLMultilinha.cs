@@ -12,9 +12,12 @@ namespace MultilinhaBusinessLayer
     public interface IBLMultilinha
     {
         [OperationContract]
-        MensagemOutput<List<string>> CL55Request();
+        MensagemOutput<List<string>> CL55Request(int nCliente, ABUtil.ABCommandArgs abargs);
 
         [OperationContract]
-        MensagemOutput<List<string>> LM31Request();
+        MensagemOutput<LM31_CatalogoProdutoML> LM31Request(LM31_CatalogoProdutoML _lm31, ABUtil.ABCommandArgs abargs, string accao);
+
+        [OperationContract]
+        MensagemOutput<LM33_ContratoML> LM33Request(LM33_ContratoML _LM33, ABUtil.ABCommandArgs abargs, string accao);
     }
 }

@@ -31,6 +31,15 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// dvError control.
         /// </summary>
         /// <remarks>
@@ -121,13 +130,22 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.LinkButton lblTransactionD;
         
         /// <summary>
-        /// lm33C control.
+        /// MC33C control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lm33C;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MC33C;
+        
+        /// <summary>
+        /// upMC03 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upMC03;
         
         /// <summary>
         /// camposChave control.
@@ -544,13 +562,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl bklindicadorrenovacao;
         
         /// <summary>
-        /// ddlIndicadorRenovacao control.
+        /// ddlIndRenovacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlIndicadorRenovacao;
+        protected global::System.Web.UI.WebControls.DropDownList ddlIndRenovacao;
         
         /// <summary>
         /// bklprazorenovacao control.
@@ -562,13 +580,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl bklprazorenovacao;
         
         /// <summary>
-        /// txtprazorenovacao control.
+        /// txtPrazoRenovacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtprazorenovacao;
+        protected global::System.Web.UI.WebControls.TextBox txtPrazoRenovacao;
         
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -607,13 +625,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl bklndiasincumprimento;
         
         /// <summary>
-        /// txtndiasincumprimento control.
+        /// txtNDiasIncumprimento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtndiasincumprimento;
+        protected global::System.Web.UI.WebControls.TextBox txtNDiasIncumprimento;
         
         /// <summary>
         /// reqndiasincumprimento control.

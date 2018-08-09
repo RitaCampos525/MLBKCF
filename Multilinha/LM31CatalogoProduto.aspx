@@ -27,7 +27,7 @@
         <div class="row titleTransaction menu">
             <ul>
                 <li id="liPrameterizacao" runat="server" class=" ">
-                    <asp:LinkButton CssClass="atab " ID="lbPrameterizacao" Enabled="false" runat="server" Text="Parameterização de Multilinha"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lbPrameterizacao" Enabled="false" runat="server" Text="Parametrização de Multilinha"></asp:LinkButton>
                 </li>
                 <li id="liModificacao" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lbModificacao" Enabled="false" runat="server" Text="Modificação de Catálogo Multilinha"></asp:LinkButton>

@@ -157,94 +157,130 @@ namespace MultilinhasDataLayer
         }
 
         BCDWSProxy.LM33CONTRATOMLRequest LM33 = new BCDWSProxy.LM33CONTRATOMLRequest();
-        //public BCDWSProxy.LM31Transaction LM31Request(ABUtil.ABCommandArgs AbArgs, LM31_CatalogoProdutoML _lm31, string accao)
-        //{
-        //    BCDWSProxy.LM31Transaction response = new BCDWSProxy.LM31Transaction();
+        public BCDWSProxy.LM33Transaction LM33Request(ABUtil.ABCommandArgs AbArgs, LM33_ContratoML _lm33, string accao)
+        {
+            BCDWSProxy.LM33Transaction response = new BCDWSProxy.LM33Transaction();
 
-        //    LM31.BarclaysBankAccountSettings = new BCDWSProxy.BarclaysBankAccountSettings();
-        //    LM31.BarclaysBankAccountSettings.ApplicationID = ConfigurationManager.AppSettings["ApplicationID"];
-        //    LM31.BarclaysBankAccountSettings.UserRequester = AbArgs.USERNT;
-        //    LM31.BarclaysBankAccountSettings.ClientName = AbArgs.SN_HOSTNAME;
+            LM33.BarclaysBankAccountSettings = new BCDWSProxy.BarclaysBankAccountSettings();
+            LM33.BarclaysBankAccountSettings.ApplicationID = ConfigurationManager.AppSettings["ApplicationID"];
+            LM33.BarclaysBankAccountSettings.UserRequester = AbArgs.USERNT;
+            LM33.BarclaysBankAccountSettings.ClientName = AbArgs.SN_HOSTNAME;
 
-        //    LM31.input = new BCDWSProxy.LM31Input();
-        //    LM31.input.caccao = accao;
-        //    LM31.input.pedido_dados = false;
-        //    LM31.input.cprdml = _lm31.ProductCode;
-        //    LM31.input.csubprdml = _lm31.SubProductCode;
-        //    LM31.input.cdescprd = _lm31.SubProductDescription;
-        //    LM31.input.dincomer = _lm31.DataInicioComercializacao.ToString();
-        //    LM31.input.dficomer = _lm31.DataInicioComercializacao.ToString();
-        //    LM31.input.przmin = _lm31.PrazoMinimo.ToString();
-        //    LM31.input.przmax = _lm31.PrazoMaximo.ToString();
-        //    LM31.input.nmprdat = _lm31.NumeroMinimoProdutos.ToString();
-        //    LM31.input.lmtmincr = _lm31.LimiteMinimoCredito;
-        //    LM31.input.lmtmaxcr = _lm31.LimiteMaximoCredito;
-        //    LM31.input.estparm = _lm31.Estado;
-        //    LM31.input.nmdiainc = _lm31.NDiasIncumprimento.ToString();
-        //    LM31.input.idrenov = _lm31.IndRenovacao.ToString();
-        //    LM31.input.percobcom = _lm31.PeriocidadeCobranca;
-        //    LM31.input.przrenov = _lm31.PrazoRenovacao.ToString();
-        //    LM31.input.ndpreavi = _lm31.NDiasPreAviso.ToString();
+            LM33.input = new BCDWSProxy.LM33Input();
+            LM33.input.caccao = accao;
+            LM33.input.pedido_dados = false;
+         
+            LM33.input.cbalcao = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(0, 2);
+            LM33.input.cprod = _lm33.Produtoml;
+            LM33.input.cta = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(5, 6);
+            LM33.input.dgt = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(11, 1);
+            LM33.input.cbalcaodo = string.IsNullOrEmpty(_lm33.ncontado) ? "" : _lm33.ncontado.Split('-')[0];
+            LM33.input.cproddo = string.IsNullOrEmpty(_lm33.ncontado) ? "" : _lm33.ncontado.Split('-')[1].Replace("-","").Trim().Substring(0,2);
+            LM33.input.ctado = string.IsNullOrEmpty(_lm33.ncontado) ? "" : _lm33.ncontado.Split('-')[1].Replace("-", "").Trim().Substring(2, 6);
+            LM33.input.dgtdo = string.IsNullOrEmpty(_lm33.ncontado) ? "" : _lm33.ncontado.Split('-')[1].Replace("-", "").Trim().Substring(8, 1);
+            //LM33.input.cusrtab
+            LM33.input.csubprdml = _lm33.Subprodutoml;
+            LM33.input.dtfimctr = _lm33.datafimcontrato.ToString("yyyyMMdd");
+            LM33.input.dtinctr = _lm33.datainiciocontrato.ToString("yyyyMMdd");
+            LM33.input.dtprocess = _lm33.dataProcessamento.ToString("yyyyMMdd");
+            LM33.input.dtpxcobcom = _lm33.dataproximacobrancagestcontrato.ToString("yyyyMMdd");
+            LM33.input.dtpxcobrenov = _lm33.dataproximacobrancagestrenovacao.ToString("yyyyMMdd");
+            LM33.input.dtrenov = _lm33.datarenovacao.ToString("yyyyMMdd");
+            LM33.input.estctr = _lm33.EstadoContrato;
+            LM33.input.grmoros = _lm33.graumorosidade.ToString();
+            LM33.input.idrenov = _lm33.IndRenovacao == true ? "S" : "N";
+            LM33.input.idwrkflw = _lm33.idproposta;
+            LM33.input.indcancel = _lm33.indicadorAcaoCancelamento == true ? "S" : "N";
+            LM33.input.indenvcar = _lm33.indicadorAcaoEnvioCartas == true ? "S" : "N";
+            LM33.input.indsimul = _lm33.indicadorAcaoSimulacao == true ? "S" : "N";
+            LM33.input.limgloml = _lm33.limiteglobalmultilinha;
+            LM33.input.limrisass = _lm33.sublimiteriscoAssinatura;
+            LM33.input.limriscom = _lm33.sublimitriscoComercial;
+            LM33.input.limrisfin = _lm33.sublimiteriscoFinanceiro;
+            LM33.input.ndpreavi = _lm33.NDiasPreAviso.ToString();
+            LM33.input.nmdincinb = _lm33.NDiasIncumprimento.ToString();
+            LM33.input.nmincontrato = _lm33.NMinutaContrato.ToString();
+            LM33.input.percobcom = _lm33.PeriocidadeCobrancagestcontrato;
+            LM33.input.percobrenov = _lm33.PeriocidadeCobrancagestRenovacao;
+            LM33.input.przctr = _lm33.prazocontrato.ToString();
+            LM33.input.przrenov = _lm33.prazorenovacao.ToString();
+            LM33.input.tplriscass = _lm33.tipologiaRiscoA;
+            LM33.input.tplrisccom = _lm33.tipologiaRiscoC;
+            LM33.input.tplriscfin = _lm33.tipologiaRiscoF;
+            LM33.input.vrcomabert = _lm33.comissaoabertura;
+            LM33.input.vrcomgestc = _lm33.comissaogestaocontrato;
+            LM33.input.vrcomrenov = _lm33.comissaorenovacao;
+            LM33.input.vrimpabert = _lm33.valorimpostocomabert;
+            LM33.input.vrimpctr = _lm33.valorimpostocomgestcontrato;
+            LM33.input.vrimprenov = _lm33.valorimpostocomgestrenovacao;
+            LM33.input.zcliente = _lm33.Cliente.ToString();
+            LM33.input.basincabert = _lm33.baseincidenciacomabert;
+            LM33.input.basincctr = _lm33.baseincidenciacomgestcontrato;
+            LM33.input.basincrenov = _lm33.baseincidenciacomgestrenovacao;
+   
 
-        //    List<BCDWSProxy.LM31Row1> lstRow1 = new List<BCDWSProxy.LM31Row1>();
-        //    BCDWSProxy.LM31Row1 row1 = null;
+            List<BCDWSProxy.LM33Row1> lstRow1 = new List<BCDWSProxy.LM33Row1>();
+            BCDWSProxy.LM33Row1 row1 = null;
 
-        //    foreach (var f in _lm31.produtosF)
-        //    {
-        //        row1.caccao = accao;
-        //        row1.pedido_dados = false;
-        //        row1.codprod_f_l = f.produto;
-        //        row1.codtplo_f_l = f.tipologia;
-        //        row1.famprod_f_l = f.familia;
-        //        row1.subprod_f_l = f.subproduto;
-        //    }
+            foreach (var f in _lm33.produtosRiscoF)
+            {
+                BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
+                row1.caccao = accao;
+                row1.pedido_dados = false;
+                row1.codprod_f_l = f.prodsubproduto.Substring(0,2);
+                row1.codtplo_f_l = f.tipologia;
+                row1.famprod_f_l = f.familiaproduto;
+                row1.subprod_f_l = f.prodsubproduto.Substring(2,2);
+            }
 
-        //    foreach (var a in _lm31.produtosA)
-        //    {
-        //        row1.caccao = accao;
-        //        row1.pedido_dados = false;
-        //        row1.codprod_a_l = a.produto;
-        //        row1.codtplo_a_l = a.tipologia;
-        //        row1.famprod_a_l = a.familia;
-        //        row1.subprod_a_l = a.subproduto;
-        //    }
+            foreach (var a in _lm33.ProdutosRiscoAssinatura)
+            {
+                BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
+                row1.caccao = accao;
+                row1.pedido_dados = false;
+                row1.codprod_a_l = a.prodsubproduto.Substring(0, 2);
+                row1.codtplo_a_l = a.tipologia;
+                row1.famprod_a_l = a.familiaproduto;
+                row1.subprod_a_l = a.prodsubproduto.Substring(2, 2);
+            }
 
-        //    foreach (var c in _lm31.produtosC)
-        //    {
-        //        row1.caccao = accao;
-        //        row1.pedido_dados = false;
-        //        row1.codprod_c_l = c.produto;
-        //        row1.codtplo_c_l = c.tipologia;
-        //        row1.famprod_c_l = c.familia;
-        //        row1.subprod_c_l = c.subproduto;
-        //    }
+            foreach (var c in _lm33.produtosRiscoC)
+            {
+                BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
+                row1.caccao = accao;
+                row1.pedido_dados = false;
+                row1.codprod_c_l = c.prodsubproduto.Substring(0, 2); ;
+                row1.codtplo_c_l = c.tipologia;
+                row1.famprod_c_l = c.familiaproduto;
+                row1.subprod_c_l = c.prodsubproduto.Substring(2, 2);
+            }
 
-        //    LM31.input.Row1 = lstRow1.ToArray();
-        //    BCDWSProxy.BarclaysBTSSoapClient client = new BCDWSProxy.BarclaysBTSSoapClient();
-        //    bool bRetry = false;
-        //    atempt = 0;
-        //    do
-        //    {
-        //        try
-        //        {
-        //            WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, MultilinhasObjects.LogTypeName.WsSoapRequest, LM31.input.SerializeToString(), AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+            LM33.input.Row1 = lstRow1.ToArray();
+            BCDWSProxy.BarclaysBTSSoapClient client = new BCDWSProxy.BarclaysBTSSoapClient();
+            bool bRetry = false;
+            atempt = 0;
+            do
+            {
+                try
+                {
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, MultilinhasObjects.LogTypeName.WsSoapRequest, LM33.input.SerializeToString(), AbArgs.USERNT, AbArgs.SN_HOSTNAME);
 
-        //            response = client.LM31CATALOGOML(LM31.BarclaysBankAccountSettings, LM31.input);
-        //            string sresponse = response.SerializeToString();
+                    response = client.LM33CONTRATOML(LM33.BarclaysBankAccountSettings, LM33.input);
+                    string sresponse = response.SerializeToString();
 
-        //            WriteLog.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.WsSoapRequest, sresponse, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
-        //            atempt++;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.WsSoapResponse, ex, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
-        //            response.Erro = new BCDWSProxy.TransactionError();
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.WsSoapRequest, sresponse, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                    atempt++;
+                }
+                catch (Exception ex)
+                {
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.WsSoapResponse, ex, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                    response.Erro = new BCDWSProxy.TransactionError();
 
-        //        }
-        //    } while (bRetry && atempt <= 1);
+                }
+            } while (bRetry && atempt <= 1);
 
-        //    return response;
-        //}
+            return response;
+        }
 
         internal static bool SelectLogonUser(ABUtil.ABCommandArgs AbArgs)
         {

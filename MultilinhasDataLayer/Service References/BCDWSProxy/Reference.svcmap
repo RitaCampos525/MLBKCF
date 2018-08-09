@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="297027b4-fce1-4abb-ba8e-402dac5f09df" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f5381686-a6aa-4bbd-9e5b-0a339926aba1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,8 +21,8 @@
     <MetadataSource Address="http://localhost:8090/bcdws.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="bcdws.wsdl" MetadataType="Wsdl" ID="83477695-5003-47f9-9ab7-7399ce6a7e5d" SourceId="1" SourceUrl="http://localhost:8090/bcdws.asmx?wsdl" />
-    <MetadataFile FileName="bcdws.disco" MetadataType="Disco" ID="414f12ad-7415-4a01-81f1-b68fcef57259" SourceId="1" SourceUrl="http://localhost:8090/bcdws.asmx?disco" />
+    <MetadataFile FileName="bcdws.wsdl" MetadataType="Wsdl" ID="98937492-4408-44ef-8dde-0afbd82f176a" SourceId="1" SourceUrl="http://localhost:8090/bcdws.asmx?wsdl" />
+    <MetadataFile FileName="bcdws.disco" MetadataType="Disco" ID="884fa530-800b-401b-a475-a2e28990fe9f" SourceId="1" SourceUrl="http://localhost:8090/bcdws.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

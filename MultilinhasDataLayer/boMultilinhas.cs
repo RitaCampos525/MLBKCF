@@ -265,11 +265,79 @@ namespace MultilinhasDataLayer
             return response;
         }
 
+        public LM31_CatalogoProdutoML SearchLM31(string prod, int subprod)
+        {
+            return new LM31_CatalogoProdutoML()
+            {
+                NDiasIncumprimento = 2,
+                IndRenovacao = "N",
+                NDiasPreAviso = 60,
+                PrazoRenovacao = 3,
+                NumeroMinimoProdutos = 5,
+                produtosF = new List<LM31_CatalogoProdutoML.ProdutoRisco>()
+                {
+                    new LM31_CatalogoProdutoML.ProdutoRisco
+                    {
+                        familia = ArvoreFamiliaProdutos.FamiliaProdutos.F_AdiantamentosIVA.descFamProd,
+                        produto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FirstOrDefault(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_AdiantamentosIVA.descFamProd).produto,
+                        subproduto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FirstOrDefault(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_AdiantamentosIVA.descFamProd).subproduto,
+                        tipologia = "F",
+                        descritivo = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FirstOrDefault(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_AdiantamentosIVA.descFamProd).descricao,
+                    },
+                     new LM31_CatalogoProdutoML.ProdutoRisco
+                    {
+                        familia = ArvoreFamiliaProdutos.FamiliaProdutos.F_AdiantamentosIVA.descFamProd,
+                        produto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_AdiantamentosIVA.descFamProd).produto,
+                        subproduto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_AdiantamentosIVA.descFamProd).subproduto,
+                        tipologia = "F",
+                        descritivo = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_AdiantamentosIVA.descFamProd).descricao,
+                    },
+                      new LM31_CatalogoProdutoML.ProdutoRisco
+                    {
+                        familia = ArvoreFamiliaProdutos.FamiliaProdutos.F_CreditoNegociosEmpresasMTL.descFamProd,
+                        produto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_CreditoNegociosEmpresasMTL.descFamProd).produto,
+                        subproduto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_CreditoNegociosEmpresasMTL.descFamProd).subproduto,
+                        tipologia = "F",
+                        descritivo = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_CreditoNegociosEmpresasMTL.descFamProd).descricao,
+                    },
+                      new LM31_CatalogoProdutoML.ProdutoRisco
+                    {
+                        familia = ArvoreFamiliaProdutos.FamiliaProdutos.F_FinanciamentoExportacaoSDocumentos.descFamProd,
+                        produto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FirstOrDefault(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_FinanciamentoExportacaoSDocumentos.descFamProd).produto,
+                        subproduto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FirstOrDefault(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_FinanciamentoExportacaoSDocumentos.descFamProd).subproduto,
+                        tipologia = "F",
+                        descritivo = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FirstOrDefault(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_FinanciamentoExportacaoSDocumentos.descFamProd).descricao,
+                    },
+                       new LM31_CatalogoProdutoML.ProdutoRisco
+                    {
+                        familia = ArvoreFamiliaProdutos.FamiliaProdutos.F_FinanciamentoExportacaoSDocumentos.descFamProd,
+                        produto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_FinanciamentoExportacaoSDocumentos.descFamProd).produto,
+                        subproduto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_FinanciamentoExportacaoSDocumentos.descFamProd).subproduto,
+                        tipologia = "F",
+                        descritivo = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.F_FinanciamentoExportacaoSDocumentos.descFamProd).descricao,
+                    },
+                },
+                produtosA = new List<LM31_CatalogoProdutoML.ProdutoRisco>()
+                {
+                    new LM31_CatalogoProdutoML.ProdutoRisco
+                    {
+                        familia = ArvoreFamiliaProdutos.FamiliaProdutos.A_GarantiasBancTécnicas.descFamProd,
+                        produto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.A_GarantiasBancTécnicas.descFamProd).produto,
+                        subproduto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.A_GarantiasBancTécnicas.descFamProd).subproduto,
+                        tipologia = "A",
+                        descritivo = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA).FindLast(x => x.familiaProduto == ArvoreFamiliaProdutos.FamiliaProdutos.A_GarantiasBancTécnicas.descFamProd).descricao,
+                    }
+                }
+                
+               
+            };
+        }
+
         public LM33_ContratoML SearchML03(int _cliente, string _idworkflow)
         {
             return new LM33_ContratoML()
             {
-                Cliente = _cliente,
+                Cliente = _cliente.ToString(),
                 datainiciocontrato = Convert.ToDateTime("2018-08-01"),
                 datafimcontrato = Convert.ToDateTime("2019-09-10"),
                 dataProcessamento = Convert.ToDateTime("2018-08-21"),
@@ -278,14 +346,14 @@ namespace MultilinhasDataLayer
                 Descritivo = "ML - Base",
                 EstadoContrato = "PENDENTE",
                 graumorosidade = 9999,
-                idmultilinha = 000002,
+                idmultilinha = "000002",
                 idproposta = string.IsNullOrEmpty(_idworkflow) ? "12351" : _idworkflow,
                 indicadorAcaoCancelamento = false,
                 indicadorAcaoEnvioCartas = false,
-                indicadorrenovacao = false,
+                IndRenovacao = false,
                 limiteglobalmultilinha = Convert.ToDecimal(4000000000.00),
                 ncontado = "33412325317",
-                ndiasincumprimento = 70,
+                NDiasIncumprimento = 70,
                 Nome = "CLIENTE 01",
                 PeriocidadeCobrancagestcontrato = MultilinhasObjects.ML_Objectos.GetPeriocidade()[0].Code,
                 prazocontrato = 1,

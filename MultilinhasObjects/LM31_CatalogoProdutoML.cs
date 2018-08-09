@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MultilinhasObjects
 {
+    [Serializable]
     public class LM31_CatalogoProdutoML
     {
 
@@ -31,6 +32,7 @@ namespace MultilinhasObjects
         public List<ProdutoRisco> produtosC { get; set; }
         public List<ProdutoRisco> produtosF { get; set; }
 
+        [Serializable]
         public class ProdutoRisco
         {
             public string familia { get; set; }

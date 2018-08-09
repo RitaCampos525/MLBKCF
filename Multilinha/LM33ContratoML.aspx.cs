@@ -31,8 +31,8 @@ namespace Multilinha
                 linqsComissoes();
 
                 //dropdownlists
-                ddlIndicadorRenovacao.DataSource = ML_Objectos.GetIndicadorRenovacao();
-                ddlIndicadorRenovacao.DataBind();
+                ddlIndRenovacao.DataSource = ML_Objectos.GetIndicadorRenovacao();
+                ddlIndRenovacao.DataBind();
                 ddlPeriocidadeCobrancagestcontrato.DataSource = ML_Objectos.GetPeriocidade();
                 ddlPeriocidadeCobrancagestcontrato.DataBind();
                 ddlPeriocidadeCobrancagestRenovacao.DataSource = ML_Objectos.GetPeriocidade();
@@ -83,8 +83,7 @@ namespace Multilinha
                         divIDSimulacao.Visible = false;
                         divIDMultilinha.Visible = false;
                         divProduto.Visible = true;
-                        txtNMinutaContrato.Visible = false;
-                        txtidmultilinha.Visible = false;
+                    
 
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
@@ -108,7 +107,7 @@ namespace Multilinha
                         lblTransactionD.Enabled = true;
                         //lblTransactionE.Enabled = true;
 
-                        Helper.AddRemoveHidden(true, lm33C); //hide controls criar
+                        Helper.AddRemoveHidden(true, MC33C); //hide controls criar
                         Helper.AddRemoveHidden(false, ml03V_denuncia); //Show controls visualizar
                         ml03V_denuncia.Visible = true;
 
@@ -175,36 +174,35 @@ namespace Multilinha
             switch (op.ToUpper())
             {
                 case "C":
-
-                    //Chamada ML03 para obtencao dos dados do contrato da proposta workflow
-                    int ncliente;
-                    Int32.TryParse(txtCliente.Text, out ncliente);
-                    LM33_ContratoML LM33C = TAT2.SearchML03(ncliente, txtIdworkflow.Text);
-
-                    Helper.CopyObjectToControls(this.Page, LM33C);
+               
                     Helper.SetEnableControler(camposChave, false);
                     Helper.AddRemoveHidden(false, dpOK);
 
                     //Chamada CL55 para Get DOs Cliente
-
+                    int ncliente;
+                    Int32.TryParse(txtCliente.Text, out ncliente);
                     MensagemOutput<List<string>> trans = bl.CL55Request(ncliente, abargs);
-                    ddlncontado.DataSource = bl.CL55Request(ncliente, abargs).ResultResult.AsEnumerable();
-                    ddlncontado.DataBind();
-                    if(trans.mensagem != null)
+
+                    if (trans.mensagem != null)
                     {
                         lberror.Text = trans.mensagem;
                         lberror.Visible = true;
                         lberror.ForeColor = System.Drawing.Color.Red;
                     }
 
-                    //Save in view state Produtos e SubProdutos
-                    ViewState["LM33C"] = LM33C;
+                    //BIND DROPDDOWNLIST
+                    ddlncontado.DataSource = bl.CL55Request(ncliente, abargs).ResultResult.AsEnumerable();
+                    ddlncontado.DataBind();
+
+                    //Chamada ao Catalogo!
+                    LM31_CatalogoProdutoML res = TAT2.SearchLM31("01", 01);
+                    Helper.CopyObjectToControls(this, res);
+
+                    ViewState["LM31"] = res;
 
                     break;
 
                 case "V":
-
-
                     //Call ML03 para preencher o ecra com os dados
                     Int32.TryParse(txtCliente.Text, out ncliente);
                     LM33_ContratoML M03V = TAT2.SearchML03(ncliente, txtIdworkflow.Text);
@@ -329,21 +327,21 @@ namespace Multilinha
                     Helper.AddRemoveHidden(false, divVersoesML);
 
 
-                    //Call M03 (ViewState) para obtencao de produtos do produto ML introduzido! E seleccionar CP correspondentes
-                    LM33_ContratoML LM23 = ViewState["LM33C"] as LM33_ContratoML;
+                    //Call LM31 (viewState) para obtencao de produtos do produto ML introduzido! E seleccionar CP correspondentes
+                    LM31_CatalogoProdutoML LM31 = ViewState["LM31"] as LM31_CatalogoProdutoML;
 
                     #region tabelas de produtos de riscos
 
                     //Get Produtos
 
                     List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM23, true);
+                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM31, true);
 
                     List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM23, true);
+                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM31, true);
 
                     List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM23, true);
+                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM31, true);
 
                     #endregion
 
@@ -363,7 +361,7 @@ namespace Multilinha
 
                 //Validações
                 //1º: Verificar que o nº minimo de produtos está selecionado
-                int nMinimoProdutosAtivar = 2;
+                int nMinimoProdutosAtivar;
                 Int32.TryParse(txtNumeroMinimoProdutos.Text, out nMinimoProdutosAtivar);
                 bool val = validacaoCP(nMinimoProdutosAtivar);
 
@@ -371,10 +369,26 @@ namespace Multilinha
                 if (val && val2)
                 {
                     //Call LM33 - C
+                    LM33_ContratoML _LM33 = new LM33_ContratoML();
+                    Helper.CopyPropertiesTo(MC33C, _LM33);
 
-                    lberror.Text = Constantes.Mensagens.LM33ContratoCriado;
-                    lberror.ForeColor = System.Drawing.Color.Green;
-                    lberror.Visible = true;
+                    getSublimites(_LM33);
+
+                    ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                    MensagemOutput<LM33_ContratoML> response = bl.LM33Request(_LM33, abargs, "C");
+
+                    if (response.ResultResult != null && response.ResultResult.Cliente != null)
+                    {
+                        lberror.Text = Constantes.Mensagens.LM33ContratoCriado;
+                        lberror.Visible = true;
+                        lberror.ForeColor = System.Drawing.Color.Green;
+                    }
+                    else
+                    {
+                        lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                        lberror.Visible = true;
+                        lberror.ForeColor = System.Drawing.Color.Red;
+                    }
 
                     Helper.SetEnableControler(this, false);
                     btnSeguinte.Enabled = true;
@@ -388,7 +402,7 @@ namespace Multilinha
             {
 
                 LM34_SublimitesML lm34 = new LM34_SublimitesML();
-                Helper.CopyPropertiesTo(lm33C, lm34);
+                Helper.CopyPropertiesTo(MC33C, lm34);
 
                 //zona produtos
                 //adicaoCP(Constantes.tipologiaRisco.RF, lvProdutosRisco, lm34);
@@ -437,6 +451,79 @@ namespace Multilinha
 
         }
 
+        protected void listViewProdutos(List<ArvoreFamiliaProdutos> lstF, string tipologia, ListView lst, LM31_CatalogoProdutoML LM31, bool mudaCG)
+        {
+            List<itemTreeProduto> _lst = new List<itemTreeProduto>();
+
+            //Selecionar familia produtos
+            IEnumerable<string> familiaprodutos = Enumerable.Empty<string>();
+            if (tipologia == Constantes.tipologiaRisco.RF)
+            {
+                if (LM31.produtosF != null && LM31.produtosF.Count > 0)
+                {
+                    familiaprodutos = LM31.produtosF.Select(x => x.familia).Distinct();
+                }
+            }
+            if (tipologia == Constantes.tipologiaRisco.RA)
+            {
+                if (LM31.produtosA != null && LM31.produtosA.Count > 0)
+                {
+                    familiaprodutos = LM31.produtosA.Select(x => x.familia).Distinct();
+                }
+            }
+            if (tipologia == Constantes.tipologiaRisco.RC)
+            {
+                if (LM31.produtosC != null && LM31.produtosC.Count > 0)
+                {
+                    familiaprodutos = LM31.produtosC.Select(x => x.familia).Distinct();
+                }
+            }
+            //Adicionar item à lista
+            foreach (var row in familiaprodutos)
+            {
+                itemTreeProduto item = new itemTreeProduto();
+
+                item.produto = row;
+                //Selecciona
+                item.isGeral = true;
+                item.cGEnable = mudaCG;
+                item.cPEnable = false; //fecha seleccao as condicoes particulares
+
+                _lst.Add(item);
+
+                //Procura subprodutos da familia
+                var dtSubProdutos = LM31.produtosA.FindAll(x => x.familia == row);
+                if(dtSubProdutos.Count < 1)
+                {
+                   dtSubProdutos = LM31.produtosF.FindAll(x => x.familia == row);
+                }
+                if (dtSubProdutos.Count < 1)
+                {
+                    dtSubProdutos = LM31.produtosC.FindAll(x => x.familia == row);
+                }
+
+                //nivel 2
+                for (int i = 0; i < dtSubProdutos.Count; i++)
+                {
+                    itemTreeProduto subitem = new itemTreeProduto();
+
+                    subitem.subproduto = dtSubProdutos[i].produto.ToString() + dtSubProdutos[i].subproduto.ToString() +
+                        " - " + dtSubProdutos[i].descritivo.ToString(); //(codigo + descritivo)
+
+                    subitem.isParticular = false;
+                    subitem.isGeral = false;
+
+                    subitem.cGEnable = false;  //fecha seleccao as condicoes gerais
+                    subitem.cPEnable = true;  //abre seleccao as condicoes particulares
+
+                    _lst.Add(subitem);
+                }
+            }
+
+            lst.DataSource = _lst;
+            lst.DataBind();
+        }
+
         protected void listViewProdutos(List<ArvoreFamiliaProdutos> lstF, string tipologia, ListView lst, LM33_ContratoML LM33, bool mudaCG)
         {
             List<itemTreeProduto> _lst = new List<itemTreeProduto>();
@@ -465,33 +552,6 @@ namespace Multilinha
                 item.isGeral = true;
                 item.cGEnable = mudaCG;
                 item.cPEnable = false; //fecha seleccao as condicoes particulares
-
-                //if (tipologia == Constantes.tipologiaRisco.RF)
-                //{
-                //    if (LM33.produtosRiscoF != null && LM33.produtosRiscoF.Exists(x => x.familiaproduto == row))
-                //    {
-                //        //Se encontra produto na LM33, seleccionada e nao deixa modificar
-                //        item.isGeral = true;
-                //        item.cGEnable = false;
-                //    }
-                //}
-                //if (tipologia == Constantes.tipologiaRisco.RA)
-                //{
-                //    if (LM33.produtosRiscoC != null && LM33.produtosRiscoC.Exists(x => x.familiaproduto == row))
-                //    {
-                //        item.isGeral = true;
-                //        item.cGEnable = false;
-                //    }
-                //}
-                //if (tipologia == Constantes.tipologiaRisco.RC)
-                //{
-                //    if (LM33.ProdutosRiscoAssinatura != null && LM33.ProdutosRiscoAssinatura.Exists(x => x.familiaproduto == row))
-                //    {
-                //        item.isGeral = true;
-                //        item.cGEnable = false;
-                //    }
-                //}
-
 
                 _lst.Add(item);
 
@@ -735,6 +795,64 @@ namespace Multilinha
                 reqCliente.Enabled = true;
 
             }
+        }
+
+        internal void getSublimites(LM33_ContratoML _lm33)
+        {
+            _lm33.ProdutosRiscoAssinatura = new List<LM33_ContratoML.ProdutosRiscoA>();
+            _lm33.produtosRiscoC = new List<LM33_ContratoML.ProdutoRiscoC>();
+            _lm33.produtosRiscoF = new List<LM33_ContratoML.ProdutoRiscoF>();
+
+            foreach(var fm in lvProdutosRisco.Items)
+            {
+                CheckBox ch = fm.FindControl("lbCParticular") as CheckBox;
+                if (ch.Checked)
+                {
+                    _lm33.produtosRiscoF.Add(new LM33_ContratoML.ProdutoRiscoF
+                    {
+                        familiaproduto = (fm.FindControl("lbProduto") as Label).Text,
+                        prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
+                        tipologia = "A",
+                        descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1],
+                    });
+                }
+            }
+            foreach (var fm in lvProdutosRiscoAssinatura.Items)
+            {
+                CheckBox ch = fm.FindControl("lbCParticular") as CheckBox;
+                if (ch.Checked)
+                {
+                    _lm33.ProdutosRiscoAssinatura.Add(new LM33_ContratoML.ProdutosRiscoA
+                    {
+                        familiaproduto = (fm.FindControl("lbProduto") as Label).Text,
+                        prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
+                        tipologia = "A",
+                        descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1],
+                    });
+                }
+            }
+            foreach (var fm in lvProdutosRiscoComercial.Items)
+            {
+                CheckBox ch = fm.FindControl("lbCParticular") as CheckBox;
+                if (ch.Checked)
+                {
+                    _lm33.produtosRiscoC.Add(new LM33_ContratoML.ProdutoRiscoC
+                    {
+                        familiaproduto = (fm.FindControl("lbProduto") as Label).Text,
+                        prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
+                        tipologia = "A",
+                        descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1].Replace("-", ""),
+                    });
+                }
+            }
+        }
+
+        protected void txtprazocontrato_TextChanged(object sender, EventArgs e)
+        {
+            DateTime dtInicio = Convert.ToDateTime(txtdatainiciocontrato.Text);
+            int prazoContrato = Convert.ToInt32(txtprazocontrato.Text);
+
+            txtdatafimcontrato.Text = dtInicio.AddMonths(prazoContrato).ToString("yyyy-MM-dd");
         }
     }
 }
