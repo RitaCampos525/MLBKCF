@@ -25,8 +25,11 @@ namespace MultilinhaBusinessLayer
             {
                 foreach (var a in response.Row1)
                 {
-                    string nConta = string.Format("{0}-{1}{2}{3}", a.cbalcao_l, a.cproduto_l, a.cnumecta_l, a.cdigicta_l);
-                    lst.Add(nConta);
+                    if (a.ctitular_l.Equals("1") && a.ztitular_l.Equals("00")) //1 titular e 1 interveniente
+                    {
+                        string nConta = string.Format("{0}-{1}{2}{3}", a.cbalcao_l, a.cproduto_l, a.cnumecta_l, a.cdigicta_l);
+                        lst.Add(nConta);
+                    }
                 }
             }
 
@@ -152,7 +155,7 @@ namespace MultilinhaBusinessLayer
                 obj.PeriocidadeCobrancagestcontrato = response.output.percobcom;
                 obj.PeriocidadeCobrancagestRenovacao = response.output.percobrenov;
                 obj.prazocontrato = Convert.ToInt32(response.output.przctr);
-                obj.prazorenovacao = Convert.ToInt32(response.output.przrenov);
+                obj.PrazoRenovacao = Convert.ToInt32(response.output.przrenov);
                 obj.Produtoml = response.output.cprod;
                 obj.sublimiteriscoAssinatura = response.output.limrisass;
                 obj.sublimiteriscoFinanceiro = response.output.limrisfin;

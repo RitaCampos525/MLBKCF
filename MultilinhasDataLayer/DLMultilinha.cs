@@ -170,7 +170,7 @@ namespace MultilinhasDataLayer
             LM33.input.caccao = accao;
             LM33.input.pedido_dados = false;
          
-            LM33.input.cbalcao = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(0, 2);
+            LM33.input.cbalcao = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(0, 3);
             LM33.input.cprod = _lm33.Produtoml;
             LM33.input.cta = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(5, 6);
             LM33.input.dgt = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(11, 1);
@@ -203,7 +203,7 @@ namespace MultilinhasDataLayer
             LM33.input.percobcom = _lm33.PeriocidadeCobrancagestcontrato;
             LM33.input.percobrenov = _lm33.PeriocidadeCobrancagestRenovacao;
             LM33.input.przctr = _lm33.prazocontrato.ToString();
-            LM33.input.przrenov = _lm33.prazorenovacao.ToString();
+            LM33.input.przrenov = _lm33.PrazoRenovacao.ToString();
             LM33.input.tplriscass = _lm33.tipologiaRiscoA;
             LM33.input.tplrisccom = _lm33.tipologiaRiscoC;
             LM33.input.tplriscfin = _lm33.tipologiaRiscoF;
@@ -217,6 +217,7 @@ namespace MultilinhasDataLayer
             LM33.input.basincabert = _lm33.baseincidenciacomabert;
             LM33.input.basincctr = _lm33.baseincidenciacomgestcontrato;
             LM33.input.basincrenov = _lm33.baseincidenciacomgestrenovacao;
+            LM33.input.nmprdat = _lm33.NumeroMinimoProdutos.ToString();
    
 
             List<BCDWSProxy.LM33Row1> lstRow1 = new List<BCDWSProxy.LM33Row1>();
@@ -225,34 +226,34 @@ namespace MultilinhasDataLayer
             foreach (var f in _lm33.produtosRiscoF)
             {
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
-                row1.caccao = accao;
-                row1.pedido_dados = false;
-                row1.codprod_f_l = f.prodsubproduto.Substring(0,2);
-                row1.codtplo_f_l = f.tipologia;
-                row1.famprod_f_l = f.familiaproduto;
-                row1.subprod_f_l = f.prodsubproduto.Substring(2,2);
+                _row1.caccao = accao;
+                _row1.pedido_dados = false;
+                _row1.codprod_f_l = f.prodsubproduto.Substring(0,2);
+                _row1.codtplo_f_l = f.tipologia;
+                _row1.famprod_f_l = f.familiaproduto;
+                _row1.subprod_f_l = f.prodsubproduto.Substring(2,2);
             }
 
             foreach (var a in _lm33.ProdutosRiscoAssinatura)
             {
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
-                row1.caccao = accao;
-                row1.pedido_dados = false;
-                row1.codprod_a_l = a.prodsubproduto.Substring(0, 2);
-                row1.codtplo_a_l = a.tipologia;
-                row1.famprod_a_l = a.familiaproduto;
-                row1.subprod_a_l = a.prodsubproduto.Substring(2, 2);
+                _row1.caccao = accao;
+                _row1.pedido_dados = false;
+                _row1.codprod_a_l = a.prodsubproduto.Substring(0, 2);
+                _row1.codtplo_a_l = a.tipologia;
+                _row1.famprod_a_l = a.familiaproduto;
+                _row1.subprod_a_l = a.prodsubproduto.Substring(2, 2);
             }
 
             foreach (var c in _lm33.produtosRiscoC)
             {
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
-                row1.caccao = accao;
-                row1.pedido_dados = false;
-                row1.codprod_c_l = c.prodsubproduto.Substring(0, 2); ;
-                row1.codtplo_c_l = c.tipologia;
-                row1.famprod_c_l = c.familiaproduto;
-                row1.subprod_c_l = c.prodsubproduto.Substring(2, 2);
+                _row1.caccao = accao;
+                _row1.pedido_dados = false;
+                _row1.codprod_c_l = c.prodsubproduto.Substring(0, 2); ;
+                _row1.codtplo_c_l = c.tipologia;
+                _row1.famprod_c_l = c.familiaproduto;
+                _row1.subprod_c_l = c.prodsubproduto.Substring(2, 2);
             }
 
             LM33.input.Row1 = lstRow1.ToArray();

@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Linq;
 using MultilinhasDataLayer.BCDWSProxy;
+using System.Globalization;
 
 namespace Multilinha
 {
@@ -38,7 +39,7 @@ namespace Multilinha
                 ddlPeriocidadeCobrancagestRenovacao.DataSource = ML_Objectos.GetPeriocidade();
                 ddlPeriocidadeCobrancagestRenovacao.DataBind();
                 //DataProcessamento
-                txtdataProcessamento.Text = dtfechas.ToString();
+                //txtdataProcessamento.Text = dtfechas.ToString();
 
                 string op = Request.QueryString["OP"] ?? "FF";
                 ViewState["OPLM33"] = op;
@@ -190,7 +191,7 @@ namespace Multilinha
                         lberror.ForeColor = System.Drawing.Color.Red;
                     }
 
-                    //BIND DROPDDOWNLIST
+                    //BIND DROPDDOWNLIST Contas DO
                     ddlncontado.DataSource = bl.CL55Request(ncliente, abargs).ResultResult.AsEnumerable();
                     ddlncontado.DataBind();
 
@@ -209,99 +210,77 @@ namespace Multilinha
 
                     Helper.CopyObjectToControls(this.Page, M03V);
 
-                    if (string.IsNullOrEmpty(M03V.idproposta))
-                    {
-                        lberror.Text = Constantes.Mensagens.LM33PropostaInexistente;
-                        return;
-                    }
+                    Helper.SetEnableControler(camposChave, true);
+                    //btnLimpar_Click(sender, e); 
+                    Helper.AddRemoveHidden(false, dpOK);
+                    Helper.SetEnableControler(dpOK, false);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                    Helper.SetEnableControler(divRiscoFinanceiro, false);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                    Helper.SetEnableControler(divRiscoAssinatura, false);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                    Helper.SetEnableControler(divRiscoComercial, false);
+                    Helper.AddRemoveHidden(false, dvtitleComissoes);
+                    Helper.SetEnableControler(divComissoes, false);
+                    Helper.SetEnableControler(divVersoesML, false);
+                    Helper.AddRemoveHidden(false, divVersoesML);
+                    Helper.AddRemoveHidden(false, hr4);
+                    //show fields acoes
+                    Helper.AddRemoveHidden(false, accoesfinais_criarml03);
+                    Helper.SetEnableControler(accoesfinais_criarml03, true);
 
-                    else
-                    {
-                        Helper.SetEnableControler(camposChave, true);
-                        //btnLimpar_Click(sender, e); 
-                        Helper.AddRemoveHidden(false, dpOK);
-                        Helper.SetEnableControler(dpOK, false);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
-                        Helper.SetEnableControler(divRiscoFinanceiro, false);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
-                        Helper.SetEnableControler(divRiscoAssinatura, false);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
-                        Helper.SetEnableControler(divRiscoComercial, false);
-                        Helper.AddRemoveHidden(false, dvtitleComissoes);
-                        Helper.SetEnableControler(divComissoes, false);
-                        Helper.SetEnableControler(divVersoesML, false);
-                        Helper.AddRemoveHidden(false, divVersoesML);
-                        Helper.AddRemoveHidden(false, hr4);
-                        //show fields acoes
-                        Helper.AddRemoveHidden(false, accoesfinais_criarml03);
-                        Helper.SetEnableControler(accoesfinais_criarml03, true);
+                    #region tabelas de produtos de riscos
 
-                        #region tabelas de produtos de riscos
+                    //Get Produtos
+                    // e Popular CG
 
-                        //Get Produtos
-                        // e Popular CG
+                    List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
+                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, M03V, false);
 
-                        List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, M03V, false);
+                    List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
+                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, M03V, false);
 
-                        List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, M03V, false);
+                    List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
+                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, M03V, false);
 
-                        List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, M03V, false);
-
-                        #endregion
-
-                    }
-
+                    #endregion
                     break;
 
                 case "M":
-
                     //CALL ML03
                     Int32.TryParse(txtCliente.Text, out ncliente);
                     LM33_ContratoML M03M = TAT2.SearchML03(ncliente, txtIdworkflow.Text);
 
                     Helper.CopyObjectToControls(this.Page, M03M);
 
-                    if (string.IsNullOrEmpty(M03M.idproposta))
-                    {
-                        lberror.Text = Constantes.Mensagens.LM33PropostaInexistente;
-                        return;
-                    }
-                    else
-                    {
-
-                        Helper.SetEnableControler(camposChave, false);
-                        //btnLimpar_Click(sender, e); //desabilita produto e subproduto
-                        Helper.AddRemoveHidden(false, dpOK);
-                       // Helper.AddRemoveHidden(false, hr1);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
-                        Helper.AddRemoveHidden(false, dvtitleComissoes);
-                        Helper.AddRemoveHidden(false, accoesfinais_criarml03);
-                        Helper.AddRemoveHidden(false, hr3);
-                        Helper.AddRemoveHidden(false, hr4);
-                        Helper.AddRemoveHidden(false, divVersoesML);
-                        btnConfirmar.Enabled = false;
+                    Helper.SetEnableControler(camposChave, false);
+                    Helper.AddRemoveHidden(false, dpOK);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                    Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                    Helper.AddRemoveHidden(false, dvtitleComissoes);
+                    Helper.AddRemoveHidden(false, accoesfinais_criarml03);
+                    Helper.AddRemoveHidden(false, hr3);
+                    Helper.AddRemoveHidden(false, hr4);
+                    Helper.AddRemoveHidden(false, divVersoesML);
+                    btnConfirmar.Enabled = false;
 
 
-                        #region tabelas de produtos de riscos
+                    #region tabelas de produtos de riscos
 
-                        //Get Produtos
-                        // e Popula CG e CP . Quando seleccionado ficam enable! Não é possivel deseleccionar
-                        List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, M03M, false);
+                    //Get Produtos
+                    // e Popula CG e CP . Quando seleccionado ficam enable! Não é possivel deseleccionar
+                    lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
+                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, M03M, false);
 
-                        List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, M03M, false);
+                    lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
+                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, M03M, false);
 
-                        List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, M03M, false);
+                    lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
+                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, M03M, false);
 
-                        #endregion
-                    }
+                    #endregion
+                    
                     break;
             }
         }
@@ -345,6 +324,11 @@ namespace Multilinha
 
                     #endregion
 
+                    //Call LM33 para obtencao do valor das comissoes do produto ML introduzido!
+                    LM33_ContratoML LM33 = TAT2.SearchML03(1004, "");
+                    Helper.CopyObjectToControls(this.MC33C, LM33);
+
+
                     break;
             }
         }
@@ -353,11 +337,6 @@ namespace Multilinha
         {
             if (Page.IsValid)
             {
-                //Selecção de alguns campos 
-                if (string.IsNullOrEmpty(txtdatafimcontrato.Text))
-                {
-                    txtdatafimcontrato.Text = "9999-12-31";
-                }
 
                 //Validações
                 //1º: Verificar que o nº minimo de produtos está selecionado
@@ -752,6 +731,56 @@ namespace Multilinha
 
         }
 
+        internal void getSublimites(LM33_ContratoML _lm33)
+        {
+            _lm33.ProdutosRiscoAssinatura = new List<LM33_ContratoML.ProdutosRiscoA>();
+            _lm33.produtosRiscoC = new List<LM33_ContratoML.ProdutoRiscoC>();
+            _lm33.produtosRiscoF = new List<LM33_ContratoML.ProdutoRiscoF>();
+
+            foreach (var fm in lvProdutosRisco.Items)
+            {
+                CheckBox ch = fm.FindControl("lbCParticular") as CheckBox;
+                if (ch.Checked)
+                {
+                    _lm33.produtosRiscoF.Add(new LM33_ContratoML.ProdutoRiscoF
+                    {
+                        familiaproduto = (fm.FindControl("lbProduto") as Label).Text,
+                        prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
+                        tipologia = "A",
+                        descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1],
+                    });
+                }
+            }
+            foreach (var fm in lvProdutosRiscoAssinatura.Items)
+            {
+                CheckBox ch = fm.FindControl("lbCParticular") as CheckBox;
+                if (ch.Checked)
+                {
+                    _lm33.ProdutosRiscoAssinatura.Add(new LM33_ContratoML.ProdutosRiscoA
+                    {
+                        familiaproduto = (fm.FindControl("lbProduto") as Label).Text,
+                        prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
+                        tipologia = "A",
+                        descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1],
+                    });
+                }
+            }
+            foreach (var fm in lvProdutosRiscoComercial.Items)
+            {
+                CheckBox ch = fm.FindControl("lbCParticular") as CheckBox;
+                if (ch.Checked)
+                {
+                    _lm33.produtosRiscoC.Add(new LM33_ContratoML.ProdutoRiscoC
+                    {
+                        familiaproduto = (fm.FindControl("lbProduto") as Label).Text,
+                        prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
+                        tipologia = "A",
+                        descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1].Replace("-", ""),
+                    });
+                }
+            }
+        }
+
         protected void btnLimpar_Click(object sender, EventArgs e)
         {
             //limpa e disable produto
@@ -797,59 +826,9 @@ namespace Multilinha
             }
         }
 
-        internal void getSublimites(LM33_ContratoML _lm33)
-        {
-            _lm33.ProdutosRiscoAssinatura = new List<LM33_ContratoML.ProdutosRiscoA>();
-            _lm33.produtosRiscoC = new List<LM33_ContratoML.ProdutoRiscoC>();
-            _lm33.produtosRiscoF = new List<LM33_ContratoML.ProdutoRiscoF>();
-
-            foreach(var fm in lvProdutosRisco.Items)
-            {
-                CheckBox ch = fm.FindControl("lbCParticular") as CheckBox;
-                if (ch.Checked)
-                {
-                    _lm33.produtosRiscoF.Add(new LM33_ContratoML.ProdutoRiscoF
-                    {
-                        familiaproduto = (fm.FindControl("lbProduto") as Label).Text,
-                        prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
-                        tipologia = "A",
-                        descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1],
-                    });
-                }
-            }
-            foreach (var fm in lvProdutosRiscoAssinatura.Items)
-            {
-                CheckBox ch = fm.FindControl("lbCParticular") as CheckBox;
-                if (ch.Checked)
-                {
-                    _lm33.ProdutosRiscoAssinatura.Add(new LM33_ContratoML.ProdutosRiscoA
-                    {
-                        familiaproduto = (fm.FindControl("lbProduto") as Label).Text,
-                        prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
-                        tipologia = "A",
-                        descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1],
-                    });
-                }
-            }
-            foreach (var fm in lvProdutosRiscoComercial.Items)
-            {
-                CheckBox ch = fm.FindControl("lbCParticular") as CheckBox;
-                if (ch.Checked)
-                {
-                    _lm33.produtosRiscoC.Add(new LM33_ContratoML.ProdutoRiscoC
-                    {
-                        familiaproduto = (fm.FindControl("lbProduto") as Label).Text,
-                        prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
-                        tipologia = "A",
-                        descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1].Replace("-", ""),
-                    });
-                }
-            }
-        }
-
         protected void txtprazocontrato_TextChanged(object sender, EventArgs e)
         {
-            DateTime dtInicio = Convert.ToDateTime(txtdatainiciocontrato.Text);
+            DateTime dtInicio = DateTime.ParseExact(txtdatainiciocontrato.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             int prazoContrato = Convert.ToInt32(txtprazocontrato.Text);
 
             txtdatafimcontrato.Text = dtInicio.AddMonths(prazoContrato).ToString("yyyy-MM-dd");

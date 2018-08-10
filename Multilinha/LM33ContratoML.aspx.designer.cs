@@ -40,6 +40,15 @@ namespace Multilinha {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// upMC03 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upMC03;
+        
+        /// <summary>
         /// dvError control.
         /// </summary>
         /// <remarks>
@@ -139,15 +148,6 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl MC33C;
         
         /// <summary>
-        /// upMC03 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upMC03;
-        
-        /// <summary>
         /// camposChave control.
         /// </summary>
         /// <remarks>
@@ -182,6 +182,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqCliente;
+        
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label3;
         
         /// <summary>
         /// txtNome control.

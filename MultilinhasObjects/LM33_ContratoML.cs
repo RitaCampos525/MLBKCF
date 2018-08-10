@@ -20,7 +20,7 @@ namespace MultilinhasObjects
         public int prazocontrato { get; set; }
         public DateTime datafimcontrato { get; set; }
         public bool IndRenovacao { get;set;}
-        public int prazorenovacao { get; set; }
+        public int PrazoRenovacao { get; set; }
         public DateTime datarenovacao { get; set; }
         public string EstadoContrato { get; set; }
         public int NDiasIncumprimento { get; set; }

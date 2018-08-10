@@ -20,6 +20,7 @@
 <body>
     <form id="form1" class="content container-fluid form-horizontal" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+         <asp:updatepanel id="upMC03" runat="server" UpdateMode="Conditional"><ContentTemplate>
         <div id="dvError" runat="server">
             <asp:Label runat="server" ID="lberror" CssClass="col-md-12 col-sm-12 lbl" Visible="false ">Occur an error</asp:Label>
         </div>
@@ -39,22 +40,21 @@
                 <li id="liDenuncia" runat="server" class=" ">
                     <asp:LinkButton CssClass="atab " ID="lblTransactionD" Enabled="false" runat="server" Text="Denúncia / resolução de Contrato"></asp:LinkButton>
                 </li>
-               <%-- <li id="liEnvioCartas" runat="server" class=" ">
-                    <asp:LinkButton CssClass="atab " ID="lblTransactionE" Enabled="false" runat="server" Text="Envio de cartas"></asp:LinkButton>
-                </li>--%>
             </ul>
         </div>
         <div id="MC33C" runat="server">
-            <asp:updatepanel id="upMC03" runat="server" UpdateMode="Conditional"><ContentTemplate>
             <div class="row colorbck" id="camposChave" runat="server">
                 <div class="row form-group padding-row col-sm-12">
                     <div class="col-sm-4">
                         <label id="bkCliente" runat="server" class="col-sm-4 text-right lbl">* Cliente: </label>
-                        <div class="col-sm-3">
+                        <div class="col-sm-6">
                             <asp:TextBox ID="txtCliente" MaxLength="7" onkeypress="return isNumber(event)" AutoPostBack="true" OnTextChanged="txtCliente_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChaves" ID="reqCliente" ControlToValidate="txtCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-4">
+                        <label id="Label3" runat="server" class="col-sm-4 text-right lbl"></label>
+                        <div class="col-sm-6">
                             <asp:TextBox ID="txtNome" CssClass="form-control text-field" Enabled="false" MaxLength="40" runat="server"></asp:TextBox>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="col-sm-4">
                         <label id="lblProdutoDesc" runat="server" class="col-sm-4 text-right lbl">* Descritivo:</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <asp:TextBox ID="txtDescritivo" runat="server" Enabled="false" Text="ML BASE" CssClass="form-control text-field"></asp:TextBox>
                         </div>
                     </div>
@@ -113,26 +113,26 @@
                     <hr class="hr" id="hr" runat="server" />
                 </div>
             </div>
-            </div>
+          
             <div id="dpOK" visible="true" runat="server">
                 <div class=" row colorbck" id="camposClienteContrato">
                     <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="bklNDO" runat="server" class="col-sm-4 text-right lbl">* Nº DO: </label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:DropDownList ID="ddlncontado" MaxLength="9" CssClass="form-control text-field dtField" runat="server"></asp:DropDownList>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqddlncontado" ValidationGroup="valChavesClienteContrato" ControlToValidate="ddlncontado" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-sm-4">
                         <label id="bklIdworkflow" runat="server" class="col-sm-4 text-right lbl">Nº Proposta: </label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <asp:TextBox ID="txtIdworkflow" MaxLength="9" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         </div>
                         </div>
                          <div class="col-sm-4">
                         <label id="bklEstadoContrato" runat="server" class="col-sm-4 text-right lbl">* Estado do Contrato: </label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <asp:TextBox ID="ddlEstadoContrato" Enabled="false" CssClass="form-control text-field" Text="PENDENTE" MaxLength="30" runat="server"></asp:TextBox>
                         </div>
                     </div>
@@ -140,15 +140,15 @@
                     <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="lbNumeroMinimoProdutos" runat="server" class="col-sm-4 text-right lbl">* Número mínimo de produtos ativar: </label>
-                            <div class="col-sm-4">
-                                <asp:TextBox ID="txtNumeroMinimoProdutos" Enabled="false" ReadOnly="true" MaxLength="9" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <div class="col-sm-6">
+                                <asp:TextBox ID="txtNumeroMinimoProdutos" Enabled="false" ReadOnly="true" MaxLength="1" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             </div>
                         </div>
                     </div>
                     <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="bkldtiniciocontrato" runat="server" class="col-sm-4 text-right lbl">* Data início de contrato: </label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtdatainiciocontrato" placeholder="0001-01-01" MaxLength="10" CssClass="form-control text-field dtField" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqdatainiciocontrato" ControlToValidate="txtdatainiciocontrato" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                 <label class="requiredFieldEmpty" style="display: none;" id="reqemdatainiciocontrato" runat="server">Formato incorreto</label>
@@ -156,14 +156,14 @@
                         </div>
                         <div class="col-sm-4">
                             <label id="bklbprazocontrato" runat="server" class="col-sm-4 text-right lbl">* Prazo contrato (meses):</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtprazocontrato" MaxLength="3" CssClass="form-control text-field" OnTextChanged="txtprazocontrato_TextChanged" AutoPostBack="true" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" ValidationGroup="valChavesClienteContrato" runat="server" ID="reqPrazoContrato" ControlToValidate="txtprazocontrato" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <label id="Label2" runat="server" class="col-sm-4 text-right lbl">* Data Processamento:</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtdataProcessamento" MaxLength="3" Enabled="false" ReadOnly="true" CssClass="form-control text-field dtField" runat="server"></asp:TextBox>
                             </div>
                         </div>
@@ -171,42 +171,42 @@
                     <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="bkldtfimcontrato" runat="server" class="col-sm-4 text-right lbl">* Data fim de contrato: </label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtdatafimcontrato" ReadOnly="true" Enabled="false" placeholder="9999-12-31" MaxLength="10" CssClass="form-control text-field dtField" runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <label id="bklindicadorrenovacao" runat="server" class="col-sm-4 text-right lbl">* Indicador de renovação: </label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:DropDownList ID="ddlIndRenovacao" runat="server" CssClass="form-control text-field" DataTextField="Description" DataValueField="Code">
                                 </asp:DropDownList>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <label id="bklprazorenovacao" runat="server" class="col-sm-4 text-right lbl">* Prazo renovação (meses):</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtPrazoRenovacao" MaxLength="3" Enabled="false" ReadOnly="true" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
-                                <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtprazocontrato" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="RequiredFieldValidator2" ControlToValidate="txtPrazoRenovacao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
                     <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="bkldatarenovacao" runat="server" class="col-sm-4 text-right lbl">* Data renovação: </label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtdatarenovacao" ReadOnly="true" Enabled="false" placeholder="9999-12-31" MaxLength="10" CssClass="form-control text-field dtField" runat="server"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <label id="bklndiasincumprimento" runat="server" class="col-sm-4 text-right lbl">* Nº dias incumprimento:</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtNDiasIncumprimento" MaxLength="3" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqndiasincumprimento" ControlToValidate="txtNDiasIncumprimento" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <label id="lbNdiaspreAviso" runat="server" class="col-sm-4 text-right lbl">* Nº dias de pré-aviso denúncia::</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtNDiasPreAviso" MaxLength="3" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqNDiasPreAviso" ControlToValidate="txtNDiasPreAviso" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
@@ -230,11 +230,11 @@
                         <div class="col-sm-4">
                         <label class="col-sm-4 text-right lbl">* Versão da minuta de contrato:</label>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="txt_NMinutaContrato" MaxLength="12" Text="0" Enabled="false" ReadOnly="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txt_NMinutaContrato" MaxLength="12" Enabled="false" ReadOnly="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         </div>
                         </div>
                     </div>
-                    <div class="row form-group padding-row ">
+                    <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="bkllimRiscoFinanceiro" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Financeiro: </label>
                             <div class="col-sm-4">
@@ -243,7 +243,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row form-group padding-row ">
+                    <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="bkllimRiscoComercial" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Comercial: </label>
                             <div class="col-sm-4">
@@ -534,23 +534,24 @@
                 </div>
             </div>
             <br />
-                <div class="row" runat="server" id="divVersoesML">
+            <div class="row" runat="server" id="divVersoesML">
                     <div class="col-sm-4">
                         <label class="col-sm-6 text-right lbl">* ID Multilinha:</label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtidmultilinha" MaxLength="12" Text="0" Enabled="false" ReadOnly="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtidmultilinha" MaxLength="12" Enabled="false" ReadOnly="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         </div>
                     </div>
-                     <div class="col-sm-6">
+                     <div class="col-sm-4">
                         <label class="col-sm-6 text-right lbl">* Versão da minuta de contrato:</label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtNMinutaContrato" MaxLength="12" Text="0" onkeypress="return isNumber(event)"  CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtNMinutaContrato" MaxLength="12" onkeypress="return isNumber(event)"  CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqtxtNMinutaContrato" ControlToValidate="txtNMinutaContrato" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>
                 <hr id="hr4" runat="server" class="hr" />
-              <div id="accoesfinais_criarml03" runat="server">
+        </div>
+            <div id="accoesfinais_criarml03" runat="server">
                 <div class="row text-right div-btns">
                     <asp:Button ID="btnCriar" CssClass="btns" runat="server" Text="Criar Contrato" Visible="false" ValidationGroup="valChavesClienteContrato" OnClick="btnCriar_Click" CausesValidation="true"></asp:Button>
                     <asp:Button ID="btnModificar" CssClass="btns" runat="server" Text="Modificar" Visible="false" ValidationGroup="" OnClick="btnModificar_Click" CausesValidation="true"></asp:Button>
@@ -559,8 +560,7 @@
                 </div>
             </div>
         </ContentTemplate></asp:updatepanel>
-        </div>
-        <div id="ml03V_denuncia" visible="false" runat="server">
+            <div id="ml03V_denuncia" visible="false" runat="server">
             <uc1:ucCancelamentoContrato runat="server" ID="ucCancelamentoContrato" />
         </div>
     </form>

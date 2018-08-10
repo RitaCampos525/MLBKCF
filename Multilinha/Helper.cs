@@ -315,7 +315,19 @@ namespace Multilinha
                         }
 
                         else if (result.PropertyType == typeof(Int32))
-                            result.SetValue(dest, Int32.Parse((controls as TextBox).Text), null);
+                        {
+                            int val = 0;
+                            if(string.IsNullOrEmpty((controls as TextBox).Text))
+                            {
+                                val = 0;
+                            }
+                            else
+                            {
+                                val = Int32.Parse((controls as TextBox).Text);
+                            }
+                            result.SetValue(dest, val, null);
+                        }
+                           
                         else if (result.PropertyType == typeof(Double))
                         {
                             Double outValue;

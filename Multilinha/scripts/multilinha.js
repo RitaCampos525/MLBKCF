@@ -284,7 +284,8 @@ $("#btnPesquisar").click(function () {
 
 ///MULTILINHA
 $('#txtDataInicioComercializacao').datepicker('setDate', dtFechasStr);
-$('#txtdatainiciocontrato').datepicker("setDate", dtFechasStr)
+$('#txtdatainiciocontrato').datepicker("setDate", dtFechasStr);
+$('#txtdataProcessamento').datepicker("setDate", dtFechasStr);
 
 function ValidaDatas() {
     var $regexname = /^([1-9][0-9]{3})[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/;

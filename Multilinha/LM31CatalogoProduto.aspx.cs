@@ -262,6 +262,7 @@ namespace Multilinha
                 //Modo Criar:
                 //IF: Resposta com produto Já Parameterizado e Ativo-> Alertar utilizador
                 //Else: Abrir campos e desabilitar os campos chave de consulta
+                //Familias devem estar fechados na Modificacao
 
                 Helper.SetEnableControler(camposChave, false);
 
@@ -302,8 +303,11 @@ namespace Multilinha
                     case "M":
                         Helper.AddRemoveHidden(false, divdpConsulta);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRenovacao);
+                        Helper.SetEnableControler(divRiscoFinanceiro, false);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                        Helper.SetEnableControler(divRiscoAssinatura, false);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                        Helper.SetEnableControler(divRiscoComercial, false);
                         Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
                         Helper.AddRemoveHidden(false, divPeriocidadeCobranca);
                         Helper.AddRemoveHidden(false, acoes_ml01);
