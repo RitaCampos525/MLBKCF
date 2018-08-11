@@ -110,7 +110,7 @@ namespace Multilinha
                     LM34_SublimitesML lm33 = ViewState["ContratoCriado"] as LM34_SublimitesML;
                    
                     //For debug - lm34
-                    LM34_SublimitesML lm34 = TAT2.SearchML04(lm33.Cliente, lm33.idmultilinha, 0);
+                    LM34_SublimitesML lm34 = TAT2.SearchML04(lm33.Cliente, lm33.idmultilinha, "0");
                     
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, lm34);
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);
@@ -133,7 +133,7 @@ namespace Multilinha
                      lm33 = ViewState["ContratoCriado"] as LM34_SublimitesML;
 
                     //For debug - lm34
-                    lm34 = TAT2.SearchML04(123, 099, 0);
+                    lm34 = TAT2.SearchML04(123, "099", "0");
 
                     Helper.CopyObjectToControls(ml04_criar, lm34);
 
@@ -159,7 +159,7 @@ namespace Multilinha
                     lm33 = ViewState["ContratoCriado"] as LM34_SublimitesML;
 
                     //For debug - lm34
-                    lm34 = TAT2.SearchML04(lm33.Cliente, lm33.idmultilinha, 0);
+                    lm34 = TAT2.SearchML04(lm33.Cliente, lm33.idmultilinha, "0");
 
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, lm34);
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);

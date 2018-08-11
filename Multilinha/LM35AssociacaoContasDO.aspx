@@ -6,7 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Manutenção Associação de Contas DO</title>
+    <title>Manutenção Contas DO Multilinha</title>
     <meta http-equiv="X-UA-Compatible" content="IE=11" />
     <link href="css/jquery-ui.css" rel="stylesheet" />
     <link href="css/multilinha.css" rel="stylesheet" type="text/css" media="screen" />

@@ -33,6 +33,8 @@ namespace MultilinhasObjects
             public const string NMinimoProdutosRiscoC = "Selecione no máximo 20 subprodutos de risco comercial";
             public const string NMinimoProdutosML = "Selecione no mínimo {0} produto(s) de crédito";
             public const string NMinimoProdutosML_CP = "Aceite as condições particulares de {0} subproduto(s) de crédito";
+            public const string ValorSublimitesRiscoInvalido = "Verifique os valores dos sublimites de risco. O valor do sublimite não pode exceder o limite global Multilinha";
+            public const string ValorSublimiteRiscoInvalido = "Valor de sublimite superior ao limite global Multilinha";
             public const string SomaSublimitesComprometidosAssinaturaInvalida = "Verifique os valores de sublimites comprometidos. O sublimite de risco assinatura foi ultrapassado";
             public const string SomaSublimitesComprometidosComercialInvalida = "Verifique os valores de sublimites comprometidos. O sublimite de risco comercial foi ultrapassado";
             public const string SomaSublimitesComprometidosFinanceiroInvalida = "Verifique os valores de sublimites comprometidos. O sublimite de risco financeiro foi ultrapassado";

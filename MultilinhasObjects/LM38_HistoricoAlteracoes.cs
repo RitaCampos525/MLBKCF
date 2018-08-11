@@ -15,6 +15,8 @@ namespace MultilinhasObjects
         public string Nome { get; set; }
         public int idmultilinha { get; set; }
 
+        public List<historicoAlteracoes> HistoricoAlteracoes = new List<historicoAlteracoes>();
+
         public class historicoAlteracoes{
             public string idAlteracao { get; set; }
 
@@ -22,7 +24,15 @@ namespace MultilinhasObjects
 
             public DateTime dataValorAlteracao { get; set; }
 
+            public string nContratoProduto { get; set; }
+
             public string TipoAlteracao { get; set; }
+
+            public string valorAnterior { get; set; }
+
+            public string valorPosterior { get; set; }
+
+            public string campoAlterado { get; set; }
 
             public string description { get; set; }
 

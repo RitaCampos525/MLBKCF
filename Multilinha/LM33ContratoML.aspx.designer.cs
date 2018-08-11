@@ -769,6 +769,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqsublimiteriscoFinanceiro;
         
         /// <summary>
+        /// lberrorSRF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lberrorSRF;
+        
+        /// <summary>
         /// bkllimRiscoComercial control.
         /// </summary>
         /// <remarks>
@@ -796,6 +805,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqsublimitriscoComercial;
         
         /// <summary>
+        /// lberrorSRC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lberrorSRC;
+        
+        /// <summary>
         /// bkllimiteriscoassinatura control.
         /// </summary>
         /// <remarks>
@@ -821,6 +839,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqsublimiteriscoAssinatura;
+        
+        /// <summary>
+        /// lberrorSRA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lberrorSRA;
         
         /// <summary>
         /// btnConfirmar control.

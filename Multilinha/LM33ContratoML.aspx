@@ -6,7 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Contrato Produto Multilinha</title>
+    <title>Contrato Multilinha</title>
     <meta http-equiv="X-UA-Compatible" content="IE=11" />
     <link href="css/jquery-ui.css" rel="stylesheet" />
     <link href="css/multilinha.css" rel="stylesheet" type="text/css" media="screen" />
@@ -19,7 +19,7 @@
 <uc1:header runat="server" ID="header" />
 <body>
     <form id="form1" class="content container-fluid form-horizontal" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" LoadScriptsBeforeUI="true"></asp:ScriptManager>
          <asp:updatepanel id="upMC03" runat="server" UpdateMode="Conditional"><ContentTemplate>
         <div id="dvError" runat="server">
             <asp:Label runat="server" ID="lberror" CssClass="col-md-12 col-sm-12 lbl" Visible="false ">Occur an error</asp:Label>
@@ -164,7 +164,7 @@
                         <div class="col-sm-4">
                             <label id="Label2" runat="server" class="col-sm-4 text-right lbl">* Data Processamento:</label>
                             <div class="col-sm-6">
-                                <asp:TextBox ID="txtdataProcessamento" MaxLength="3" Enabled="false" ReadOnly="true" CssClass="form-control text-field dtField" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtdataProcessamento" MaxLength="3" Enabled="false" ReadOnly="false" CssClass="form-control text-field dtField" runat="server"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -238,8 +238,9 @@
                         <div class="col-sm-4">
                             <label id="bkllimRiscoFinanceiro" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Financeiro: </label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtsublimiteriscoFinanceiro" CssClass="form-control text-field number" MaxLength="16" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtsublimiteriscoFinanceiro" CssClass="form-control text-field number" MaxLength="16" AutoPostBack="true" OnTextChanged="txtsublimiteriscoFinanceiro_TextChanged" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimiteriscoFinanceiro" ControlToValidate="txtsublimiteriscoFinanceiro" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lberrorSRF" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
                             </div>
                         </div>
                     </div>
@@ -247,8 +248,9 @@
                         <div class="col-sm-4">
                             <label id="bkllimRiscoComercial" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Comercial: </label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtsublimitriscoComercial" CssClass="form-control text-field number" MaxLength="16" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtsublimitriscoComercial" CssClass="form-control text-field number" MaxLength="16" AutoPostBack="true" OnTextChanged="txtsublimitriscoComercial_TextChanged" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimitriscoComercial" ControlToValidate="txtsublimitriscoComercial" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lberrorSRC" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
                             </div>
                         </div>
                     </div>
@@ -256,8 +258,9 @@
                         <div class="col-sm-4">
                             <label id="bkllimiteriscoassinatura" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Assinatura: </label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtsublimiteriscoAssinatura" CssClass="number form-control text-field" MaxLength="16" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtsublimiteriscoAssinatura" CssClass="number form-control text-field" MaxLength="16" AutoPostBack="true" OnTextChanged="txtsublimiteriscoAssinatura_TextChanged" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimiteriscoAssinatura" ControlToValidate="txtsublimiteriscoAssinatura" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lberrorSRA" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
                             </div>
                         </div>
                     </div>
@@ -553,7 +556,7 @@
         </div>
             <div id="accoesfinais_criarml03" runat="server">
                 <div class="row text-right div-btns">
-                    <asp:Button ID="btnCriar" CssClass="btns" runat="server" Text="Criar Contrato" Visible="false" ValidationGroup="valChavesClienteContrato" OnClick="btnCriar_Click" CausesValidation="true"></asp:Button>
+                    <asp:Button ID="btnCriar" CssClass="btns" runat="server" Text="Criar Contrato" Visible="false" ValidationGroup="valChavesClienteContrato" OnClientClick="ToTopOfPage();" OnClick="btnCriar_Click" CausesValidation="true"></asp:Button>
                     <asp:Button ID="btnModificar" CssClass="btns" runat="server" Text="Modificar" Visible="false" ValidationGroup="" OnClick="btnModificar_Click" CausesValidation="true"></asp:Button>
                     <asp:Button ID="btnSeguinte" CssClass="btns" runat="server" Text="Seguinte" Enabled="false" OnClick="btnSeguinte_Click" CausesValidation="true"></asp:Button>
 

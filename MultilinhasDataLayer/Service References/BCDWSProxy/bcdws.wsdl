@@ -3432,406 +3432,30 @@
           <s:element minOccurs="0" maxOccurs="1" name="htimest" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="cutulmod" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="cusrtab" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l020" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l020" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l020" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l020" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l021" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l021" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l021" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l021" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l022" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l022" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l022" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l022" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l023" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l023" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l023" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l023" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l024" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l024" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l024" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l024" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l025" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l025" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l025" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l025" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l026" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l026" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l026" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l026" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l027" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l027" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l027" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l027" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l028" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l028" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l028" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l028" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l029" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l029" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l029" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l029" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l030" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l030" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l030" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l030" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l031" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l031" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l031" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l031" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l032" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l032" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l032" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l032" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l033" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l033" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l033" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l033" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l034" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l034" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l034" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l034" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l035" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l035" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l035" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l035" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l036" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l036" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l036" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l036" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l037" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l037" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l037" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l037" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l038" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l038" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l038" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l038" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l039" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l039" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l039" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l039" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l040" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l040" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l040" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l040" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l041" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l041" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l041" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l041" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l042" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l042" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l042" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l042" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l043" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l043" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l043" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l043" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l044" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l044" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l044" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l044" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l045" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l045" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l045" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l045" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l046" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l046" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l046" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l046" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l047" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l047" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l047" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l047" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l048" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l048" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l048" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l048" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l049" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l049" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l049" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l049" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l050" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l050" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l050" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l050" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l051" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l051" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l051" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l051" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l052" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l052" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l052" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l052" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l053" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l053" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l053" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l053" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l054" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l054" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l054" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l054" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l055" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l055" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l055" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l055" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l056" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l056" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l056" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l056" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l057" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l057" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l057" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l057" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l058" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l058" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l058" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l058" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l059" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l059" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l059" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l059" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l000" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l001" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l002" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l003" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l004" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l005" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l006" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l007" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l008" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l009" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l010" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l011" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l012" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l013" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l014" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l015" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l016" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l017" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l018" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l019" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l019" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Row1" type="tns:ArrayOfLM34Row1" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLM34Row1">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LM34Row1" nillable="true" type="tns:LM34Row1" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LM34Row1">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="caccao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pedido_dados" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="LM34SUBLIMITESMLResponse">
@@ -3908,27 +3532,276 @@
           <s:element minOccurs="0" maxOccurs="1" name="cusrtab" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfLM34Row1">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="LM34Row1" nillable="true" type="tns:LM34Row1" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="LM34Row1">
+      <s:element name="LM36SUBPRODUTOSML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="tns:LM36Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LM36Input">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="caccao" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="pedido_dados" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_f_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_f_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_f_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_f_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_c_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_c_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_c_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_c_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codtplo_a_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="famprod_a_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="codprod_a_l" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="subprod_a_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zcliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cbalcao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lcmv3600_cprod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ccta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cdgt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ntprisco" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ntplprod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cprodml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="csubprdml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gdescml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cgraumorml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ndpdml" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="mlmglbml" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrf" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrc" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmra" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Row1" type="tns:ArrayOfLM36Row1" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLM36Row1">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LM36Row1" nillable="true" type="tns:LM36Row1" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LM36Row1">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="caccao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pedido_dados" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ntprisco_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ntplprod_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cprodsubp_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cidctrprod_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nestctrprd_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cgraumor_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ndpd_l" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="mvlcompr_l" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="lmcv3700_mvlcontr_l" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="mexpoatual_l" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LM36SUBPRODUTOSMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LM36SUBPRODUTOSMLResult" type="tns:LM36Transaction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LM36Transaction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BCDBaseDTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="output" type="tns:LM36Output" />
+              <s:element minOccurs="0" maxOccurs="1" name="row1" type="tns:ArrayOfLM36Row1" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LM36Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="caccao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pedido_dados" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="zcliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cbalcao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lcmv3600_cprod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ccta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cdgt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ntprisco" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ntplprod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cprodml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="csubprdml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gdescml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cgraumorml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ndpdml" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="mlmglbml" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrf" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrc" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmra" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LM37SIMULACAOML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="tns:LM37Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LM37Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="caccao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pedido_dados" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="zcliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gcliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cbalcao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gbalcao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lcmv3700_cprod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ccta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cdgt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ntpsimulml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="csubprdml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gdescml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cidsimulml" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="mlmglbmlatual" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrfatual" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrcatual" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmraatual" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="mlmglbmlnovo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrfnovo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrcnovo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmranovo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="mlmglbmltotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrftotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrctotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmratotal" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Row1" type="tns:ArrayOfLM37Row1" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLM37Row1">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LM37Row1" nillable="true" type="tns:LM37Row1" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LM37Row1">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="caccao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pedido_dados" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ntprisco_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ntplprod_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ccodtpl_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nindpreco_l" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmcompatual_l" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmcontr_l" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="mpexpoatual_l" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="mpsublmcompnovo_l" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="cons_cbalcao_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cons_zcliente_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cons_cprodsubp_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cons_cprod_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cons_ccta_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cons_cdgt_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cons_cidsimulml_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cons_dsimulml_l" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="cons_mlmglbml_l" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="cons_msublmrf_l" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="cons_msublmrc_l" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="cons_msublmra_l" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="cons_cutulcria_l" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LM37SIMULACAOMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LM37SIMULACAOMLResult" type="tns:LM37Transaction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LM37Transaction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BCDBaseDTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="output" type="tns:LM37Output" />
+              <s:element minOccurs="0" maxOccurs="1" name="row1" type="tns:ArrayOfLM37Row1" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LM37Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="caccao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pedido_dados" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="zcliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gcliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cbalcao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gbalcao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lcmv3701_cprod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ccta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cdgt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ntpsimulml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="csubprdml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gdescml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cidsimulml" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="mlmglbmlatual" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrfatual" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrcatual" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmraatual" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="mlmglbmlnovo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrfnovo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrcnovo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmranovo" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="mlmglbmltotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrftotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmrctotal" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="msublmratotal" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LM38HISTORICOML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="tns:LM38Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LM38Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="caccao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pedido_dados" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="zcliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cbalcao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cprod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dgt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Row1" type="tns:ArrayOfLM38Row1" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLM38Row1">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LM38Row1" nillable="true" type="tns:LM38Row1" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LM38Row1">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="caccao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pedido_dados" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="idaltera_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dprocess_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dtaltera_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ncontrato_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="gtipo_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="galtera_l" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="vanterior_l" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LM38HISTORICOMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LM38HISTORICOMLResult" type="tns:LM38Transaction" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LM38Transaction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BCDBaseDTO">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="output" type="tns:LM38Output" />
+              <s:element minOccurs="0" maxOccurs="1" name="row1" type="tns:ArrayOfLM38Row1" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LM38Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="caccao" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pedido_dados" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="zcliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cbalcao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cprod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dgt" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="Ck93QuestionarioGlobalClassificacaoFamiliaPorCliente">
@@ -32205,6 +32078,33 @@
   <wsdl:message name="LM34SUBLIMITESMLBarclaysBankAccountSettings">
     <wsdl:part name="BarclaysBankAccountSettings" element="tns:BarclaysBankAccountSettings" />
   </wsdl:message>
+  <wsdl:message name="LM36SUBPRODUTOSMLSoapIn">
+    <wsdl:part name="parameters" element="tns:LM36SUBPRODUTOSML" />
+  </wsdl:message>
+  <wsdl:message name="LM36SUBPRODUTOSMLSoapOut">
+    <wsdl:part name="parameters" element="tns:LM36SUBPRODUTOSMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="LM36SUBPRODUTOSMLBarclaysBankAccountSettings">
+    <wsdl:part name="BarclaysBankAccountSettings" element="tns:BarclaysBankAccountSettings" />
+  </wsdl:message>
+  <wsdl:message name="LM37SIMULACAOMLSoapIn">
+    <wsdl:part name="parameters" element="tns:LM37SIMULACAOML" />
+  </wsdl:message>
+  <wsdl:message name="LM37SIMULACAOMLSoapOut">
+    <wsdl:part name="parameters" element="tns:LM37SIMULACAOMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="LM37SIMULACAOMLBarclaysBankAccountSettings">
+    <wsdl:part name="BarclaysBankAccountSettings" element="tns:BarclaysBankAccountSettings" />
+  </wsdl:message>
+  <wsdl:message name="LM38HISTORICOMLSoapIn">
+    <wsdl:part name="parameters" element="tns:LM38HISTORICOML" />
+  </wsdl:message>
+  <wsdl:message name="LM38HISTORICOMLSoapOut">
+    <wsdl:part name="parameters" element="tns:LM38HISTORICOMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="LM38HISTORICOMLBarclaysBankAccountSettings">
+    <wsdl:part name="BarclaysBankAccountSettings" element="tns:BarclaysBankAccountSettings" />
+  </wsdl:message>
   <wsdl:message name="Ck93QuestionarioGlobalClassificacaoFamiliaPorClienteSoapIn">
     <wsdl:part name="parameters" element="tns:Ck93QuestionarioGlobalClassificacaoFamiliaPorCliente" />
   </wsdl:message>
@@ -34985,6 +34885,21 @@
       <wsdl:input message="tns:LM34SUBLIMITESMLSoapIn" />
       <wsdl:output message="tns:LM34SUBLIMITESMLSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="LM36SUBPRODUTOSML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">LM36 - SUBPRODUTOS ML</wsdl:documentation>
+      <wsdl:input message="tns:LM36SUBPRODUTOSMLSoapIn" />
+      <wsdl:output message="tns:LM36SUBPRODUTOSMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LM37SIMULACAOML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">LM37 - SIMULACAO ML</wsdl:documentation>
+      <wsdl:input message="tns:LM37SIMULACAOMLSoapIn" />
+      <wsdl:output message="tns:LM37SIMULACAOMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LM38HISTORICOML">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">LM38 - HISTORICO ML</wsdl:documentation>
+      <wsdl:input message="tns:LM38HISTORICOMLSoapIn" />
+      <wsdl:output message="tns:LM38HISTORICOMLSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Ck93QuestionarioGlobalClassificacaoFamiliaPorCliente">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Questionario Global - Lista de classificaçao por familia para um determinado cliente</wsdl:documentation>
       <wsdl:input message="tns:Ck93QuestionarioGlobalClassificacaoFamiliaPorClienteSoapIn" />
@@ -36744,6 +36659,36 @@
       <wsdl:input>
         <soap:body use="literal" />
         <soap:header message="tns:LM34SUBLIMITESMLBarclaysBankAccountSettings" part="BarclaysBankAccountSettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LM36SUBPRODUTOSML">
+      <soap:operation soapAction="http://barclays.pt/webservices/LM36SUBPRODUTOSML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:LM36SUBPRODUTOSMLBarclaysBankAccountSettings" part="BarclaysBankAccountSettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LM37SIMULACAOML">
+      <soap:operation soapAction="http://barclays.pt/webservices/LM37SIMULACAOML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:LM37SIMULACAOMLBarclaysBankAccountSettings" part="BarclaysBankAccountSettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LM38HISTORICOML">
+      <soap:operation soapAction="http://barclays.pt/webservices/LM38HISTORICOML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:LM38HISTORICOMLBarclaysBankAccountSettings" part="BarclaysBankAccountSettings" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -40122,6 +40067,36 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:LM34SUBLIMITESMLBarclaysBankAccountSettings" part="BarclaysBankAccountSettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LM36SUBPRODUTOSML">
+      <soap12:operation soapAction="http://barclays.pt/webservices/LM36SUBPRODUTOSML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:LM36SUBPRODUTOSMLBarclaysBankAccountSettings" part="BarclaysBankAccountSettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LM37SIMULACAOML">
+      <soap12:operation soapAction="http://barclays.pt/webservices/LM37SIMULACAOML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:LM37SIMULACAOMLBarclaysBankAccountSettings" part="BarclaysBankAccountSettings" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LM38HISTORICOML">
+      <soap12:operation soapAction="http://barclays.pt/webservices/LM38HISTORICOML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:LM38HISTORICOMLBarclaysBankAccountSettings" part="BarclaysBankAccountSettings" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

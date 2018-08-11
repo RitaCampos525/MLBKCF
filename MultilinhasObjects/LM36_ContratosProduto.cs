@@ -17,11 +17,14 @@ namespace MultilinhasObjects
         public string TipologiaRisco { get; set; }
         public string FamiliaProduto { get; set; }
         public int GrauMorosidade { get; set; }
+        public int DPD { get; set; }
 
         public decimal limiteglobalmultilinha { get; set; }
         public decimal sublimiteriscoFinanceiro { get; set; }
         public decimal sublimitriscoComercial { get; set; }
         public decimal sublimiteriscoAssinatura { get; set; }
+
+        public List<ContratosProduto> ContratosProdutos = new List<LM36_ContratosProduto.ContratosProduto>();
 
         public class ContratosProduto
         {
@@ -31,9 +34,10 @@ namespace MultilinhasObjects
             public string NContratoProduto { get; set; }
             public string EstadoContratoProduto { get; set; }
             public string GrauMorosidade { get; set; }
-            public string ValorComprometido { get; set; }
-            public string ValorContratado { get; set; }
-            public string ExposicaoAtual { get; set; }
+            public decimal ValorComprometido { get; set; }
+            public decimal ValorContratado { get; set; }
+            public decimal ExposicaoAtual { get; set; }
+            public int DPD { get; set; }
 
         }
 

@@ -469,8 +469,10 @@ namespace Multilinha
 
         internal bool validaLimiteMaximoCredito()
         {
-            decimal limMax = Convert.ToDecimal(txtLimiteMaximoCredito.Text);
-            decimal limMin = Convert.ToDecimal(txtLimiteMinimoCredito.Text);
+            decimal limMax = 0;
+            decimal.TryParse(txtLimiteMaximoCredito.Text, out limMax);
+            decimal limMin = 0;
+            decimal.TryParse(txtLimiteMinimoCredito.Text, out limMin);
 
             if (limMax < limMin)
             {

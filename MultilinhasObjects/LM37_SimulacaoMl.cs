@@ -7,13 +7,19 @@ namespace MultilinhasObjects
 {
     public class LM37_SimulacaoMl : LM34_SublimitesML
     {
-
         public int IDSimulacaoML { get; set; }
-
         public int Balcao { get; set; }
-
         public DateTime dataSimulacao { get; set; }
+        public string tipoSimulacao { get; set; }
 
+        public decimal limiteglobalmultilinhaNovo { get; set; }
+        public decimal limiteglobalmultilinhaTotal { get; set; }
+        public decimal sublimiteriscoFinanceiroNovo { get; set; }
+        public decimal sublimiteriscoFinanceiroTotal { get; set; }
+        public decimal sublimitriscoComercialNovo { get; set; }
+        public decimal sublimitriscoComercialTotal { get; set; }
+        public decimal sublimiteriscoAssinaturaNovo { get; set; }
+        public decimal sublimiteriscoAssinaturaTotal { get; set; }
 
         public List<simulacaoSublimites> SimulacaoSublimites { get; set; }
 
@@ -28,6 +34,7 @@ namespace MultilinhasObjects
             public bool preco { get; set; }
 
             public decimal SublimiteComprometido { get; set; }
+            public decimal SublimiteComprometidoNovo { get; set; }
 
             public decimal SublimiteContratado { get; set; }
 
@@ -35,21 +42,25 @@ namespace MultilinhasObjects
 
             //Para consulta em lista - modo V
 
-            public string Balcao { get; set; }
+            public string cons_Cliente { get; set; }
 
-            public DateTime DataSimulacao { get; set; }
+            public string cons_Balcao { get; set; }
 
-            public int idMultilinha { get; set; }
+            public DateTime cons_DataSimulacao { get; set; }
 
-            public int idSimulacao { get; set; }
+            public int cons_idMultilinha { get; set; }
 
-            public decimal limiteRF { get; set; }
+            public int cons_idSimulacao { get; set; }
 
-            public decimal limiteRC { get; set; }
+            public decimal cons_limiteML { get; set; }
 
-            public decimal limiteRA { get; set; }
+            public decimal cons_limiteRF { get; set; }
 
-            public string utilizador { get; set; }
+            public decimal cons_limiteRC { get; set; }
+
+            public decimal cons_limiteRA { get; set; }
+
+            public string cons_utilizador { get; set; }
 
             public int zSeq { get; set; }
 

@@ -167,7 +167,7 @@ namespace MultilinhaBusinessLayer
                 obj.valorimpostocomabert = response.output.vrcomabert;
                 obj.valorimpostocomgestcontrato = response.output.vrcomgestc;
                 obj.valorimpostocomgestrenovacao = response.output.vrcomrenov;
-
+                
                 obj.ProdutosRiscoAssinatura = new List<LM33_ContratoML.ProdutosRiscoA>();
                 obj.produtosRiscoC = new List<LM33_ContratoML.ProdutoRiscoC>();
                 obj.produtosRiscoF = new List<LM33_ContratoML.ProdutoRiscoF>();
@@ -210,7 +210,178 @@ namespace MultilinhaBusinessLayer
                     }
                 }
             }
+            msgOut.ResultResult = obj;
+            return msgOut;
+        }
 
+        public  MensagemOutput<LM34_SublimitesML> LM34Request(LM34_SublimitesML _LM34, ABUtil.ABCommandArgs abargs, string accao)
+        {
+            MensagemOutput<LM34_SublimitesML> msgOut = new MensagemOutput<LM34_SublimitesML>();
+            MultilinhasDataLayer.BCDWSProxy.LM34Transaction response = dl.LM34Request(abargs, _LM34, accao);
+
+            msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
+            msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
+
+            LM34_SublimitesML obj = new LM34_SublimitesML();
+            if (response.output != null)
+            {
+                int cliente = 0;
+                Int32.TryParse(response.output.zcliente, out cliente);
+                obj.Cliente = cliente;
+                obj.Descritivo = response.output.cprod; //IR A TAT
+                obj.EstadoContrato = response.output.estctr;
+                obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.cprod, response.output.cta, response.output.dgt);
+                obj.idsimulacaoml = response.output.idwrkflw;
+                obj.limiteglobalmultilinha = response.output.limgloml;
+                obj.ncontado = string.Format("{0}{1}{2}{3}", response.output.cbalcaodo.ToString(), response.output.cproddo.ToString(), response.output.ctado.ToString(), response.output.dgtdo.ToString());
+                //obj.Nome =
+                obj.Produtoml = response.output.cprod;
+                obj.sublimiteriscoAssinatura = response.output.limrisass;
+                obj.sublimiteriscoFinanceiro = response.output.limrisfin;
+                obj.sublimitriscoComercial = response.output.limriscom;
+                obj.Subprodutoml = response.output.csubprdml;
+
+                //listas
+                foreach (var a in response.row1)
+                {
+                    if (a.codprod_a_l != null && a.codprod_a_l != "")
+                    {
+                        obj.ProdutosRiscoAssinatura.Add(new LM34_SublimitesML.ProdutosRisco
+                        {
+                            descritivo = a.subprod_a_l, //TO DO ir a tat buscar descritivo
+                            familiaproduto = a.famprod_a_l,
+                            prodsubproduto = string.Concat(a.codprod_a_l, a.subprod_a_l),
+                            tipologia = a.codtplo_a_l,
+                            //sublimitecomprometido = a //em FALTA
+                            //zSeq = 
+                        });
+                    }
+                    if (a.codprod_f_l != null && a.codprod_f_l != "")
+                    {
+                        obj.produtosRiscoF.Add(new LM34_SublimitesML.ProdutosRisco
+                        {
+                            descritivo = a.subprod_f_l, //TO DO ir a tat buscar descritivo
+                            familiaproduto = a.famprod_f_l,
+                            prodsubproduto = string.Concat(a.codprod_f_l, a.subprod_f_l),
+                            tipologia = a.codtplo_f_l
+                            //sublimitecomprometido = a //em FALTA
+                            //zSeq = 
+                        });
+                    }
+                    if (a.codprod_c_l != null && a.codprod_c_l != "")
+                    {
+                        obj.produtosRiscoC.Add(new LM34_SublimitesML.ProdutosRisco
+                        {
+                            descritivo = a.subprod_c_l, //TO DO ir a tat buscar descritivo
+                            familiaproduto = a.famprod_c_l,
+                            prodsubproduto = string.Concat(a.codprod_c_l, a.subprod_c_l),
+                            tipologia = a.codtplo_c_l
+                            //sublimitecomprometido = a //em FALTA
+                            //zSeq = 
+                        });
+                    }
+                }
+            }
+            msgOut.ResultResult = obj;
+            return msgOut;
+        }
+
+        public MensagemOutput<LM36_ContratosProduto> LM36Request(LM36_ContratosProduto _LM36, ABUtil.ABCommandArgs abargs, string accao)
+        {
+            MensagemOutput<LM36_ContratosProduto> msgOut = new MensagemOutput<LM36_ContratosProduto>();
+            MultilinhasDataLayer.BCDWSProxy.LM36Transaction response = dl.LM36Request(abargs, _LM36, accao);
+
+            msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
+            msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
+
+            LM36_ContratosProduto obj = new LM36_ContratosProduto();
+            if (response.output != null)
+            {
+                int cliente = 0;
+                Int32.TryParse(response.output.zcliente, out cliente);
+                obj.Cliente = cliente;
+                obj.Descritivo = response.output.gdescml;
+                int DPD = 0;
+                Int32.TryParse(response.output.ndpdml, out DPD);
+                obj.DPD = DPD;
+                //obj.EstadoContratoProduto = response.output.e
+                obj.FamiliaProduto = response.output.ntplprod;
+                int graumorosidade = 0;
+                Int32.TryParse(response.output.cgraumorml, out graumorosidade);
+                obj.GrauMorosidade = graumorosidade;
+                obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.cprodml, response.output.ccta, response.output.cdgt);
+                obj.limiteglobalmultilinha = response.output.mlmglbml;
+                obj.Nome = response.output.gliente;
+                obj.Produtoml = response.output.cprodml;
+                obj.sublimiteriscoAssinatura = response.output.msublmra;
+                obj.sublimiteriscoFinanceiro = response.output.msublmrf;
+                obj.sublimitriscoComercial = response.output.msublmrc;
+                obj.Subprodutoml = response.output.csubprdml;
+                obj.TipologiaRisco = response.output.ntprisco;
+
+                //listas
+                foreach (var a in response.row1)
+                {
+                    if (a.cprodsubp_l != null)
+                    {
+                        LM36_ContratosProduto.ContratosProduto ctr = new LM36_ContratosProduto.ContratosProduto();
+
+                        int dpd = 0;
+                        Int32.TryParse(a.ndpd_l, out dpd);
+                        ctr.DPD = dpd;
+                        ctr.EstadoContratoProduto = a.nestctrprd_l;
+                        ctr.ExposicaoAtual = a.mexpoatual_l;
+                        ctr.FamiliaProduto = a.ntplprod_l;
+                        ctr.GrauMorosidade = a.cgraumor_l;
+                        ctr.NContratoProduto = a.cidctrprod_l;
+                        ctr.SubProduto = a.cprodsubp_l; // com 4
+                        ctr.TipoRisco = a.ntprisco_l;
+                        ctr.ValorComprometido = a.mvlcompr_l;
+                        ctr.ValorContratado = a.lmcv3700_mvlcontr_l;
+                        ctr.ExposicaoAtual = a.mexpoatual_l;
+
+
+                        obj.ContratosProdutos.Add(ctr);
+                    };
+                }
+            }
+            msgOut.ResultResult = obj;
+            return msgOut;
+        }
+
+        public MensagemOutput<LM37_SimulacaoMl> LM37Request(LM37_SimulacaoMl _LM37, ABUtil.ABCommandArgs abargs, string accao)
+        {
+            MensagemOutput<LM37_SimulacaoMl> msgOut = new MensagemOutput<LM37_SimulacaoMl>();
+            MultilinhasDataLayer.BCDWSProxy.LM37Transaction response = dl.LM37Request(abargs, _LM37, accao);
+
+            msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
+            msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
+
+            LM37_SimulacaoMl obj = new LM37_SimulacaoMl();
+            if (response.output != null)
+            {
+
+            }
+
+            msgOut.ResultResult = obj;
+            return msgOut;
+        }
+
+        public MensagemOutput<LM38_HistoricoAlteracoes> LM38Request(LM38_HistoricoAlteracoes _LM38, ABUtil.ABCommandArgs abargs, string accao)
+        {
+            MensagemOutput<LM38_HistoricoAlteracoes> msgOut = new MensagemOutput<LM38_HistoricoAlteracoes>();
+            MultilinhasDataLayer.BCDWSProxy.LM38Transaction response = dl.LM38Request(abargs, _LM38, accao);
+
+            msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
+            msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
+
+            LM38_HistoricoAlteracoes obj = new LM38_HistoricoAlteracoes();
+            if (response.output != null)
+            {
+
+            }
+
+            msgOut.ResultResult = obj;
             return msgOut;
         }
     }

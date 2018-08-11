@@ -10,14 +10,14 @@ namespace MultilinhasObjects
     {
         public int Cliente { get; set; }
         public string Nome { get; set; }
-        public int idmultilinha { get; set; }
+        public string idmultilinha { get; set; }
         public string Produtoml { get; set; }
         public string Subprodutoml { get; set; }
         public string Descritivo { get; set; }
         public string EstadoContrato { get; set; }
         public string ncontado { get; set; } //principal
         public decimal limiteglobalmultilinha { get; set; } //é o limite comprometido
-        public int idsimulacaoml { get; set; }
+        public string idsimulacaoml { get; set; }
         public decimal sublimiteriscoFinanceiro { get; set; }
         public decimal sublimitriscoComercial { get; set; }
         public decimal sublimiteriscoAssinatura { get; set; }
@@ -37,7 +37,7 @@ namespace MultilinhasObjects
             public decimal produto { get; set; }
             public string prodsubproduto { get; set; }
             public string descritivo { get; set; }
-            public decimal sublimitecompremetido { get; set; } //Aquele q é editavel
+            public decimal sublimitecomprometido { get; set; } //Aquele q é editavel
 
             public int zSeq { get; set; }
         }

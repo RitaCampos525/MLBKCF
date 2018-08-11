@@ -414,7 +414,7 @@ function ValidaDatasPesquisa() {
 
 
 //Formato números
-$("[class*=number]").keypress(function (e) {
+$("[class*=number]").keypress(function Numbers (e) {
     var theEvent = window.event;
     var key = theEvent.keyCode || theEvent.which;
     key = String.fromCharCode(key);
@@ -423,7 +423,7 @@ $("[class*=number]").keypress(function (e) {
         return false
 });
 
-$("[class*=number]").blur(function (e) {
+$("[class*=number]").blur(function Numbers (e) {
     if (this.value.indexOf('.') != -1) {
         this.value = this.value.replace('.', ',');
     }
@@ -535,6 +535,7 @@ $("[class=percentual]").blur(function (e) {
     else if (val[1].length == 8)
         this.value = this.value + '0';
 });
+
 
 function ValidaValores() {
     var b = ValidaPercentual();
@@ -800,5 +801,9 @@ function GetParentByTagName(parentTagName, childElementObj)
            parent = parent.parentNode;
        }
    return parent;
-  }
+}
+
+function ToTopOfPage() {
+    window.scrollTo(0, 0);
+}
 

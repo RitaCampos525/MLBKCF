@@ -112,7 +112,7 @@ namespace MultilinhasDataLayer
             {
                 DataTable CodMsgs = cache["CodigosMensagens"] as DataTable;
 
-                WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.TAT2Request, "CodigosMensagens  - SYT05L", AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.TAT2Request, "CodigosMensagens LM  - SYT05L", AbArgs.USERNT, AbArgs.SN_HOSTNAME);
 
 
                 if (CodMsgs == null)
@@ -124,7 +124,7 @@ namespace MultilinhasDataLayer
 
                     try
                     {
-                        OdbcDataAdapter ad = new OdbcDataAdapter("SELECT CELEMTAB2, NELEMC01 FROM SYT05L WHERE CELEMTAB1 = 'PR' AND CELEMTAB3 = 'PO'", connection); //Tabela sistema SYT05
+                        OdbcDataAdapter ad = new OdbcDataAdapter("SELECT CELEMTAB2, NELEMC01 FROM SYT05L WHERE CELEMTAB1 = 'LM' AND CELEMTAB3 = 'PO'", connection); //Tabela sistema SYT05
                         ad.Fill(ds);
                     }
                     finally
@@ -345,7 +345,7 @@ namespace MultilinhasDataLayer
                 datarenovacao = Convert.ToDateTime("2019-08-01"),
                 Descritivo = "ML - Base",
                 EstadoContrato = "PENDENTE",
-                graumorosidade = 9999,
+                graumorosidade = 999,
                 idmultilinha = "401258852001",
                 idproposta = string.IsNullOrEmpty(_idworkflow) ? "12351" : _idworkflow,
                 indicadorAcaoCancelamento = false,
@@ -426,15 +426,15 @@ namespace MultilinhasDataLayer
             };
         }
 
-        public LM34_SublimitesML SearchML04(int cliente, int idMult, int idSim)
+        public LM34_SublimitesML SearchML04(int cliente, string idMult, string idSim)
         {
             return new LM34_SublimitesML()
             {
                 Cliente = cliente,
                 Descritivo = "ML - Base",
                 EstadoContrato = "PENDENTE",
-                idmultilinha = idMult,
-                idsimulacaoml = idSim,
+                idmultilinha = idMult.ToString(),
+                idsimulacaoml = idSim.ToString(),
                 limiteglobalmultilinha = 4000000000,
                 Nome = "CLIENTE 01",
                 Produtoml = "LM",

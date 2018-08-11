@@ -20,7 +20,6 @@ namespace Multilinha
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             if (!Page.IsPostBack)
             {
                 ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
@@ -287,6 +286,10 @@ namespace Multilinha
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
+            if(!string.IsNullOrEmpty(lberrorSRA.Text) || !string.IsNullOrEmpty(lberrorSRC.Text) || !string.IsNullOrEmpty(lberrorSRF.Text)
+            {
+                return;
+            }
 
             string op = Request.QueryString["OP"] ?? "FF";
             switch (op.ToUpper())
@@ -343,9 +346,22 @@ namespace Multilinha
                 int nMinimoProdutosAtivar;
                 Int32.TryParse(txtNumeroMinimoProdutos.Text, out nMinimoProdutosAtivar);
                 bool val = validacaoCP(nMinimoProdutosAtivar);
+                if(!val)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "scroll", "ToTopOfPage();", true);
+                    return;
+                }
+
+                //1º Verificar Valor Sublimites
+                bool val1 = validacaoSublimitesRisco();
+                if(!val1)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "scroll", "ToTopOfPage();", true);
+                    return;
+                }
 
                 bool val2 = true; //validacaoDtProximaCobrabca();
-                if (val && val2)
+                if (val && val1 && val2)
                 {
                     //Call LM33 - C
                     LM33_ContratoML _LM33 = new LM33_ContratoML();
@@ -369,6 +385,7 @@ namespace Multilinha
                         lberror.ForeColor = System.Drawing.Color.Red;
                     }
 
+                    ClientScript.RegisterStartupScript(this.GetType(), "scroll", "ToTopOfPage();", true);
                     Helper.SetEnableControler(this, false);
                     btnSeguinte.Enabled = true;
                 }
@@ -781,6 +798,32 @@ namespace Multilinha
             }
         }
 
+        internal bool validacaoSublimitesRisco()
+        {
+            lberror.Text = "";
+            bool sublimitesRiscoValidos = true;
+
+
+            decimal limitGl = 0;
+            decimal.TryParse(txtlimiteglobalmultilinha.Text, out limitGl);
+            decimal subAss = 0;
+            decimal.TryParse(txtsublimiteriscoAssinatura.Text, out subAss);
+            decimal subFin = 0;
+            decimal.TryParse(txtsublimiteriscoFinanceiro.Text, out subFin);
+            decimal subCom = 0;
+            decimal.TryParse(txtsublimitriscoComercial.Text, out subCom);
+
+            if(subAss > limitGl || subFin > limitGl || subCom > limitGl)
+            {
+                sublimitesRiscoValidos = false;
+                lberror.Text = Constantes.Mensagens.ValorSublimitesRiscoInvalido;
+                lberror.Visible = true;
+                lberror.ForeColor = System.Drawing.Color.Red;
+            }
+
+            return sublimitesRiscoValidos;
+        }
+
         protected void btnLimpar_Click(object sender, EventArgs e)
         {
             //limpa e disable produto
@@ -832,6 +875,51 @@ namespace Multilinha
             int prazoContrato = Convert.ToInt32(txtprazocontrato.Text);
 
             txtdatafimcontrato.Text = dtInicio.AddMonths(prazoContrato).ToString("yyyy-MM-dd");
+        }
+
+        protected void txtsublimiteriscoFinanceiro_TextChanged(object sender, EventArgs e)
+        {
+            lberrorSRF.Text = "";
+            decimal limitGl = 0;
+            decimal.TryParse(txtlimiteglobalmultilinha.Text, out limitGl);
+            decimal subFin = 0;
+            decimal.TryParse(txtsublimiteriscoFinanceiro.Text, out subFin);
+
+            if (subFin > limitGl)
+            {
+                lberrorSRF.Text = Constantes.Mensagens.ValorSublimiteRiscoInvalido;
+                lberrorSRF.Visible = true;
+            } 
+        }
+
+        protected void txtsublimitriscoComercial_TextChanged(object sender, EventArgs e)
+        {
+            lberrorSRC.Text = "";
+            decimal limitGl = 0;
+            decimal.TryParse(txtlimiteglobalmultilinha.Text, out limitGl);
+            decimal subCom = 0;
+            decimal.TryParse(txtsublimitriscoComercial.Text, out subCom);
+
+            if (subCom > limitGl)
+            {
+                lberrorSRC.Text = Constantes.Mensagens.ValorSublimiteRiscoInvalido;
+                lberrorSRC.Visible = true;
+            }
+        }
+
+        protected void txtsublimiteriscoAssinatura_TextChanged(object sender, EventArgs e)
+        {
+            lberrorSRA.Text = "";
+            decimal limitGl = 0;
+            decimal.TryParse(txtlimiteglobalmultilinha.Text, out limitGl);
+            decimal subAss = 0;
+            decimal.TryParse(txtsublimiteriscoAssinatura.Text, out subAss);
+
+            if (subAss > limitGl)
+            {
+                lberrorSRA.Text = Constantes.Mensagens.ValorSublimiteRiscoInvalido;
+                lberrorSRA.Visible = true;
+            }
         }
     }
 }
