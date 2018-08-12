@@ -360,7 +360,63 @@ namespace MultilinhaBusinessLayer
             LM37_SimulacaoMl obj = new LM37_SimulacaoMl();
             if (response.output != null)
             {
+                int balcao = 0;
+                Int32.TryParse(response.output.cbalcao, out balcao);
+                obj.Balcao = balcao;
+                int client = 0;
+                int.TryParse(response.output.zcliente, out client);
+                obj.Cliente = client;
+                obj.Nome = response.output.gcliente;
 
+                obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.lcmv3701_cprod, response.output.ccta, response.output.cdgt);
+                obj.idsimulacaoml = response.output.cidsimulml;
+                obj.limiteglobalmultilinha = response.output.mlmglbmlatual;
+                obj.limiteglobalmultilinhaNovo = response.output.mlmglbmlnovo;
+                obj.limiteglobalmultilinhaTotal = response.output.mlmglbmltotal;
+                obj.Produtoml = response.output.lcmv3701_cprod;
+                obj.Subprodutoml = response.output.csubprdml;
+                obj.sublimiteriscoAssinatura = response.output.msublmraatual;
+                obj.sublimiteriscoAssinaturaNovo = response.output.msublmranovo;
+                obj.sublimiteriscoAssinaturaTotal = response.output.msublmratotal;
+                obj.sublimiteriscoFinanceiro = response.output.msublmrfatual;
+                obj.sublimiteriscoFinanceiroNovo = response.output.msublmrfnovo;
+                obj.sublimiteriscoFinanceiroTotal = response.output.msublmrftotal;
+                obj.sublimitriscoComercial = response.output.msublmrcatual;
+                obj.sublimitriscoComercialNovo = response.output.msublmrcnovo;
+                obj.sublimitriscoComercialTotal = response.output.msublmrctotal;
+                //obj.tipoSimulacao
+
+                //listas
+                foreach (var a in response.row1)
+                {
+                    if (a.ntplprod_l != null)
+                    {
+                        LM37_SimulacaoMl.simulacaoSublimites sim = new LM37_SimulacaoMl.simulacaoSublimites();
+                        sim.cons_Balcao = a.cons_cbalcao_l;
+                        sim.cons_Cliente = a.cons_zcliente_l;
+                        DateTime dat;
+                        DateTime.TryParseExact(a.cons_dsimulml_l, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dat);
+                        sim.cons_DataSimulacao = dat;
+                        sim.cons_idMultilinha = string.Format("{0}{1}{2}{3}", a.cons_cbalcao_l, a.cons_cprod_l, a.cons_ccta_l, a.cons_cdgt_l);
+                        sim.cons_idSimulacao = a.cons_cidsimulml_l;
+                        sim.cons_limiteML = a.cons_mlmglbml_l;
+                        sim.cons_limiteRA = a.cons_msublmra_l;
+                        sim.cons_limiteRC = a.cons_msublmrc_l;
+                        sim.cons_limiteRF = a.cons_msublmrf_l;
+                        sim.cons_utilizador = a.cons_cutulcria_l;
+                        sim.SublimiteComprometido = a.msublmcompatual_l;
+                        sim.SublimiteComprometidoNovo = a.mpsublmcompnovo_l;
+                        sim.SublimiteContratado = a.msublmcontr_l;
+                        sim.TipologiaRisco = a.ntprisco_l;
+                        sim.ExposicaoAtual = a.mpexpoatual_l;
+                        sim.FamiliaProduto = a.ntplprod_l;
+                        sim.preco = a.nindpreco_l != "S" ? false: true;
+                        sim.produto = a.ccodtpl_l; // COM 4
+
+                        obj.SimulacaoSublimites.Add(sim);
+
+                    }
+                }
             }
 
             msgOut.ResultResult = obj;
@@ -378,9 +434,40 @@ namespace MultilinhaBusinessLayer
             LM38_HistoricoAlteracoes obj = new LM38_HistoricoAlteracoes();
             if (response.output != null)
             {
+                int client = 0;
+                int.TryParse(response.output.zcliente, out client);
+                obj.Cliente = client;
+                obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.cprod, response.output.cta, response.output.dgt);
+                //obj.Nome = response.output.g
 
+                //listas
+                foreach (var a in response.row1)
+                {
+                    if (a.ncontrato_l != null)
+                    {
+                        LM38_HistoricoAlteracoes.historicoAlteracoes his = new LM38_HistoricoAlteracoes.historicoAlteracoes();
+                        his.campoAlterado = a.galtera_l;
+
+                        DateTime dat;
+                        DateTime.TryParseExact(a.dprocess_l, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dat);
+                        his.dataProcessamento = dat;
+
+                        DateTime datV;
+                        DateTime.TryParseExact(a.dtaltera_l, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out datV);
+                        his.dataValorAlteracao = datV;
+
+                        //his.description = a.d
+                        his.idAlteracao = a.idaltera_l;
+                        his.nContratoProduto = a.ncontrato_l;
+                        his.TipoAlteracao = a.gtipo_l;
+                        //his.utilizador = a TO DO
+                        his.valorAnterior = a.vanterior_l;
+                        //his.valorPosterior = a. TO DO
+
+                        obj.HistoricoAlteracoes.Add(his);
+                    }
+                }
             }
-
             msgOut.ResultResult = obj;
             return msgOut;
         }

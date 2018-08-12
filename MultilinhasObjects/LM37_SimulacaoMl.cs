@@ -7,7 +7,6 @@ namespace MultilinhasObjects
 {
     public class LM37_SimulacaoMl : LM34_SublimitesML
     {
-        public int IDSimulacaoML { get; set; }
         public int Balcao { get; set; }
         public DateTime dataSimulacao { get; set; }
         public string tipoSimulacao { get; set; }
@@ -48,9 +47,9 @@ namespace MultilinhasObjects
 
             public DateTime cons_DataSimulacao { get; set; }
 
-            public int cons_idMultilinha { get; set; }
+            public string cons_idMultilinha { get; set; }
 
-            public int cons_idSimulacao { get; set; }
+            public string cons_idSimulacao { get; set; }
 
             public decimal cons_limiteML { get; set; }
 

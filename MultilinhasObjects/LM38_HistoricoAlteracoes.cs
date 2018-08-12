@@ -13,7 +13,7 @@ namespace MultilinhasObjects
 
         public int Cliente { get; set; }
         public string Nome { get; set; }
-        public int idmultilinha { get; set; }
+        public string idmultilinha { get; set; }
 
         public List<historicoAlteracoes> HistoricoAlteracoes = new List<historicoAlteracoes>();
 

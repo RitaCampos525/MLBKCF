@@ -286,7 +286,7 @@ namespace Multilinha
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(lberrorSRA.Text) || !string.IsNullOrEmpty(lberrorSRC.Text) || !string.IsNullOrEmpty(lberrorSRF.Text)
+            if(!string.IsNullOrEmpty(lberrorSRA.Text) || !string.IsNullOrEmpty(lberrorSRC.Text) || !string.IsNullOrEmpty(lberrorSRF.Text))
             {
                 return;
             }
