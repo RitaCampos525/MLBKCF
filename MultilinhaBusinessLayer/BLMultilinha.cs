@@ -384,7 +384,7 @@ namespace MultilinhaBusinessLayer
                 obj.sublimitriscoComercial = response.output.msublmrcatual;
                 obj.sublimitriscoComercialNovo = response.output.msublmrcnovo;
                 obj.sublimitriscoComercialTotal = response.output.msublmrctotal;
-                //obj.tipoSimulacao
+                obj.tipoSimulacao = response.output.ctpsimulml;
 
                 //listas
                 foreach (var a in response.row1)
@@ -411,7 +411,7 @@ namespace MultilinhaBusinessLayer
                         sim.ExposicaoAtual = a.mpexpoatual_l;
                         sim.FamiliaProduto = a.ntplprod_l;
                         sim.preco = a.nindpreco_l != "S" ? false: true;
-                        sim.produto = a.ccodtpl_l; // COM 4
+                        sim.CodigoTipologia = a.ccodtpl_l; // COM 4
 
                         obj.SimulacaoSublimites.Add(sim);
 

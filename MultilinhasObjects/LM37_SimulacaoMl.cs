@@ -28,7 +28,7 @@ namespace MultilinhasObjects
 
             public string FamiliaProduto { get; set; }
 
-            public string produto { get; set; }
+            public string CodigoTipologia { get; set; }
 
             public bool preco { get; set; }
 
@@ -44,6 +44,8 @@ namespace MultilinhasObjects
             public string cons_Cliente { get; set; }
 
             public string cons_Balcao { get; set; }
+
+            public string cons_ProdSub { get; set; }
 
             public DateTime cons_DataSimulacao { get; set; }
 

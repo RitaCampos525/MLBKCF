@@ -493,6 +493,7 @@ namespace MultilinhasDataLayer
             LM37.input.msublmrftotal = _LM37.sublimiteriscoFinanceiroTotal;
             LM37.input.zcliente = _LM37.Cliente.ToString();
             LM37.input.gdescml = _LM37.Nome;
+            LM37.input.ctpsimulml = _LM37.tipoSimulacao;
            
 
             List<BCDWSProxy.LM37Row1> lstRow1 = new List<BCDWSProxy.LM37Row1>();
@@ -504,7 +505,7 @@ namespace MultilinhasDataLayer
                 _row1.pedido_dados = false;
                 _row1.ntplprod_l = f.FamiliaProduto;
                 _row1.ntprisco_l = f.TipologiaRisco;
-                _row1.ccodtpl_l = f.produto; //com 4
+                _row1.ccodtpl_l = f.CodigoTipologia; //com 4
                 _row1.mpexpoatual_l = f.ExposicaoAtual;
                 _row1.mpsublmcompnovo_l = f.SublimiteComprometidoNovo;
                 _row1.msublmcompatual_l = f.SublimiteComprometido;
@@ -515,8 +516,8 @@ namespace MultilinhasDataLayer
                 _row1.cons_ccta_l = string.IsNullOrEmpty(f.cons_idMultilinha.ToString()) ? "" : f.cons_idMultilinha.ToString().Substring(5, 6);
                 _row1.cons_cdgt_l = string.IsNullOrEmpty(f.cons_idMultilinha.ToString()) ? "" : f.cons_idMultilinha.ToString().Substring(11, 1);
                 _row1.cons_cidsimulml_l = f.cons_idSimulacao.ToString();
-                _row1.cons_cprod_l = f.produto.Substring(0,2);
-                _row1.cons_cprodsubp_l = f.produto; // com 4
+                _row1.cons_cprod_l = string.IsNullOrEmpty(f.cons_idMultilinha.ToString()) ? "" : f.cons_idMultilinha.ToString().Substring(3, 2);
+                _row1.cons_cprodsubp_l = f.cons_ProdSub;
                 _row1.cons_cutulcria_l = f.cons_utilizador;
                 _row1.cons_dsimulml_l = f.cons_DataSimulacao.ToString("yyyyMMdd");
                 _row1.cons_mlmglbml_l = f.cons_limiteML;

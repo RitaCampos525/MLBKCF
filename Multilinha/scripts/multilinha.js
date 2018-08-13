@@ -283,9 +283,16 @@ $("#btnPesquisar").click(function () {
 })
 
 ///MULTILINHA
-$('#txtDataInicioComercializacao').datepicker('setDate', dtFechasStr);
-$('#txtdatainiciocontrato').datepicker("setDate", dtFechasStr);
-$('#txtdataProcessamento').datepicker("setDate", dtFechasStr);
+try{
+    $('#txtDataInicioComercializacao').datepicker('setDate', dtFechasStr);
+}catch(err){}
+try{
+    $('#txtdatainiciocontrato').datepicker("setDate", dtFechasStr);
+}
+catch (err) { }
+try{
+    $('#txtdataProcessamento').datepicker("setDate", dtFechasStr);
+}catch(err){}
 
 function ValidaDatas() {
     var $regexname = /^([1-9][0-9]{3})[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/;
@@ -536,91 +543,72 @@ $("[class=percentual]").blur(function (e) {
         this.value = this.value + '0';
 });
 
+function formatacaoNumericos()
+{
+    $("[class*=number]").keypress(function Numbers(e) {
+        var theEvent = window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+        var regex = /^[0-9]+([,]{1}[0-9]{0,5}){0,1}$/;
+        if (!regex.test(this.value + key))
+            return false
+    });
 
-function ValidaValores() {
-    var b = ValidaPercentual();
-    var a = ValidaMontantes();
-
-    if (a && b)
-        return true;
-    else
-        return false;
-
-};
-
-//valida valor minimo do percentual
-function ValidaPercentual() {
-    var a = true;
-    var percentual = $('#TiposEncargo_txtPercentual');
-    if (percentual.val() == '' || percentual.val() == '0' || percentual.val() == '0,000000000') {
-        var page = window.location.pathname;
-        //Se pagina definicao encargo, percentual tem de ser diferente de zero
-        if (page.indexOf('DefinicaoCodigoEncargo') != -1) {
-            $('#TiposEncargo_reqPercentual').show()
-            a = false;
+    $("[class*=number]").blur(function Numbers(e) {
+        if (this.value.indexOf('.') != -1) {
+            this.value = this.value.replace('.', ',');
         }
+
+        var val = this.value.split(',');
+        if (val.length == 1 && val[0] == "")
+            this.value = this.value + '0,00';
+        else if (val.length == 1)
+            this.value = this.value + ',00';
+        else if (val[1].length == 0)
+            this.value = this.value + '00';
+        else if (val[1].length == 1)
+            this.value = this.value + '0';
+
+    });
+}
+
+//MULTILINHA
+
+$('#txtsublimiteriscoFinanceiro').blur()
+{
+    var LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
+    var SublimiteFinanceiro = $('#txtsublimiteriscoFinanceiro').val().replace(',', '.');
+    if (SublimiteFinanceiro > LimiteGlobal) {
+        $('#reqsublimiteriscoFinanceiro')[0].innerHTML = "Valor sublimite superior ao limite global";
+        $('#reqsublimiteriscoFinanceiro').show();
+    }
+    else{
+        $('#reqsublimiteriscoFinanceiro').hide();
+    };
+}
+$('#txtsublimitriscoComercial').blur()
+{
+    var LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
+    var SublimiteComercial = $('#txtsublimitriscoComercial').val().replace(',', '.');
+    if (SublimiteComercial > LimiteGlobal) {
+        $('#reqsublimitriscoComercial')[0].innerHTML = "Valor sublimite superior ao limite global";
+        $('#reqsublimitriscoComercial').show();
     }
     else {
-        $('#TiposEncargo_reqPercentual').hide()
-        a = true;
-    }
-
-    return a;
-};
-
-//valida valor minimo dos montantes
-function ValidaMontantes() {
-    var a = true;
-    var montantebase = $('#TiposEncargo_txtMontanteBase');
-    var montanteMinimo = $('#TiposEncargo_txtMontanteMinimo');
-    var montanteMaximo = $('#TiposEncargo_txtMontanteMaximo');
-
-    if (montantebase.val() == '' || montantebase.val() == '0' || montantebase.val() == '0,00000') {
-        var page = window.location.pathname;
-        //Se pagina definicao encargo, montante base tem de ser diferente de zero
-        if (page.indexOf('DefinicaoCodigoEncargo') != -1) {
-            $('#TiposEncargo_reqMontanteBase').show()
-            a = false;
-        }
-        else {
-            //Montante Base pose ser zero no Negociado
-            $('#TiposEncargo_reqMontanteBase').hide()
-        }
+        $('#reqsublimitriscoComercial').hide();
+    };
+}
+$('#txtsublimiteriscoAssinatura').blur()
+{
+    var LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
+    var SublimiteAssinatura = $('#txtsublimiteriscoAssinatura').val().replace(',', '.');
+    if (SublimiteAssinatura > LimiteGlobal) {
+        $('#reqsublimiteriscoAssinatura')[0].innerHTML = "Valor sublimite superior ao limite global";
+        $('#reqsublimiteriscoAssinatura').show();
     }
     else {
-        $('#TiposEncargo_reqMontanteBase').hide();
-    }
-
-    if (montanteMinimo.val() == '' || montanteMinimo.val() == '0' || montanteMinimo.val() == '0,00000') {
-
-        var page = window.location.pathname;
-        //Se pagina definicao encargo, montante minimo tem de ser diferente de zero
-        if (page.indexOf('DefinicaoCodigoEncargo') != -1) {
-            $('#TiposEncargo_reqMontanteMinimo').show()
-            a = false;
-        }
-        else {
-            //Montante Minimo pode ser zero no Negociado
-            $('#TiposEncargo_reqMontanteMinimo').hide();
-        }
-    }
-    else {
-        $('#TiposEncargo_reqMontanteMinimo').hide();
-    }
-
-    if (montanteMaximo.val() == '' || montanteMaximo.val() == '0' || montanteMaximo.val() == '0,00000') {
-        var page = window.location.pathname;
-        //Se pagina definicao encargo, montante maximo tem de ser diferente de zero
-        if (page.indexOf('DefinicaoCodigoEncargo') != -1) {
-            $('#TiposEncargo_reqMontanteMaximo').show()
-            a = false;
-        }
-    }
-    else {
-        $('#TiposEncargo_reqMontanteMaximo').hide();
-    }
-
-    return a;
+        $('#reqsublimiteriscoAssinatura').hide();
+    };
 }
 
 //Validacao, verifica se as labels de formato incorrecto Datas estao visiveis

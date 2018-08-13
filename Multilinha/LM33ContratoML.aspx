@@ -14,13 +14,10 @@
     <script src="scripts/jquery-1.12.4.min.js"></script>
     <script src="scripts/jquery-ui.js"></script>
     <script src="scripts/bootstrap.js"></script>
-
 </head>
 <uc1:header runat="server" ID="header" />
 <body>
     <form id="form1" class="content container-fluid form-horizontal" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server" LoadScriptsBeforeUI="true"></asp:ScriptManager>
-         <asp:updatepanel id="upMC03" runat="server" UpdateMode="Conditional"><ContentTemplate>
         <div id="dvError" runat="server">
             <asp:Label runat="server" ID="lberror" CssClass="col-md-12 col-sm-12 lbl" Visible="false ">Occur an error</asp:Label>
         </div>
@@ -149,7 +146,7 @@
                         <div class="col-sm-4">
                             <label id="bkldtiniciocontrato" runat="server" class="col-sm-4 text-right lbl">* Data início de contrato: </label>
                             <div class="col-sm-6">
-                                <asp:TextBox ID="txtdatainiciocontrato" placeholder="0001-01-01" MaxLength="10" CssClass="form-control text-field dtField" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtdatainiciocontrato" placeholder="0001-01-01" MaxLength="10" CssClass="form-control text-field dtField" AutoPostBack="true" OnTextChanged="txtdatainiciocontrato_TextChanged" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqdatainiciocontrato" ControlToValidate="txtdatainiciocontrato" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                 <label class="requiredFieldEmpty" style="display: none;" id="reqemdatainiciocontrato" runat="server">Formato incorreto</label>
                             </div>
@@ -238,7 +235,7 @@
                         <div class="col-sm-4">
                             <label id="bkllimRiscoFinanceiro" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Financeiro: </label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtsublimiteriscoFinanceiro" CssClass="form-control text-field number" MaxLength="16" AutoPostBack="true" OnTextChanged="txtsublimiteriscoFinanceiro_TextChanged" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtsublimiteriscoFinanceiro" CssClass="form-control text-field number" MaxLength="16" AutoPostBack="true"  runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimiteriscoFinanceiro" ControlToValidate="txtsublimiteriscoFinanceiro" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                 <asp:Label ID="lberrorSRF" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
                             </div>
@@ -248,7 +245,7 @@
                         <div class="col-sm-4">
                             <label id="bkllimRiscoComercial" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Comercial: </label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtsublimitriscoComercial" CssClass="form-control text-field number" MaxLength="16" AutoPostBack="true" OnTextChanged="txtsublimitriscoComercial_TextChanged" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtsublimitriscoComercial" CssClass="form-control text-field number" MaxLength="16" AutoPostBack="true"  runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimitriscoComercial" ControlToValidate="txtsublimitriscoComercial" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                 <asp:Label ID="lberrorSRC" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
                             </div>
@@ -258,7 +255,7 @@
                         <div class="col-sm-4">
                             <label id="bkllimiteriscoassinatura" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Assinatura: </label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtsublimiteriscoAssinatura" CssClass="number form-control text-field" MaxLength="16" AutoPostBack="true" OnTextChanged="txtsublimiteriscoAssinatura_TextChanged" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtsublimiteriscoAssinatura" CssClass="number form-control text-field" MaxLength="16" AutoPostBack="true" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimiteriscoAssinatura" ControlToValidate="txtsublimiteriscoAssinatura" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                 <asp:Label ID="lberrorSRA" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
                             </div>
@@ -562,7 +559,6 @@
 
                 </div>
             </div>
-        </ContentTemplate></asp:updatepanel>
             <div id="ml03V_denuncia" visible="false" runat="server">
             <uc1:ucCancelamentoContrato runat="server" ID="ucCancelamentoContrato" />
         </div>
@@ -571,5 +567,7 @@
         var dtfechas = "<%=this.dtfechas %>";
     </script>
     <script src="scripts/multilinha.js"></script>
+    <script type="text/javascript">
+    </script>
 </body>
 </html>

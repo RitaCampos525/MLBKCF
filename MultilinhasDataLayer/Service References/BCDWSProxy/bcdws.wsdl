@@ -3642,7 +3642,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="lcmv3700_cprod" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ccta" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="cdgt" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ntpsimulml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ctpsimulml" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="csubprdml" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="gdescml" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="cidsimulml" type="s:string" />
@@ -3721,7 +3721,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="lcmv3701_cprod" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ccta" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="cdgt" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ntpsimulml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ctpsimulml" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="csubprdml" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="gdescml" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="cidsimulml" type="s:string" />

@@ -286,53 +286,51 @@ namespace Multilinha
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(lberrorSRA.Text) || !string.IsNullOrEmpty(lberrorSRC.Text) || !string.IsNullOrEmpty(lberrorSRF.Text))
+            if (Page.IsValid)
             {
-                return;
-            }
+                string op = Request.QueryString["OP"] ?? "FF";
+                switch (op.ToUpper())
+                {
+                    case "C":
+                        Helper.SetEnableControler(camposChave, false);
+                        Helper.AddRemoveHidden(false, dpOK);
+                        Helper.SetEnableControler(dpOK, true);
 
-            string op = Request.QueryString["OP"] ?? "FF";
-            switch (op.ToUpper())
-            {
-                case "C":
-                    Helper.SetEnableControler(camposChave, false);
-                    Helper.AddRemoveHidden(false, dpOK);
-                    Helper.SetEnableControler(dpOK, true);
-
-                    Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
-                    Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
-                    Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
-                    Helper.AddRemoveHidden(false, dvtitleComissoes);
-                    Helper.AddRemoveHidden(false, accoesfinais_criarml03);
-                    Helper.AddRemoveHidden(false, hr3);
-                    Helper.AddRemoveHidden(false, hr4);
-                    Helper.AddRemoveHidden(false, divVersoesML);
+                        Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                        Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                        Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                        Helper.AddRemoveHidden(false, dvtitleComissoes);
+                        Helper.AddRemoveHidden(false, accoesfinais_criarml03);
+                        Helper.AddRemoveHidden(false, hr3);
+                        Helper.AddRemoveHidden(false, hr4);
+                        Helper.AddRemoveHidden(false, divVersoesML);
 
 
-                    //Call LM31 (viewState) para obtencao de produtos do produto ML introduzido! E seleccionar CP correspondentes
-                    LM31_CatalogoProdutoML LM31 = ViewState["LM31"] as LM31_CatalogoProdutoML;
+                        //Call LM31 (viewState) para obtencao de produtos do produto ML introduzido! E seleccionar CP correspondentes
+                        LM31_CatalogoProdutoML LM31 = ViewState["LM31"] as LM31_CatalogoProdutoML;
 
-                    #region tabelas de produtos de riscos
+                        #region tabelas de produtos de riscos
 
-                    //Get Produtos
+                        //Get Produtos
 
-                    List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM31, true);
+                        List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
+                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM31, true);
 
-                    List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM31, true);
+                        List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
+                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM31, true);
 
-                    List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM31, true);
+                        List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
+                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM31, true);
 
-                    #endregion
+                        #endregion
 
-                    //Call LM33 para obtencao do valor das comissoes do produto ML introduzido!
-                    LM33_ContratoML LM33 = TAT2.SearchML03(1004, "");
-                    Helper.CopyObjectToControls(this.MC33C, LM33);
+                        //Call LM33 para obtencao do valor das comissoes do produto ML introduzido!
+                        LM33_ContratoML LM33 = TAT2.SearchML03(1004, "");
+                        Helper.CopyObjectToControls(this.MC33C, LM33);
 
 
-                    break;
+                        break;
+                }
             }
         }
 
@@ -871,55 +869,24 @@ namespace Multilinha
 
         protected void txtprazocontrato_TextChanged(object sender, EventArgs e)
         {
-            DateTime dtInicio = DateTime.ParseExact(txtdatainiciocontrato.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-            int prazoContrato = Convert.ToInt32(txtprazocontrato.Text);
+            DateTime dtInicio;
+            DateTime.TryParseExact(txtdatainiciocontrato.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtInicio);
+
+            int prazoContrato;
+            Int32.TryParse(txtprazocontrato.Text, out prazoContrato);
 
             txtdatafimcontrato.Text = dtInicio.AddMonths(prazoContrato).ToString("yyyy-MM-dd");
         }
 
-        protected void txtsublimiteriscoFinanceiro_TextChanged(object sender, EventArgs e)
+        protected void txtdatainiciocontrato_TextChanged(object sender, EventArgs e)
         {
-            lberrorSRF.Text = "";
-            decimal limitGl = 0;
-            decimal.TryParse(txtlimiteglobalmultilinha.Text, out limitGl);
-            decimal subFin = 0;
-            decimal.TryParse(txtsublimiteriscoFinanceiro.Text, out subFin);
+            DateTime dtInicio;
+            DateTime.TryParseExact(txtdatainiciocontrato.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtInicio);
 
-            if (subFin > limitGl)
-            {
-                lberrorSRF.Text = Constantes.Mensagens.ValorSublimiteRiscoInvalido;
-                lberrorSRF.Visible = true;
-            } 
-        }
+            int prazoContrato;
+            Int32.TryParse(txtprazocontrato.Text, out prazoContrato);
 
-        protected void txtsublimitriscoComercial_TextChanged(object sender, EventArgs e)
-        {
-            lberrorSRC.Text = "";
-            decimal limitGl = 0;
-            decimal.TryParse(txtlimiteglobalmultilinha.Text, out limitGl);
-            decimal subCom = 0;
-            decimal.TryParse(txtsublimitriscoComercial.Text, out subCom);
-
-            if (subCom > limitGl)
-            {
-                lberrorSRC.Text = Constantes.Mensagens.ValorSublimiteRiscoInvalido;
-                lberrorSRC.Visible = true;
-            }
-        }
-
-        protected void txtsublimiteriscoAssinatura_TextChanged(object sender, EventArgs e)
-        {
-            lberrorSRA.Text = "";
-            decimal limitGl = 0;
-            decimal.TryParse(txtlimiteglobalmultilinha.Text, out limitGl);
-            decimal subAss = 0;
-            decimal.TryParse(txtsublimiteriscoAssinatura.Text, out subAss);
-
-            if (subAss > limitGl)
-            {
-                lberrorSRA.Text = Constantes.Mensagens.ValorSublimiteRiscoInvalido;
-                lberrorSRA.Visible = true;
-            }
+            txtdatafimcontrato.Text = dtInicio.AddMonths(prazoContrato).ToString("yyyy-MM-dd");
         }
     }
 }

@@ -142,6 +142,23 @@ namespace MultilinhasObjects
             };
         }
 
+        public static List<MultilinhaObjects.ComboBox> GetTiposSimulacao()
+        {
+            return new List<ComboBox>(){
+                 new ComboBox()
+                {
+                    Code = "T1",
+                    Description = "T1 - Sublimites Produtos",
+                },
+                  new ComboBox()
+                {
+                    Code = "T2",
+                    Description = "T2 - Limites Globais e Sublimites",
+                },
+
+            };
+        }
+
         public static List<AlteracaoContratoML> GetMotivosAlteracaoContrato()
         {
             return new List<AlteracaoContratoML>(){
