@@ -83,7 +83,7 @@
                         <label id="bkSubProduto" runat="server" class="col-sm-4 text-right lbl">* Sub-Produto: </label>
                         <div class="col-sm-6">
                             <asp:DropDownList ID="ddlSubprodutoml" Enabled="false" AutoPostBack="true" pattern="[0-9]{2}"
-                                MaxLength="2" CssClass="form-control text-field" runat="server" DataTextField="">
+                                MaxLength="2" CssClass="form-control text-field" runat="server" DataTextField="" DataValueField="">
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -126,16 +126,16 @@
                         <label id="lblimiteglobalmultilinhaNovo" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
                             <asp:TextBox ID="txtlimiteglobalmultilinhaNovo" Enabled="false" CssClass=" col-sm-4 form-control text-field" runat="server"></asp:TextBox>
-                           
+                           <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqlimiteglobalmultilinhaNovo" ControlToValidate="txtlimiteglobalmultilinhaNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-sm-1">
-                             <span class="ui-icon ui-icon-check"></span>
+                             <span class="ui-icon ui-icon-check displayNone"></span>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <label id="lblimiteglobalmultilinhaTotal" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtlimiteglobalmultilinhaTotal" CssClass="form-control text-field number" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtlimiteglobalmultilinhaTotal" Enabled="false" CssClass="form-control text-field number" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -150,15 +150,16 @@
                         <label id="lbsublimiteriscoFinanceiroNovo" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
                             <asp:TextBox ID="txtsublimiteriscoFinanceiroNovo" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimiteriscoFinanceiroNovo" ControlToValidate="txtsublimiteriscoFinanceiroNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-sm-1">
-                             <span class="ui-icon ui-icon-check"></span>
+                             <span class="ui-icon ui-icon-check displayNone"></span>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <label id="lbsublimiteriscoFinanceiroTotal" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtsublimiteriscoFinanceiroTotal" CssClass="form-control text-field number" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtsublimiteriscoFinanceiroTotal" Enabled="false"  CssClass="form-control text-field number" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -172,16 +173,17 @@
                     <div class="col-sm-4">
                         <label id="lbsublimitriscoComercialNovo" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtsublimitriscoComercialNovo" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtsublimitriscoComercialNovo"  Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimitriscoComercialNovo" ControlToValidate="txtsublimitriscoComercialNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                          <div class="col-sm-1">
-                             <span class="ui-icon ui-icon-check"></span>
+                             <span class="ui-icon ui-icon-check displayNone"></span>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <label id="lbsublimitriscoComercialTotal" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtsublimitriscoComercialTotal" CssClass="form-control text-field number" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtsublimitriscoComercialTotal" Enabled="false"  CssClass="form-control text-field number" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -196,27 +198,28 @@
                         <label id="lbsublimiteriscoAssinaturaNovo" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
                             <asp:TextBox ID="txtsublimiteriscoAssinaturaNovo" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimiteriscoAssinaturaNovo" ControlToValidate="txtsublimiteriscoAssinaturaNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                          <div class="col-sm-1">
-                             <span class="ui-icon ui-icon-check"></span>
+                             <span class="ui-icon ui-icon-check displayNone"></span>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <label id="lbsublimiteriscoAssinaturaTotal" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtsublimiteriscoAssinaturaTotal" CssClass="form-control text-field number" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtsublimiteriscoAssinaturaTotal" Enabled="false"  CssClass="form-control text-field number" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
              </div>
-             <div id="tbsimulacoesFamilias" class="row form-group padding-row ">
-                         <div class="col-sm-10 treViewCatalogo">
+             <div id="tbsimulacoesFamilias" class="row form-group padding-row col-sm-12">
+                         <div class="col-sm-12">
                              <asp:ListView ID="lvProdutosSimulacao" runat="server">
                                         <EmptyDataTemplate>Não existem resultados para a pesquisa efetuada.</EmptyDataTemplate>
                                         <LayoutTemplate>
                                             <div class="Table Grid" id="tbSublimtesFinanceiros">
                                                 <div class="Heading Color">
-                                                    <div class="Cell Grid col-6">
+                                                    <div class="Cell Grid col-4">
                                                         <label>Tipo Risco</label>
                                                     </div>
                                                     <div class="Cell Grid col-6">
@@ -225,22 +228,22 @@
                                                     <div class="Cell Grid col-6">
                                                         <label>Código Tipologia</label>
                                                     </div>
-                                                    <div class="Cell Grid col-6">
+                                                    <div class="Cell Grid col-4">
                                                         <label>Preço</label>
                                                     </div>
                                                     <div class="Cell Grid col-6">
-                                                        <label>Sublimite Comprometido Atual</label>
+                                                        <label>Subl. Comprometido Atual</label>
                                                     </div>
                                                      <div class="Cell Grid col-6">
-                                                        <label>Sublimite Contratado</label>
+                                                        <label>Subl. Contratado</label>
                                                     </div>
                                                        <div class="Cell Grid col-6">
                                                         <label>Exposição Atual</label>
                                                     </div>
                                                     <div class="Cell Grid col-6">
-                                                        <label>Novo Sublimite Comprometido</label>
+                                                        <label>Novo Subl. Comprometido</label>
                                                     </div>
-                                                       <div class="Cell Grid col-6">
+                                                       <div class="Cell Grid col-4">
                                                         <label></label>
                                                     </div>
                                                     </div>
@@ -253,13 +256,13 @@
                                                     <div class="Cell Grid col-6">
                                                         <asp:Label runat="server" ID="lbTipologiaRisco" CssClass="text-center" Text='<%# Eval("TipologiaRisco") %>'></asp:Label>
                                                     </div>
-                                                <div class="Cell Grid col-6">
+                                                <div class="Cell Grid col-4">
                                                         <asp:Label runat="server" ID="lbFamiliaProduto" Text='<%# Eval("FamiliaProduto") %>' ></asp:Label>
                                                     </div>
-                                                <div class="Cell Grid col-6">
+                                                <div class="Cell Grid col-4">
                                                         <asp:Label runat="server" ID="lbCodigoTipologia" Text='<%# Eval("CodigoTipologia") %>' ></asp:Label>
                                                     </div>
-                                                 <div class="Cell Grid col-6">
+                                                 <div class="Cell Grid col-4">
                                                         <asp:Label runat="server" ID="lbpreco" Text='<%# Eval("preco") %>' ></asp:Label>
                                                     </div>
                                                  <div class="Cell Grid col-6">
@@ -272,17 +275,42 @@
                                                         <asp:Label runat="server" ID="lbExposicaoAtual" Text='<%# Eval("ExposicaoAtual") %>' ></asp:Label>
                                                     </div>
                                                 <div class="Cell Grid col-6">
-                                                        <asp:TextBox runat="server" ID="lbSublimiteComprometidoNovo" Text='<%# Eval("SublimiteComprometidoNovo") %>' ></asp:TextBox>
+                                                        <asp:TextBox runat="server" ID="lbSublimiteComprometidoNovo" AutoPostBack="true" OnTextChanged="lbSublimiteComprometidoNovo_TextChanged" Text='<%# Eval("SublimiteComprometidoNovo") %>' ></asp:TextBox>
                                                     </div>
-                                                  <div class="Cell Grid col-6">
-                                                        <span id="simulcaovalido" runat="server" class="ui-icon ui-icon-check"></span>
+                                                  <div class="Cell Grid col-4">
+                                                        <span id="simulcaovalido" runat="server" class=""></span>
+                                                        <span id="textsimulcaovalido" runat="server" class=""></span>
                                                     </div>
                                                 </div>
                                             </ItemTemplate>
                               </asp:ListView>
                          </div>
                     </div>
+            <div id="divSimular" runat="server" class="row form-group padding-row col-sm-12 text-right">
+                <div class="btn">
+                <asp:Button CssClass="normalButton col-4 btns" runat="server" ID="btnSimular" OnClick="btnSimular_Click" CausesValidation="false" Text="Simular" />
+                </div>
+                 <hr class="hr" id="hr2" runat="server" />      
+           </div>
+            <div id="divendButoes" runat="server" class="row form-group padding-row col-sm-6">
+                <div class="col-sm-4">
+                    <label id="lbidMultilinha" runat="server" class="col-sm-4 text-right lbl">* ID Simulação: </label> 
+                    <div class="col-sm-6">
+                    <asp:TextBox id="txt_idmultilinha" class="text-center form-control" runat="server" OnClick="btnConsultarProdutos_Click"></asp:TextBox>
+                   </div>
+                </div>
+                 <div class="col-sm-4 ">
+                     <asp:Button CssClass="normalButtonXL btns" runat="server" ID="btnConsultarProdutos" OnClick="btnConsultarProdutos_Click" CausesValidation="false" Text="Contratos Produtos ML" />
+                 </div>
+                 <div class="col-sm-4 ">
+                <asp:Button CssClass="normalButtonXL btns" runat="server" ID="btnGuardarSimulacao" OnClick="btnGuardarSimulacao_Click" CausesValidation="false" Text="Guardar Simulação" />
+                </div>
             </div>
-        </div>
+         </div>
+            </div>
    </form>
+     <script type='text/javascript'>
+        var dtfechas = "<%=this.dtfechas %>";
+    </script>
+    <script src="scripts/multilinha.js"></script>
 </body>

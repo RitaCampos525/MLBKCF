@@ -4,12 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace Multilinha
 {
     public partial class LM37SimulacaoML : System.Web.UI.Page
     {
+        public DateTime dtfechas = Global.dtfechasG;
+        MultilinhasDataLayer.boMultilinhas TAT2 = new MultilinhasDataLayer.boMultilinhas();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
@@ -38,6 +42,7 @@ namespace Multilinha
 
                         Helper.AddRemoveHidden(true, divProduto);
                         Helper.AddRemoveHidden(true, divSimulacaoSublimites);
+                        Helper.AddRemoveHidden(true, divSimular);
 
                         break;
                     case "V":
@@ -49,6 +54,7 @@ namespace Multilinha
 
                         Helper.AddRemoveHidden(true, divProduto);
                         Helper.AddRemoveHidden(true, divSimulacaoSublimites);
+                        Helper.AddRemoveHidden(true, divSimular);
                         break;
 
                     default:
@@ -95,9 +101,136 @@ namespace Multilinha
         {
             //TO DO Call LM37 para obter dados do cliente e da simulaçcao
 
+            Helper.SetEnableControler(camposChaveSim, false);
             Helper.AddRemoveHidden(false, divProduto);
+            Helper.SetEnableControler(divProduto, false);
             Helper.AddRemoveHidden(false, divSimulacaoSublimites);
+            Helper.AddRemoveHidden(false, divSimular);
 
+            LM37_SimulacaoMl sim =  TAT2.SearchML37(0001004, "510092588522");
+            Helper.CopyObjectToControls(this, sim);
+
+            string op = Helper.getTransactionMode(Context, Request);
+            switch (op.ToUpper())
+            {
+                case "C":
+                    if(rdtipoSimulacao.SelectedValue == "T2")
+                    {
+                        txtlimiteglobalmultilinhaNovo.Enabled = true;
+                        txtsublimiteriscoAssinaturaNovo.Enabled = true;
+                        txtsublimitriscoComercialNovo.Enabled = true;
+                        txtsublimiteriscoAssinaturaNovo.Enabled = true;
+                    }
+
+                    bindlistviewsimulacao(sim , lvProdutosSimulacao);
+                    break;
+            }
+
+        }
+
+        internal void bindlistviewsimulacao(LM37_SimulacaoMl sml, ListView lv)
+        {
+            List<LM37_SimulacaoMl.simulacaoSublimites> lst = sml.SimulacaoSublimites;
+            lvProdutosSimulacao.DataSource = lst;
+            lvProdutosSimulacao.DataBind();
+        }
+
+        protected void btnSimular_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lbSublimiteComprometidoNovo_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+
+            decimal novo;
+            decimal.TryParse(txt.Text, out novo);
+
+            ListViewItem row = txt.NamingContainer as ListViewItem;
+            int index = Convert.ToInt32(row.DisplayIndex);
+
+           
+
+            string tiporisco = (lvProdutosSimulacao.Items[index].FindControl("lbTipologiaRisco") as Label).Text;
+            string exposicaoAtual = (lvProdutosSimulacao.Items[index].FindControl("lbExposicaoAtual") as Label).Text;
+
+            decimal decexposicaoatual;
+            Decimal.TryParse(exposicaoAtual, out decexposicaoatual);
+
+            decimal sublimiterisco = 0;
+            switch (tiporisco)
+            {
+                case "F":
+                    Decimal.TryParse(txtsublimiteriscoFinanceiro.Text, out sublimiterisco);
+                    break;
+                case "A":
+                    Decimal.TryParse(txtsublimiteriscoAssinatura.Text, out sublimiterisco);
+                    break;
+                case "C":
+                    Decimal.TryParse(txtsublimitriscoComercial.Text, out sublimiterisco);
+                    break;
+            }
+
+            var simbolo = lvProdutosSimulacao.Items[index].FindControl("simulcaovalido") as HtmlGenericControl;
+            var awarning = lvProdutosSimulacao.Items[index].FindControl("textsimulcaovalido") as HtmlGenericControl;
+            awarning.InnerHtml = "";
+
+            //Invalido
+            if (novo > sublimiterisco || novo < decexposicaoatual)
+            {
+                Helper.AddRemoveCssClass(true, "ui-icon ui-icon-close", simbolo);
+                if(novo < decexposicaoatual)
+                    awarning.InnerHtml = "Valor inferior à exposição atual";
+                if(novo > sublimiterisco)
+                    awarning.InnerHtml = "Valor superior ao sublimite risco";
+            }
+            //Valido - > Atualiza coluna de totais
+            else
+            {
+                Helper.AddRemoveCssClass(true, "ui-icon ui-icon-check", simbolo);
+                switch (tiporisco)
+                {
+                    case "F":
+                        txtsublimiteriscoFinanceiroTotal.Text = atualizacaoSublimiteNovo("F").ToString();
+                        break;
+                    case "A":
+                        txtsublimitriscoComercialTotal.Text = atualizacaoSublimiteNovo("C").ToString();
+                        break;
+                    case "C":
+                        txtsublimiteriscoAssinaturaTotal.Text = atualizacaoSublimiteNovo("A").ToString();
+                        break;
+                }
+            }
+
+        }
+
+        internal decimal atualizacaoSublimiteNovo(string tipoRisco)
+        {
+            decimal total = 0;
+            foreach (var a in lvProdutosSimulacao.Items)
+            {
+                Label lb = a.FindControl("lbTipologiaRisco") as Label;
+
+                if (lb.Text == tipoRisco)
+                {
+                    TextBox txt = a.FindControl("lbSublimiteComprometidoNovo") as TextBox;
+                    decimal nTotal = 0;
+                    Decimal.TryParse(txt.Text, out nTotal);
+                    total += nTotal;
+                }
+            }
+
+            return total;
+        }
+
+        protected void btnConsultarProdutos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnGuardarSimulacao_Click(object sender, EventArgs e)
+        {
 
         }
     }

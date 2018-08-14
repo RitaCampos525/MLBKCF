@@ -346,6 +346,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.TextBox txtlimiteglobalmultilinhaNovo;
         
         /// <summary>
+        /// reqlimiteglobalmultilinhaNovo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqlimiteglobalmultilinhaNovo;
+        
+        /// <summary>
         /// lblimiteglobalmultilinhaTotal control.
         /// </summary>
         /// <remarks>
@@ -398,6 +407,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsublimiteriscoFinanceiroNovo;
+        
+        /// <summary>
+        /// reqsublimiteriscoFinanceiroNovo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqsublimiteriscoFinanceiroNovo;
         
         /// <summary>
         /// lbsublimiteriscoFinanceiroTotal control.
@@ -454,6 +472,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.TextBox txtsublimitriscoComercialNovo;
         
         /// <summary>
+        /// reqsublimitriscoComercialNovo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqsublimitriscoComercialNovo;
+        
+        /// <summary>
         /// lbsublimitriscoComercialTotal control.
         /// </summary>
         /// <remarks>
@@ -508,6 +535,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.TextBox txtsublimiteriscoAssinaturaNovo;
         
         /// <summary>
+        /// reqsublimiteriscoAssinaturaNovo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqsublimiteriscoAssinaturaNovo;
+        
+        /// <summary>
         /// lbsublimiteriscoAssinaturaTotal control.
         /// </summary>
         /// <remarks>
@@ -533,5 +569,77 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView lvProdutosSimulacao;
+        
+        /// <summary>
+        /// divSimular control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSimular;
+        
+        /// <summary>
+        /// btnSimular control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSimular;
+        
+        /// <summary>
+        /// hr2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hr2;
+        
+        /// <summary>
+        /// divendButoes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divendButoes;
+        
+        /// <summary>
+        /// lbidMultilinha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbidMultilinha;
+        
+        /// <summary>
+        /// txt_idmultilinha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_idmultilinha;
+        
+        /// <summary>
+        /// btnConsultarProdutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConsultarProdutos;
+        
+        /// <summary>
+        /// btnGuardarSimulacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGuardarSimulacao;
     }
 }

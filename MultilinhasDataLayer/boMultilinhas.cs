@@ -517,7 +517,79 @@ namespace MultilinhasDataLayer
                 }
             };
         }
-       
+
+        public LM37_SimulacaoMl SearchML37(int cliente, string idMult)
+        {
+            return new LM37_SimulacaoMl()
+            {
+                Cliente = cliente,
+                idmultilinha = idMult,
+                Balcao = 810,
+                dataSimulacao = DateTime.Now,
+                Descritivo = "ML - BASE",
+                EstadoContrato = ML_Objectos.GetEstadosDoCatalogo()[0].Description,
+                idsimulacaoml = "1212142342",
+                limiteglobalmultilinha = 10000,
+                ncontado = "81045845878",
+                Nome = "NOME 1",
+                Produtoml = "LM",
+                Subprodutoml = "01",
+                tipoSimulacao = ML_Objectos.GetTiposSimulacao()[0].Code,
+                sublimiteriscoAssinatura = 100000,
+                sublimiteriscoFinanceiro = 100000,
+                sublimitriscoComercial = 100000,
+                limiteglobalmultilinhaTotal = 100000,
+                sublimiteriscoFinanceiroTotal = 100000,
+                sublimitriscoComercialTotal = 100000,
+                sublimiteriscoAssinaturaTotal = 100000,
+                SimulacaoSublimites = new List<LM37_SimulacaoMl.simulacaoSublimites>
+                {
+                   new LM37_SimulacaoMl.simulacaoSublimites
+                   {
+                       CodigoTipologia = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA)[0].codfamiliaProduto.ToString(),
+                       cons_Balcao = 823.ToString(),
+                       cons_Cliente = 1231241.ToString(),
+                       cons_DataSimulacao = DateTime.Now,
+                       cons_idMultilinha = 12345678909.ToString(),
+                       cons_idSimulacao = 000000001.ToString(),
+                       cons_limiteML = 10000,
+                       cons_limiteRA = 10000,
+                       cons_limiteRC = 10000,
+                       cons_limiteRF = 10000,
+                       cons_ProdSub = 2005.ToString(),
+                       FamiliaProduto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA)[0].familiaProduto.ToString(),
+                       cons_utilizador = "BDASP",
+                       ExposicaoAtual = 90000,
+                       preco = true,
+                       SublimiteComprometido = 95000,
+                       SublimiteContratado = 95000,
+                       TipologiaRisco = "A",
+                       
+                   },
+                   new LM37_SimulacaoMl.simulacaoSublimites
+                   {
+                       CodigoTipologia = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF)[2].codfamiliaProduto.ToString(),
+                       cons_Balcao = 823.ToString(),
+                       cons_Cliente = 1231241.ToString(),
+                       cons_DataSimulacao = DateTime.Now,
+                       cons_idMultilinha = 12345678909.ToString(),
+                       cons_idSimulacao = 000000001.ToString(),
+                       cons_limiteML = 10000,
+                       cons_limiteRA = 10000,
+                       cons_limiteRC = 10000,
+                       cons_limiteRF = 10000,
+                       cons_ProdSub = 2005.ToString(),
+                       FamiliaProduto = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF)[2].familiaProduto.ToString(),
+                       cons_utilizador = "BDASP",
+                       ExposicaoAtual = 90000,
+                       preco = true,
+                       SublimiteComprometido = 74000,
+                       SublimiteContratado = 74000,
+                       TipologiaRisco = "F",
+                   },
+                }
+            };
+        }
     }
 }
 

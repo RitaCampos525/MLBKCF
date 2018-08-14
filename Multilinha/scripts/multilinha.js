@@ -579,8 +579,10 @@ $('#txtsublimiteriscoFinanceiro').blur()
     var LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
     var SublimiteFinanceiro = $('#txtsublimiteriscoFinanceiro').val().replace(',', '.');
     if (SublimiteFinanceiro > LimiteGlobal) {
-        $('#reqsublimiteriscoFinanceiro')[0].innerHTML = "Valor sublimite superior ao limite global";
-        $('#reqsublimiteriscoFinanceiro').show();
+        if ($('#reqsublimiteriscoFinanceiro')[0] != null) {
+            $('#reqsublimiteriscoFinanceiro')[0].innerHTML = "Valor sublimite superior ao limite global";
+            $('#reqsublimiteriscoFinanceiro').show();
+        }
     }
     else{
         $('#reqsublimiteriscoFinanceiro').hide();
@@ -591,8 +593,10 @@ $('#txtsublimitriscoComercial').blur()
     var LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
     var SublimiteComercial = $('#txtsublimitriscoComercial').val().replace(',', '.');
     if (SublimiteComercial > LimiteGlobal) {
-        $('#reqsublimitriscoComercial')[0].innerHTML = "Valor sublimite superior ao limite global";
-        $('#reqsublimitriscoComercial').show();
+        if ($('#reqsublimiteriscoFinanceiro')[0] != null) {
+            $('#reqsublimitriscoComercial')[0].innerHTML = "Valor sublimite superior ao limite global";
+            $('#reqsublimitriscoComercial').show();
+        }
     }
     else {
         $('#reqsublimitriscoComercial').hide();
@@ -603,8 +607,10 @@ $('#txtsublimiteriscoAssinatura').blur()
     var LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
     var SublimiteAssinatura = $('#txtsublimiteriscoAssinatura').val().replace(',', '.');
     if (SublimiteAssinatura > LimiteGlobal) {
-        $('#reqsublimiteriscoAssinatura')[0].innerHTML = "Valor sublimite superior ao limite global";
-        $('#reqsublimiteriscoAssinatura').show();
+        if ($('#reqsublimiteriscoAssinatura')[0] != null) {
+            $('#reqsublimiteriscoAssinatura')[0].innerHTML = "Valor sublimite superior ao limite global";
+            $('#reqsublimiteriscoAssinatura').show();
+        }
     }
     else {
         $('#reqsublimiteriscoAssinatura').hide();

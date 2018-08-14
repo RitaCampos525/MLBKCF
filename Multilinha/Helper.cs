@@ -565,6 +565,11 @@ namespace Multilinha
                             if (it == null)
                             {
                                 it = (controls as DropDownList).Items.FindByValue(target.ToString()); //Procura por valor
+                                if(it == null)
+                                {
+
+                                    (controls as DropDownList).Items.Add(new ListItem() { Value = target.ToString(), Text = target.ToString() });
+                                }
                             }
                             if (it != null)
                             {
