@@ -577,6 +577,7 @@ namespace MultilinhasDataLayer
             LM38.input.cta = string.IsNullOrEmpty(_LM38.idmultilinha.ToString()) ? "" : _LM38.idmultilinha.ToString().Substring(5, 6);
             LM38.input.dgt = string.IsNullOrEmpty(_LM38.idmultilinha.ToString()) ? "" : _LM38.idmultilinha.ToString().Substring(11, 1); 
             LM38.input.zcliente = _LM38.Cliente.ToString();
+            LM38.input.gcliente = _LM38.Nome;
 
 
             List<BCDWSProxy.LM38Row1> lstRow1 = new List<BCDWSProxy.LM38Row1>();
@@ -593,6 +594,8 @@ namespace MultilinhasDataLayer
                 _row1.gtipo_l = f.TipoAlteracao;
                 _row1.idaltera_l = f.idAlteracao;
                 _row1.galtera_l = f.campoAlterado; 
+                _row1.vposterior_l = f.valorPosterior;
+                _row1.cutulmod_l = f.utilizador;
             }
 
             LM38.input.Row1 = lstRow1.ToArray();

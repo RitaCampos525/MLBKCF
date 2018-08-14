@@ -438,7 +438,7 @@ namespace MultilinhaBusinessLayer
                 int.TryParse(response.output.zcliente, out client);
                 obj.Cliente = client;
                 obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.cprod, response.output.cta, response.output.dgt);
-                //obj.Nome = response.output.g
+                obj.Nome = response.output.gcliente;
 
                 //listas
                 foreach (var a in response.row1)
@@ -456,13 +456,13 @@ namespace MultilinhaBusinessLayer
                         DateTime.TryParseExact(a.dtaltera_l, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out datV);
                         his.dataValorAlteracao = datV;
 
-                        //his.description = a.d
+                        //his.description = a.d //Ir a TAT buscar descricao produto
                         his.idAlteracao = a.idaltera_l;
                         his.nContratoProduto = a.ncontrato_l;
                         his.TipoAlteracao = a.gtipo_l;
-                        //his.utilizador = a TO DO
+                        his.utilizador = a.cutulmod_l;
                         his.valorAnterior = a.vanterior_l;
-                        //his.valorPosterior = a. TO DO
+                        his.valorPosterior = a.vposterior_l;
 
                         obj.HistoricoAlteracoes.Add(his);
                     }
