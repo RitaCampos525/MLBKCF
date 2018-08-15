@@ -317,7 +317,7 @@ namespace Multilinha
                         else if (result.PropertyType == typeof(Int32))
                         {
                             int val = 0;
-                            if(string.IsNullOrEmpty((controls as TextBox).Text))
+                            if (string.IsNullOrEmpty((controls as TextBox).Text))
                             {
                                 val = 0;
                             }
@@ -327,7 +327,7 @@ namespace Multilinha
                             }
                             result.SetValue(dest, val, null);
                         }
-                           
+
                         else if (result.PropertyType == typeof(Double))
                         {
                             Double outValue;
@@ -448,31 +448,13 @@ namespace Multilinha
                 }
                 else if (controls is ListView)
                 {
-                    //string controlId = controls.ID;
-                    //if (controlId == "lvProdutosRiscoAssinatura")
-                    //{
-                    //    var result = destProps.Where(x => controlId.Contains(x.Name)).FirstOrDefault();
-                    //    if (result != null)
-                    //    {
-                    //        IList<ListViewDataItem> lvs = (controls as ListView).Items;
-                    //        List<LM33_ContratoML.ProdutosRiscoA> lstesc = new List<LM33_ContratoML.ProdutosRiscoA>();
-                    //        if (lvs.Count > 0)
-                    //        {
-                    //            foreach (var lv in lvs)
-                    //            {
-                    //                LM33_ContratoML.ProdutosRiscoA esc = new LM33_ContratoML.ProdutosRiscoA()
-                    //                {
-                    //                    familiaproduto = (lv.FindControl("lbProduto") as Label).Text,
-                    //                    prodsubproduto = (lv.FindControl("lbsubproduto") as Label).Text.Split('-')[0],
-                    //                    tipologia = Constantes.tipologiaRisco.RA,
-                    //                    descritivo = (lv.FindControl("lbsubproduto") as Label).Text.Split('-')[1],
-                    //                };
-                    //                lstesc.Add(esc);
-                    //            }
-                    //            result.SetValue(dest, lstesc, null);
-                    //        }
-                    //    }
-                    //}
+                    string controlId = controls.ID;
+                    Type controlType = controls.GetType();
+                    var result = destProps.Where(x => controlId.Contains(x.Name)).FirstOrDefault();
+                    if (result != null)
+                    {
+                        CopyObjectToControls(controls, result);
+                    }
                 }
 
             }

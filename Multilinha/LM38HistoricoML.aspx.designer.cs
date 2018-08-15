@@ -175,12 +175,30 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbHistorico;
         
         /// <summary>
-        /// Controle lvHistorico.
+        /// Controle lvHistoricoAlteracoes.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lvHistorico;
+        protected global::System.Web.UI.WebControls.ListView lvHistoricoAlteracoes;
+        
+        /// <summary>
+        /// Controle blba.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button blba;
+        
+        /// <summary>
+        /// Controle divBtnConsultar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBtnConsultar;
     }
 }

@@ -755,3 +755,8 @@ div.Orange:not(:empty) {
         text-decoration: none;
         color:white;
     }
+
+.fixRD{
+    padding-top:2px;
+        padding-left:10px;
+}

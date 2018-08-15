@@ -15,9 +15,9 @@ namespace MultilinhasObjects
         public string Nome { get; set; }
         public string idmultilinha { get; set; }
 
-        public List<historicoAlteracoes> HistoricoAlteracoes = new List<historicoAlteracoes>();
+        public List<historicoAlteracoes> HistoricoAlteracoes = new List<historicoAlteracoes> { new historicoAlteracoes() };
 
-        public class historicoAlteracoes{
+    public class historicoAlteracoes{
             public string idAlteracao { get; set; }
 
             public DateTime dataProcessamento { get; set; }

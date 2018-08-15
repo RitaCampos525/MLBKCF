@@ -58,7 +58,7 @@
                     <div class="col-sm-6">
                             <label id="lbTipoSimulacao" runat="server" class="col-sm-4 text-right lbl">* Tipo Simulação: </label>
                             <div class="col-sm-8">
-                            <asp:RadioButtonList runat="server" ID="rdtipoSimulacao" RepeatDirection="Horizontal" TextAlign="Left" DataTextField="Description" DataValueField="Code"></asp:RadioButtonList>
+                            <asp:RadioButtonList runat="server" CssClass="fixRD" ID="rdtipoSimulacao" RepeatDirection="Horizontal" TextAlign="Left" DataTextField="Description" DataValueField="Code"></asp:RadioButtonList>
                             </div>
                      </div>
                      <div class="col-sm-6">
@@ -219,31 +219,31 @@
                                         <LayoutTemplate>
                                             <div class="Table Grid" id="tbSublimtesFinanceiros">
                                                 <div class="Heading Color">
-                                                    <div class="Cell Grid col-4">
+                                                    <div class="Cell Grid">
                                                         <label>Tipo Risco</label>
                                                     </div>
-                                                    <div class="Cell Grid col-6">
-                                                        <label>Tipologia de Produto</label>
+                                                    <div class="Cell Grid">
+                                                        <label>Tip. de Produto</label>
                                                     </div>
-                                                    <div class="Cell Grid col-4">
+                                                    <div class="Cell Grid">
                                                         <label>Cód. Tipologia</label>
                                                     </div>
-                                                    <div class="Cell Grid col-4">
+                                                    <div class="Cell Grid">
                                                         <label>Preço</label>
                                                     </div>
-                                                    <div class="Cell Grid col-6">
+                                                    <div class="Cell Grid">
                                                         <label>Subl. Comprometido Atual</label>
                                                     </div>
-                                                     <div class="Cell Grid col-6">
+                                                     <div class="Cell Grid">
                                                         <label>Subl. Contratado</label>
                                                     </div>
-                                                       <div class="Cell Grid col-6">
+                                                       <div class="Cell Grid">
                                                         <label>Exposição Atual</label>
                                                     </div>
-                                                    <div class="Cell Grid col-6">
+                                                    <div class="Cell Grid">
                                                         <label>Novo Subl. Comprometido</label>
                                                     </div>
-                                                       <div class="Cell Grid col-4">
+                                                       <div class="Cell Grid">
                                                         <label></label>
                                                     </div>
                                                     </div>
@@ -253,31 +253,31 @@
                                         </LayoutTemplate>
                                         <ItemTemplate>
                                             <div class="Row <%# Container.DataItemIndex % 2 == 0 ? "Even" : "Odd" %>">
-                                                    <div class="Cell Grid col-6">
-                                                        <asp:Label runat="server" ID="lbTipologiaRisco" CssClass="text-center" Text='<%# Eval("TipologiaRisco") %>'></asp:Label>
+                                                    <div class="Cell Grid">
+                                                        <asp:Label runat="server" ID="lbTipologiaRisco" CssClass="text-center bklabel" Text='<%# Eval("TipologiaRisco") %>'></asp:Label>
                                                     </div>
-                                                <div class="Cell Grid col-4">
-                                                        <asp:Label runat="server" ID="lbFamiliaProduto" Text='<%# Eval("FamiliaProduto") %>' ></asp:Label>
+                                                <div class="Cell Grid">
+                                                        <asp:Label runat="server" ID="lbFamiliaProduto" CssClass="text-center bklabel" Text='<%# Eval("FamiliaProduto") %>' ></asp:Label>
                                                     </div>
-                                                <div class="Cell Grid col-4">
-                                                        <asp:Label runat="server" ID="lbCodigoTipologia" Text='<%# Eval("CodigoTipologia") %>' ></asp:Label>
+                                                <div class="Cell Grid">
+                                                        <asp:Label runat="server" ID="lbCodigoTipologia" CssClass="text-center bklabel" Text='<%# Eval("CodigoTipologia") %>' ></asp:Label>
                                                     </div>
-                                                 <div class="Cell Grid col-4">
-                                                        <asp:Label runat="server" ID="lbpreco" Text=' <%# (Boolean.Parse(Eval("preco").ToString())) ? "S" : "N" %>' ></asp:Label>
+                                                 <div class="Cell Grid">
+                                                        <asp:Label runat="server" ID="lbpreco" CssClass="text-center bklabel" Text=' <%# (Boolean.Parse(Eval("preco").ToString())) ? "S" : "N" %>' ></asp:Label>
                                                     </div>
-                                                 <div class="Cell Grid col-6">
-                                                        <asp:Label runat="server" ID="lbSublimiteComprometido" Text='<%# Eval("SublimiteComprometido") %>' ></asp:Label>
+                                                 <div class="Cell Grid">
+                                                        <asp:Label runat="server" ID="lbSublimiteComprometido" CssClass="text-right bklabel" Text='<%# Eval("SublimiteComprometido") %>' ></asp:Label>
                                                     </div>
-                                                 <div class="Cell Grid col-6">
-                                                        <asp:Label runat="server" ID="lbSublimiteContratado" Text='<%# Eval("SublimiteContratado") %>' ></asp:Label>
+                                                 <div class="Cell Grid">
+                                                        <asp:Label runat="server" ID="lbSublimiteContratado" CssClass="text-right bklabel" Text='<%# Eval("SublimiteContratado") %>' ></asp:Label>
                                                     </div>
-                                                  <div class="Cell Grid col-6">
-                                                        <asp:Label runat="server" ID="lbExposicaoAtual" Text='<%# Eval("ExposicaoAtual") %>' ></asp:Label>
+                                                  <div class="Cell Grid">
+                                                        <asp:Label runat="server" ID="lbExposicaoAtual" CssClass="text-right bklabel" Text='<%# Eval("ExposicaoAtual") %>' ></asp:Label>
                                                     </div>
-                                                <div class="Cell Grid col-6">
-                                                        <asp:TextBox runat="server" CssClass="form-control" ID="lbSublimiteComprometidoNovo" AutoPostBack="true" OnTextChanged="lbSublimiteComprometidoNovo_TextChanged" Text='<%# Eval("SublimiteComprometidoNovo") %>' ></asp:TextBox>
+                                                <div class="Cell Grid">
+                                                        <asp:TextBox runat="server" CssClass="form-control text-right bklabel" ID="lbSublimiteComprometidoNovo" AutoPostBack="true" OnTextChanged="lbSublimiteComprometidoNovo_TextChanged" Text='<%# Eval("SublimiteComprometidoNovo") %>' ></asp:TextBox>
                                                     </div>
-                                                  <div class="Cell Grid col-4">
+                                                  <div class="Cell Grid">
                                                         <span id="simulcaovalido" runat="server" class=""></span>
                                                         <span id="textsimulcaovalido" runat="server" class=""></span>
                                                     </div>

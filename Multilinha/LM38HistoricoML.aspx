@@ -2,6 +2,14 @@
 
 <%@ Register Src="~/header.ascx" TagPrefix="uc1" TagName="header" %>
 <!DOCTYPE html>
+<script runat="server">
+
+    protected void btnConsultar_Click(object sender, EventArgs e)
+    {
+
+    }
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Histórico ML</title>
@@ -63,9 +71,14 @@
                </div>
             <hr class="hr" id="hr1" runat="server" /> 
             </div>
-       <div id="tbHistorico" runat="server">
-          <asp:ListView ID="lvHistorico" runat="server">
+            <div id="tbHistorico" runat="server">
+          <asp:ListView ID="lvHistoricoAlteracoes" runat="server" class="row form-group padding-row col-sm-12">
                 <EmptyDataTemplate>Não foram encontrados resultados</EmptyDataTemplate>
+              <SelectedItemTemplate>
+                  <div class="row" style="background-color:gray">
+
+                  </div>
+              </SelectedItemTemplate>
                 <LayoutTemplate>
                     <div class="Table Grid" id="tbSublimtesFinanceiros">
                         <div class="Heading Color">
@@ -107,39 +120,54 @@
                 <ItemTemplate>
                     <div class="Row <%# Container.DataItemIndex % 2 == 0 ? "Even" : "Odd" %>">
                             <div class="Cell Grid">
-                                <asp:CheckBox runat="server" ID="lbProduto" CssClass="text-center" ></asp:CheckBox>
+                                <asp:CheckBox runat="server" ID="lbProduto" CssClass="text-center bklabel" ></asp:CheckBox>
                             </div>
                          <div class="Cell Grid">
-                                <asp:Label runat="server" ID="lbidAlteracao" CssClass="text-center" Text='<%# Eval("idAlteracao") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lbidAlteracao" CssClass="text-center bklabel" Text='<%# Eval("idAlteracao") %>'></asp:Label>
                             </div>
                          <div class="Cell Grid">
-                                <asp:Label runat="server" ID="lbdataProcessamento" CssClass="text-center" Text='<%# Eval("dataProcessamento", "{0:d}") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lbdataProcessamento" CssClass="text-center bklabel" Text='<%# Eval("dataProcessamento", "{0:yyyy-MM-dd}") %>'></asp:Label>
                             </div>
                          <div class="Cell Grid">
-                                <asp:Label runat="server" ID="lbdataValorAlteracao"  CssClass="text-center" Text='<%# Eval("dataValorAlteracao", "{0:d}") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lbdataValorAlteracao"  CssClass="text-center bklabel" Text='<%# Eval("dataValorAlteracao", "{0:yyyy-MM-dd}") %>'></asp:Label>
                             </div>
                          <div class="Cell Grid">
-                                <asp:Label runat="server" ID="lbnContratoProduto" CssClass="text-center" Text='<%# Eval("nContratoProduto") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lbnContratoProduto" CssClass="text-center bklabel" Text='<%# Eval("nContratoProduto") %>'></asp:Label>
                             </div>
                          <div class="Cell Grid">
-                                <asp:Label runat="server" ID="lbTipoAlteracao" CssClass="text-center" Text='<%# Eval("TipoAlteracao") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lbTipoAlteracao" CssClass="text-center bklabel" Text='<%# Eval("TipoAlteracao") %>'></asp:Label>
                             </div>
                          <div class="Cell Grid">
-                                <asp:Label runat="server" ID="lbvalorAnterior" CssClass="text-center" Text='<%# Eval("valorAnterior") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lbvalorAnterior" CssClass="bklabel" Text='<%# Eval("valorAnterior") %>'></asp:Label>
                             </div>
                            <div class="Cell Grid">
-                                <asp:Label runat="server" ID="lbvalorPosterior" CssClass="text-center" Text='<%# Eval("valorPosterior ") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lbvalorPosterior" CssClass="bklabel" Text='<%# Eval("valorPosterior ") %>'></asp:Label>
                             </div>
                            <div class="Cell Grid">
-                                <asp:Label runat="server" ID="lbAlteracao" CssClass="text-center" Text='<%# Eval("Alteracao") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lbAlteracao" CssClass="text-center bklabel" Text='<%# Eval("Alteracao") %>'></asp:Label>
                             </div>
                            <div class="Cell Grid">
-                                <asp:Label runat="server" ID="lbutilizador" CssClass="text-center" Text='<%# Eval("utilizador") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lbutilizador" CssClass="text-center bklabel" Text='<%# Eval("utilizador") %>'></asp:Label>
                             </div>
+                        <asp:HiddenField runat="server" ID="campoAlterado" Value='<%# Eval("campoAlterado") %>'/>
                         </div>
                 </ItemTemplate>
             </asp:ListView>
        </div>
+            <br />
+            <asp:Button runat="server" id="blba" OnClick="blba_Click1" CausesValidation="true" Text="Consultar" CssClass="btns text-center"/>
+            <div runat="server" id="divBtnConsultar">
+                <div class="row form-group padding-row col-sm-12 ">
+                    <div class="col-sm-6">
+                     </div>
+                     <div class="col-sm-6">
+                        <div class="col-sm-4 div-btns" >  
+                            
+                           <%-- <asp:button id="btnConsultar" class="btns text-center"  runat="server" CausesValidation="true" OnClick="btnConsultar_Click" Text="Consultar" ></asp:button>--%>
+                        </div> 
+                        </div>
+               </div>
+            </div>
         </div>
        </div>
         </form>

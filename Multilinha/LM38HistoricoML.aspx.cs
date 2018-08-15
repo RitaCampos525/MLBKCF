@@ -1,6 +1,7 @@
 ﻿using MultilinhasObjects;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,16 +22,22 @@ namespace Multilinha
                 MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.PageLoad, this.Page.AppRelativeVirtualPath, abargs.USERNT, abargs.SN_HOSTNAME);
 
                 string op = Helper.getTransactionMode(Context, Request);
+                Helper.AddRemoveHidden(true, divBtnConsultar);
             }
         }
 
         protected void btnSearchCont_Click(object sender, EventArgs e)
         {
+            Helper.SetEnableControler(camposChaveHis, true);
             
             List<LM38_HistoricoAlteracoes.historicoAlteracoes> lst = TAT2.SearchLM38(0001004, "310098766781").HistoricoAlteracoes;
-            lvHistorico.DataSource = lst;
-            lvHistorico.DataBind();
+            lvHistoricoAlteracoes.DataSource = lst;
+            lvHistoricoAlteracoes.DataBind();
 
+            if(lst.Count > 0)
+             {
+               Helper.AddRemoveHidden(false, divBtnConsultar); 
+             }
         }
 
         protected void txtCliente_TextChanged(object sender, EventArgs e)
@@ -62,6 +69,28 @@ namespace Multilinha
                 reqCliente.Enabled = true;
 
             }
+        }
+
+    
+
+        internal  void getGrid(LM38_HistoricoAlteracoes lm38)
+         {
+            
+         }
+
+        protected void blba_Click1(object sender, EventArgs e)
+        {
+            //Apenas um item selecionado!
+
+            LM38_HistoricoAlteracoes lm38 = new LM38_HistoricoAlteracoes();
+
+            Helper.CopyPropertiesTo(this, lm38);
+
+            Page.Transfer(ConfigurationManager.AppSettings["DefinicaoSublimites"],
+            new Dictionary<string, object>() {
+                                { "Op", "C" },
+                                { "HAlteracao", lm38 },
+            });
         }
     }
 }
