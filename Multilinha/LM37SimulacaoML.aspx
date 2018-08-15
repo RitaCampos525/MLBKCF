@@ -41,7 +41,7 @@
                         <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="reqCliente" ControlToValidate="txtCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                     </div>
                      <div class="col-sm-4">
-                        <asp:TextBox ID="TextBox1" CssClass="form-control text-field" ReadOnly="true" Enabled="false" MaxLength="40" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNome" CssClass="form-control text-field" ReadOnly="true" Enabled="false" MaxLength="40" runat="server"></asp:TextBox>
                     </div>
                 </div>
              </div>
@@ -51,8 +51,7 @@
                     <div class="col-sm-3">
                         <asp:TextBox ID="txtidmultilinha" MaxLength="12" AutoPostBack="true" OnTextChanged="txt_idmultilinha_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="reqidmultilinha" ControlToValidate="txtidmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
-                    </div>
-
+                    </div>  
                 </div>
             </div>
             <div class="row form-group padding-row col-sm-12 ">
@@ -67,9 +66,10 @@
                             <asp:button id="btnSearchCont" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
                         </div> 
                         </div>
-               </div>
-            <hr class="hr" id="hr1" runat="server" />        </div>
- 
+            </div>
+            <hr class="hr" id="hr1" runat="server" />
+            </div>
+
             <div id="divProduto" runat="server" class="row form-group padding-row col-sm-12">
                     <div class="col-sm-4">
                         <label id="bkProduto" runat="server" class="col-sm-4 text-right lbl">* Produto: </label>
@@ -215,7 +215,7 @@
              <div id="tbsimulacoesFamilias" class="row form-group padding-row col-sm-12">
                          <div class="col-sm-12">
                              <asp:ListView ID="lvProdutosSimulacao" runat="server">
-                                        <EmptyDataTemplate>Não existem resultados para a pesquisa efetuada.</EmptyDataTemplate>
+                                        <EmptyDataTemplate>Não foram encontrados resultados</EmptyDataTemplate>
                                         <LayoutTemplate>
                                             <div class="Table Grid" id="tbSublimtesFinanceiros">
                                                 <div class="Heading Color">
@@ -225,8 +225,8 @@
                                                     <div class="Cell Grid col-6">
                                                         <label>Tipologia de Produto</label>
                                                     </div>
-                                                    <div class="Cell Grid col-6">
-                                                        <label>Código Tipologia</label>
+                                                    <div class="Cell Grid col-4">
+                                                        <label>Cód. Tipologia</label>
                                                     </div>
                                                     <div class="Cell Grid col-4">
                                                         <label>Preço</label>
@@ -263,7 +263,7 @@
                                                         <asp:Label runat="server" ID="lbCodigoTipologia" Text='<%# Eval("CodigoTipologia") %>' ></asp:Label>
                                                     </div>
                                                  <div class="Cell Grid col-4">
-                                                        <asp:Label runat="server" ID="lbpreco" Text='<%# Eval("preco") %>' ></asp:Label>
+                                                        <asp:Label runat="server" ID="lbpreco" Text=' <%# (Boolean.Parse(Eval("preco").ToString())) ? "S" : "N" %>' ></asp:Label>
                                                     </div>
                                                  <div class="Cell Grid col-6">
                                                         <asp:Label runat="server" ID="lbSublimiteComprometido" Text='<%# Eval("SublimiteComprometido") %>' ></asp:Label>
@@ -275,7 +275,7 @@
                                                         <asp:Label runat="server" ID="lbExposicaoAtual" Text='<%# Eval("ExposicaoAtual") %>' ></asp:Label>
                                                     </div>
                                                 <div class="Cell Grid col-6">
-                                                        <asp:TextBox runat="server" ID="lbSublimiteComprometidoNovo" AutoPostBack="true" OnTextChanged="lbSublimiteComprometidoNovo_TextChanged" Text='<%# Eval("SublimiteComprometidoNovo") %>' ></asp:TextBox>
+                                                        <asp:TextBox runat="server" CssClass="form-control" ID="lbSublimiteComprometidoNovo" AutoPostBack="true" OnTextChanged="lbSublimiteComprometidoNovo_TextChanged" Text='<%# Eval("SublimiteComprometidoNovo") %>' ></asp:TextBox>
                                                     </div>
                                                   <div class="Cell Grid col-4">
                                                         <span id="simulcaovalido" runat="server" class=""></span>
@@ -296,7 +296,7 @@
                 <div class="col-sm-4">
                     <label id="lbidMultilinha" runat="server" class="col-sm-4 text-right lbl">* ID Simulação: </label> 
                     <div class="col-sm-6">
-                    <asp:TextBox id="txt_idmultilinha" class="text-center form-control" runat="server" OnClick="btnConsultarProdutos_Click"></asp:TextBox>
+                    <asp:TextBox id="txt_idmultilinha" ReadOnly="true" class="form-control text-field" runat="server" OnClick="btnConsultarProdutos_Click"></asp:TextBox>
                    </div>
                 </div>
                  <div class="col-sm-4 ">

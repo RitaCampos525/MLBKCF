@@ -34,6 +34,8 @@ namespace MultilinhasObjects
 
             public string campoAlterado { get; set; }
 
+            public string Alteracao { get; set; }
+
             public string description { get; set; }
 
             public string utilizador { get; set; }

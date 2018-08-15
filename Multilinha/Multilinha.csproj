@@ -74,6 +74,7 @@
     <Content Include="LM35AssociacaoContasDO.aspx" />
     <Content Include="LM36ContratosProduto.aspx" />
     <Content Include="LM37SimulacaoML.aspx" />
+    <Content Include="LM38HistoricoML.aspx" />
     <Content Include="ucCancelamentoContrato.ascx" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -159,6 +160,13 @@
     </Compile>
     <Compile Include="LM37SimulacaoML.aspx.designer.cs">
       <DependentUpon>LM37SimulacaoML.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LM38HistoricoML.aspx.cs">
+      <DependentUpon>LM38HistoricoML.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LM38HistoricoML.aspx.designer.cs">
+      <DependentUpon>LM38HistoricoML.aspx</DependentUpon>
     </Compile>
     <Compile Include="ucCancelamentoContrato.ascx.cs">
       <DependentUpon>ucCancelamentoContrato.ascx</DependentUpon>

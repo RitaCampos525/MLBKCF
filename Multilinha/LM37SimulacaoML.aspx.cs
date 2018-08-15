@@ -194,10 +194,10 @@ namespace Multilinha
                     case "F":
                         txtsublimiteriscoFinanceiroTotal.Text = atualizacaoSublimiteNovo("F").ToString();
                         break;
-                    case "A":
+                    case "C":
                         txtsublimitriscoComercialTotal.Text = atualizacaoSublimiteNovo("C").ToString();
                         break;
-                    case "C":
+                    case "A":
                         txtsublimiteriscoAssinaturaTotal.Text = atualizacaoSublimiteNovo("A").ToString();
                         break;
                 }

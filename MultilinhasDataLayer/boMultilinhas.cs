@@ -590,6 +590,34 @@ namespace MultilinhasDataLayer
                 }
             };
         }
+
+        public LM38_HistoricoAlteracoes SearchLM38(int client, string idMult)
+        {
+            return new LM38_HistoricoAlteracoes()
+            {
+                Cliente = client,
+                idmultilinha = idMult,
+                HistoricoAlteracoes = new List<LM38_HistoricoAlteracoes.historicoAlteracoes>()
+                {
+                    new LM38_HistoricoAlteracoes.historicoAlteracoes
+                    {
+                        Alteracao = "Sublimite",
+                        campoAlterado = "TO DO",
+                        dataProcessamento = DateTime.Now.Date,
+                        dataValorAlteracao = DateTime.Now.Date,
+                        description = "Sublimite",
+                        idAlteracao = 1.ToString(),
+                        nContratoProduto = "84532456540",
+                        TipoAlteracao = "Condição Particular",
+                        utilizador = "BDAPS",
+                        valorAnterior = "2000",
+                        valorPosterior = "560000",
+
+                    }
+                },
+
+            };
+        }
     }
 }
 

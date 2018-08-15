@@ -38,3 +38,12 @@ C:\Projects\Roliveca\MLBKCF\MultilinhasDataLayer\bin\Debug\MultilinhasObjects.pd
 C:\Projects\Roliveca\MLBKCF\MultilinhasDataLayer\obj\Debug\MultilinhasDataLayer.csprojResolveAssemblyReference.cache
 C:\Projects\Roliveca\MLBKCF\MultilinhasDataLayer\obj\Debug\MultilinhasDataLayer.dll
 C:\Projects\Roliveca\MLBKCF\MultilinhasDataLayer\obj\Debug\MultilinhasDataLayer.pdb
+C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasDataLayer\bin\Debug\MultilinhasDataLayer.dll.config
+C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasDataLayer\bin\Debug\MultilinhasDataLayer.dll
+C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasDataLayer\bin\Debug\MultilinhasDataLayer.pdb
+C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasDataLayer\bin\Debug\MultilinhasObjects.dll
+C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasDataLayer\bin\Debug\MultilinhasObjects.pdb
+C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasDataLayer\obj\Debug\MultilinhasDataLayer.csprojResolveAssemblyReference.cache
+C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasDataLayer\obj\Debug\MultilinhasDataLayer.csproj.CoreCompileInputs.cache
+C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasDataLayer\obj\Debug\MultilinhasDataLayer.dll
+C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasDataLayer\obj\Debug\MultilinhasDataLayer.pdb

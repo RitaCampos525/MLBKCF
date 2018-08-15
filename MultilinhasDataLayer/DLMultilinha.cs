@@ -88,7 +88,7 @@ namespace MultilinhasDataLayer
             LM31.input.ndpreavi = _lm31.NDiasPreAviso.ToString();
 
             List<BCDWSProxy.LM31Row1> lstRow1 = new List<BCDWSProxy.LM31Row1>();
-            BCDWSProxy.LM31Row1 row1 = null;
+            
 
             foreach (var f in _lm31.produtosF)
             {
@@ -221,7 +221,7 @@ namespace MultilinhasDataLayer
    
 
             List<BCDWSProxy.LM33Row1> lstRow1 = new List<BCDWSProxy.LM33Row1>();
-            BCDWSProxy.LM33Row1 row1 = null;
+           
 
             foreach (var f in _lm33.produtosRiscoF)
             {
