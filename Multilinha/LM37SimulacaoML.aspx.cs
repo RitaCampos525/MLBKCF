@@ -138,21 +138,16 @@ namespace Multilinha
 
         protected void btnSimular_Click(object sender, EventArgs e)
         {
-            //Apenas 1 seleccionado
-            string urlQueries = Request.Url.Query;
+            // TO DO Call lm37 BCDWSProxy.LM37
 
-            //If alt. condicao geral -> redireciona para lm33
-            string href = ConfigurationManager.AppSettings["ContratoML"] + urlQueries;
-            //else -> redirecciona para lm34
+            txtidmultilinha.Text = "0008889";
 
-            LM37SimulacaoML lm37 = new LM37SimulacaoML();
-            Helper.CopyPropertiesTo(this, lm37);
+            lberror.Text = Constantes.Mensagens.LM37SimulacaoCriado;
+            lberror.ForeColor = System.Drawing.Color.Green;
+            lberror.Visible = true;
 
-            Page.Transfer(href,
-            new Dictionary<string, object>() {
-                                  { "Op", "V" },
-                                  { "ClienteLM37", lm37 },
-            });
+            Helper.SetEnableControler(this, false);
+            //btnSeguinte.Enabled = true;
         }
 
         protected void lbSublimiteComprometidoNovo_TextChanged(object sender, EventArgs e)

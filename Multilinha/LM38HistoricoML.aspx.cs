@@ -32,8 +32,8 @@ namespace Multilinha
             Helper.SetEnableControler(camposChaveHis, true);
             
             List<LM38_HistoricoAlteracoes.historicoAlteracoes> lst = TAT2.SearchLM38(0001004, "310098766781").HistoricoAlteracoes;
-            lvHistoricoAlteracoes.DataSource = lst;
-            lvHistoricoAlteracoes.DataBind();
+            lvhistoricoAlteracoes.DataSource = lst;
+            lvhistoricoAlteracoes.DataBind();
 
             if(lst.Count > 0)
              {
@@ -73,24 +73,31 @@ namespace Multilinha
             }
         }
 
-    
-
-        internal  void getGrid(LM38_HistoricoAlteracoes lm38)
-         {
-            
-         }
-
         protected void blba_Click1(object sender, EventArgs e)
         {
-            //Apenas um item selecionado!
-
+            //Apenas 1 seleccionado
+            ListViewDataItem historicoSelected = lvhistoricoAlteracoes.Items.Where(x => (x.FindControl("cbSelected") as CheckBox).Checked).FirstOrDefault() as ListViewDataItem;
             LM38_HistoricoAlteracoes lm38 = new LM38_HistoricoAlteracoes();
-
             Helper.CopyPropertiesTo(this, lm38);
+            Helper.CopyPropertiesTo(lvhistoricoAlteracoes, lm38.HistoricoAlteracoes[0]);
 
-            Page.Transfer(ConfigurationManager.AppSettings["DefinicaoSublimites"],
+            string urlQueries = Request.Url.Query;
+            string href = "";
+
+            //If alt. condicao geral -> redireciona para lm33
+            //else -> redirecciona para lm34
+            if (lm38.HistoricoAlteracoes[0].TipoAlteracao.ToUpper().Contains("GERAL"))
+            {
+                href = ConfigurationManager.AppSettings["ContratoML"] + urlQueries;
+            }
+            else
+            {
+                href = ConfigurationManager.AppSettings["SublimitesML"] + urlQueries;
+            }
+
+            Page.Transfer(href,
             new Dictionary<string, object>() {
-                                { "Op", "C" },
+                                { "Op", "V" },
                                 { "HAlteracao", lm38 },
             });
         }

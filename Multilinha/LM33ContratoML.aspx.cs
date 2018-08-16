@@ -416,7 +416,7 @@ namespace Multilinha
 
         protected void btnSimulacao_Click(object sender, EventArgs e)
         {
-
+            //Call BCDWSProxy.lm33 com id simulacao
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
@@ -709,12 +709,6 @@ namespace Multilinha
 
             txtDescritivo.Text = subprodutodesc;
 
-            //for debug!
-            if (string.IsNullOrEmpty(subprodutodesc))
-            {
-
-                txtDescritivo.Text = TAT2.SearchSubProdutDescriptionML(ddlSubprodutoml.SelectedValue)[0].ToString();
-            }
         }
 
         protected void txtproduto_TextChanged(object sender, EventArgs e)
@@ -722,11 +716,6 @@ namespace Multilinha
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
             List<string> lstsubprodutos = TAT2.GetSubProdByProdCode(txtProdutoml.Text, Global.ConnectionStringMaster, abargs);
 
-            //for debug!!
-            if (lstsubprodutos.Count < 1)
-            {
-                lstsubprodutos = TAT2.SearchSubProdutML("");
-            }
 
             ddlSubprodutoml.DataSource = lstsubprodutos;
             ddlSubprodutoml.DataBind();

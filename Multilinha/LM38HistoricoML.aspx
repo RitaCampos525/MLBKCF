@@ -2,13 +2,6 @@
 
 <%@ Register Src="~/header.ascx" TagPrefix="uc1" TagName="header" %>
 <!DOCTYPE html>
-<script runat="server">
-
-    protected void btnConsultar_Click(object sender, EventArgs e)
-    {
-
-    }
-</script>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -71,8 +64,8 @@
                </div>
             <hr class="hr" id="hr1" runat="server" /> 
             </div>
-            <div id="tbHistorico" class="row form-group col-sm-12" runat="server">
-             <asp:ListView ID="lvHistoricoAlteracoes" runat="server" class="row form-group padding-row">
+            <div id="tbHistorico" class="row form-group col-sm-12" style="padding-left:40px" runat="server">
+             <asp:ListView ID="lvhistoricoAlteracoes" runat="server" class="row form-group padding-row">
                 <EmptyDataTemplate>Não foram encontrados resultados</EmptyDataTemplate>
                 <LayoutTemplate>
                     <div class="Table Grid col-sm-12" id="tbHistoricoAlt">
@@ -115,7 +108,7 @@
                 <ItemTemplate>
                     <div class="Row <%# Container.DataItemIndex % 2 == 0 ? "Even" : "Odd" %>">
                             <div class="Cell Grid">
-                                <asp:CheckBox runat="server" ID="lbProduto" CssClass="text-center bklabel" ></asp:CheckBox>
+                                <asp:CheckBox runat="server" ID="cbSelected" onclick="toggle(this)" CssClass="text-center bklabel" ></asp:CheckBox>
                             </div>
                          <div class="Cell Grid">
                                 <asp:Label runat="server" ID="lbidAlteracao" CssClass="text-center bklabel" Text='<%# Eval("idAlteracao") %>'></asp:Label>
@@ -152,16 +145,33 @@
             <br />
             <div id="divBtnConsultar" runat="server" class="row form-group padding-row col-sm-12 text-right">
                 <div class="row div-btns">
-                     <asp:Button CssClass="normalButton col-4 btns" runat="server" ID="btnConsultarHis" OnClick="blba_Click1" CausesValidation="false" Text="Consultar" />
+                     <asp:Button CssClass="normalButton col-4 btns" runat="server" ID="btnConsultarHis" OnClick="blba_Click1" Enabled="false" CausesValidation="false" Text="Consultar" />
                 </div>
             </div>
              <hr class="hr" id="hr2" runat="server" />  
         </div>
        </div>
-        </form>
+       </form>
          <script type='text/javascript'>
-        var dtfechas = "<%=this.dtfechas %>";
-    </script>
-    <script src="scripts/multilinha.js"></script>
-        </body>
+            var dtfechas = "<%=this.dtfechas %>";
+        </script>
+        <script src="scripts/multilinha.js"></script>
+        <script>
+            function toggle(source) {
+                var checkedValue = -1;
+                checkboxes = $('[type=checkbox]');
+                for (var i = 0, n = checkboxes.length; i < n; i++) {
+                    if (checkboxes[i].id == source.id) {
+                        checkboxes[i].checked = source.checked;
+                        if (source.checked)
+                            checkedValue = i;
+                    }
+                    else
+                        checkboxes[i].checked = false;
+                }
+
+                $("#btnConsultarHis").prop('disabled', !source.checked);
+            }
+        </script>
+   </body>
 </html>

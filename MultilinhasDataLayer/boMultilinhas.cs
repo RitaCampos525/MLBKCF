@@ -232,23 +232,23 @@ namespace MultilinhasDataLayer
         }
 
         //FOR debug
-        public List<long> SearchDOCliente(string cliente)
-        {
-            List<long> response = new List<long>();
-            response.Add(33412325317);
-            response.Add(33412325317);
+        //public List<long> SearchDOCliente(string cliente)
+        //{
+        //    List<long> response = new List<long>();
+        //    response.Add(33412325317);
+        //    response.Add(33412325317);
 
-            return response;
-        }
+        //    return response;
+        //}
 
-        public List<string> SearchSubProdutML(string cliente)
-        {
-            List<string> response = new List<string>();
-            response.Add("01");
-            response.Add("02");
+        //public List<string> SearchSubProdutML(string cliente)
+        //{
+        //    List<string> response = new List<string>();
+        //    response.Add("01");
+        //    response.Add("02");
 
-            return response;
-        }
+        //    return response;
+        //}
 
         public List<string> SearchSubProdutDescriptionML(string subprod)
         {
@@ -609,6 +609,21 @@ namespace MultilinhasDataLayer
                         idAlteracao = 1.ToString(),
                         nContratoProduto = "84532456540",
                         TipoAlteracao = "Condição Particular",
+                        utilizador = "BDAPS",
+                        valorAnterior = "2000",
+                        valorPosterior = "560000",
+
+                    },
+                     new LM38_HistoricoAlteracoes.historicoAlteracoes
+                    {
+                        Alteracao = "Sublimite",
+                        campoAlterado = "Prazo",
+                        dataProcessamento = DateTime.Now.Date,
+                        dataValorAlteracao = DateTime.Now.Date,
+                        description = "Sublimite",
+                        idAlteracao = 1.ToString(),
+                        nContratoProduto = "84532456540",
+                        TipoAlteracao = "Condição Geral",
                         utilizador = "BDAPS",
                         valorAnterior = "2000",
                         valorPosterior = "560000",
