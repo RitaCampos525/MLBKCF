@@ -71,8 +71,38 @@ namespace MultilinhasObjects
                     Code = "11",
                     Description = "WRITE OFF",
                 },
+                new ComboBox()
+                {
+                    Code = "12",
+                    Description = "ARQUIVADO",
+                },
+                new ComboBox()
+                {
+                    Code = "13",
+                    Description = "VENCIDO LIQUIDADO",
+                },
             };
         }
 
+        public static List<ComboBox> GetEstadoContratos_PMODIFICAO()
+        {
+            return new List<ComboBox>(){
+                new ComboBox()
+                {
+                    Code = "10",
+                    Description = "CHARGE OFF",
+                },
+                new ComboBox()
+                {
+                    Code = "11",
+                    Description = "WRITE OFF",
+                },
+                new ComboBox()
+                {
+                    Code = "12",
+                    Description = "ARQUIVADO",
+                },
+            };
+        }
     }
 }

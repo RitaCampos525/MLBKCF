@@ -37,8 +37,6 @@ namespace Multilinha
                 ddlPeriocidadeCobrancagestcontrato.DataBind();
                 ddlPeriocidadeCobrancagestRenovacao.DataSource = ML_Objectos.GetPeriocidade();
                 ddlPeriocidadeCobrancagestRenovacao.DataBind();
-                //DataProcessamento
-                //txtdataProcessamento.Text = dtfechas.ToString();
 
                 string op = Helper.getTransactionMode(Context, Request);
                 ViewState["OPLM33"] = op;
@@ -48,10 +46,7 @@ namespace Multilinha
                         lblTransactionM.CssClass = lblTransactionM.CssClass.Replace("atabD", "");
                         lblTransactionM.Enabled = true;
 
-                        divIDMultilinha.Visible = true;
-                        divIDSimulacao.Visible = true;
-                        divProduto.Visible = false;
-
+                        //Esconde DIVS - Necessario carregar em OK
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
@@ -61,13 +56,23 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr4);
                         Helper.AddRemoveHidden(true, divVersoesML);
 
-                        //show fields
-                        btnSimulacao.Enabled = true;
-                        txtIdSimulacao.Enabled = true;
+                        //show fields - chaves p/ modificacao
                         btnSimulacao.Visible = true;
-
+                        divIDMultilinha.Visible = true;
+                        divProduto.Visible = false;
                         Helper.AddRemoveHidden(true, accoesfinais_criarml03);
                         btnModificar.Visible = true;
+
+                        //Disables Fields - Campos a nao modificar
+                        txtIdworkflow.Enabled = false;
+                        txtdatainiciocontrato.Enabled = false;
+                        txtNMinutaContrato.Enabled = false;
+
+                        //Enable Field - Campos a modificar
+                        ddlEstadoContrato.Enabled = true;
+                        ddlEstadoContrato.DataSource = LM_EstadosContrato.GetEstadoContratos_PMODIFICAO();
+                        ddlEstadoContrato.DataBind();
+                        ddlContratoDenunciado.Enabled = true;
 
                         //tabs navegacao
                         Helper.AddRemoveActive(true, liModificacao);
@@ -165,8 +170,6 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr3);
                         Helper.AddRemoveHidden(true, hr4);
                         btnSearch.Enabled = false;
-
-                        
 
                         break;
                 }

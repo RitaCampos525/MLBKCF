@@ -130,7 +130,7 @@
                          <div class="col-sm-4">
                         <label id="bklEstadoContrato" runat="server" class="col-sm-4 text-right lbl">* Estado do Contrato: </label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="ddlEstadoContrato" Enabled="false" CssClass="form-control text-field" Text="PENDENTE" MaxLength="30" runat="server"></asp:TextBox>
+                            <asp:DropDownList ID="ddlEstadoContrato" Enabled="false" CssClass="form-control text-field" DataTextField="Description" DataValueField="Code" runat="server"></asp:DropDownList>
                         </div>
                     </div>
                     </div>
@@ -206,6 +206,23 @@
                             <div class="col-sm-6">
                                 <asp:TextBox ID="txtNDiasPreAviso" MaxLength="3" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqNDiasPreAviso" ControlToValidate="txtNDiasPreAviso" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group padding-row col-sm-12">
+                         <div class="col-sm-4">
+                            <label id="lbContratoDenunicado" runat="server" class="col-sm-4 text-right lbl">* Contrato Denunciado: </label>
+                            <div class="col-sm-6">
+                                <asp:DropDownlist ID="ddlContratoDenunciado" Enabled="false" CssClass="form-control text-field" runat="server">
+                                    <asp:ListItem Value="S" Text="Sim"></asp:ListItem>
+                                    <asp:ListItem Value="N" Text="Não>"></asp:ListItem>
+                                </asp:DropDownlist>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label id="lbDataVencimentoDenuncia" runat="server" class="col-sm-4 text-right lbl">Data de Vencimento de denúncia:</label>
+                            <div class="col-sm-6">
+                                <asp:TextBox ID="txtDataVencimentoDenuncia" MaxLength="3" Enabled="false" CssClass="form-control text-field" runat="server" onkeypress="return isNumber(event)"></asp:TextBox>
                             </div>
                         </div>
                     </div>

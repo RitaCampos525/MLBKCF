@@ -446,12 +446,14 @@ namespace MultilinhasDataLayer
                         familiaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.A_CreditoDocumentarioImportação.descFamProd,
                         codfamiliaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.A_CreditoDocumentarioImportação.codeFamProd,
                         tipologia = "A",
+                        sublimitecomprometido = 0.00M
                     },
                     new LM34_SublimitesML.ProdutosRisco
                     {
                         familiaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.A_GarantiasBancAvalesBancarios.descFamProd,
                         codfamiliaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.A_GarantiasBancAvalesBancarios.codeFamProd,
                         tipologia = "A",
+                        sublimitecomprometido = 0.00M
                     },
                  },
                 produtosRiscoC = new List<LM34_SublimitesML.ProdutosRisco>()
@@ -462,12 +464,14 @@ namespace MultilinhasDataLayer
                         familiaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.C_Letras.descFamProd,
                         codfamiliaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.C_Letras.codeFamProd,
                         tipologia = "C",
+                        sublimitecomprometido = 0.00M
                     },
                      new LM34_SublimitesML.ProdutosRisco
                     {
                         familiaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.C_FactoringCSRecurso.descFamProd,
                         codfamiliaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.C_FactoringCSRecurso.codeFamProd,
                         tipologia = "C",
+                        sublimitecomprometido = 0.00M
                     },
                    
                 },
@@ -479,18 +483,21 @@ namespace MultilinhasDataLayer
                         familiaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.F_Descobertos.descFamProd,
                         codfamiliaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.F_Descobertos.codeFamProd,
                         tipologia = "F",
+                        sublimitecomprometido = 0.00M
                     },
                     new LM34_SublimitesML.ProdutosRisco
                     {
                         familiaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.F_FinanciamentoExportacaoSDocumentos.descFamProd,
                         codfamiliaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.F_FinanciamentoExportacaoSDocumentos.codeFamProd,
                         tipologia = "F",
+                        sublimitecomprometido = 0.00M
                     },
                      new LM34_SublimitesML.ProdutosRisco
                     {
                         familiaproduto = ArvoreFamiliaProdutos.FamiliaProdutos.F_Livrancas.descFamProd,
                         codfamiliaproduto =  ArvoreFamiliaProdutos.FamiliaProdutos.F_Livrancas.codeFamProd,
                         tipologia = "F",
+                        sublimitecomprometido = 0.00M
                     },
                 },
                 sublimiteriscoAssinatura = 30001,

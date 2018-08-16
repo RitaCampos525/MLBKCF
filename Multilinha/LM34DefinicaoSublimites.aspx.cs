@@ -97,6 +97,7 @@ namespace Multilinha
             {
                 case "C":
 
+                    Helper.SetEnableControler(camposChaveSubLim, false);
                     Helper.AddRemoveHidden(false, dpOK);
                     Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
                     Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
@@ -120,6 +121,7 @@ namespace Multilinha
 
                 case "M":
 
+                    Helper.SetEnableControler(camposChaveSubLim, false);
                     Helper.AddRemoveHidden(false, dpOK);
                     Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
                     Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);

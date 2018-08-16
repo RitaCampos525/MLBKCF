@@ -550,7 +550,8 @@ namespace Multilinha
                                 if(it == null)
                                 {
 
-                                    (controls as DropDownList).Items.Add(new ListItem() { Value = target.ToString(), Text = target.ToString() });
+                                    (controls as DropDownList).Items.Add(new ListItem() { Value = target.ToString(), Text = target.ToString() }); //Adiciona Valor
+                                    it = (controls as DropDownList).Items.FindByValue(target.ToString());
                                 }
                             }
                             if (it != null)

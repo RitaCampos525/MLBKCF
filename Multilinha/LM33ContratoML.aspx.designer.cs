@@ -424,7 +424,7 @@ namespace Multilinha {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ddlEstadoContrato;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoContrato;
         
         /// <summary>
         /// lbNumeroMinimoProdutos control.
@@ -659,6 +659,42 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNDiasPreAviso;
+        
+        /// <summary>
+        /// lbContratoDenunicado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbContratoDenunicado;
+        
+        /// <summary>
+        /// ddlContratoDenunciado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlContratoDenunciado;
+        
+        /// <summary>
+        /// lbDataVencimentoDenuncia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbDataVencimentoDenuncia;
+        
+        /// <summary>
+        /// txtDataVencimentoDenuncia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDataVencimentoDenuncia;
         
         /// <summary>
         /// bkllimglobalmultilinha control.

@@ -60,10 +60,9 @@
                 </div>
                 <div class="col-sm-2 div-btns" >   
                     <asp:button id="btnSearchCont" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click1" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
-                </div> 
+                </div>
+                 <hr class="hr" id="hr1" runat="server" /> 
             </div>
-                
-           <hr class="hr1" id="hr1" runat="server" />
            </div>
            <div id="dpOK" visible="true" runat="server" >
             <div class="row form-group padding-row ">
@@ -95,7 +94,7 @@
             <div class="row form-group padding-row ">
                         <div class="col-sm-4">
                             <Label id="bklimitecomprometido" runat="server" class="col-sm-4 text-right lbl">* Limite Global Comprometido: </Label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtlimiteglobalmultilinha" Enabled="false" ReadOnly="true" CssClass="form-control text-field number" MaxLength="18" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqlimitecomprometido" ControlToValidate="txtlimiteglobalmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
@@ -103,7 +102,7 @@
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <Label id="bkEstadoContrato" runat="server" class="col-sm-4 text-right lbl">* Estado do Contrato: </Label>
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <asp:TextBox ID="txtEstadoContrato" Enabled="false" CssClass="form-control text-field" MaxLength="30" runat="server"></asp:TextBox>
                                 </div>
                         </div>
@@ -111,7 +110,7 @@
              <div class="row form-group padding-row ">
                  <asp:HiddenField ID="ncontado" runat="server" />
              </div>
-            <hr class="hr2" id="hr2" runat="server" />
+            <hr class="hr" id="hr2" runat="server" />
             </div>
         </div>
 
@@ -156,13 +155,13 @@
                                         <ItemTemplate>
                                             <div class="Row <%# Container.DataItemIndex % 2 == 0 ? "Even" : "Odd" %>">
                                                     <div class="Cell Grid col-6">
-                                                        <asp:Label runat="server" ID="lbProduto" CssClass="text-center" Text='<%# Eval("codfamiliaproduto") %>'></asp:Label>
+                                                        <asp:Label runat="server" ID="lbProduto" CssClass="text-center bklabel" Text='<%# Eval("codfamiliaproduto") %>'></asp:Label>
                                                     </div>
                                                 <div class="Cell Grid col-6">
                                                         <asp:Label runat="server" ID="lbsubproduto" Text='<%# Eval("familiaProduto") %>' ></asp:Label>
                                                     </div>
                                                 <div class="Cell Grid col-6">
-                                                        <asp:Textbox runat="server" ID="lbsublimiteComprometido" placeholder="0,00" CssClass="number form-control text-field text-center" MaxLength="18" Text='<%# Eval("sublimitecompremetido") %>'></asp:Textbox>
+                                                        <asp:Textbox runat="server" ID="lbsublimiteComprometido" placeholder="0,00" CssClass="number form-control text-field text-center" MaxLength="18" Text='<%# Eval("sublimitecomprometido") %>'></asp:Textbox>
                                                         <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" InitialValue="0" ID="reqsublimiteComprometido" ValidationGroup="sublimitesValGrp" ControlToValidate="lbsublimiteComprometido" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
@@ -214,13 +213,13 @@
                             <ItemTemplate>
                                 <div class="Row <%# Container.DataItemIndex % 2 == 0 ? "Even" : "Odd" %>">
                                         <div class="Cell Grid col-6">
-                                            <asp:Label runat="server" CssClass="text-center " ID="lbProduto" Text='<%# Eval("codfamiliaproduto") %>'></asp:Label>
+                                            <asp:Label runat="server" CssClass="text-center bklabel" ID="lbProduto" Text='<%# Eval("codfamiliaproduto") %>'></asp:Label>
                                         </div>
                                     <div class="Cell Grid col-6">
                                             <asp:Label runat="server" ID="lbsubproduto" Text='<%# Eval("familiaProduto") %>' ></asp:Label>
                                         </div>
                                     <div class="Cell Grid col-6">
-                                            <asp:Textbox runat="server" ID="lbsublimiteComprometido" placeholder="0,00" CssClass="number text-center form-control text-field " MaxLength="18" Text='<%# Eval("sublimitecompremetido") %>'></asp:Textbox>
+                                          <asp:Textbox runat="server" ID="lbsublimiteComprometido" placeholder="0,00" CssClass="number form-control text-field text-center" MaxLength="18" Text='<%# Eval("sublimitecomprometido") %>'></asp:Textbox>
                                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimiteComprometido" InitialValue="0" ValidationGroup="sublimitesValGrp" ControlToValidate="lbsublimiteComprometido" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
@@ -272,13 +271,13 @@
                             <ItemTemplate>
                                 <div class="Row <%# Container.DataItemIndex % 2 == 0 ? "Even" : "Odd" %>">
                                         <div class="Cell Grid col-6">
-                                            <asp:Label runat="server" ID="lbProduto" CssClass="text-center" Text='<%# Eval("codfamiliaproduto") %>'></asp:Label>
+                                            <asp:Label runat="server" ID="lbProduto" CssClass="text-center bklabel" Text='<%# Eval("codfamiliaproduto") %>'></asp:Label>
                                         </div>
                                     <div class="Cell Grid col-6">
                                             <asp:Label runat="server" ID="lbsubproduto" Text='<%# Eval("familiaProduto") %>' ></asp:Label>
                                         </div>
                                     <div class="Cell Grid col-6">
-                                            <asp:Textbox runat="server" ID="lbsublimiteComprometido" placeholder="0,00" CssClass="number text-center form-control text-field " MaxLength="18" Text='<%# Eval("sublimitecompremetido") %>'></asp:Textbox>
+                                             <asp:Textbox runat="server" ID="lbsublimiteComprometido" placeholder="0,00" CssClass="number form-control text-field text-center" MaxLength="18" Text='<%# Eval("sublimitecomprometido") %>'></asp:Textbox>
                                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimiteComprometido" ValidationGroup="sublimitesValGrp" InitialValue="0" ControlToValidate="lbsublimiteComprometido" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
