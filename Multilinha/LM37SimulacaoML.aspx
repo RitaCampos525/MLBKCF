@@ -56,14 +56,14 @@
             </div>
             <div class="row form-group padding-row col-sm-12 ">
                     <div class="col-sm-6">
-                            <label id="lbTipoSimulacao" runat="server" class="col-sm-4 text-right lbl">* Tipo Simulação: </label>
+                            <label id="lbTipoSimulacao" runat="server" class="col-sm-4 text-right lbl lblFixRD">* Tipo Simulação: </label>
                             <div class="col-sm-8">
                             <asp:RadioButtonList runat="server" CssClass="fixRD" ID="rdtipoSimulacao" RepeatDirection="Horizontal" TextAlign="Left" DataTextField="Description" DataValueField="Code"></asp:RadioButtonList>
                             </div>
                      </div>
-                     <div class="col-sm-6">
-                        <div class="col-sm-4 div-btns" >   
-                            <asp:button id="btnSearchCont" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
+                     <div class="div-btns">
+                        <div class="col-sm-4" >   
+                            <asp:button id="btnSearchCont" class="normalButton col-4 btns" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
                         </div> 
                         </div>
             </div>
@@ -287,27 +287,27 @@
                          </div>
                     </div>
             <div id="divSimular" runat="server" class="row form-group padding-row col-sm-12 text-right">
-                <div class="btn">
-                <asp:Button CssClass="normalButton col-4 btns" runat="server" ID="btnSimular" OnClick="btnSimular_Click" CausesValidation="false" Text="Simular" />
+                <div class="row div-btns">
+                     <asp:Button CssClass="normalButton col-4 btns" runat="server" ID="btnSimular" OnClick="btnSimular_Click" CausesValidation="false" Text="Simular" />
                 </div>
                  <hr class="hr" id="hr2" runat="server" />      
            </div>
-            <div id="divendButoes" runat="server" class="row form-group padding-row col-sm-6">
-                <div class="col-sm-4">
-                    <label id="lbidMultilinha" runat="server" class="col-sm-4 text-right lbl">* ID Simulação: </label> 
-                    <div class="col-sm-6">
-                    <asp:TextBox id="txt_idmultilinha" ReadOnly="true" class="form-control text-field" runat="server" OnClick="btnConsultarProdutos_Click"></asp:TextBox>
-                   </div>
-                </div>
-                 <div class="col-sm-4 ">
-                     <asp:Button CssClass="normalButtonXL btns" runat="server" ID="btnConsultarProdutos" OnClick="btnConsultarProdutos_Click" CausesValidation="false" Text="Contratos Produtos ML" />
-                 </div>
-                 <div class="col-sm-4 ">
-                <asp:Button CssClass="normalButtonXL btns" runat="server" ID="btnGuardarSimulacao" OnClick="btnGuardarSimulacao_Click" CausesValidation="false" Text="Guardar Simulação" />
+            <div class="row form-group padding-row ">
+                <div class="col-sm-6">
+                    <div class="col-sm-12 row div-btns">
+                        <div class="col-sm-5">
+                            <label id="lbidsimulacaoml" runat="server" class="col-sm-5 text-right lbl">* ID Simulação: </label>
+                            <div class="col-sm-6">
+                                <asp:TextBox ID="txtidsimulacaoml" Enabled="false" MaxLength="10" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            </div>
+                            </div>
+                        <asp:Button ID="btnConsultarProdutos" class="btns" Text="Contratos Produtos ML" OnClick="btnConsultarProdutos_Click" CausesValidation="true" ValidationGroup="manterestecampo" runat="server"></asp:Button>
+                        <asp:Button ID="btnGuardarSimulacao" class="btns " runat="server" CausesValidation="true" ValidationGroup="ChaveProdutos" AutoPostBack="true" OnClick="btnGuardarSimulacao_Click" Text="Guardar Simulação"></asp:Button>
+                    </div>
                 </div>
             </div>
-         </div>
-            </div>
+       </div>
+       </div>
    </form>
      <script type='text/javascript'>
         var dtfechas = "<%=this.dtfechas %>";

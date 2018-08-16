@@ -756,7 +756,14 @@ div.Orange:not(:empty) {
         color:white;
     }
 
-.fixRD{
+.fixRD label{
     padding-top:2px;
         padding-left:10px;
+}
+
+.lblFixRD {
+    margin-top: 3px !important;
+    color: #555;
+    font-family: 'Bankinter Text';
+    font-size: 14px;
 }

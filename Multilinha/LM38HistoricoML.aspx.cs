@@ -23,6 +23,7 @@ namespace Multilinha
 
                 string op = Helper.getTransactionMode(Context, Request);
                 Helper.AddRemoveHidden(true, divBtnConsultar);
+                Helper.AddRemoveHidden(true, hr2);
             }
         }
 
@@ -36,8 +37,9 @@ namespace Multilinha
 
             if(lst.Count > 0)
              {
-               Helper.AddRemoveHidden(false, divBtnConsultar); 
-             }
+               Helper.AddRemoveHidden(false, divBtnConsultar);
+                Helper.AddRemoveHidden(false, hr2);
+            }
         }
 
         protected void txtCliente_TextChanged(object sender, EventArgs e)

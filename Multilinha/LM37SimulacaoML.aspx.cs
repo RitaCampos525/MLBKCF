@@ -1,6 +1,7 @@
 ﻿using MultilinhasObjects;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -137,7 +138,21 @@ namespace Multilinha
 
         protected void btnSimular_Click(object sender, EventArgs e)
         {
+            //Apenas 1 seleccionado
+            string urlQueries = Request.Url.Query;
 
+            //If alt. condicao geral -> redireciona para lm33
+            string href = ConfigurationManager.AppSettings["ContratoML"] + urlQueries;
+            //else -> redirecciona para lm34
+
+            LM37SimulacaoML lm37 = new LM37SimulacaoML();
+            Helper.CopyPropertiesTo(this, lm37);
+
+            Page.Transfer(href,
+            new Dictionary<string, object>() {
+                                  { "Op", "V" },
+                                  { "ClienteLM37", lm37 },
+            });
         }
 
         protected void lbSublimiteComprometidoNovo_TextChanged(object sender, EventArgs e)
@@ -226,6 +241,18 @@ namespace Multilinha
 
         protected void btnConsultarProdutos_Click(object sender, EventArgs e)
         {
+            //Redirecciona para LM36 com contexto
+            string urlQueries = Request.Url.Query;
+            string href = ConfigurationManager.AppSettings["ContratosProduto"] + urlQueries;
+
+            LM37SimulacaoML lm37 = new LM37SimulacaoML();
+            Helper.CopyPropertiesTo(this, lm37);
+
+           Page.Transfer(href,
+           new Dictionary<string, object>() {
+                                  { "Op", "V" },
+                                  { "ClienteLM37", lm37 },
+           });
 
         }
 

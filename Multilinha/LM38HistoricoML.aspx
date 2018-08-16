@@ -60,27 +60,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="row form-group padding-row col-sm-12 ">
+                <div class="row form-group col-sm-12 ">
                     <div class="col-sm-6">
                      </div>
-                     <div class="col-sm-6">
-                        <div class="col-sm-4 div-btns" >   
+                     <div class="div-btns">
+                        <div class="col-sm-4" >   
                             <asp:button id="btnSearchCont" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
                         </div> 
-                        </div>
+                     </div>
                </div>
             <hr class="hr" id="hr1" runat="server" /> 
             </div>
-            <div id="tbHistorico" runat="server">
-          <asp:ListView ID="lvHistoricoAlteracoes" runat="server" class="row form-group padding-row col-sm-12">
+            <div id="tbHistorico" class="row form-group col-sm-12" runat="server">
+             <asp:ListView ID="lvHistoricoAlteracoes" runat="server" class="row form-group padding-row">
                 <EmptyDataTemplate>Não foram encontrados resultados</EmptyDataTemplate>
-              <SelectedItemTemplate>
-                  <div class="row" style="background-color:gray">
-
-                  </div>
-              </SelectedItemTemplate>
                 <LayoutTemplate>
-                    <div class="Table Grid" id="tbSublimtesFinanceiros">
+                    <div class="Table Grid col-sm-12" id="tbHistoricoAlt">
                         <div class="Heading Color">
                             <div class="Cell Grid">
                                 <label></label>
@@ -153,21 +148,14 @@
                         </div>
                 </ItemTemplate>
             </asp:ListView>
-       </div>
-            <br />
-            <asp:Button runat="server" id="blba" OnClick="blba_Click1" CausesValidation="true" Text="Consultar" CssClass="btns text-center"/>
-            <div runat="server" id="divBtnConsultar">
-                <div class="row form-group padding-row col-sm-12 ">
-                    <div class="col-sm-6">
-                     </div>
-                     <div class="col-sm-6">
-                        <div class="col-sm-4 div-btns" >  
-                            
-                           <%-- <asp:button id="btnConsultar" class="btns text-center"  runat="server" CausesValidation="true" OnClick="btnConsultar_Click" Text="Consultar" ></asp:button>--%>
-                        </div> 
-                        </div>
-               </div>
             </div>
+            <br />
+            <div id="divBtnConsultar" runat="server" class="row form-group padding-row col-sm-12 text-right">
+                <div class="row div-btns">
+                     <asp:Button CssClass="normalButton col-4 btns" runat="server" ID="btnConsultarHis" OnClick="blba_Click1" CausesValidation="false" Text="Consultar" />
+                </div>
+            </div>
+             <hr class="hr" id="hr2" runat="server" />  
         </div>
        </div>
         </form>
