@@ -265,13 +265,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divIDMultilinha;
         
         /// <summary>
-        /// Label1 control.
+        /// lbidmultilinha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbidmultilinha;
         
         /// <summary>
         /// txt_idmultilinha control.

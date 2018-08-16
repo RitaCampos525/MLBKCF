@@ -274,6 +274,7 @@ namespace MultilinhasDataLayer
                 NDiasPreAviso = 60,
                 PrazoRenovacao = 3,
                 NumeroMinimoProdutos = 5,
+                
                 produtosF = new List<LM31_CatalogoProdutoML.ProdutoRisco>()
                 {
                     new LM31_CatalogoProdutoML.ProdutoRisco
@@ -597,6 +598,7 @@ namespace MultilinhasDataLayer
             {
                 Cliente = client,
                 idmultilinha = idMult,
+                Nome = "JOSÉ MANUEL",
                 HistoricoAlteracoes = new List<LM38_HistoricoAlteracoes.historicoAlteracoes>()
                 {
                     new LM38_HistoricoAlteracoes.historicoAlteracoes

@@ -40,7 +40,7 @@ namespace Multilinha
                 //DataProcessamento
                 //txtdataProcessamento.Text = dtfechas.ToString();
 
-                string op = Request.QueryString["OP"] ?? "FF";
+                string op = Helper.getTransactionMode(Context, Request);
                 ViewState["OPLM33"] = op;
                 switch (op.ToUpper())
                 {
@@ -74,6 +74,9 @@ namespace Multilinha
                         Helper.AddRemoveActive(false, liParameterizacao);
                         Helper.AddRemoveActive(false, liConsulta);
                         lblTransactionM.CssClass = lblTransactionM.CssClass.Replace("atab", "atabD");
+
+                        //Contexto: Transação em Aprovação:
+                       
 
                         break;
                     case "C":
@@ -141,6 +144,13 @@ namespace Multilinha
                         Helper.AddRemoveActive(false, liParameterizacao);
                         lblTransactionV.CssClass = lblTransactionV.CssClass.Replace("atab", "atabD");
 
+                        //Contexto Visualização
+                        LM38_HistoricoAlteracoes lm38 = Context.Items["HAlteracao"] as LM38_HistoricoAlteracoes;
+                        if (lm38.idmultilinha != null)
+                        {
+                            Helper.CopyObjectToControls(this, lm38);
+                        }
+
                         break;
                     default:
                         lberror.Text = "Página sem contexto. Execute a transação na Aplicação Bancária";
@@ -155,6 +165,9 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr3);
                         Helper.AddRemoveHidden(true, hr4);
                         btnSearch.Enabled = false;
+
+                        
+
                         break;
                 }
             }

@@ -82,7 +82,7 @@
                 </div>
                 <div id="divIDMultilinha" runat="server" class="row form-group padding-row col-sm-12">
                     <div class="col-sm-4">
-                        <label id="Label1" runat="server" class="col-sm-4 text-right lbl">* ID Multilinha ML: </label>
+                        <label id="lbidmultilinha" runat="server" class="col-sm-4 text-right lbl">* ID Multilinha ML: </label>
                         <div class="col-sm-6">
                             <asp:TextBox ID="txt_idmultilinha" MaxLength="9" AutoPostBack="true" OnTextChanged="txt_idmultilinha_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqidmultilinha" ValidationGroup="valChaves" ControlToValidate="txt_idmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
@@ -212,21 +212,21 @@
                     <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="bkllimglobalmultilinha" runat="server" class="col-sm-4 text-right lbl">* Limite Global Multilinha: </label>
-                            <div class="col-sm-4">
-                                <asp:TextBox ID="txtlimiteglobalmultilinha" CssClass="form-control text-field number" MaxLength="16" runat="server"></asp:TextBox>
+                            <div class="col-sm-6">
+                                <asp:TextBox ID="txtlimiteglobalmultilinha" CssClass="form-control text-field number" Text="0,00" MaxLength="16" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqLimMaxCredito" ControlToValidate="txtlimiteglobalmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <label id="bklgraumorosidade" runat="server" class="col-sm-4 text-right lbl">* Grau Morosidade:</label>
-                            <div class="col-sm-4">
-                                <asp:TextBox ID="txtgraumorosidade" MaxLength="3" ReadOnly="true" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <div class="col-sm-6">
+                                <asp:TextBox ID="txtgraumorosidade" MaxLength="3" ReadOnly="true" Enabled="false" Text="000" CssClass="form-control text-field" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqgraumorosidade" ControlToValidate="txtgraumorosidade" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="col-sm-4">
                         <label class="col-sm-4 text-right lbl">* Versão da minuta de contrato:</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <asp:TextBox ID="txt_NMinutaContrato" MaxLength="12" Enabled="false" ReadOnly="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         </div>
                         </div>
@@ -234,7 +234,7 @@
                     <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="bkllimRiscoFinanceiro" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Financeiro: </label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtsublimiteriscoFinanceiro" CssClass="form-control text-field number" MaxLength="16" AutoPostBack="true"  runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimiteriscoFinanceiro" ControlToValidate="txtsublimiteriscoFinanceiro" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                 <asp:Label ID="lberrorSRF" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
@@ -244,7 +244,7 @@
                     <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="bkllimRiscoComercial" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Comercial: </label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtsublimitriscoComercial" CssClass="form-control text-field number" MaxLength="16" AutoPostBack="true"  runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimitriscoComercial" ControlToValidate="txtsublimitriscoComercial" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                 <asp:Label ID="lberrorSRC" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
@@ -254,7 +254,7 @@
                     <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-4">
                             <label id="bkllimiteriscoassinatura" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Assinatura: </label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <asp:TextBox ID="txtsublimiteriscoAssinatura" CssClass="number form-control text-field" MaxLength="16" AutoPostBack="true" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimiteriscoAssinatura" ControlToValidate="txtsublimiteriscoAssinatura" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                 <asp:Label ID="lberrorSRA" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
@@ -263,10 +263,9 @@
                     </div>
                     <div class="row form-group padding-row col-sm-12">
                         <div class="col-sm-12 text-center">
-                            <asp:Button ID="btnConfirmar" class="btns text-center" runat="server" CausesValidation="true" ValidationGroup="valChavesClienteContrato" AutoPostBack="True" OnClick="btnConfirmar_Click" Text="Confirmar"></asp:Button>
+                            <asp:Button ID="btnConfirmar" class="btns text-center" runat="server" CausesValidation="true" OnClientClick="return ValidaMontantes();" ValidationGroup="valChavesClienteContrato"  AutoPostBack="True" OnClick="btnConfirmar_Click" Text="Confirmar"></asp:Button>
                         </div>
                     </div>
-                    <%--<hr class="hr" id="hr2" runat="server" />--%>
                 </div>
                 <div class="row titleAccordion" id="dvtitleAcordionRFinanceiro" runat="server" onclick="fAccordionController();">
                     <a id="titleRiscoFinanceiro" runat="server" class="accordion " title="Risco Financeiro">Risco Financeiro</a>

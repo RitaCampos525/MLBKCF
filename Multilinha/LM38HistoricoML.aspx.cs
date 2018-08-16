@@ -30,7 +30,8 @@ namespace Multilinha
         protected void btnSearchCont_Click(object sender, EventArgs e)
         {
             Helper.SetEnableControler(camposChaveHis, true);
-            
+            Helper.CopyObjectToControls(camposChaveHis, TAT2.SearchLM38(0001004, "310098766781"));
+
             List<LM38_HistoricoAlteracoes.historicoAlteracoes> lst = TAT2.SearchLM38(0001004, "310098766781").HistoricoAlteracoes;
             lvhistoricoAlteracoes.DataSource = lst;
             lvhistoricoAlteracoes.DataBind();

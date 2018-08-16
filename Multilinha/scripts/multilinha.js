@@ -282,7 +282,7 @@ $("#btnPesquisar").click(function () {
     }
 })
 
-///MULTILINHA
+///MULTILINHA - SET DATAS
 try{
     $('#txtDataInicioComercializacao').datepicker('setDate', dtFechasStr);
 }catch(err){}
@@ -579,7 +579,7 @@ $('#txtsublimiteriscoFinanceiro').blur()
     try {
         var LimiteGlobal;
         If($('#txtlimiteglobalmultilinha') != null)
-        LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
+            LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
         var SublimiteFinanceiro = $('#txtsublimiteriscoFinanceiro').val().replace(',', '.');
         if (SublimiteFinanceiro > LimiteGlobal) {
             if ($('#reqsublimiteriscoFinanceiro')[0] != null) {
@@ -596,7 +596,9 @@ $('#txtsublimiteriscoFinanceiro').blur()
 $('#txtsublimitriscoComercial').blur()
 {
     try {
-        var LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
+        var LimiteGlobal;
+        If($('#txtlimiteglobalmultilinha') != null)
+            LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
         var SublimiteComercial = $('#txtsublimitriscoComercial').val().replace(',', '.');
         if (SublimiteComercial > LimiteGlobal) {
             if ($('#reqsublimiteriscoFinanceiro')[0] != null) {
@@ -613,7 +615,9 @@ $('#txtsublimitriscoComercial').blur()
 $('#txtsublimiteriscoAssinatura').blur()
 {
     try {
-        var LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
+        var LimiteGlobal;
+        If($('#txtlimiteglobalmultilinha') != null)
+            LimiteGlobal = $('#txtlimiteglobalmultilinha').val().replace(',', '.');
         var SublimiteAssinatura = $('#txtsublimiteriscoAssinatura').val().replace(',', '.');
         if (SublimiteAssinatura > LimiteGlobal) {
             if ($('#reqsublimiteriscoAssinatura')[0] != null) {
@@ -626,6 +630,34 @@ $('#txtsublimiteriscoAssinatura').blur()
         };
     }
     catch (err){}
+}
+
+function ValidaMontantes()
+{
+    a = true;
+    if (!Page_ClientValidate())
+    {
+        if ($('#txtlimiteglobalmultilinha').val() == null || $('#txtlimiteglobalmultilinha').val() == "" || $('#txtlimiteglobalmultilinha').val() == "0,00") {
+            $('#reqLimMaxCredito').show();
+            a = false;
+        }
+        if ($('#txtsublimiteriscoFinanceiro').val() == null || $('#txtsublimiteriscoFinanceiro').val() == "" || $('#txtsublimiteriscoFinanceiro').val() == "0,00") {
+            $('#reqsublimiteriscoFinanceiro').show();
+            a = false;
+        }
+        if ($('#txtsublimitriscoComercial').val() == null || $('#txtsublimitriscoComercial').val() == "" || $('#txtsublimitriscoComercial').val() == "0,00") {
+            $('#reqsublimitriscoComercial').show();
+            a = false;
+        }
+        if ($('#txtsublimiteriscoAssinatura').val() == null || $('#txtsublimiteriscoAssinatura').val() == "" || $('#txtsublimiteriscoAssinatura').val() == "0,00") {
+            $('#reqsublimiteriscoAssinatura').show();
+            a = false;
+        }
+    }
+    else {
+        a = false
+    }
+    return a;
 }
 
 //Validacao, verifica se as labels de formato incorrecto Datas estao visiveis
