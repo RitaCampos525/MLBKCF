@@ -72,6 +72,16 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
 
+                        //Contexto Visualização
+                        LM38_HistoricoAlteracoes lm38 = Context.Items["HAlteracao"] as LM38_HistoricoAlteracoes;
+                        if (lm38 != null && lm38.idmultilinha != null)
+                        {
+                            Helper.CopyObjectToControls(this, lm38);
+                            Control ctr = this.FindControl(Helper.getControltoHighLight(lm38.HistoricoAlteracoes[0].Alteracao));
+                            Helper.AddHightLight(ctr, true);
+
+                        }
+
                         break;
                     default:
                         Page.Transfer(ConfigurationManager.AppSettings["ContratoML"] + "?Op=C", //Sem contexto redireciona para lm33 - modo criar C
@@ -107,11 +117,10 @@ namespace Multilinha
                     Helper.AddRemoveHidden(false, hr1);
                     Helper.AddRemoveHidden(false, hr2);
 
-                    //context da transacao anterior
-                    LM34_SublimitesML lm33 = ViewState["ContratoCriado"] as LM34_SublimitesML;
-                   
                     //For debug - lm34
-                    LM34_SublimitesML lm34 = TAT2.SearchML04(lm33.Cliente, lm33.idmultilinha, "0");
+                    int client = 0;
+                    Int32.TryParse(txtCliente.Text, out client);
+                    LM34_SublimitesML lm34 = TAT2.SearchML04(client, txtidmultilinha.Text, "0");
                     
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, lm34);
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);
@@ -131,11 +140,9 @@ namespace Multilinha
                     Helper.AddRemoveHidden(false, hr1);
                     Helper.AddRemoveHidden(false, hr2);
 
-                    //context da transacao anterior
-                     lm33 = ViewState["ContratoCriado"] as LM34_SublimitesML;
-
                     //For debug - lm34
-                    lm34 = TAT2.SearchML04(123, "099", "0");
+                    Int32.TryParse(txtCliente.Text, out client);
+                    lm34 = TAT2.SearchML04(client, txtidmultilinha.Text, "0");
 
                     Helper.CopyObjectToControls(ml04_criar, lm34);
 
@@ -143,25 +150,29 @@ namespace Multilinha
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RA, lvProdutosRiscoA, lm34);
 
-                    
-
                     break;
 
                 case "V":
 
+                    Helper.SetEnableControler(dpOK, false);
                     Helper.AddRemoveHidden(false, dpOK);
+                    Helper.SetEnableControler(dvtitleAcordionRFinanceiro, false);
                     Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                    Helper.SetEnableControler(dvtitleAcordionRAssinatura, false);
                     Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                    Helper.SetEnableControler(dvtitleAcordionRComercial, false);
                     Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                    Helper.SetEnableControler(lvProdutosRiscoA, false);
+                    Helper.SetEnableControler(lvProdutosRiscoC, false);
+                    Helper.SetEnableControler(lvProdutosRiscoF, false);
+                    Helper.SetEnableControler(accoesfinais_criarlm24, true);
                     Helper.AddRemoveHidden(false, accoesfinais_criarlm24);
                     Helper.AddRemoveHidden(false, hr1);
                     Helper.AddRemoveHidden(false, hr2);
 
-                    //context da transacao anterior
-                    lm33 = ViewState["ContratoCriado"] as LM34_SublimitesML;
-
                     //For debug - lm34
-                    lm34 = TAT2.SearchML04(lm33.Cliente, lm33.idmultilinha, "0");
+                    Int32.TryParse(txtCliente.Text, out client);
+                     lm34 = TAT2.SearchML04(client, txtidmultilinha.Text, "0");
 
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, lm34);
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);
@@ -198,14 +209,11 @@ namespace Multilinha
                 LM34_SublimitesML lm34 = new LM34_SublimitesML();
                 Helper.CopyPropertiesTo(ml04_criar, lm34);
 
-                //zona produtos
-                //adicaoCP(Constantes.tipologiaRisco.RF, lvProdutosRisco, lm34);
-                //adicaoCP(Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, lm34);
-                //adicaoCP(Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, lm34);
-
-                Page.Transfer(ConfigurationManager.AppSettings["AssociacaoContasDO"],
+                string urlQueries = Request.Url.Query;
+                string op = ViewState["Op"] as string;
+                Page.Transfer(ConfigurationManager.AppSettings["AssociacaoContasDO"] + urlQueries,
                new Dictionary<string, object>() {
-                                  { "Op", "C" },
+                                  { "Op", op },
                                   { "ContratoCriado", lm34 },
                });
             }

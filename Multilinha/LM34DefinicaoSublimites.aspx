@@ -161,7 +161,7 @@
                                                         <asp:Label runat="server" ID="lbsubproduto" Text='<%# Eval("familiaProduto") %>' ></asp:Label>
                                                     </div>
                                                 <div class="Cell Grid col-6">
-                                                        <asp:Textbox runat="server" ID="lbsublimiteComprometido" placeholder="0,00" CssClass="number form-control text-field text-center" MaxLength="18" Text='<%# Eval("sublimitecomprometido") %>'></asp:Textbox>
+                                                        <asp:Textbox runat="server" ID="lbsublimiteComprometido" placeholder="0,00" ClientIDMode="Static" CssClass="number form-control text-field text-center" MaxLength="18" Text='<%# Eval("sublimitecomprometido") %>'></asp:Textbox>
                                                         <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" InitialValue="0" ID="reqsublimiteComprometido" ValidationGroup="sublimitesValGrp" ControlToValidate="lbsublimiteComprometido" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>

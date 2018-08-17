@@ -697,5 +697,82 @@ namespace Multilinha
             return op;
         }
 
+        /// <summary>
+        /// Método para obter o control que corresponde à alteração efetuada - Regra de Negócio
+        /// </summary>
+        /// <param name="descAlteracao"></param>
+        /// <returns>webcontrol</returns>
+        public static string getControltoHighLight(string descAlteracao)
+        {
+            string control = "";
+            if(descAlteracao.ToUpper().Contains("CONTA DO"))
+            {
+                return "ddlncontado";
+            }
+            else if (descAlteracao.ToUpper().Contains("ESTADO"))
+            {
+                return "ddlEstadoContrato";
+            }
+            else if (descAlteracao.ToUpper().Contains("PRAZO"))
+            {
+                return "txtprazocontrato";
+            }
+            else if (descAlteracao.ToUpper().Contains("RENOVAÇÃO"))
+            {
+                return "ddlIndRenovacao";
+            }
+            else if (descAlteracao.ToUpper().Contains("CONDIÇÕES DE CONTRATO"))
+            {
+                return "txtNDiasIncumprimento";
+            }
+            else if (descAlteracao.ToUpper().Contains("DENUNCIA"))
+            {
+                return "ddlncontado";
+            }
+            else if (descAlteracao.ToUpper().Contains("CONDIÇÕES DE DENUNCIA"))
+            {
+                return "ddlContratoDenunciado";
+            }
+            else if (descAlteracao.ToUpper().Contains("LIMITE MÁXIMO"))
+            {
+                return "txtlimiteglobalmultilinha";
+            }
+            else if (descAlteracao.ToUpper().Contains("LIMITE FINANCEIRO"))
+            {
+                return "txtsublimiteriscoFinanceiro";
+            }
+            else if (descAlteracao.ToUpper().Contains("LIMITE COMERCIAL"))
+            {
+                return "txtsublimitriscoComercial";
+            }
+            else if (descAlteracao.ToUpper().Contains("LIMITE ASSINATURA"))
+            {
+                return "txtsublimiteriscoAssinatura";
+            }
+            else if (descAlteracao.ToUpper().Contains("CONTRATO PRODUTO"))
+            {
+                return "divRiscoFinanceiro";
+            }
+            else if (descAlteracao.ToUpper().Contains("SUBLIMITE PRODUTO"))
+            {
+                return "lbsublimiteComprometido";
+            }
+
+            return control;
+
+        }
+
+        public static void AddHightLight(this Control control, bool highlight)
+        {
+            if (highlight)
+            {
+                if (control is WebControl)
+                {
+                    var webControl = (WebControl)control;
+                    webControl.CssClass = "highLight " + webControl.CssClass;
+                }
+            }
+        }
+        
     }
 }

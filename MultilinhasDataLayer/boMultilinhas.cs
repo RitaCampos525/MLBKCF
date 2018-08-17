@@ -610,11 +610,11 @@ namespace MultilinhasDataLayer
                 {
                     new LM38_HistoricoAlteracoes.historicoAlteracoes
                     {
-                        Alteracao = "Sublimite",
-                        campoAlterado = "TO DO",
+                        Alteracao = "Sublimite Produto",
+                        campoAlterado = "CFAMPRD",
                         dataProcessamento = DateTime.Now.Date,
                         dataValorAlteracao = DateTime.Now.Date,
-                        description = "Sublimite",
+                        description = "Sublimite Produto",
                         idAlteracao = 1.ToString(),
                         nContratoProduto = "84532456540",
                         TipoAlteracao = "Condição Particular",
@@ -625,11 +625,26 @@ namespace MultilinhasDataLayer
                     },
                      new LM38_HistoricoAlteracoes.historicoAlteracoes
                     {
-                        Alteracao = "Sublimite",
-                        campoAlterado = "Prazo",
+                        Alteracao = "Limite Financeiro",
+                        campoAlterado = "MSUBLMRF",
                         dataProcessamento = DateTime.Now.Date,
                         dataValorAlteracao = DateTime.Now.Date,
-                        description = "Sublimite",
+                        description = "Limite Financeiro",
+                        idAlteracao = 1.ToString(),
+                        nContratoProduto = "84532456540",
+                        TipoAlteracao = "Condição Geral",
+                        utilizador = "BDAPS",
+                        valorAnterior = "2000",
+                        valorPosterior = "560000",
+
+                    },
+                     new LM38_HistoricoAlteracoes.historicoAlteracoes
+                    {
+                        Alteracao = "Prazo",
+                        campoAlterado = "txtprazocontrato",
+                        dataProcessamento = DateTime.Now.Date,
+                        dataValorAlteracao = DateTime.Now.Date,
+                        description = "Limite Financeiro",
                         idAlteracao = 1.ToString(),
                         nContratoProduto = "84532456540",
                         TipoAlteracao = "Condição Geral",

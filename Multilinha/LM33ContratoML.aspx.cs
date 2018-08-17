@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.Linq;
 using MultilinhasDataLayer.BCDWSProxy;
 using System.Globalization;
+using System.Web.UI.HtmlControls;
 
 namespace Multilinha
 {
@@ -134,6 +135,7 @@ namespace Multilinha
                         divIDSimulacao.Visible = false;
                         divProduto.Visible = false;
 
+                      
                         Helper.AddRemoveHidden(true, dpOK);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
@@ -143,7 +145,6 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr3);
                         Helper.AddRemoveHidden(true, hr4);
                         Helper.AddRemoveHidden(true, divVersoesML);
-
                         Helper.AddRemoveActive(true, liConsulta);
                         Helper.AddRemoveActive(false, liModificacao);
                         Helper.AddRemoveActive(false, liParameterizacao);
@@ -151,9 +152,11 @@ namespace Multilinha
 
                         //Contexto Visualização
                         LM38_HistoricoAlteracoes lm38 = Context.Items["HAlteracao"] as LM38_HistoricoAlteracoes;
-                        if (lm38.idmultilinha != null)
+                        if (lm38 != null && lm38.idmultilinha != null)
                         {
                             Helper.CopyObjectToControls(this, lm38);
+                            Control ctr = this.FindControl(Helper.getControltoHighLight(lm38.HistoricoAlteracoes[0].Alteracao));
+                            Helper.AddHightLight(ctr, true);
                         }
 
                         break;
@@ -186,7 +189,7 @@ namespace Multilinha
             lberror.Text = "";
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
 
-            string op = Request.QueryString["OP"] ?? "FF";
+            string op = ViewState["OPLM33"] as string;
             switch (op.ToUpper())
             {
                 case "C":
@@ -419,8 +422,9 @@ namespace Multilinha
                 //adicaoCP(Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, lm34);
                 //adicaoCP(Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, lm34);
 
+                string urlQueries = Request.Url.Query;
                 string op = ViewState["OPLM33"] as string;
-                Page.Transfer(ConfigurationManager.AppSettings["DefinicaoSublimites"],
+                Page.Transfer(ConfigurationManager.AppSettings["DefinicaoSublimites"] + urlQueries,
                new Dictionary<string, object>() {
                                   { "Op", op },
                                   { "ContratoCriado", lm34 },

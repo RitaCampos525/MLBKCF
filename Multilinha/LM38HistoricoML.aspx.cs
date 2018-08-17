@@ -80,7 +80,7 @@ namespace Multilinha
             ListViewDataItem historicoSelected = lvhistoricoAlteracoes.Items.Where(x => (x.FindControl("cbSelected") as CheckBox).Checked).FirstOrDefault() as ListViewDataItem;
             LM38_HistoricoAlteracoes lm38 = new LM38_HistoricoAlteracoes();
             Helper.CopyPropertiesTo(this, lm38);
-            Helper.CopyPropertiesTo(lvhistoricoAlteracoes, lm38.HistoricoAlteracoes[0]);
+            Helper.CopyPropertiesTo(historicoSelected, lm38.HistoricoAlteracoes[0]);
 
             string urlQueries = Request.Url.Query;
             string href = "";
