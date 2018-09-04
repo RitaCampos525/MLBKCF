@@ -13,6 +13,7 @@ namespace Multilinha
     {
         public DateTime dtfechas = Global.dtfechasG;
         MultilinhasDataLayer.boMultilinhas TAT2 = new MultilinhasDataLayer.boMultilinhas();
+        MultilinhaBusinessLayer.BLMultilinha bl = new MultilinhaBusinessLayer.BLMultilinha();
         protected void Page_Load(object sender, EventArgs e)
         {
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
@@ -29,18 +30,33 @@ namespace Multilinha
 
         protected void btnSearchCont_Click(object sender, EventArgs e)
         {
-            Helper.SetEnableControler(camposChaveHis, true);
-            Helper.CopyObjectToControls(camposChaveHis, TAT2.SearchLM38(0001004, "310098766781"));
+           
+            LM38_HistoricoAlteracoes LM38 = new LM38_HistoricoAlteracoes();
+            Helper.CopyPropertiesTo(camposChaveHis, LM38);
 
-            List<LM38_HistoricoAlteracoes.historicoAlteracoes> lst = TAT2.SearchLM38(0001004, "310098766781").HistoricoAlteracoes;
-            lvhistoricoAlteracoes.DataSource = lst;
-            lvhistoricoAlteracoes.DataBind();
+            //For debug
+            //List<LM38_HistoricoAlteracoes.historicoAlteracoes> lst = TAT2.SearchLM38(0001004, "310098766781").HistoricoAlteracoes;
 
-            if(lst.Count > 0)
+            //Call LM38
+            ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+            MensagemOutput<LM38_HistoricoAlteracoes> response = bl.LM38Request(LM38, abargs, Helper.getTransactionMode(Context, Request));
+
+            if(response != null && response.ResultResult != null 
+                && response.ResultResult.HistoricoAlteracoes != null 
+                && response.ResultResult.HistoricoAlteracoes.Count > 0)
              {
-               Helper.AddRemoveHidden(false, divBtnConsultar);
+                lvhistoricoAlteracoes.DataSource = response.ResultResult.HistoricoAlteracoes;
+                Helper.AddRemoveHidden(false, divBtnConsultar);
                 Helper.AddRemoveHidden(false, hr2);
             }
+            if (response == null || response.ResultResult == null || response.erro != 0)
+            {
+                lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                lberror.Visible = true;
+                lberror.ForeColor = System.Drawing.Color.Red;
+            }
+
+            lvhistoricoAlteracoes.DataBind();
         }
 
         protected void txtCliente_TextChanged(object sender, EventArgs e)

@@ -70,63 +70,72 @@ namespace MultilinhasDataLayer
             LM31.input = new BCDWSProxy.LM31Input();
             LM31.input.caccao = accao;
             LM31.input.pedido_dados = false;
-            LM31.input.cprdml = _lm31.ProductCode;
-            LM31.input.csubprdml = _lm31.SubProdutoCode;
-            LM31.input.cdescprd = _lm31.SubProductDescription;
-            LM31.input.dincomer = _lm31.DataInicioComercializacao.ToString("yyyyMMdd");
-            LM31.input.dficomer = _lm31.DataFimComercializacao.ToString("yyyyMMdd"); ;
-            LM31.input.przmin = _lm31.PrazoMinimo.ToString();
-            LM31.input.przmax = _lm31.PrazoMaximo.ToString();
-            LM31.input.nmprdat = _lm31.NumeroMinimoProdutos.ToString();
-            LM31.input.lmtmincr = _lm31.LimiteMinimoCredito;
-            LM31.input.lmtmaxcr = _lm31.LimiteMaximoCredito;
-            LM31.input.estparm = ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Description.ToUpper() == _lm31.Estado.ToUpper()).Code;
-            LM31.input.nmdiainc = _lm31.NDiasIncumprimento.ToString();
-            LM31.input.idrenov = _lm31.IndRenovacao.ToString();
-            LM31.input.percobcom = _lm31.PeriocidadeCobranca;
-            LM31.input.przrenov = _lm31.PrazoRenovacao.ToString();
-            LM31.input.ndpreavi = _lm31.NDiasPreAviso.ToString();
+            LM31.input.cprodutoml = _lm31.ProductCode;
+            LM31.input.csubprodml = _lm31.SubProdutoCode;
+            //LM31.input.C = _lm31.SubProductDescription;
+            LM31.input.dtinicomer = _lm31.DataInicioComercializacao.ToString("yyyyMMdd");
+            LM31.input.dtfimcomer = _lm31.DataFimComercializacao.ToString("yyyyMMdd"); ;
+            LM31.input.qprzminml = _lm31.PrazoMinimo;
+            LM31.input.qprzmaxml = _lm31.PrazoMaximo;
+            LM31.input.qminprod = _lm31.NumeroMinimoProdutos;
+            LM31.input.mlimminml = _lm31.LimiteMinimoCredito;
+            LM31.input.mlimmaxml = _lm31.LimiteMaximoCredito;
+            LM31.input.iestado = ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Description.ToUpper() == _lm31.Estado.ToUpper()).Code;
+            LM31.input.qdiaincum = _lm31.NDiasIncumprimento;
+            LM31.input.irenovac = _lm31.IndRenovacao.ToString();
+            LM31.input.qperigest = Convert.ToInt32(_lm31.PeriocidadeCobranca);
+            LM31.input.qprzrenov = _lm31.PrazoRenovacao;
+            LM31.input.qdiapaviso = _lm31.NDiasPreAviso;
+            LM31.input.dtversao = _lm31.DataVersao.ToString("yyyyMMdd");
 
             List<BCDWSProxy.LM31Row1> lstRow1 = new List<BCDWSProxy.LM31Row1>();
-            
 
-            foreach (var f in _lm31.produtosF)
+            if (_lm31.produtosF != null)
             {
-                BCDWSProxy.LM31Row1 _row1 = new BCDWSProxy.LM31Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
-                _row1.codprod_f_l = f.produto;
-                _row1.codtplo_f_l = f.tipologia;
-                _row1.famprod_f_l = f.familia.PadLeft(3,'0');
-                _row1.subprod_f_l = f.subproduto;
+                foreach (var f in _lm31.produtosF)
+                {
+                    BCDWSProxy.LM31Row1 _row1 = new BCDWSProxy.LM31Row1();
+                    _row1.caccao = accao;
+                    _row1.pedido_dados = false;
+                    _row1.l_cproduto_l = f.produto;
+                    _row1.l_tiporisco_l = f.tipologia;
+                    _row1.l_famiprod_l = f.familia.PadLeft(3, '0');
+                    _row1.l_csubprod_l = f.subproduto;
 
-                lstRow1.Add(_row1);
+                    lstRow1.Add(_row1);
+                }
             }
 
-            foreach (var a in _lm31.produtosA)
+            if (_lm31.produtosA != null)
             {
-                BCDWSProxy.LM31Row1 _row1 = new BCDWSProxy.LM31Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
-                _row1.codprod_a_l = a.produto;
-                _row1.codtplo_a_l = a.tipologia;
-                _row1.famprod_a_l = a.familia.PadLeft(3, '0'); ;
-                _row1.subprod_a_l = a.subproduto;
+                foreach (var a in _lm31.produtosA)
+                {
+                    BCDWSProxy.LM31Row1 _row1 = new BCDWSProxy.LM31Row1();
+                    _row1.caccao = accao;
+                    _row1.pedido_dados = false;
+                    _row1.l_cproduto_l = a.produto;
+                    _row1.l_tiporisco_l = a.tipologia;
+                    _row1.l_famiprod_l = a.familia.PadLeft(3, '0');
+                    _row1.l_csubprod_l = a.subproduto;
 
-                lstRow1.Add(_row1);
+                    lstRow1.Add(_row1);
+                }
             }
 
-            foreach (var c in _lm31.produtosC)
+            if (_lm31.produtosC != null)
             {
-                BCDWSProxy.LM31Row1 _row1 = new BCDWSProxy.LM31Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
-                _row1.codprod_c_l = c.produto;
-                _row1.codtplo_c_l = c.tipologia;
-                _row1.famprod_c_l = c.familia.PadLeft(3, '0'); ;
-                _row1.subprod_c_l = c.subproduto;
+                foreach (var c in _lm31.produtosC)
+                {
+                    BCDWSProxy.LM31Row1 _row1 = new BCDWSProxy.LM31Row1();
+                    _row1.caccao = accao;
+                    _row1.pedido_dados = false;
+                    _row1.l_cproduto_l = c.produto;
+                    _row1.l_tiporisco_l = c.tipologia;
+                    _row1.l_famiprod_l = c.familia.PadLeft(3, '0');
+                    _row1.l_csubprod_l = c.subproduto;
 
-                lstRow1.Add(_row1);
+                    lstRow1.Add(_row1);
+                }
             }
 
             LM31.input.Row1 = lstRow1.ToArray();
@@ -294,9 +303,9 @@ namespace MultilinhasDataLayer
             LM34.BarclaysBankAccountSettings.UserRequester = AbArgs.USERNT;
             LM34.BarclaysBankAccountSettings.ClientName = AbArgs.SN_HOSTNAME;
 
+            LM34.input = new BCDWSProxy.LM34Input();
             LM34.input.caccao = accao;
             LM34.input.pedido_dados = false;
-            LM34.input = new BCDWSProxy.LM34Input();
 
             LM34.input.cbalcao = string.IsNullOrEmpty(_LM34.idmultilinha.ToString()) ? "" : _LM34.idmultilinha.ToString().Substring(0, 3);
             LM34.input.cprod = _LM34.Produtoml;
@@ -384,13 +393,14 @@ namespace MultilinhasDataLayer
         {
             BCDWSProxy.LM36Transaction response = new BCDWSProxy.LM36Transaction();
 
+            LM36.BarclaysBankAccountSettings = new BCDWSProxy.BarclaysBankAccountSettings();
             LM36.BarclaysBankAccountSettings.ApplicationID = ConfigurationManager.AppSettings["ApplicationID"];
             LM36.BarclaysBankAccountSettings.UserRequester = AbArgs.USERNT;
             LM36.BarclaysBankAccountSettings.ClientName = AbArgs.SN_HOSTNAME;
-            LM36.BarclaysBankAccountSettings = new BCDWSProxy.BarclaysBankAccountSettings();
+           
 
-            LM36.input.pedido_dados = false;
             LM36.input = new BCDWSProxy.LM36Input();
+            LM36.input.pedido_dados = false;
             LM36.input.caccao = accao;
 
             LM36.input.cbalcao = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(0, 3);
@@ -463,13 +473,14 @@ namespace MultilinhasDataLayer
         {
             BCDWSProxy.LM37Transaction response = new BCDWSProxy.LM37Transaction();
 
+            LM37.BarclaysBankAccountSettings = new BCDWSProxy.BarclaysBankAccountSettings();
             LM37.BarclaysBankAccountSettings.ApplicationID = ConfigurationManager.AppSettings["ApplicationID"];
             LM37.BarclaysBankAccountSettings.UserRequester = AbArgs.USERNT;
             LM37.BarclaysBankAccountSettings.ClientName = AbArgs.SN_HOSTNAME;
-            LM37.BarclaysBankAccountSettings = new BCDWSProxy.BarclaysBankAccountSettings();
+         
 
-            LM37.input.pedido_dados = false;
             LM37.input = new BCDWSProxy.LM37Input();
+            LM37.input.pedido_dados = false;
             LM37.input.caccao = accao;
 
             LM37.input.cbalcao = string.IsNullOrEmpty(_LM37.idmultilinha.ToString()) ? "" : _LM37.idmultilinha.ToString().Substring(0, 3);
@@ -563,13 +574,14 @@ namespace MultilinhasDataLayer
         {
             BCDWSProxy.LM38Transaction response = new BCDWSProxy.LM38Transaction();
 
+            LM38.BarclaysBankAccountSettings = new BCDWSProxy.BarclaysBankAccountSettings();
             LM38.BarclaysBankAccountSettings.ApplicationID = ConfigurationManager.AppSettings["ApplicationID"];
             LM38.BarclaysBankAccountSettings.UserRequester = AbArgs.USERNT;
             LM38.BarclaysBankAccountSettings.ClientName = AbArgs.SN_HOSTNAME;
-            LM38.BarclaysBankAccountSettings = new BCDWSProxy.BarclaysBankAccountSettings();
+           
 
-            LM38.input.pedido_dados = false;
             LM38.input = new BCDWSProxy.LM38Input();
+            LM38.input.pedido_dados = false;
             LM38.input.caccao = accao;
 
             LM38.input.cbalcao = string.IsNullOrEmpty(_LM38.idmultilinha.ToString()) ? "" : _LM38.idmultilinha.ToString().Substring(0, 3);
@@ -577,7 +589,7 @@ namespace MultilinhasDataLayer
             LM38.input.cta = string.IsNullOrEmpty(_LM38.idmultilinha.ToString()) ? "" : _LM38.idmultilinha.ToString().Substring(5, 6);
             LM38.input.dgt = string.IsNullOrEmpty(_LM38.idmultilinha.ToString()) ? "" : _LM38.idmultilinha.ToString().Substring(11, 1); 
             LM38.input.zcliente = _LM38.Cliente.ToString();
-            LM38.input.gcliente = _LM38.Nome;
+            //LM38.input. = _LM38.Nome;
 
 
             List<BCDWSProxy.LM38Row1> lstRow1 = new List<BCDWSProxy.LM38Row1>();
@@ -589,16 +601,16 @@ namespace MultilinhasDataLayer
                 _row1.pedido_dados = false;
                 _row1.dprocess_l = f.dataProcessamento.ToString("yyyyMMdd");
                 _row1.dtaltera_l = f.dataValorAlteracao.ToString("yyyyMMdd");
-                _row1.ncontrato_l = f.nContratoProduto;
+               // _row1.n = f.nContratoProduto;
                 _row1.vanterior_l = f.valorAnterior;
                 _row1.gtipo_l = f.TipoAlteracao;
-                _row1.idaltera_l = f.idAlteracao;
-                _row1.galtera_l = f.campoAlterado; 
+                _row1.zaltera_l = Convert.ToInt64(f.idAlteracao);
+                _row1.gtipo_l = f.campoAlterado; 
                 _row1.vposterior_l = f.valorPosterior;
                 _row1.cutulmod_l = f.utilizador;
             }
 
-            LM38.input.Row1 = lstRow1.ToArray();
+            //LM38.input.Row = lstRow1.ToArray();
             BCDWSProxy.BarclaysBTSSoapClient client = new BCDWSProxy.BarclaysBTSSoapClient();
             bool bRetry = false;
             atempt = 0;

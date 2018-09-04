@@ -27,6 +27,7 @@ namespace MultilinhasObjects
             public const string LM33PropostaInexistente = "Nº da Proposta da Workflow não encontrado";
             public const string LM37SimulacaoCriado = "Simulação ML criada";
             public const string ProdutoMLNIdentificado = "Produto não identificado como produto Multilinha. A descrição do produto deverá indicar se o produto é Base ou Avançado";
+            public const string NMinimoProdutosCredito = "Selecione no máximo 100 produtos de risco";
             public const string NMinimoProdutosRiscoA = "Selecione no máximo 17 produtos de risco";
             public const string NMinimoProdutosRiscoB = "Selecione no máximo 9 produtos de risco";
             public const string NMinimoProdutosRiscoF = "Selecione no máximo 60 subprodutos de risco financeiro";

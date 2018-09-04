@@ -286,13 +286,15 @@ $("#btnPesquisar").click(function () {
 try{
     $('#txtDataInicioComercializacao').datepicker('setDate', dtFechasStr);
 }catch(err){}
-try{
+try {
     $('#txtdatainiciocontrato').datepicker("setDate", dtFechasStr);
-}
-catch (err) { }
+}catch (err) { }
 try{
     $('#txtdataProcessamento').datepicker("setDate", dtFechasStr);
 }catch(err){}
+try {
+    $('#txtDataVersao').datepicker("setDate", dtFechasStr);
+} catch (err) { }
 
 function ValidaDatas() {
     var $regexname = /^([1-9][0-9]{3})[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/;

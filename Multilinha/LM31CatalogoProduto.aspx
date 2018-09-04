@@ -70,9 +70,9 @@
                   <div class="col-sm-4"></div>
                   <div class="col-sm-4"></div>
                    <div class="col-sm-4">
-                        <label id="lbPdtfComercializacao" runat="server" class="col-sm-4 text-right lbl">Data fim comercialização:</label>
+                        <label id="lbDataVersao" runat="server" class="col-sm-4 text-right lbl">Data versão:</label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtPDataFimComercializacao" placeholder="0001-01-01" CssClass="form-control text-field dtField" MaxLength="10" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDataVersao" CssClass="form-control text-field dtField" Enabled="false" MaxLength="10" runat="server"></asp:TextBox>
                         </div>
                     </div>
               </div>

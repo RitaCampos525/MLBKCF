@@ -145,7 +145,7 @@
             <br />
             <div id="divBtnConsultar" runat="server" class="row form-group padding-row col-sm-12 text-right">
                 <div class="row div-btns">
-                     <asp:Button CssClass="normalButton col-4 btns" runat="server" ID="btnConsultarHis" OnClick="blba_Click1" Enabled="false" CausesValidation="false" Text="Consultar" />
+                     <asp:Button CssClass="btns btns-alt" runat="server" ID="btnConsultarHis" OnClick="blba_Click1" Enabled="false" CausesValidation="false" Text="Consultar" />
                 </div>
             </div>
              <hr class="hr" id="hr2" runat="server" />  

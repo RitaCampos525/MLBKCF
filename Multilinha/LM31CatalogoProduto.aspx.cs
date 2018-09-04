@@ -19,11 +19,10 @@ namespace Multilinha
         {
             if (!Page.IsPostBack)
             {
+                dtfechas = Global.dtfechasG;
+
                 ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
                 MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.PageLoad, this.Page.AppRelativeVirtualPath, abargs.USERNT, abargs.SN_HOSTNAME);
-
-                //do TOOO
-                DataTable dtProdutos = TAT2.GetProdutos(Global.ConnectionStringMaster, abargs);
 
                 txtProductCode.Text = ConfigurationManager.AppSettings["CodigoProdutoML"];
                 txtProductCode_TextChanged(sender, e);
@@ -84,6 +83,7 @@ namespace Multilinha
                         break;
                     case "V":
 
+                        txtDataVersao.Enabled = true;
                         Helper.AddRemoveHidden(true, divdpConsulta);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRenovacao);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRFinanceiro);
@@ -93,7 +93,6 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, acoes_ml01);
                         Helper.AddRemoveHidden(true, hr);
                         Helper.AddRemoveHidden(true, hr1);
-
                         Helper.AddRemoveActive(true, liConsulta);
                         Helper.AddRemoveActive(false, liModificacao);
                         Helper.AddRemoveActive(false, liPrameterizacao);
@@ -257,7 +256,9 @@ namespace Multilinha
             string op = Request.QueryString["OP"] ?? "FF";
             if (op != "FF")
             {
-                //TODO Chamar ML01 
+
+                LM31_CatalogoProdutoML lm31 = new LM31_CatalogoProdutoML();
+                Helper.CopyPropertiesTo(this, lm31);
 
                 //Modo Criar:
                 //IF: Resposta com produto Já Parameterizado e Ativo-> Alertar utilizador
@@ -287,54 +288,102 @@ namespace Multilinha
                 switch (op.ToUpper())
                 {
                     case "C":
-                        Helper.AddRemoveHidden(false, divdpConsulta);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRenovacao);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
-                        Helper.AddRemoveHidden(false, divPeriocidadeCobranca);
-                        Helper.AddRemoveHidden(false, acoes_ml01);
-                        Helper.AddRemoveHidden(false, hr);
-                        Helper.AddRemoveHidden(false, hr1);
 
-                        btnCriar.Visible = true;
+                        //Chamar ML01 - C
+                        ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                        MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "C");
+
+                        //Sucesso
+                        if (response.ResultResult != null && response.ResultResult.ProductCode != null)
+                        {
+                            Helper.AddRemoveHidden(false, divdpConsulta);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRenovacao);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                            Helper.AddRemoveHidden(false, divPeriocidadeCobranca);
+                            Helper.AddRemoveHidden(false, acoes_ml01);
+                            Helper.AddRemoveHidden(false, hr);
+                            Helper.AddRemoveHidden(false, hr1);
+
+                            btnCriar.Visible = true;
+                        }
+                        //Insucesso
+                        else
+                        {
+                            lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                            lberror.Visible = true;
+                            lberror.ForeColor = System.Drawing.Color.Red;
+                        }
+
                         break;
 
                     case "M":
-                        Helper.AddRemoveHidden(false, divdpConsulta);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRenovacao);
-                        Helper.SetEnableControler(divRiscoFinanceiro, false);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
-                        Helper.SetEnableControler(divRiscoAssinatura, false);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
-                        Helper.SetEnableControler(divRiscoComercial, false);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
-                        Helper.AddRemoveHidden(false, divPeriocidadeCobranca);
-                        Helper.AddRemoveHidden(false, acoes_ml01);
-                        Helper.AddRemoveHidden(false, hr);
-                        Helper.AddRemoveHidden(false, hr1);
 
-                        btnEdit.Visible = true;
+                        //Chamar ML01 - M
+                        abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                        response = bl.LM31Request(lm31, abargs, "M");
+
+                        //Sucesso
+                        if (response.ResultResult != null && response.ResultResult.ProductCode != null)
+                        {
+                            txtDataInicioComercializacao.Enabled = false;
+                            Helper.AddRemoveHidden(false, divdpConsulta);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRenovacao);
+                            Helper.SetEnableControler(divRiscoFinanceiro, false);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                            Helper.SetEnableControler(divRiscoAssinatura, false);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                            Helper.SetEnableControler(divRiscoComercial, false);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                            Helper.AddRemoveHidden(false, divPeriocidadeCobranca);
+                            Helper.AddRemoveHidden(false, acoes_ml01);
+                            Helper.AddRemoveHidden(false, hr);
+                            Helper.AddRemoveHidden(false, hr1);
+
+                            btnEdit.Visible = true;
+                        }
+                        //Insucesso
+                        else
+                        {
+                            lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                            lberror.Visible = true;
+                            lberror.ForeColor = System.Drawing.Color.Red;
+                        }
                         break;
 
 
                     case "V":
-                        Helper.AddRemoveHidden(false, divdpConsulta);
-                        Helper.SetEnableControler(divdpConsulta, false);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRenovacao);
-                        Helper.SetEnableControler(divRenovacao, false);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
-                        Helper.SetEnableControler(divRiscoFinanceiro, false);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
-                        Helper.SetEnableControler(divRiscoAssinatura, false);
-                        Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
-                        Helper.SetEnableControler(divRiscoComercial, false);
-                        Helper.AddRemoveHidden(false, divPeriocidadeCobranca);
-                        Helper.SetEnableControler(divPeriocidadeCobranca, false);
-                        Helper.AddRemoveHidden(true, acoes_ml01); //manter acoes escondidas
-                        Helper.AddRemoveHidden(true, hr);
-                        Helper.AddRemoveHidden(true, hr1);
+                        //Chamar ML01 - V
+                        abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                        response = bl.LM31Request(lm31, abargs, "V");
 
+                        //Sucesso
+                        if (response.ResultResult != null && response.ResultResult.ProductCode != null)
+                        {
+                            Helper.AddRemoveHidden(false, divdpConsulta);
+                            Helper.SetEnableControler(divdpConsulta, false);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRenovacao);
+                            Helper.SetEnableControler(divRenovacao, false);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                            Helper.SetEnableControler(divRiscoFinanceiro, false);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                            Helper.SetEnableControler(divRiscoAssinatura, false);
+                            Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                            Helper.SetEnableControler(divRiscoComercial, false);
+                            Helper.AddRemoveHidden(false, divPeriocidadeCobranca);
+                            Helper.SetEnableControler(divPeriocidadeCobranca, false);
+                            Helper.AddRemoveHidden(true, acoes_ml01); //manter acoes escondidas
+                            Helper.AddRemoveHidden(true, hr);
+                            Helper.AddRemoveHidden(true, hr1);
+                        }
+                        //Insucesso
+                        else
+                        {
+                            lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                            lberror.Visible = true;
+                            lberror.ForeColor = System.Drawing.Color.Red;
+                        }
                         break;
                 }
             }
@@ -437,32 +486,40 @@ namespace Multilinha
 
             //de acordo com a Area de arquitectura
             decimal countSel = lm31.produtosF.Count();
-            if (countSel > 60)
-            {
-                lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoF;
-                lberror.Visible = true;
-                lberror.ForeColor = System.Drawing.Color.Red;
+            //if (countSel > 60)
+            //{
+            //    lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoF;
+            //    lberror.Visible = true;
+            //    lberror.ForeColor = System.Drawing.Color.Red;
 
-                nsubprodutosValid = false;
-            }
+            //    nsubprodutosValid = false;
+            //}
             decimal countSel2 = lm31.produtosC.Count();
-            if (countSel2 > 20)
-            {
-                lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoC;
-                lberror.Visible = true;
-                lberror.ForeColor = System.Drawing.Color.Red;
+            //if (countSel2 > 20)
+            //{
+            //    lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoC;
+            //    lberror.Visible = true;
+            //    lberror.ForeColor = System.Drawing.Color.Red;
 
-                nsubprodutosValid = false;
-            }
+            //    nsubprodutosValid = false;
+            //}
             decimal countSel3 = lm31.produtosA.Count();
-            if (countSel3 > 20)
+            //if (countSel3 > 20)
+            //{
+            //    lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoAs;
+            //    lberror.Visible = true;
+            //    lberror.ForeColor = System.Drawing.Color.Red;
+
+            //    nsubprodutosValid = false;
+            //}
+
+            if(countSel + countSel2 + countSel3 > 100)
             {
-                lberror.Text = Constantes.Mensagens.NMinimoProdutosRiscoAs;
+                lberror.Text = Constantes.Mensagens.NMinimoProdutosCredito;
                 lberror.Visible = true;
                 lberror.ForeColor = System.Drawing.Color.Red;
-
-                nsubprodutosValid = false;
             }
+
             return nsubprodutosValid;
 
         }
@@ -497,7 +554,13 @@ namespace Multilinha
                 Int32.TryParse(txtNumeroMinimoProdutos.Text, out nprodutoml);
                 if (validaNProdutosCredito(nprodutoml))
                 {
-                    //TO DO Chamar ML01 - M
+                    LM31_CatalogoProdutoML lm31 = new LM31_CatalogoProdutoML();
+                    Helper.CopyPropertiesTo(this, lm31);
+
+                    getprodutostoLM31(lm31);
+                    //Chamar ML01 - M
+                    ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                    MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "M");
 
                     lberror.Text = Constantes.Mensagens.LM31CatalogoModificado;
                     lberror.Visible = true;

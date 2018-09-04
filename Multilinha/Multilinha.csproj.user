@@ -23,7 +23,7 @@
           <SQLDebugging>False</SQLDebugging>
           <ExternalProgram>
           </ExternalProgram>
-          <StartExternalURL>http://localhost:20862/LM37SimulacaoML.aspx?Op=C&amp;cBalcao=810&amp;cTerminal=MX09&amp;cCodUtilza=BDAPS&amp;host=BKP0DESMX09.bankinter.bk&amp;port=50123&amp;perfil=TECAUC&amp;user=SP00575&amp;domain=bankinter.bk&amp;hostip=10.97.211.62</StartExternalURL>
+          <StartExternalURL>http://localhost:20862/LM38HistoricoML.aspx?Op=V&amp;cBalcao=810&amp;cTerminal=MX09&amp;cCodUtilza=BDAPS&amp;host=BKP0DESMX09.bankinter.bk&amp;port=50123&amp;perfil=TECAUC&amp;user=SP00575&amp;domain=bankinter.bk&amp;hostip=10.97.211.62</StartExternalURL>
           <StartCmdLineArguments>
           </StartCmdLineArguments>
           <StartWorkingDirectory>

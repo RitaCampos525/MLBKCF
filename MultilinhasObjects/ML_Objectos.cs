@@ -26,30 +26,36 @@ namespace MultilinhasObjects
 
         public static List<MultilinhaObjects.ComboBox> GetPeriocidade()
         {
+            //Em meses
             return new List<ComboBox>(){
                  new ComboBox()
                 {
-                    Code = "M01",
+                    Code = "1",
                     Description = "MENSAL",
+                },
+                 new ComboBox()
+                {
+                    Code = "2",
+                    Description = "BIMESTRAL",
                 },
                   new ComboBox()
                 {
-                    Code = "M02",
+                    Code = "3",
                     Description = "TRIMESTRAL",
                 },
                   new ComboBox()
                 {
-                    Code = "M03",
+                    Code = "6",
                     Description = "SIMESTRAL",
                 },
                   new ComboBox()
                 {
-                    Code = "M12",
+                    Code = "12",
                     Description = "ANUAL",
                 },
                    new ComboBox()
                 {
-                    Code = "M24",
+                    Code = "24",
                     Description = "BIANUAL",
                 },
             };
@@ -113,13 +119,18 @@ namespace MultilinhasObjects
                 },
                   new ComboBox()
                 {
-                    Code = "PD",
+                    Code = "PE",
                     Description = "PENDENTE",
                 },
                       new ComboBox()
                 {
                     Code = "IN",
                     Description = "INATIVO",
+                },
+                       new ComboBox()
+                {
+                    Code = "AP",
+                    Description = "ALTERAÇÃO PENDENTE",
                 },
 
          };

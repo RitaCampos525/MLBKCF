@@ -184,22 +184,22 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.TextBox txtSubProductDescription;
         
         /// <summary>
-        /// lbPdtfComercializacao control.
+        /// lbDataVersao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbPdtfComercializacao;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbDataVersao;
         
         /// <summary>
-        /// txtPDataFimComercializacao control.
+        /// txtDataVersao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPDataFimComercializacao;
+        protected global::System.Web.UI.WebControls.TextBox txtDataVersao;
         
         /// <summary>
         /// btnLimpar control.

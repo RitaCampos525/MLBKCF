@@ -13,6 +13,7 @@ namespace MultilinhasObjects
         public string ProductCode { get; set; }
         public string SubProdutoCode { get; set; }
         public string SubProductDescription { get; set; }
+        public DateTime DataVersao { get; set; }
         public DateTime DataInicioComercializacao { get; set; }
         public DateTime DataFimComercializacao { get; set; }
         public int PrazoMinimo { get; set; }

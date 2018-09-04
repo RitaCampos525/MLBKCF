@@ -49,59 +49,60 @@ namespace MultilinhaBusinessLayer
             LM31_CatalogoProdutoML obj = new LM31_CatalogoProdutoML();
             if (response.output != null)
             {
-                obj.DataFimComercializacao = Convert.ToDateTime(response.output.dficomer);
-                obj.DataInicioComercializacao = Convert.ToDateTime(response.output.dincomer);
-                obj.Estado = response.output.estparm;
-                obj.IndRenovacao = response.output.idrenov;
-                obj.LimiteMaximoCredito = response.output.lmtmaxcr;
-                obj.LimiteMaximoCredito = response.output.lmtmincr;
-                obj.NDiasIncumprimento = Convert.ToInt32(response.output.nmdiainc);
-                obj.NDiasPreAviso = Convert.ToInt32(response.output.ndpreavi);
-                obj.NumeroMinimoProdutos = Convert.ToInt32(response.output.nmprdat);
-                obj.PeriocidadeCobranca = response.output.percobcom;
-                obj.PrazoMaximo = Convert.ToInt32(response.output.przmax);
-                obj.PrazoMinimo = Convert.ToInt32(response.output.przmin);
-                obj.PrazoRenovacao = Convert.ToInt32(response.output.przrenov);
-                obj.ProductCode = response.output.cprdml;
-                obj.SubProdutoCode = response.output.csubprdml;
-                obj.SubProductDescription = response.output.cdescprd;
+                obj.DataFimComercializacao = Convert.ToDateTime(response.output.dtfimcomer);
+                obj.DataInicioComercializacao = Convert.ToDateTime(response.output.dtinicomer);
+                obj.Estado = response.output.iestado;
+                obj.IndRenovacao = response.output.irenovac;
+                obj.LimiteMaximoCredito = response.output.mlimmaxml;
+                obj.LimiteMaximoCredito = response.output.mlimminml;
+                obj.NDiasIncumprimento = Convert.ToInt32(response.output.qdiaincum);
+                obj.NDiasPreAviso = Convert.ToInt32(response.output.qdiapaviso);
+                obj.NumeroMinimoProdutos = Convert.ToInt32(response.output.qminprod);
+                obj.PeriocidadeCobranca = response.output.qperigest.ToString();
+                obj.PrazoMaximo = Convert.ToInt32(response.output.qprzmaxml);
+                obj.PrazoMinimo = Convert.ToInt32(response.output.qprzminml);
+                obj.PrazoRenovacao = Convert.ToInt32(response.output.qprzrenov);
+                obj.ProductCode = response.output.cprodutoml;
+                obj.SubProdutoCode = response.output.csubprodml;
+                obj.DataVersao = Convert.ToDateTime(response.output.dtversao);
+                //obj.SubProductDescription = response.output.cdescprd; TO DO IR A TAT
 
                 obj.produtosA = new List<LM31_CatalogoProdutoML.ProdutoRisco>();
                 obj.produtosC = new List<LM31_CatalogoProdutoML.ProdutoRisco>();
                 obj.produtosF = new List<LM31_CatalogoProdutoML.ProdutoRisco>();
                 foreach (var a in response.row1)
                 {
-                    if (a.codprod_a_l != null && a.codprod_a_l != "")
+                    if (a.l_cproduto_l != null && a.l_csubprod_l != "" && a.l_tiporisco_l == "A")
                     {
                         obj.produtosA.Add(new LM31_CatalogoProdutoML.ProdutoRisco
                         {
-                            descritivo = a.subprod_a_l, //TO DO ir a tat buscar descritivo
-                            familia = a.famprod_a_l,
-                            produto = a.codprod_a_l,
-                            subproduto = a.subprod_a_l,
-                            tipologia = a.codtplo_a_l
+                            descritivo = a.l_csubprod_l, //TO DO ir a tat buscar descritivo
+                            familia = a.l_famiprod_l,
+                            produto = a.l_cproduto_l,
+                            subproduto = a.l_csubprod_l,
+                            tipologia = a.l_tiporisco_l
                         });
                     }
-                    if (a.codprod_c_l != null && a.codprod_c_l != "")
+                    if (a.l_cproduto_l != null && a.l_csubprod_l != "" && a.l_tiporisco_l == "C")
                     {
                         obj.produtosC.Add(new LM31_CatalogoProdutoML.ProdutoRisco
                         {
-                            descritivo = a.subprod_c_l, //TO DO ir a tat buscar descritivo
-                            familia = a.famprod_c_l,
-                            produto = a.codprod_c_l,
-                            subproduto = a.subprod_c_l,
-                            tipologia = a.codtplo_c_l
+                            descritivo = a.l_csubprod_l, //TO DO ir a tat buscar descritivo
+                            familia = a.l_famiprod_l,
+                            produto = a.l_cproduto_l,
+                            subproduto = a.l_csubprod_l,
+                            tipologia = a.l_tiporisco_l
                         });
                     }
-                    if (a.codprod_f_l != null && a.codprod_f_l != "")
+                    if (a.l_cproduto_l != null && a.l_csubprod_l != "" && a.l_tiporisco_l == "F")
                     {
                         obj.produtosF.Add(new LM31_CatalogoProdutoML.ProdutoRisco
                         {
-                            descritivo = a.subprod_f_l, //TO DO ir a tat buscar descritivo
-                            familia = a.famprod_f_l,
-                            produto = a.codprod_f_l,
-                            subproduto = a.subprod_f_l,
-                            tipologia = a.codtplo_f_l
+                            descritivo = a.l_csubprod_l, //TO DO ir a tat buscar descritivo
+                            familia = a.l_famiprod_l,
+                            produto = a.l_cproduto_l,
+                            subproduto = a.l_csubprod_l,
+                            tipologia = a.l_tiporisco_l
                         });
                     }
                 }
@@ -438,15 +439,15 @@ namespace MultilinhaBusinessLayer
                 int.TryParse(response.output.zcliente, out client);
                 obj.Cliente = client;
                 obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.cprod, response.output.cta, response.output.dgt);
-                obj.Nome = response.output.gcliente;
+                //obj.Nome = response.output.gcliente; TO DO
 
                 //listas
                 foreach (var a in response.row1)
                 {
-                    if (a.ncontrato_l != null)
+                    if (a.zaltera_l != null && a.gtipo_l != null)
                     {
                         LM38_HistoricoAlteracoes.historicoAlteracoes his = new LM38_HistoricoAlteracoes.historicoAlteracoes();
-                        his.campoAlterado = a.galtera_l;
+                        his.campoAlterado = a.gtipo_l;
 
                         DateTime dat;
                         DateTime.TryParseExact(a.dprocess_l, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dat);
@@ -457,8 +458,8 @@ namespace MultilinhaBusinessLayer
                         his.dataValorAlteracao = datV;
 
                         //his.description = a.d //Ir a TAT buscar descricao produto
-                        his.idAlteracao = a.idaltera_l;
-                        his.nContratoProduto = a.ncontrato_l;
+                        his.idAlteracao = a.zaltera_l.ToString();
+                        //his.nContratoProduto = a.ncontrato_l;
                         his.TipoAlteracao = a.gtipo_l;
                         his.utilizador = a.cutulmod_l;
                         his.valorAnterior = a.vanterior_l;

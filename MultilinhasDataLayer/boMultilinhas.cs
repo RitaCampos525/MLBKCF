@@ -208,6 +208,7 @@ namespace MultilinhasDataLayer
             try
             {
                 WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.Internal, "GetMsgErroTATDescription", Abargs.USERNT, Abargs.SN_HOSTNAME);
+                WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.Internal, msg , Abargs.USERNT, Abargs.SN_HOSTNAME);
 
                 //Tabela de codigos de mensagem
                 DataTable CodMsgs = GetCodMensagens(Abargs);
