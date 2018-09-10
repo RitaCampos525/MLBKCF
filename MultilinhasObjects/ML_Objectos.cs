@@ -141,15 +141,25 @@ namespace MultilinhasObjects
             return new List<ComboBox>(){
                  new ComboBox()
                 {
-                    Code = "CTR",
-                    Description = "Contratação",
+                    Code = "T",
+                    Description = "TODOS",
                 },
                   new ComboBox()
                 {
-                    Code = "ALT",
-                    Description = "Alteração",
+                    Code = "C",
+                    Description = "CONTRATAÇÃO",
                 },
-               
+                  new ComboBox()
+                {
+                    Code = "A",
+                    Description = "ALTERAÇÃO",
+                },
+                  new ComboBox()
+                {
+                    Code = "R",
+                    Description = "REJEITADOS",
+                },
+
             };
         }
 

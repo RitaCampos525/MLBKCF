@@ -7,7 +7,7 @@ namespace Multilinha
     public partial class LM32PedidosAprovacaoML : System.Web.UI.Page
     {
         MultilinhasDataLayer.boMultilinhas bo = new MultilinhasDataLayer.boMultilinhas();
-
+        MultilinhaBusinessLayer.BLMultilinha bl = new MultilinhaBusinessLayer.BLMultilinha();
         public DateTime dtfechas = Global.dtfechasG;
         MultilinhasDataLayer.boMultilinhas TAT2 = new MultilinhasDataLayer.boMultilinhas();
 
@@ -32,14 +32,12 @@ namespace Multilinha
                         Helper.SetEnableControler(this, false);
                         btnAprovarPedido.Visible = true;
                         btnRejeitarPedido.Visible = true;
-                        btnSearchCont.Visible = false;
-                        
+                        btnSearch.Visible = false;
 
                         //navigation
                         Helper.AddRemoveActive(true, liAprovacaoPedido);
                         lblTransactionAp.CssClass = lblTransactionAp.CssClass.Replace("atab", "atabD");
 
-                        
                         break;
                 }
             }
@@ -83,7 +81,30 @@ namespace Multilinha
 
         protected void btnSearchCont_Click(object sender, EventArgs e)
         {
+            LM32_PedidosContratoML LM32 = new LM32_PedidosContratoML();
+            Helper.CopyPropertiesTo(camposChave, LM32);
 
+            //Call LM32
+            ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+            MensagemOutput<LM32_PedidosContratoML> response = bl.LM32Request(LM32, abargs, Helper.getTransactionMode(Context, Request));
+
+            if (response != null && response.ResultResult != null
+                && response.ResultResult.PedidosAprovacao != null
+                && response.ResultResult.PedidosAprovacao.Count > 0)
+            {
+                
+                lvhConsultaAprovacoes.DataSource = response.ResultResult.PedidosAprovacao;
+
+      
+            }
+            if (response == null || response.ResultResult == null || response.erro != 0)
+            {
+                lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
+                lberror.Visible = true;
+                lberror.ForeColor = System.Drawing.Color.Red;
+            }
+
+            lvhConsultaAprovacoes.DataBind();
         }
 
         protected void btnAprovarPedido_Click(object sender, EventArgs e)

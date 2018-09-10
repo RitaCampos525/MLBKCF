@@ -139,6 +139,15 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl bkidmultilinha;
         
         /// <summary>
+        /// txtidmultilinha_balcao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtidmultilinha_balcao;
+        
+        /// <summary>
         /// txtidmultilinha control.
         /// </summary>
         /// <remarks>
@@ -175,6 +184,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqnBalcao;
         
         /// <summary>
+        /// txtgBalcao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtgBalcao;
+        
+        /// <summary>
         /// lbTipoPedido control.
         /// </summary>
         /// <remarks>
@@ -193,13 +211,40 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoPedido;
         
         /// <summary>
-        /// btnSearchCont control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchCont;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
+        
+        /// <summary>
+        /// hr1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hr1;
+        
+        /// <summary>
+        /// dvAprovacoes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvAprovacoes;
+        
+        /// <summary>
+        /// lvhConsultaAprovacoes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvhConsultaAprovacoes;
         
         /// <summary>
         /// btnAprovarPedido control.
@@ -218,14 +263,5 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRejeitarPedido;
-        
-        /// <summary>
-        /// hr1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hr1;
     }
 }

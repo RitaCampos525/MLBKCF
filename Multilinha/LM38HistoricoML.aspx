@@ -25,7 +25,7 @@
         <div class="row titleTransaction menu">
             <ul>           
                 <li id="liVisualizacao" runat="server" class=" ">               
-                    <asp:LinkButton CssClass="atab " ID="lblTransactionV" Enabled="false" runat="server" Text="V - Histórico ML"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lblTransactionV" Enabled="false" runat="server" Text="Histórico ML"></asp:LinkButton>
                </li>                                  
             </ul>
         </div>

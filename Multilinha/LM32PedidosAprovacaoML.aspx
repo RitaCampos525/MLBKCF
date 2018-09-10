@@ -50,17 +50,23 @@
                 <div class="row form-group padding-row ">
                     <div class="col-sm-4">
                         <label id="bkidmultilinha" runat="server" class="col-sm-4 text-right lbl">ID Multilinha: </label>
-                        <div class="col-sm-6">
-                            <asp:TextBox ID="txtidmultilinha" MaxLength="12" AutoPostBack="true" OnTextChanged="txtIdworkflow_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                        <div class="col-sm-2">
+                             <asp:TextBox ID="txtidmultilinha_balcao" MaxLength="9" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                        </div>
+                        <div class="col-sm-4">
+                            <asp:TextBox ID="txtidmultilinha" MaxLength="9" AutoPostBack="true" OnTextChanged="txtIdworkflow_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
                 <div class="row form-group padding-row ">
                     <div class="col-sm-4">
                         <label id="lbnBalcao" runat="server" class="col-sm-4 text-right lbl">* Balcão: </label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-2">
                             <asp:TextBox ID="txtnBalcao" MaxLength="12" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="reqnBalcao" ControlToValidate="txtnBalcao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-sm-4">
+                              <asp:TextBox ID="txtgBalcao" MaxLength="30" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -71,15 +77,83 @@
                             <asp:DropDownList ID="ddlTipoPedido" DataTextField="Description" DataValueField="Code"  CssClass="form-control text-field" runat="server"></asp:DropDownList>
                         </div>
                     </div>
-                     <div class="row div-btns" >   
-                        <asp:button id="btnSearchCont" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
-                         <asp:button id="btnAprovarPedido" class="btns text-center" runat="server" Visible="false" noChange="" OnClick="btnAprovarPedido_Click"  Text="Aprovar Pedido" ></asp:button>
-                         <asp:button id="btnRejeitarPedido" class="btns text-center" runat="server" Visible="false" noChange=""  OnClick="btnRejeitarPedido_Click"  Text="Rejeitar Pedido" ></asp:button>
-                    </div> 
+                 </div>
+                 <div class="row div-btns" >   
+                        <asp:button id="btnSearch" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
+                 </div>
+                 <hr class="hr1" id="hr1" runat="server" />
                 </div>
-                
-                <hr class="hr1" id="hr1" runat="server" />
-                </div>
+            <div id="dvAprovacoes" class="row form-group col-sm-12" style="padding-left:40px" runat="server">
+             <asp:ListView ID="lvhConsultaAprovacoes" runat="server" class="row form-group padding-row">
+                <EmptyDataTemplate>Não foram encontrados resultados</EmptyDataTemplate>
+                <LayoutTemplate>
+                    <div class="Table Grid col-sm-12" id="tbAprovacoes">
+                        <div class="Heading Color">
+                            <div class="Cell Grid">
+                                <label></label>
+                            </div>
+                            <div class="Cell Grid">
+                                <label>Balcão</label>
+                            </div>
+                            <div class="Cell Grid">
+                                <label>ID Simulação</label>
+                            </div>
+                            <div class="Cell Grid">
+                                <label>ID Cliente</label>
+                            </div>
+                              <div class="Cell Grid">
+                                <label>Produto</label>
+                            </div>
+                              <div class="Cell Grid">
+                                <label>Subproduto</label>
+                            </div>
+                              <div class="Cell Grid">
+                                <label>Descritivo</label>
+                            </div>
+                            <div class="Cell Grid">
+                                <label>Tipo Pedido</label>
+                            </div>
+                        </div>
+                        <div class="Row" runat="server" id="itemPlaceholder">
+                        </div>
+                   </div>
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <div class="Row <%# Container.DataItemIndex % 2 == 0 ? "Even" : "Odd" %>">
+                            <div class="Cell Grid">
+                                <asp:CheckBox runat="server" ID="cbSelected" CssClass="text-center bklabel" ></asp:CheckBox>
+                            </div>
+                         <div class="Cell Grid">
+                                <asp:Label runat="server" ID="lbnBalcao" CssClass="text-center bklabel" Text='<%# Eval("nBalcao") %>'></asp:Label>
+                            </div>
+                         <div class="Cell Grid">
+                                <asp:Label runat="server" ID="lbidmultilinha" CssClass="text-center bklabel" Text='<%# Eval("idmultilinha") %>'></asp:Label>
+                            </div>
+                         <div class="Cell Grid">
+                                <asp:Label runat="server" ID="lbidcliente"  CssClass="text-center bklabel" Text='<%# Eval("idcliente") %>'></asp:Label>
+                            </div>
+                         <div class="Cell Grid">
+                                <asp:Label runat="server" ID="lbproduto" CssClass="text-center bklabel" Text='<%# Eval("produto") %>'></asp:Label>
+                            </div>
+                         <div class="Cell Grid">
+                                <asp:Label runat="server" ID="lbsubproduto" CssClass="text-center bklabel" Text='<%# Eval("subproduto") %>'></asp:Label>
+                            </div>
+                         <div class="Cell Grid">
+                                <asp:Label runat="server" ID="lbdescritivo" CssClass="bklabel" Text='<%# Eval("descritivo") %>'></asp:Label>
+                            </div>
+                        <div class="Cell Grid">
+                            <asp:Label runat="server" ID="lbTipoPedido" CssClass="bklabel" Text='<%# Eval("TipoPedido") %>'></asp:Label>
+                        </div>
+                       <%-- <asp:HiddenField runat="server" ID="campoAlterado" Value='<%# Eval("campoAlterado") %>'/>--%>
+                        </div>
+                </ItemTemplate>
+            </asp:ListView>
+            </div>
+            <div class="row div-btns" >   
+                <asp:button id="btnAprovarPedido" class="btns text-center" runat="server" Visible="false" noChange="" OnClick="btnAprovarPedido_Click"  Text="Aprovar Pedido" ></asp:button>
+                <asp:button id="btnRejeitarPedido" class="btns text-center" runat="server" Visible="false" noChange=""  OnClick="btnRejeitarPedido_Click"  Text="Rejeitar Pedido" ></asp:button>
+            </div> 
+
         </div>
         </div>
     </form>

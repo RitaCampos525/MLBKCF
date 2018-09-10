@@ -45,6 +45,7 @@ namespace MultilinhaBusinessLayer
 
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
+            
 
             LM31_CatalogoProdutoML obj = new LM31_CatalogoProdutoML();
             if (response.output != null)
@@ -115,6 +116,57 @@ namespace MultilinhaBusinessLayer
             msgOut.ResultResult = obj;
             return msgOut;
 
+        }
+
+        public MensagemOutput<LM32_PedidosContratoML> LM32Request(LM32_PedidosContratoML _lm32, ABUtil.ABCommandArgs abargs, string accao)
+        {
+            MensagemOutput<LM32_PedidosContratoML> msgOut = new MensagemOutput<LM32_PedidosContratoML>();
+            MultilinhasDataLayer.BCDWSProxy.LM32Transaction response = dl.LM32Request(abargs, _lm32, accao);
+
+            msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
+            msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
+
+            LM32_PedidosContratoML obj = new LM32_PedidosContratoML();
+            if (response.output != null)
+            {
+                obj.btnAccept = response.output.btn_accept == "S"? true : false;
+                obj.btnReject = response.output.btn_reject == "S" ? true: false;
+                int _cliente;
+                Int32.TryParse(response.output.zcliente, out _cliente);
+                obj.Cliente = _cliente;
+                obj.gBalcao = response.output.gbalcao;
+                obj.idmultilinha = string.Concat(response.output.cprodutoml, response.output.cnumectaml, response.output.cdigictaml);
+                int _balcao;
+                Int32.TryParse(response.output.cbalcao, out _balcao);
+                obj.nBalcao = _balcao;
+                obj.Nome = response.output.gcliente;
+                obj.ProductCode = response.output.cprodml;
+                obj.SubProductDescription = response.output.gdescml;
+                obj.SubProdutoCode = response.output.csubprodml;
+                obj.TipoPedido = response.output.tppedido;
+                obj.txtidmultilinha_balcao = response.output.cbalcao_cidctrml;
+
+                obj.PedidosAprovacao = new List<LM32_PedidosContratoML.pedidoAprovacao>();
+                if(response.row1.Count() > 0)
+                {
+                    foreach (var pd in response.row1)
+                    {
+
+                        LM32_PedidosContratoML.pedidoAprovacao pd1 = new LM32_PedidosContratoML.pedidoAprovacao();
+                        pd1.descritivo = pd.lista_gdescml_l;
+                        pd1.idcliente = Convert.ToInt32(pd.lista_zcliente_l);
+                        pd1.idmultilinha =  string.Concat(pd.lista_cidctrml_l, pd.lista_cidctrml_l);
+                        pd1.nBalcao = Convert.ToInt32(pd.lista_cbalcao_l);
+                        pd1.produto = pd.lista_cprodutoml_l;
+                        pd1.subproduto = pd.lista_csubprodml_l;
+                        pd1.TipoPedido = pd.lista_tppedido_l;
+
+                        obj.PedidosAprovacao.Add(pd1);
+                    }
+                }
+            }
+            msgOut.ResultResult = obj;
+            return msgOut;
         }
 
         public MensagemOutput<LM33_ContratoML> LM33Request(LM33_ContratoML _lm33, ABUtil.ABCommandArgs abargs, string accao)
@@ -432,9 +484,10 @@ namespace MultilinhaBusinessLayer
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
 
-            LM38_HistoricoAlteracoes obj = new LM38_HistoricoAlteracoes();
+            
             if (response.output != null)
             {
+                LM38_HistoricoAlteracoes obj = new LM38_HistoricoAlteracoes();
                 int client = 0;
                 int.TryParse(response.output.zcliente, out client);
                 obj.Cliente = client;
@@ -468,8 +521,9 @@ namespace MultilinhaBusinessLayer
                         obj.HistoricoAlteracoes.Add(his);
                     }
                 }
+                msgOut.ResultResult = obj;
             }
-            msgOut.ResultResult = obj;
+           
             return msgOut;
         }
     }

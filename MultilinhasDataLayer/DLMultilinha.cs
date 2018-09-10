@@ -165,6 +165,62 @@ namespace MultilinhasDataLayer
             return response;
         }
 
+        BCDWSProxy.LM32CONSULTAPEDIDOSAPROVACAOMLRequest LM32 = new BCDWSProxy.LM32CONSULTAPEDIDOSAPROVACAOMLRequest();
+        public BCDWSProxy.LM32Transaction LM32Request(ABUtil.ABCommandArgs AbArgs, LM32_PedidosContratoML _lm32, string accao)
+        {
+            BCDWSProxy.LM32Transaction response = new BCDWSProxy.LM32Transaction();
+
+            LM32.BarclaysBankAccountSettings = new BCDWSProxy.BarclaysBankAccountSettings();
+            LM32.BarclaysBankAccountSettings.ApplicationID = ConfigurationManager.AppSettings["ApplicationID"];
+            LM32.BarclaysBankAccountSettings.UserRequester = AbArgs.USERNT;
+            LM32.BarclaysBankAccountSettings.ClientName = AbArgs.SN_HOSTNAME;
+
+            LM32.input = new BCDWSProxy.LM32Input();
+            LM32.input.btn_accept = _lm32.btnAccept ? "S" : "N";
+            LM32.input.btn_reject = _lm32.btnReject ? "S" : "N";
+            LM32.input.caccao = accao;
+            LM32.input.cbalcao = _lm32.nBalcao.ToString();
+            LM32.input.cbalcao_cidctrml = _lm32.txtidmultilinha_balcao;
+            LM32.input.cdigictaml = _lm32.idmultilinha.Length > 10 ? _lm32.idmultilinha.ToString().Substring(8, 1) : "" ;
+            LM32.input.cnumectaml = _lm32.idmultilinha.Length > 10 ? _lm32.idmultilinha.ToString().Substring(2, 6) : "";
+            LM32.input.cprodutoml = _lm32.idmultilinha.Length > 10 ? _lm32.idmultilinha.ToString().Substring(0, 2) : "";
+            LM32.input.cprodml = _lm32.ProductCode;
+            LM32.input.csubprodml = _lm32.SubProdutoCode;
+            LM32.input.gbalcao = _lm32.gBalcao;
+            LM32.input.gcliente = _lm32.Nome;
+            LM32.input.gdescml = _lm32.SubProductDescription;
+            LM32.input.pedido_dados = false;
+            LM32.input.tppedido = _lm32.TipoPedido;
+            LM32.input.zcliente = _lm32.Cliente.ToString();
+
+            BCDWSProxy.BarclaysBTSSoapClient client = new BCDWSProxy.BarclaysBTSSoapClient();
+            bool bRetry = false;
+            atempt = 0;
+            do
+            {
+                try
+                {
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, MultilinhasObjects.LogTypeName.WsSoapRequest, LM32.input.SerializeToString(), AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+
+                    response = client.LM32CONSULTAPEDIDOSAPROVACAOML(LM32.BarclaysBankAccountSettings, LM32.input);
+                    string sresponse = response.SerializeToString();
+
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.WsSoapRequest, sresponse, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                    atempt++;
+                }
+                catch (Exception ex)
+                {
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.WsSoapResponse, ex, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                    response.Erro = new BCDWSProxy.TransactionError();
+                    response.Erro.MensagemErro = tratamentoExcepcoes(ex, AbArgs, out bRetry);
+                }
+            } while (bRetry && atempt <= 1);
+
+
+            return response;
+
+        }
+
         BCDWSProxy.LM33CONTRATOMLRequest LM33 = new BCDWSProxy.LM33CONTRATOMLRequest();
         public BCDWSProxy.LM33Transaction LM33Request(ABUtil.ABCommandArgs AbArgs, LM33_ContratoML _lm33, string accao)
         {

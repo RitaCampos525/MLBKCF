@@ -39,24 +39,25 @@ namespace Multilinha
 
             //Call LM38
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            MensagemOutput<LM38_HistoricoAlteracoes> response = bl.LM38Request(LM38, abargs, Helper.getTransactionMode(Context, Request));
+            MensagemOutput<LM38_HistoricoAlteracoes> response = bl.LM38Request(LM38, abargs, "V");
 
             if(response != null && response.ResultResult != null 
                 && response.ResultResult.HistoricoAlteracoes != null 
                 && response.ResultResult.HistoricoAlteracoes.Count > 0)
              {
                 lvhistoricoAlteracoes.DataSource = response.ResultResult.HistoricoAlteracoes;
+                
                 Helper.AddRemoveHidden(false, divBtnConsultar);
                 Helper.AddRemoveHidden(false, hr2);
             }
             if (response == null || response.ResultResult == null || response.erro != 0)
             {
-                lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
                 lberror.Visible = true;
                 lberror.ForeColor = System.Drawing.Color.Red;
             }
-
             lvhistoricoAlteracoes.DataBind();
+
         }
 
         protected void txtCliente_TextChanged(object sender, EventArgs e)

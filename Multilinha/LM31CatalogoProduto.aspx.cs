@@ -188,7 +188,7 @@ namespace Multilinha
                         }
                         else
                         {
-                            lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                            lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
                             lberror.Visible = true;
                             lberror.ForeColor = System.Drawing.Color.Red;
                         }
@@ -289,9 +289,9 @@ namespace Multilinha
                 {
                     case "C":
 
-                        //Chamar ML01 - C
+                        //Chamar ML01 - V
                         ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                        MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "C");
+                        MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "V");
 
                         //Sucesso
                         if (response.ResultResult != null && response.ResultResult.ProductCode != null)
@@ -311,7 +311,7 @@ namespace Multilinha
                         //Insucesso
                         else
                         {
-                            lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                            lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
                             lberror.Visible = true;
                             lberror.ForeColor = System.Drawing.Color.Red;
                         }
@@ -320,9 +320,9 @@ namespace Multilinha
 
                     case "M":
 
-                        //Chamar ML01 - M
+                        //Chamar ML01 - V
                         abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                        response = bl.LM31Request(lm31, abargs, "M");
+                        response = bl.LM31Request(lm31, abargs, "V");
 
                         //Sucesso
                         if (response.ResultResult != null && response.ResultResult.ProductCode != null)
@@ -346,7 +346,7 @@ namespace Multilinha
                         //Insucesso
                         else
                         {
-                            lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                            lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
                             lberror.Visible = true;
                             lberror.ForeColor = System.Drawing.Color.Red;
                         }
@@ -380,7 +380,7 @@ namespace Multilinha
                         //Insucesso
                         else
                         {
-                            lberror.Text = TAT2.GetMsgErroTATDescription(response.mensagem, abargs);
+                            lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
                             lberror.Visible = true;
                             lberror.ForeColor = System.Drawing.Color.Red;
                         }
