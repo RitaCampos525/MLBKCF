@@ -21,6 +21,8 @@ namespace MultilinhasObjects
 
             public const string LM31CatalogoCriado =  "Produto ML criado em Catalogo.";
             public const string LM31CatalogoModificado = "Produto ML modificado em Catalogo";
+            public const string LM32PedidoAprovado = "LM - Pedido Aprovado";
+            public const string LM32PedidoRejeitado = "LM - Pedido Rejeitado";
             public const string LM33ContratoCriado = "Contrato Criado. Continue o processo seleccionando 'Seguinte'";
             public const string LM33ContratoModificado = "Contrato ML modificado. Continue o processo seleccionando 'Seguinte'";
             public const string LM34SublimiteCriado = "Sublimite Criado. Continue o processo seleccionando 'Seguinte'";

@@ -63,7 +63,7 @@
                      </div>
                      <div class="div-btns">
                         <div class="col-sm-4" >   
-                            <asp:button id="btnSearchCont" class="normalButton col-4 btns" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
+                            <asp:button id="btnSearchCont" class="normalButton col-4 btns" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="Consultar" ></asp:button>
                         </div> 
                         </div>
             </div>
@@ -292,7 +292,7 @@
                 </div>
                  <hr class="hr" id="hr2" runat="server" />      
            </div>
-            <div class="row form-group padding-row ">
+            <div id="dvAcoes_C" runat="server" class="row form-group padding-row ">
                 <div class="col-sm-6">
                     <div class="col-sm-12 row div-btns">
                         <div class="col-sm-5">
@@ -308,9 +308,163 @@
             </div>
        </div>
        </div>
+        <div id="lm37_vis" runat="server" class="row form-group padding-row ">
+            <div class="row colorbck">
+            <div id="camposchaveConsulta" runat="server" >
+            <div class="row form-group padding-row ">
+                <div class="col-sm-6">
+                    <label id="lb1Cliente" runat="server" class="col-sm-4 text-right lbl">Cliente: </label>
+                    <div class="col-sm-3">
+                        <asp:TextBox ID="txt_Cliente" MaxLength="7" onkeypress="return isNumber(event)" OnTextChanged="txtCliente_TextChanged" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                       <%-- <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="rqtxt_Cliente" ControlToValidate="txt_Cliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>--%>
+                    </div>
+                     <div class="col-sm-4">
+                        <asp:TextBox ID="txt_Nome" CssClass="form-control text-field" ReadOnly="true" Enabled="false" MaxLength="40" runat="server"></asp:TextBox>
+                    </div>
+                </div>
+             </div>
+            <div class="row form-group padding-row ">
+                <div class="col-sm-6">
+                    <label id="lb1idmultilinha" runat="server" class="col-sm-4 text-right lbl">ID Multilinha: </label>
+                    <div class="col-sm-3">
+                        <asp:TextBox ID="txt_idmultilinha" MaxLength="12" AutoPostBack="true" OnTextChanged="txt_idmultilinha_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                        <%--<asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="rqtxt_idmultilinha" ControlToValidate="txt_idmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>--%>
+                    </div>  
+                </div>
+            </div>
+            <div class="row form-group padding-row">
+                    <div class="col-sm-6">
+                        <label id="lbnBalcao" runat="server" class="col-sm-4 text-right lbl">* Balcão: </label>
+                        <div class="col-sm-3">
+                            <asp:TextBox ID="txtBalcao" MaxLength="12" AutoPostBack="true" OnTextChanged="txtnBalcao_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContratoV" ID="reqnBalcao" ControlToValidate="txtBalcao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="col-sm-4">
+                              <asp:TextBox ID="txtgBalcao" MaxLength="30" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                        </div>
+                    </div>
+            </div>
+            <div class="row form-group padding-row">
+                <div class="div-btns">
+                    <div class="col-sm-4" >   
+                        <asp:button id="btnSearch" class="normalButton col-4 btns" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContratoV" Text="Consultar" ></asp:button>
+                    </div> 
+                    </div>
+                 <hr class="hr" id="hr3" runat="server" />
+            </div>
+            <div id="tb_consultaSimulacoes" class="row form-group padding-row col-sm-12">
+                         <div class="col-sm-12">
+                             <asp:ListView ID="lvConsultaSimulacoes" runat="server">
+                                        <EmptyDataTemplate>Não foram encontrados resultados</EmptyDataTemplate>
+                                        <LayoutTemplate>
+                                            <div class="Table Grid" id="tbSublimtesFinanceiros">
+                                                <div class="Heading Color">
+                                                     <div class="Cell Grid">
+                                                        <label></label>
+                                                    </div>
+                                                    <div class="Cell Grid">
+                                                        <label>ID Alteração</label>
+                                                    </div>
+                                                    <div class="Cell Grid">
+                                                        <label>Balcão</label>
+                                                    </div>
+                                                    <div class="Cell Grid">
+                                                        <label>ID Multilinha</label>
+                                                    </div>
+                                                    <div class="Cell Grid">
+                                                        <label>ID Simulação</label>
+                                                    </div>
+                                                    <div class="Cell Grid">
+                                                        <label>Data</label>
+                                                    </div>
+                                                    <div class="Cell Grid">
+                                                        <label>Limite ML</label>
+                                                    </div>
+                                                     <div class="Cell Grid">
+                                                        <label>Limite RF</label>
+                                                    </div>
+                                                       <div class="Cell Grid">
+                                                        <label>Limite RC</label>
+                                                    </div>
+                                                    <div class="Cell Grid">
+                                                        <label>Limite RA</label>
+                                                    </div>
+                                                       <div class="Cell Grid">
+                                                        <label>Utilizador</label>
+                                                    </div>
+                                                    </div>
+                                                <div class="Row" runat="server" id="itemPlaceholder">
+                                                </div>
+                                             </div>
+                                        </LayoutTemplate>
+                                        <ItemTemplate>
+                                            <div class="Row <%# Container.DataItemIndex % 2 == 0 ? "Even" : "Odd" %>">
+                                                    <div class="Cell Grid">
+                                                        <asp:CheckBox runat="server" ID="cbSelected" onclick="toggle(this)" CssClass="text-center bklabel" ></asp:CheckBox>
+                                                     </div>    
+                                                    <div class="Cell Grid">
+                                                        <asp:Label runat="server" ID="lbzSeq" CssClass="text-center bklabel" Text='<%# Eval("zSeq") %>'></asp:Label>
+                                                    </div>
+                                                    <div class="Cell Grid">
+                                                        <asp:Label runat="server" ID="lbcons_Balcao" CssClass="text-center bklabel" Text='<%# Eval("cons_Balcao") %>'></asp:Label>
+                                                    </div>
+                                                    <div class="Cell Grid">
+                                                            <asp:Label runat="server" ID="lbcons_idMultilinha" CssClass="text-center bklabel" Text='<%# Eval("cons_idMultilinha") %>' ></asp:Label>
+                                                        </div>
+                                                    <div class="Cell Grid">
+                                                            <asp:Label runat="server" ID="lbcons_idSimulacao" CssClass="text-center bklabel" Text='<%# Eval("cons_idSimulacao") %>' ></asp:Label>
+                                                        </div>
+                                                     <div class="Cell Grid">
+                                                            <asp:Label runat="server" ID="lbcons_DataSimulacao" CssClass="text-center bklabel" Text=' <%# Eval("cons_DataSimulacao" , "{0:yyyy-MM-dd}") %>' ></asp:Label>
+                                                        </div>
+                                                     <div class="Cell Grid">
+                                                            <asp:Label runat="server" ID="lbcons_limiteML" CssClass="text-right bklabel" Text='<%# Eval("cons_limiteML") %>' ></asp:Label>
+                                                        </div>
+                                                     <div class="Cell Grid">
+                                                            <asp:Label runat="server" ID="lbcons_limiteRF" CssClass="text-right bklabel" Text='<%# Eval("cons_limiteRF") %>' ></asp:Label>
+                                                        </div>
+                                                      <div class="Cell Grid">
+                                                            <asp:Label runat="server" ID="lbcons_limiteRC" CssClass="text-right bklabel" Text='<%# Eval("cons_limiteRC") %>' ></asp:Label>
+                                                        </div>
+                                                     <div class="Cell Grid">
+                                                            <asp:Label runat="server" ID="lbcons_limiteRA" CssClass="text-right bklabel" Text='<%# Eval("cons_limiteRA") %>' ></asp:Label>
+                                                        </div>
+                                                    <div class="Cell Grid">
+                                                            <asp:Label runat="server" ID="lbcons_utilizador" CssClass="text-right bklabel" Text='<%# Eval("cons_utilizador") %>' ></asp:Label>
+                                                     </div>
+                                                </div>
+                                            </ItemTemplate>
+                              </asp:ListView>
+                         </div>
+                        <div id="dvAcoes_V" runat="server" class="row form-group padding-row ">
+                            <div class="div-btns">
+                                <div class="col-sm-4" >  
+                                    <asp:Button ID="btnConsultarSm" CssClass="btns" Text="Consultar Simulação" Enabled="false" OnClick="btnConsultarSm_Click" CausesValidation="true" ValidationGroup="manterestecampo" runat="server"></asp:Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+       </div>
    </form>
      <script type='text/javascript'>
-        var dtfechas = "<%=this.dtfechas %>";
+         var dtfechas = "<%=this.dtfechas %>";
+         function toggle(source) {
+             var checkedValue = -1;
+             checkboxes = $('[type=checkbox]');
+             for (var i = 0, n = checkboxes.length; i < n; i++) {
+                 if (checkboxes[i].id == source.id) {
+                     checkboxes[i].checked = source.checked;
+                     if (source.checked)
+                         checkedValue = i;
+                 }
+                 else
+                     checkboxes[i].checked = false;
+             }
+
+             $("#btnConsultarSm").prop('disabled', !source.checked);
+         }
     </script>
     <script src="scripts/multilinha.js"></script>
 </body>

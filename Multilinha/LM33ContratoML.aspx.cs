@@ -150,13 +150,23 @@ namespace Multilinha
                         Helper.AddRemoveActive(false, liParameterizacao);
                         lblTransactionV.CssClass = lblTransactionV.CssClass.Replace("atab", "atabD");
 
-                        //Contexto Visualização
-                        LM38_HistoricoAlteracoes lm38 = Context.Items["HAlteracao"] as LM38_HistoricoAlteracoes;
+                        //Contexto Visualização - Proveniente do Historico
+                        LM38_HistoricoAlteracoes lm38 = Context.Items["Hhistorico"] as LM38_HistoricoAlteracoes;
                         if (lm38 != null && lm38.idmultilinha != null)
                         {
+                            ViewState["Hhistorico"] = lm38;
                             Helper.CopyObjectToControls(this, lm38);
                             Control ctr = this.FindControl(Helper.getControltoHighLight(lm38.HistoricoAlteracoes[0].Alteracao));
                             Helper.AddHightLight(ctr, true);
+                        }
+
+                        //Contexto Visualização - Proveniente da Aprovação
+                        LM33_ContratoML LM33 = Context.Items["HAprovacao"] as LM33_ContratoML;
+                        if (LM33 != null && LM33.Cliente != null)
+                        {
+                            ViewState["HAprovacao"] = LM33;
+                            Helper.CopyObjectToControls(camposChave, LM33);
+                            txtCliente_TextChanged(sender, e);
                         }
 
                         break;
@@ -214,62 +224,105 @@ namespace Multilinha
                     ddlncontado.DataBind();
 
                     //Chamada ao Catalogo!
-                    LM31_CatalogoProdutoML res = TAT2.SearchLM31("01", 01);
-                    Helper.CopyObjectToControls(this, res);
+                    //LM31_CatalogoProdutoML res = TAT2.SearchLM31("01", 01);
 
-                    ViewState["LM31"] = res;
+                    LM31_CatalogoProdutoML lm31 = new LM31_CatalogoProdutoML();
+                    Helper.CopyPropertiesTo(camposChave, lm31);
+
+                    MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "V");
+                    Helper.CopyObjectToControls(this, response);
+
+                    ViewState["LM31"] = response;
 
                     break;
 
                 case "V":
-                    //Call ML03 para preencher o ecra com os dados
-                    Int32.TryParse(txtCliente.Text, out ncliente);
-                    LM33_ContratoML M03V = TAT2.SearchML03(ncliente, txtIdworkflow.Text);
+                    //Call ML03 para preencher o ecra com os dados - modo de acesso: 5,4,3 ou 8
+                    //Int32.TryParse(txtCliente.Text, out ncliente);
+                    //LM33_ContratoML M03V = TAT2.SearchML03(ncliente, txtIdworkflow.Text);
+                    LM33_ContratoML LM33 = new LM33_ContratoML();
+                    Helper.CopyPropertiesTo(camposChave, LM33);
 
-                    Helper.CopyObjectToControls(this.Page, M03V);
+                    string acesso = "";
+                    LM38_HistoricoAlteracoes lm38 = ViewState["Hhistorico"] as LM38_HistoricoAlteracoes;
+                    LM33_ContratoML lm33 = ViewState["Hhistorico"] as LM33_ContratoML;
+                    if(lm38 != null)
+                    {
+                        acesso = "4";
+                    }
+                    else if (lm33 != null)
+                    {
+                        acesso = "5";
+                    }
+                    else
+                    {
+                        acesso = "";
+                    }
+                    MensagemOutput<LM33_ContratoML> respOut = bl.LM33Request(LM33, abargs, "V", acesso);
+                    if (respOut == null || respOut.ResultResult == null || respOut.ResultResult.Cliente == null)
+                    {
+                        lberror.Text = TAT2.GetMsgErroTATDescription(respOut.erro.ToString(), abargs) ?? respOut.erro.ToString() ;
+                        lberror.Visible = true;
+                        lberror.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        //Sucesso
+                        Helper.CopyObjectToControls(this.Page, respOut);
 
-                    Helper.SetEnableControler(camposChave, true);
-                    //btnLimpar_Click(sender, e); 
-                    Helper.AddRemoveHidden(false, dpOK);
-                    Helper.SetEnableControler(dpOK, false);
-                    Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
-                    Helper.SetEnableControler(divRiscoFinanceiro, false);
-                    Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
-                    Helper.SetEnableControler(divRiscoAssinatura, false);
-                    Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
-                    Helper.SetEnableControler(divRiscoComercial, false);
-                    Helper.AddRemoveHidden(false, dvtitleComissoes);
-                    Helper.SetEnableControler(divComissoes, false);
-                    Helper.SetEnableControler(divVersoesML, false);
-                    Helper.AddRemoveHidden(false, divVersoesML);
-                    Helper.AddRemoveHidden(false, hr4);
-                    //show fields acoes
-                    Helper.AddRemoveHidden(false, accoesfinais_criarml03);
-                    Helper.SetEnableControler(accoesfinais_criarml03, true);
+                        Helper.SetEnableControler(camposChave, true);
+                        Helper.AddRemoveHidden(false, dpOK);
+                        Helper.SetEnableControler(dpOK, false);
+                        Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                        Helper.SetEnableControler(divRiscoFinanceiro, false);
+                        Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                        Helper.SetEnableControler(divRiscoAssinatura, false);
+                        Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                        Helper.SetEnableControler(divRiscoComercial, false);
+                        Helper.AddRemoveHidden(false, dvtitleComissoes);
+                        Helper.SetEnableControler(divComissoes, false);
+                        Helper.SetEnableControler(divVersoesML, false);
+                        Helper.AddRemoveHidden(false, divVersoesML);
+                        Helper.AddRemoveHidden(false, hr4);
+                        //show fields acoes
+                        Helper.AddRemoveHidden(false, accoesfinais_criarml03);
+                        Helper.SetEnableControler(accoesfinais_criarml03, true);
 
-                    #region tabelas de produtos de riscos
+                        #region tabelas de produtos de riscos
 
-                    //Get Produtos
-                    // e Popular CG
+                        //Get Produtos
+                        // e Popular CG
 
-                    List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, M03V, false);
+                        List<ArvoreFamiliaProdutos> lstF_V = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
+                        listViewProdutos(lstF_V, Constantes.tipologiaRisco.RF, lvProdutosRisco, respOut.ResultResult, false);
 
-                    List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, M03V, false);
+                        List<ArvoreFamiliaProdutos> lstC_V = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
+                        listViewProdutos(lstC_V, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, respOut.ResultResult, false);
 
-                    List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, M03V, false);
+                        List<ArvoreFamiliaProdutos> lstA_V = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
+                        listViewProdutos(lstA_V, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, respOut.ResultResult, false);
 
-                    #endregion
+                        #endregion
+                    }
                     break;
 
                 case "M":
                     //CALL ML03
-                    Int32.TryParse(txtCliente.Text, out ncliente);
-                    LM33_ContratoML M03M = TAT2.SearchML03(ncliente, txtIdworkflow.Text);
+                    LM33_ContratoML LM33M = new LM33_ContratoML();
+                    Helper.CopyPropertiesTo(camposChave, LM33M);
 
-                    Helper.CopyObjectToControls(this.Page, M03M);
+                    lm33 = ViewState["HAprovacao"] as LM33_ContratoML;
+                    if (lm33 != null)
+                    {
+                        acesso = "5";
+                    }
+                    else
+                    {
+                        acesso = "";
+                    }
+                    respOut = bl.LM33Request(LM33M, abargs, "V", acesso);
+
+                    Helper.CopyObjectToControls(this.Page, respOut);
 
                     Helper.SetEnableControler(camposChave, false);
                     Helper.AddRemoveHidden(false, dpOK);
@@ -288,14 +341,14 @@ namespace Multilinha
 
                     //Get Produtos
                     // e Popula CG e CP . Quando seleccionado ficam enable! Não é possivel deseleccionar
-                    lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, M03M, false);
+                    List<ArvoreFamiliaProdutos>  lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
+                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM33M, false);
 
-                    lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, M03M, false);
+                    List<ArvoreFamiliaProdutos>  lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
+                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM33M, false);
 
-                    lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, M03M, false);
+                    List<ArvoreFamiliaProdutos>  lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
+                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM33M, false);
 
                     #endregion
                     
@@ -387,7 +440,7 @@ namespace Multilinha
                     getSublimites(_LM33);
 
                     ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                    MensagemOutput<LM33_ContratoML> response = bl.LM33Request(_LM33, abargs, "C");
+                    MensagemOutput<LM33_ContratoML> response = bl.LM33Request(_LM33, abargs, "C", "");
 
                     if (response.ResultResult != null && response.ResultResult.Cliente != null)
                     {

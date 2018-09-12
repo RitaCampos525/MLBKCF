@@ -18,7 +18,7 @@ namespace MultilinhaBusinessLayer
         MensagemOutput<LM31_CatalogoProdutoML> LM31Request(LM31_CatalogoProdutoML _lm31, ABUtil.ABCommandArgs abargs, string accao);
 
         [OperationContract]
-        MensagemOutput<LM33_ContratoML> LM33Request(LM33_ContratoML _LM33, ABUtil.ABCommandArgs abargs, string accao);
+        MensagemOutput<LM33_ContratoML> LM33Request(LM33_ContratoML _LM33, ABUtil.ABCommandArgs abargs, string accao, string acesso);
 
         [OperationContract]
         MensagemOutput<LM34_SublimitesML> LM34Request(LM34_SublimitesML _LM34, ABUtil.ABCommandArgs abargs, string accao);

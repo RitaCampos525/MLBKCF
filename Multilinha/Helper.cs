@@ -388,7 +388,10 @@ namespace Multilinha
                         }
                         if (result.PropertyType == typeof(string))
                         {
-                            result.SetValue(dest, (string)(controls as DropDownList).SelectedItem.Value, null);
+                            if ((controls as DropDownList).SelectedItem != null)
+                            {
+                                result.SetValue(dest, (string)(controls as DropDownList).SelectedItem.Value, null);
+                            }
                         }
                     }
                 }

@@ -44,6 +44,8 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, divProduto);
                         Helper.AddRemoveHidden(true, divSimulacaoSublimites);
                         Helper.AddRemoveHidden(true, divSimular);
+                        Helper.AddRemoveHidden(true, dvAcoes_C);
+                        Helper.AddRemoveHidden(true, lm37_vis);
 
                         break;
                     case "V":
@@ -53,9 +55,10 @@ namespace Multilinha
                         Helper.AddRemoveActive(false, liCriacao);
                         lblTransactionV.CssClass = lblTransactionV.CssClass.Replace("atab", "atabD");
 
-                        Helper.AddRemoveHidden(true, divProduto);
-                        Helper.AddRemoveHidden(true, divSimulacaoSublimites);
-                        Helper.AddRemoveHidden(true, divSimular);
+                        Helper.AddRemoveHidden(true, lm37_criar);
+                        Helper.AddRemoveHidden(false, lm37_vis);
+                        Helper.AddRemoveHidden(true, dvAcoes_V);
+                      
                         break;
 
                     default:
@@ -80,6 +83,22 @@ namespace Multilinha
                 txtidmultilinha.Enabled = true;
                 reqidmultilinha.Enabled = true;
             }
+        }
+
+        protected void txtnBalcao_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBalcao.Text))
+            {
+                ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
+                string desc = TAT2.GetBalcaoDesc(txtBalcao.Text, Global.ConnectionStringMaster, abargs);
+
+                txtgBalcao.Text = desc;
+            }
+            else
+            {
+                txtgBalcao.Text = "";
+            }
+
         }
 
         protected void txt_idmultilinha_TextChanged(object sender, EventArgs e)
@@ -107,6 +126,7 @@ namespace Multilinha
             Helper.SetEnableControler(divProduto, false);
             Helper.AddRemoveHidden(false, divSimulacaoSublimites);
             Helper.AddRemoveHidden(false, divSimular);
+            Helper.AddRemoveHidden(false, dvAcoes_C);
 
             LM37_SimulacaoMl sim =  TAT2.SearchML37(0001004, "510092588522");
             Helper.CopyObjectToControls(this, sim);
@@ -124,6 +144,15 @@ namespace Multilinha
                     }
 
                     bindlistviewsimulacao(sim , lvProdutosSimulacao);
+                    break;
+                case "V":
+                    //Consulta em lista
+                    lvConsultaSimulacoes.DataSource = sim.SimulacaoSublimites;
+                    lvConsultaSimulacoes.DataBind();
+                    if(sim.SimulacaoSublimites.Count > 0)
+                    {
+                        Helper.AddRemoveHidden(false, dvAcoes_V);
+                    }
                     break;
             }
 
@@ -253,7 +282,25 @@ namespace Multilinha
 
         protected void btnGuardarSimulacao_Click(object sender, EventArgs e)
         {
+            //Guardar simulacao - LM37
+        }
 
+        protected void btnConsultarSm_Click(object sender, EventArgs e)
+        {
+            //Redirecciona para LM34 (Sublimites) para popular lm34 com os dados da simulação 
+            ListViewDataItem smSelected = lvConsultaSimulacoes.Items.Where(x => (x.FindControl("cbSelected") as CheckBox).Checked).FirstOrDefault() as ListViewDataItem;
+            LM37_SimulacaoMl lm37 = new LM37_SimulacaoMl();
+
+            Helper.CopyPropertiesTo(smSelected, lm37.SimulacaoSublimites[0]);
+            lm37.idmultilinha = lm37.SimulacaoSublimites[0].cons_idMultilinha;
+            lm37.idsimulacaoml = lm37.SimulacaoSublimites[0].cons_idSimulacao;
+
+            string urlQueries = Request.Url.Query;
+            Page.Transfer(ConfigurationManager.AppSettings["SublimitesML"] + urlQueries,
+            new Dictionary<string, object>() {
+                                  { "Op", "M" },
+                                  { "HSimulacao", lm37 },
+            });
         }
     }
 }

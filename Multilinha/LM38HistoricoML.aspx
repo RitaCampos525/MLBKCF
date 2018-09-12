@@ -58,11 +58,11 @@
                      </div>
                      <div class="div-btns">
                         <div class="col-sm-4" >   
-                            <asp:button id="btnSearchCont" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
+                            <asp:button id="btnSearchCont" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click" ValidationGroup="chaveContrato" Text="Consultar" ></asp:button>
                         </div> 
                      </div>
+                    <hr class="hr" id="hr1" runat="server" /> 
                </div>
-            <hr class="hr" id="hr1" runat="server" /> 
             </div>
             <div id="tbHistorico" class="row form-group col-sm-12" style="padding-left:40px" runat="server">
              <asp:ListView ID="lvhistoricoAlteracoes" runat="server" class="row form-group padding-row">

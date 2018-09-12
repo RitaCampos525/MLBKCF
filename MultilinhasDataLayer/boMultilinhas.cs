@@ -232,6 +232,74 @@ namespace MultilinhasDataLayer
             return outmsg;
         }
 
+        public DataTable GetBalcoes(string connection, ABUtil.ABCommandArgs AbArgs)
+        {
+            try
+            {
+                DataTable Produtos = cache["Balcoes"] as DataTable;
+
+                WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.TAT2Request, "GetBalcoes  - SYT20C ", AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+
+                //Vai lêr à tabela
+                if (Produtos == null)
+                {
+                    OdbcConnection con = new OdbcConnection(connection);
+                    DataSet ds = new DataSet();
+
+                    try
+                    {
+                        OdbcDataAdapter ad = new OdbcDataAdapter("SELECT CELEMTAB1, NELEMC01 FROM SYT20C order by CELEMTAB1", con); //Tabela geral SYT20
+                        ad.Fill(ds);
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.TAT2Request, "Setting cache for [Balcoes]", AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+
+                    //Set Cache
+                    System.Runtime.Caching.CacheItemPolicy policy = new System.Runtime.Caching.CacheItemPolicy();
+                    policy.AbsoluteExpiration = DateTimeOffset.Now.AddDays(1);
+                    cache.Set("Balcoes", ds.Tables[0], policy);
+
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.TAT2Request, "Retun value count: " + ds.Tables[0].Rows.Count, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+
+                    return ds.Tables[0];
+                }
+                //Devolver valor em cache
+                else
+                {
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.TAT2Request, "Cache found for [Produtos] : " + Produtos.Rows.Count, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                    return Produtos;
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog.Log(System.Diagnostics.TraceLevel.Error, MultilinhasObjects.LogTypeName.TAT2Request, ex, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                DataTable dt = new DataTable();
+
+                return dt;
+            }
+        }
+
+        public string GetBalcaoDesc(string codBalcao, string connection, ABUtil.ABCommandArgs AbArgs)
+        {
+            string desc = "";
+            WriteLog.Log(System.Diagnostics.TraceLevel.Info, MultilinhasObjects.LogTypeName.Internal, "GetBalcaoDesc", AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+
+            DataTable balcoes = GetBalcoes(connection, AbArgs);
+            if (balcoes != null && balcoes.Rows.Count > 0)
+            {
+                DataRow[] drs = balcoes.Select("CELEMTAB1 = '" + codBalcao.ToUpper() + "'");
+
+                //select first
+                if(drs.Count() > 0)
+                    desc = drs[0]["NELEMC01"].ToString();
+            }
+            return desc;
+        }
+
         //FOR debug
         //public List<long> SearchDOCliente(string cliente)
         //{
@@ -332,6 +400,38 @@ namespace MultilinhasDataLayer
                 }
                 
                
+            };
+        }
+
+        public LM32_PedidosContratoML SearchLM32()
+        {
+            return new LM32_PedidosContratoML
+            {
+                PedidosAprovacao = new List<LM32_PedidosContratoML.pedidoAprovacao>()
+                {
+                    new LM32_PedidosContratoML.pedidoAprovacao
+                    {
+                        descritivo = "BASE",
+                        idcliente = 0001004,
+                        idmultilinha = "12345678912",
+                        nBalcao = 101,
+                        produto = "LM",
+                        subProduto = "01",
+                        TipoPedido = ML_Objectos.GetTiposPedidoML()[0].Description,
+                        utilizador = "BDAPS"
+                    },
+                     new LM32_PedidosContratoML.pedidoAprovacao
+                    {
+                        descritivo = "BASE",
+                        idcliente = 0001004,
+                        idmultilinha = "12345678912",
+                        nBalcao = 101,
+                        produto = "LM",
+                        subProduto = "01",
+                        TipoPedido = ML_Objectos.GetTiposPedidoML()[0].Description,
+                        utilizador = "BDMEN"
+                    }
+                }
             };
         }
 
@@ -573,6 +673,7 @@ namespace MultilinhasDataLayer
                        SublimiteComprometido = 95000,
                        SublimiteContratado = 95000,
                        TipologiaRisco = "A",
+                       zSeq =1,
                        
                    },
                    new LM37_SimulacaoMl.simulacaoSublimites
@@ -595,6 +696,7 @@ namespace MultilinhasDataLayer
                        SublimiteComprometido = 74000,
                        SublimiteContratado = 74000,
                        TipologiaRisco = "F",
+                       zSeq =1,
                    },
                 }
             };

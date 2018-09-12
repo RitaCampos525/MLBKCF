@@ -58,8 +58,22 @@
                     </div>
 
                 </div>
+               
+            </div>
+            <div id="divIDSimulacao" runat="server" class="row form-group padding-row ">
+                    <div class="col-sm-4">
+                        <label id="lbIdSimulacao" runat="server" class="col-sm-4 text-right lbl">ID Simulação ML: </label>
+                        <div class="col-sm-6">
+                            <asp:TextBox ID="txtIdSimulacao" MaxLength="9" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqIdSimulacao" ValidationGroup="valChavesSim" ControlToValidate="txtIdSimulacao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+            </div>
+            <div class="row form-group padding-row ">
+                <div class="col-sm-4">
+                </div>
                 <div class="col-sm-2 div-btns" >   
-                    <asp:button id="btnSearchCont" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click1" ValidationGroup="chaveContrato" Text="OK" ></asp:button>
+                    <asp:button id="btnConsultar" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click1" ValidationGroup="chaveContrato" Text="Consultar" ></asp:button>
                 </div>
                  <hr class="hr" id="hr1" runat="server" /> 
             </div>

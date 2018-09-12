@@ -20,17 +20,17 @@ namespace MultilinhasObjects
         public bool btnAccept { get; set; }
         public bool btnReject { get; set; }
 
-
-        public List<pedidoAprovacao> PedidosAprovacao;
+        public List<pedidoAprovacao> PedidosAprovacao = new List<pedidoAprovacao> { new pedidoAprovacao() };
         public class pedidoAprovacao
         {
             public int nBalcao { get; set; }
             public string idmultilinha { get; set; }
             public int idcliente { get; set; }
             public string produto { get; set; }
-            public string subproduto { get; set; }
+            public string subProduto { get; set; }
             public string descritivo { get; set; }
             public string TipoPedido { get; set; }
+            public string utilizador { get; set; }
         }
     }
 }

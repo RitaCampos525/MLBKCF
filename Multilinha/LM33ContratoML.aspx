@@ -49,8 +49,8 @@
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChaves" ID="reqCliente" ControlToValidate="txtCliente" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <label id="Label3" runat="server" class="col-sm-4 text-right lbl"></label>
+                    <div class="col-sm-6">
+                        <label id="Label3" runat="server" class=""></label>
                         <div class="col-sm-6">
                             <asp:TextBox ID="txtNome" CssClass="form-control text-field" Enabled="false" MaxLength="40" runat="server"></asp:TextBox>
                         </div>
@@ -84,7 +84,7 @@
                     <div class="col-sm-4">
                         <label id="lbidmultilinha" runat="server" class="col-sm-4 text-right lbl">* ID Multilinha ML: </label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txt_idmultilinha" MaxLength="9" AutoPostBack="true" OnTextChanged="txt_idmultilinha_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txt_idmultilinha" MaxLength="12" AutoPostBack="true" OnTextChanged="txt_idmultilinha_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqidmultilinha" ValidationGroup="valChaves" ControlToValidate="txt_idmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                     <div class="col-sm-4 div-btns text-center">
                         <div class="col-sm-6 div-btns">
                             <asp:Button ID="btnSimulacao" runat="server" class="btns text-center" OnClick="btnSimulacao_Click" Visible="false" CausesValidation="true" ValidationGroup="valChavesSim" Text="Simulação"></asp:Button>
-                            <asp:Button ID="btnSearch" class="btns text-center" runat="server" CausesValidation="true" ValidationGroup="valChaves" AutoPostBack="True" OnClick="btnSearchDO_Click" Text="OK"></asp:Button>
+                            <asp:Button ID="btnSearch" class="btns text-center" runat="server" CausesValidation="true" ValidationGroup="valChaves" AutoPostBack="True" OnClick="btnSearchDO_Click" Text="Consultar"></asp:Button>
                         </div>
                     </div>
                     <hr class="hr" id="hr" runat="server" />

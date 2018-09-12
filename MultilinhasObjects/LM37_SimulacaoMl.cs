@@ -5,8 +5,10 @@ using System.Text;
 
 namespace MultilinhasObjects
 {
+    [Serializable]
     public class LM37_SimulacaoMl : LM34_SublimitesML
     {
+     
         public int Balcao { get; set; }
         public DateTime dataSimulacao { get; set; }
         public string tipoSimulacao { get; set; }
@@ -20,8 +22,10 @@ namespace MultilinhasObjects
         public decimal sublimiteriscoAssinaturaNovo { get; set; }
         public decimal sublimiteriscoAssinaturaTotal { get; set; }
 
-        public List<simulacaoSublimites> SimulacaoSublimites { get; set; }
+        // public List<simulacaoSublimites> SimulacaoSublimites { get; set; }
+        public List<simulacaoSublimites> SimulacaoSublimites = new List<simulacaoSublimites> { new simulacaoSublimites() };
 
+        [Serializable]
         public class simulacaoSublimites
         {
             public string TipologiaRisco { get; set; }

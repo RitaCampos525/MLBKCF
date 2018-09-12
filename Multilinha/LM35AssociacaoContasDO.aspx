@@ -126,6 +126,7 @@
              <div id="accoesfinais_criarlm35" runat="server">
                 <div class="row div-btns">
                     <asp:Button ID="btnOk" class="btns " runat="server" CausesValidation="true" AutoPostBack="true" OnClick="btnEnviarContrato" Text="Enviar Contrato para aprovação"></asp:Button>
+                    <asp:button id="btnSeguinte" CssClass="btns" runat="server" Text="Seguinte" Enabled="false" OnClick="btnSeguinte_Click" causesvalidation="true"></asp:button>
                 </div>
             </div>
         </div>

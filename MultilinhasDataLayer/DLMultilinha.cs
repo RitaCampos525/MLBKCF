@@ -165,7 +165,7 @@ namespace MultilinhasDataLayer
             return response;
         }
 
-        BCDWSProxy.LM32CONSULTAPEDIDOSAPROVACAOMLRequest LM32 = new BCDWSProxy.LM32CONSULTAPEDIDOSAPROVACAOMLRequest();
+        BCDWSProxy.LM32APROVACOESMLRequest LM32 = new BCDWSProxy.LM32APROVACOESMLRequest();
         public BCDWSProxy.LM32Transaction LM32Request(ABUtil.ABCommandArgs AbArgs, LM32_PedidosContratoML _lm32, string accao)
         {
             BCDWSProxy.LM32Transaction response = new BCDWSProxy.LM32Transaction();
@@ -192,6 +192,7 @@ namespace MultilinhasDataLayer
             LM32.input.pedido_dados = false;
             LM32.input.tppedido = _lm32.TipoPedido;
             LM32.input.zcliente = _lm32.Cliente.ToString();
+            
 
             BCDWSProxy.BarclaysBTSSoapClient client = new BCDWSProxy.BarclaysBTSSoapClient();
             bool bRetry = false;
@@ -202,7 +203,7 @@ namespace MultilinhasDataLayer
                 {
                     WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, MultilinhasObjects.LogTypeName.WsSoapRequest, LM32.input.SerializeToString(), AbArgs.USERNT, AbArgs.SN_HOSTNAME);
 
-                    response = client.LM32CONSULTAPEDIDOSAPROVACAOML(LM32.BarclaysBankAccountSettings, LM32.input);
+                    response = client.LM32APROVACOESML(LM32.BarclaysBankAccountSettings, LM32.input);
                     string sresponse = response.SerializeToString();
 
                     WriteLog.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.WsSoapRequest, sresponse, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
@@ -222,7 +223,7 @@ namespace MultilinhasDataLayer
         }
 
         BCDWSProxy.LM33CONTRATOMLRequest LM33 = new BCDWSProxy.LM33CONTRATOMLRequest();
-        public BCDWSProxy.LM33Transaction LM33Request(ABUtil.ABCommandArgs AbArgs, LM33_ContratoML _lm33, string accao)
+        public BCDWSProxy.LM33Transaction LM33Request(ABUtil.ABCommandArgs AbArgs, LM33_ContratoML _lm33, string accao, string acesso)
         {
             BCDWSProxy.LM33Transaction response = new BCDWSProxy.LM33Transaction();
 
@@ -234,55 +235,50 @@ namespace MultilinhasDataLayer
             LM33.input = new BCDWSProxy.LM33Input();
             LM33.input.caccao = accao;
             LM33.input.pedido_dados = false;
-         
-            LM33.input.cbalcao = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(0, 3);
-            LM33.input.cprod = _lm33.Produtoml;
-            LM33.input.cta = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(5, 6);
-            LM33.input.dgt = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(11, 1);
-            LM33.input.cbalcaodo = string.IsNullOrEmpty(_lm33.ncontado) ? "" : _lm33.ncontado.Split('-')[0];
-            LM33.input.cproddo = string.IsNullOrEmpty(_lm33.ncontado) ? "" : _lm33.ncontado.Split('-')[1].Replace("-","").Trim().Substring(0,2);
-            LM33.input.ctado = string.IsNullOrEmpty(_lm33.ncontado) ? "" : _lm33.ncontado.Split('-')[1].Replace("-", "").Trim().Substring(2, 6);
-            LM33.input.dgtdo = string.IsNullOrEmpty(_lm33.ncontado) ? "" : _lm33.ncontado.Split('-')[1].Replace("-", "").Trim().Substring(8, 1);
-            //LM33.input.cusrtab
-            LM33.input.csubprdml = _lm33.Subprodutoml;
-            LM33.input.dtfimctr = _lm33.datafimcontrato.ToString("yyyyMMdd");
-            LM33.input.dtinctr = _lm33.datainiciocontrato.ToString("yyyyMMdd");
+            LM33.input.acesso = acesso;
+            LM33.input.cbalcaoml = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(0, 3);
+            LM33.input.cprodutoml = _lm33.Produtoml;
+            LM33.input.cnumectaml = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(5, 6);
+            LM33.input.cdigictaml = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(11, 1);
+            LM33.input.ccontado = _lm33.ncontado;
+            LM33.input.csubprodml = _lm33.Subprodutoml;
+            LM33.input.dtfimcont = _lm33.datafimcontrato.ToString("yyyyMMdd");
+            LM33.input.dtinicont = _lm33.datainiciocontrato.ToString("yyyyMMdd");
             LM33.input.dtprocess = _lm33.dataProcessamento.ToString("yyyyMMdd");
-            LM33.input.dtpxcobcom = _lm33.dataproximacobrancagestcontrato.ToString("yyyyMMdd");
-            LM33.input.dtpxcobrenov = _lm33.dataproximacobrancagestrenovacao.ToString("yyyyMMdd");
+            LM33.input.dproxgest = _lm33.dataproximacobrancagestcontrato.ToString("yyyyMMdd");
+            LM33.input.dproxrenov = _lm33.dataproximacobrancagestrenovacao.ToString("yyyyMMdd");
             LM33.input.dtrenov = _lm33.datarenovacao.ToString("yyyyMMdd");
-            LM33.input.estctr = ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Description.ToUpper() == _lm33.EstadoContrato.ToUpper()).Code;
-            LM33.input.grmoros = _lm33.graumorosidade.ToString();
-            LM33.input.idrenov = _lm33.IndRenovacao == true ? "S" : "N";
-            LM33.input.idwrkflw = _lm33.idproposta;
-            LM33.input.indcancel = _lm33.indicadorAcaoCancelamento == true ? "S" : "N";
-            LM33.input.indenvcar = _lm33.indicadorAcaoEnvioCartas == true ? "S" : "N";
-            LM33.input.indsimul = _lm33.indicadorAcaoSimulacao == true ? "S" : "N";
-            LM33.input.limgloml = _lm33.limiteglobalmultilinha;
-            LM33.input.limrisass = _lm33.sublimiteriscoAssinatura;
-            LM33.input.limriscom = _lm33.sublimitriscoComercial;
-            LM33.input.limrisfin = _lm33.sublimiteriscoFinanceiro;
-            LM33.input.ndpreavi = _lm33.NDiasPreAviso.ToString();
-            LM33.input.nmdincinb = _lm33.NDiasIncumprimento.ToString();
-            LM33.input.nmincontrato = _lm33.NMinutaContrato.ToString();
-            LM33.input.percobcom = _lm33.PeriocidadeCobrancagestcontrato;
-            LM33.input.percobrenov = _lm33.PeriocidadeCobrancagestRenovacao;
-            LM33.input.przctr = _lm33.prazocontrato.ToString();
-            LM33.input.przrenov = _lm33.PrazoRenovacao.ToString();
-            LM33.input.tplriscass = _lm33.tipologiaRiscoA;
-            LM33.input.tplrisccom = _lm33.tipologiaRiscoC;
-            LM33.input.tplriscfin = _lm33.tipologiaRiscoF;
-            LM33.input.vrcomabert = _lm33.comissaoabertura;
-            LM33.input.vrcomgestc = _lm33.comissaogestaocontrato;
-            LM33.input.vrcomrenov = _lm33.comissaorenovacao;
-            LM33.input.vrimpabert = _lm33.valorimpostocomabert;
-            LM33.input.vrimpctr = _lm33.valorimpostocomgestcontrato;
-            LM33.input.vrimprenov = _lm33.valorimpostocomgestrenovacao;
+            LM33.input.iestado = _lm33.EstadoContrato != null ? ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Description.ToUpper() == _lm33.EstadoContrato.ToUpper()).Code : "";
+            LM33.input.qgrau = _lm33.graumorosidade.ToString();
+            LM33.input.irenovac = _lm33.IndRenovacao == true ? "S" : "N";
+            LM33.input.idwf = _lm33.idproposta;
+            LM33.input.idenuncia = _lm33.indicadorAcaoCancelamento == true ? "S" : "N";
+            LM33.input.ienviocarta = _lm33.indicadorAcaoEnvioCartas == true ? "S" : "N";
+            LM33.input.mlimglobal = _lm33.limiteglobalmultilinha;
+            LM33.input.mlimassin = _lm33.sublimiteriscoAssinatura;
+            LM33.input.mlimcomer = _lm33.sublimitriscoComercial;
+            LM33.input.mlimfinan = _lm33.sublimiteriscoFinanceiro;
+            LM33.input.qdiapaviso = _lm33.NDiasPreAviso;
+            LM33.input.qdiasincum = _lm33.NDiasIncumprimento;
+            LM33.input.zversao = _lm33.NMinutaContrato;
+            LM33.input.qperigest = Convert.ToInt64(_lm33.PeriocidadeCobrancagestcontrato);
+            LM33.input.qperirenov = Convert.ToInt64(_lm33.PeriocidadeCobrancagestRenovacao);
+            LM33.input.qprzcont = _lm33.prazocontrato;
+            LM33.input.qprzrenov = _lm33.PrazoRenovacao;
+            //LM33.input.tplriscass = _lm33.tipologiaRiscoA;
+            //LM33.input.tplrisccom = _lm33.tipologiaRiscoC;
+            //LM33.input.tplriscfin = _lm33.tipologiaRiscoF;
+            LM33.input.comissabe = _lm33.comissaoabertura;
+            LM33.input.comissgct = _lm33.comissaogestaocontrato;
+            LM33.input.lmcv3301_comissren = _lm33.comissaorenovacao;
+            LM33.input.vicomissabe = _lm33.valorimpostocomabert;
+            LM33.input.vicomissgct = _lm33.valorimpostocomgestcontrato;
+            LM33.input.lmcv3301_vicomissren = _lm33.valorimpostocomgestrenovacao;
             LM33.input.zcliente = _lm33.Cliente.ToString();
-            LM33.input.basincabert = _lm33.baseincidenciacomabert;
-            LM33.input.basincctr = _lm33.baseincidenciacomgestcontrato;
-            LM33.input.basincrenov = _lm33.baseincidenciacomgestrenovacao;
-            LM33.input.nmprdat = _lm33.NumeroMinimoProdutos.ToString();
+            LM33.input.bicomissabe = _lm33.baseincidenciacomabert;
+            LM33.input.bicomissgct = _lm33.baseincidenciacomgestcontrato;
+            LM33.input.lmcv3301_bicomissren = _lm33.baseincidenciacomgestrenovacao;
+            LM33.input.qminprod = _lm33.NumeroMinimoProdutos;
    
 
             List<BCDWSProxy.LM33Row1> lstRow1 = new List<BCDWSProxy.LM33Row1>();
@@ -293,10 +289,10 @@ namespace MultilinhasDataLayer
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
                 _row1.caccao = accao;
                 _row1.pedido_dados = false;
-                _row1.codprod_f_l = f.prodsubproduto.Substring(0,2);
-                _row1.codtplo_f_l = f.tipologia;
-                _row1.famprod_f_l = f.familiaproduto;
-                _row1.subprod_f_l = f.prodsubproduto.Substring(2,2);
+                _row1.cproduto_l_l = f.prodsubproduto.Substring(0,2);
+                _row1.irisco_l_l = f.tipologia;
+                _row1.cfamprod_l_l = f.familiaproduto;
+                _row1.csubprod_l_l = f.prodsubproduto.Substring(2,2);
             }
 
             foreach (var a in _lm33.ProdutosRiscoAssinatura)
@@ -304,10 +300,10 @@ namespace MultilinhasDataLayer
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
                 _row1.caccao = accao;
                 _row1.pedido_dados = false;
-                _row1.codprod_a_l = a.prodsubproduto.Substring(0, 2);
-                _row1.codtplo_a_l = a.tipologia;
-                _row1.famprod_a_l = a.familiaproduto;
-                _row1.subprod_a_l = a.prodsubproduto.Substring(2, 2);
+                _row1.cproduto_l_l = a.prodsubproduto.Substring(0, 2);
+                _row1.irisco_l_l = a.tipologia;
+                _row1.cfamprod_l_l = a.familiaproduto;
+                _row1.csubprod_l_l = a.prodsubproduto.Substring(2, 2);
             }
 
             foreach (var c in _lm33.produtosRiscoC)
@@ -315,10 +311,10 @@ namespace MultilinhasDataLayer
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
                 _row1.caccao = accao;
                 _row1.pedido_dados = false;
-                _row1.codprod_c_l = c.prodsubproduto.Substring(0, 2); ;
-                _row1.codtplo_c_l = c.tipologia;
-                _row1.famprod_c_l = c.familiaproduto;
-                _row1.subprod_c_l = c.prodsubproduto.Substring(2, 2);
+                _row1.cproduto_l_l = c.prodsubproduto.Substring(0, 2);
+                _row1.irisco_l_l = c.tipologia;
+                _row1.cfamprod_l_l = c.familiaproduto;
+                _row1.csubprod_l_l = c.prodsubproduto.Substring(2, 2);
             }
 
             LM33.input.Row1 = lstRow1.ToArray();
@@ -765,7 +761,7 @@ namespace MultilinhasDataLayer
                         }
                         break;
                     default:
-                        mensagem = fault.Name;
+                        mensagem = ex.Message;
                         break;
                 }
             }

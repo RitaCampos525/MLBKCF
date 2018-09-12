@@ -116,7 +116,7 @@ namespace Multilinha
             Page.Transfer(href,
             new Dictionary<string, object>() {
                                 { "Op", "V" },
-                                { "HAlteracao", lm38 },
+                                { "Hhistorico", lm38 },
             });
         }
     }

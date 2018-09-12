@@ -118,5 +118,18 @@ namespace Multilinha
             //Call LM35
         }
 
+        protected void btnSeguinte_Click(object sender, EventArgs e)
+        {
+            LM35_AssociacaoContasDO lm35 = new LM35_AssociacaoContasDO();
+            Helper.CopyPropertiesTo(camposChave, lm35);
+
+            string urlQueries = Request.Url.Query;
+            string op = "M";
+            Page.Transfer(ConfigurationManager.AppSettings["PedidosML"] + urlQueries,
+           new Dictionary<string, object>() {
+                                  { "Op", op },
+                                  { "HPedido", lm35 },
+           });
+        }
     }
 }

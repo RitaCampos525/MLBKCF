@@ -12,6 +12,7 @@ namespace Multilinha
     public partial class LM34DefinicaoSublimites : System.Web.UI.Page
     {
         MultilinhasDataLayer.boMultilinhas TAT2 = new MultilinhasDataLayer.boMultilinhas();
+        MultilinhaBusinessLayer.BLMultilinha bl = new MultilinhaBusinessLayer.BLMultilinha();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,6 +41,13 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
 
+                        //Contexto Visualização - Proveniente de Simulação HSimulacao
+                        LM37_SimulacaoMl lm37 = Context.Items["HSimulacao"] as LM37_SimulacaoMl;
+                        if (lm37 != null && lm37.idmultilinha != null)
+                        {
+                            Helper.CopyObjectToControls(camposChaveSubLim, lm37);
+                            ViewState["HSimulacao"] = lm37;
+                        }
                         break;
                     case "C":
                         Helper.AddRemoveActive(true, liCriacao);
@@ -72,19 +80,20 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
 
-                        //Contexto Visualização
-                        LM38_HistoricoAlteracoes lm38 = Context.Items["HAlteracao"] as LM38_HistoricoAlteracoes;
+                        //Contexto Visualização - Proveniente de Historico
+                        LM38_HistoricoAlteracoes lm38 = Context.Items["Hhistorico"] as LM38_HistoricoAlteracoes;
                         if (lm38 != null && lm38.idmultilinha != null)
                         {
                             Helper.CopyObjectToControls(this, lm38);
                             Control ctr = this.FindControl(Helper.getControltoHighLight(lm38.HistoricoAlteracoes[0].Alteracao));
                             Helper.AddHightLight(ctr, true);
-
+                            ViewState["Hhistorico"] = lm38;
                         }
 
                         break;
                     default:
-                        Page.Transfer(ConfigurationManager.AppSettings["ContratoML"] + "?Op=C", //Sem contexto redireciona para lm33 - modo criar C
+                        string urlQueries = Request.Url.Query;
+                        Page.Transfer(ConfigurationManager.AppSettings["ContratoML"] + urlQueries, //Sem contexto redireciona para lm33 - modo criar C
                         new Dictionary<string, object>() {
                                  { "Op", "C" } });
                         break;
@@ -102,6 +111,7 @@ namespace Multilinha
         protected void btnSearchCont_Click1(object sender, EventArgs e)
         {
             //CALL LM34 para obter familia produtos introduzida da LM33
+            ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
             string op = ViewState["Op"] as string;
             switch (op.ToUpper())
             {
@@ -118,13 +128,27 @@ namespace Multilinha
                     Helper.AddRemoveHidden(false, hr2);
 
                     //For debug - lm34
-                    int client = 0;
-                    Int32.TryParse(txtCliente.Text, out client);
-                    LM34_SublimitesML lm34 = TAT2.SearchML04(client, txtidmultilinha.Text, "0");
-                    
-                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, lm34);
-                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);
-                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RA, lvProdutosRiscoA, lm34);
+                    //int client = 0;
+                    //Int32.TryParse(txtCliente.Text, out client);
+                    //LM34_SublimitesML lm34 = TAT2.SearchML04(client, txtidmultilinha.Text, "0");
+
+                   
+                    LM34_SublimitesML lm34C = new LM34_SublimitesML();
+                    Helper.CopyPropertiesTo(camposChaveSubLim, lm34C);
+
+                    LM34_SublimitesML lm33 = ViewState["ContratoCriado"] as LM34_SublimitesML;
+                    if (lm33 != null)
+                    {
+                        //rever
+                        lm34C.EstadoContrato = lm33.EstadoContrato;
+                    }
+                    MensagemOutput<LM34_SublimitesML> respOut = bl.LM34Request(lm34C, abargs, "V");
+                    Helper.CopyObjectToControls(ml04_criar, respOut.ResultResult);
+
+
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, respOut.ResultResult);
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, respOut.ResultResult);
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RA, lvProdutosRiscoA, respOut.ResultResult);
 
                     break;
 
@@ -141,14 +165,25 @@ namespace Multilinha
                     Helper.AddRemoveHidden(false, hr2);
 
                     //For debug - lm34
-                    Int32.TryParse(txtCliente.Text, out client);
-                    lm34 = TAT2.SearchML04(client, txtidmultilinha.Text, "0");
+                    //Int32.TryParse(txtCliente.Text, out client);
+                    //lm34 = TAT2.SearchML04(client, txtidmultilinha.Text, "0");
 
-                    Helper.CopyObjectToControls(ml04_criar, lm34);
+                    
+                    LM34_SublimitesML lm34M = new LM34_SublimitesML();
+                    Helper.CopyPropertiesTo(camposChaveSubLim, lm34M);
 
-                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, lm34);
-                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);
-                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RA, lvProdutosRiscoA, lm34);
+                    LM34_SublimitesML lm33M = ViewState["ContratoCriado"] as LM34_SublimitesML;
+                    if (lm33M != null)
+                    {
+                        //rever
+                        lm34M.EstadoContrato = lm33M.EstadoContrato;
+                    }
+                    MensagemOutput<LM34_SublimitesML> respOutM = bl.LM34Request(lm34M, abargs, "V");
+                    Helper.CopyObjectToControls(ml04_criar, respOutM.ResultResult);
+
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, respOutM.ResultResult);
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, respOutM.ResultResult);
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RA, lvProdutosRiscoA, respOutM.ResultResult);
 
                     break;
 
@@ -171,12 +206,32 @@ namespace Multilinha
                     Helper.AddRemoveHidden(false, hr2);
 
                     //For debug - lm34
-                    Int32.TryParse(txtCliente.Text, out client);
-                     lm34 = TAT2.SearchML04(client, txtidmultilinha.Text, "0");
+                    //Int32.TryParse(txtCliente.Text, out client);
+                    // lm34 = TAT2.SearchML04(client, txtidmultilinha.Text, "0");
 
-                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, lm34);
-                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, lm34);
-                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RA, lvProdutosRiscoA, lm34);
+                    //Call LM34 - V
+                   
+                    LM34_SublimitesML lm34V = new LM34_SublimitesML();
+                    Helper.CopyPropertiesTo(camposChaveSubLim, lm34V);
+
+                    LM34_SublimitesML lm33V = ViewState["ContratoCriado"] as LM34_SublimitesML;
+                    LM38_HistoricoAlteracoes lm38 = ViewState["Hhistorico"] as LM38_HistoricoAlteracoes;
+                    if (lm38 != null)
+                    {
+                        //lm34.zAlteracao = ;
+                    }
+                    if(lm33V != null)
+                    {
+                        //rever
+                        lm34V.EstadoContrato = lm33V.EstadoContrato;
+                    }
+                    MensagemOutput<LM34_SublimitesML> respOutV = bl.LM34Request(lm34V, abargs, "V");
+
+                    Helper.CopyObjectToControls(ml04_criar, respOutV.ResultResult);
+
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, respOutV.ResultResult);
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, respOutV.ResultResult);
+                    listViewFamProdutosESubLim(Constantes.tipologiaRisco.RA, lvProdutosRiscoA, respOutV.ResultResult);
 
                     break;
             }

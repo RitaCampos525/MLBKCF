@@ -158,8 +158,9 @@ namespace MultilinhaBusinessLayer
                         pd1.idmultilinha =  string.Concat(pd.lista_cidctrml_l, pd.lista_cidctrml_l);
                         pd1.nBalcao = Convert.ToInt32(pd.lista_cbalcao_l);
                         pd1.produto = pd.lista_cprodutoml_l;
-                        pd1.subproduto = pd.lista_csubprodml_l;
+                        pd1.subProduto = pd.lista_csubprodml_l;
                         pd1.TipoPedido = pd.lista_tppedido_l;
+                        pd1.utilizador = pd.lista_cutulcri_l;
 
                         obj.PedidosAprovacao.Add(pd1);
                     }
@@ -169,10 +170,10 @@ namespace MultilinhaBusinessLayer
             return msgOut;
         }
 
-        public MensagemOutput<LM33_ContratoML> LM33Request(LM33_ContratoML _lm33, ABUtil.ABCommandArgs abargs, string accao)
+        public MensagemOutput<LM33_ContratoML> LM33Request(LM33_ContratoML _lm33, ABUtil.ABCommandArgs abargs, string accao, string acesso)
         {
             MensagemOutput<LM33_ContratoML> msgOut = new MensagemOutput<LM33_ContratoML>();
-            MultilinhasDataLayer.BCDWSProxy.LM33Transaction response = dl.LM33Request(abargs, _lm33, accao);
+            MultilinhasDataLayer.BCDWSProxy.LM33Transaction response = dl.LM33Request(abargs, _lm33, accao, acesso);
 
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
@@ -180,46 +181,48 @@ namespace MultilinhaBusinessLayer
             LM33_ContratoML obj = new LM33_ContratoML();
             if (response.output != null)
             {
-                obj.baseincidenciacomabert = response.output.basincabert;
-                obj.baseincidenciacomgestcontrato = response.output.basincctr;
-                obj.baseincidenciacomgestrenovacao = response.output.basincrenov;
+                obj.baseincidenciacomabert = response.output.bicomissabe;
+                obj.baseincidenciacomgestcontrato = response.output.bicomissgct;
+                obj.baseincidenciacomgestrenovacao = response.output.bicomissren;
                 obj.Cliente = response.output.zcliente;
-                obj.comissaoabertura = response.output.vrcomabert;
-                obj.comissaogestaocontrato = response.output.vrcomgestc;
-                obj.comissaorenovacao = response.output.vrcomrenov;
-                obj.datafimcontrato = Convert.ToDateTime(response.output.dtfimctr);
-                obj.datainiciocontrato = Convert.ToDateTime(response.output.dtinctr);
+                obj.comissaoabertura = response.output.comissabe;
+                obj.comissaogestaocontrato = response.output.comissgct;
+                obj.comissaorenovacao = response.output.comissren;
+                obj.datafimcontrato = Convert.ToDateTime(response.output.dtfimcont);
+                obj.datainiciocontrato = Convert.ToDateTime(response.output.dtinicont);
                 obj.dataProcessamento = Convert.ToDateTime(response.output.dtprocess);
-                obj.dataproximacobrancagestcontrato = Convert.ToDateTime(response.output.dtpxcobcom);
-                obj.dataproximacobrancagestrenovacao = Convert.ToDateTime(response.output.dtpxcobrenov);
+                obj.dataproximacobrancagestcontrato = Convert.ToDateTime(response.output.dproxgest);
+                obj.dataproximacobrancagestrenovacao = Convert.ToDateTime(response.output.dtrenov);
                 obj.datarenovacao = Convert.ToDateTime(response.output.dtrenov);
                 //obj.Descritivo = response.output.su
-                obj.EstadoContrato = response.output.estctr;
-                obj.graumorosidade = Convert.ToInt32(response.output.grmoros);
-                obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao.ToString(), response.output.cprod.ToString(), response.output.cta.ToString(), response.output.dgt.ToString());
-                obj.IndRenovacao = response.output.idrenov == "S" ? true : false;
-                obj.limiteglobalmultilinha = response.output.limgloml;
-                obj.ncontado = string.Format("{0}{1}{2}{3}", response.output.cbalcaodo.ToString(), response.output.cproddo.ToString(), response.output.ctado.ToString(), response.output.dgtdo.ToString());
-                obj.NDiasIncumprimento = Convert.ToInt32(response.output.nmdincinb);
-                obj.NDiasPreAviso = Convert.ToInt32(response.output.ndpreavi);
-                obj.NMinutaContrato = Convert.ToInt32(response.output.nmincontrato);
+                obj.EstadoContrato = response.output.iestado;
+                obj.graumorosidade = Convert.ToInt32(response.output.qgrau);
+                obj.idmultilinha = response.output.idwf;
+                obj.IndRenovacao = response.output.irenovac == "S" ? true : false;
+                obj.indicadorAcaoCancelamento = response.output.idenuncia == "S" ? true : false ;
+                obj.indicadorAcaoEnvioCartas = response.output.ienviocarta == "S" ? true : false;
+                obj.limiteglobalmultilinha = response.output.mlimglobal;
+                obj.ncontado = response.output.ccontado;
+                obj.NDiasIncumprimento = Convert.ToInt32(response.output.qdiasincum);
+                obj.NDiasPreAviso = Convert.ToInt32(response.output.qdiapaviso);
+                obj.NMinutaContrato = Convert.ToInt32(response.output.zversao);
                 //obj.Nome = response.output.n
-                obj.NumeroMinimoProdutos = Convert.ToInt32(response.output.nmprdat);
-                obj.PeriocidadeCobrancagestcontrato = response.output.percobcom;
-                obj.PeriocidadeCobrancagestRenovacao = response.output.percobrenov;
-                obj.prazocontrato = Convert.ToInt32(response.output.przctr);
-                obj.PrazoRenovacao = Convert.ToInt32(response.output.przrenov);
-                obj.Produtoml = response.output.cprod;
-                obj.sublimiteriscoAssinatura = response.output.limrisass;
-                obj.sublimiteriscoFinanceiro = response.output.limrisfin;
-                obj.sublimitriscoComercial = response.output.limriscom;
-                obj.Subprodutoml = response.output.csubprdml;
-                obj.tipologiaRiscoA = response.output.tplriscass;
-                obj.tipologiaRiscoC = response.output.tplrisccom;
-                obj.tipologiaRiscoF = response.output.tplriscfin;
-                obj.valorimpostocomabert = response.output.vrcomabert;
-                obj.valorimpostocomgestcontrato = response.output.vrcomgestc;
-                obj.valorimpostocomgestrenovacao = response.output.vrcomrenov;
+                obj.NumeroMinimoProdutos = Convert.ToInt32(response.output.qminprod);
+                obj.PeriocidadeCobrancagestcontrato = response.output.qperigest.ToString();
+                obj.PeriocidadeCobrancagestRenovacao = response.output.qperirenov.ToString();
+                obj.prazocontrato = Convert.ToInt32(response.output.qprzcont);
+                obj.PrazoRenovacao = Convert.ToInt32(response.output.qprzrenov);
+                obj.Produtoml = response.output.cprodutoml;
+                obj.sublimiteriscoAssinatura = response.output.mlimassin;
+                obj.sublimiteriscoFinanceiro = response.output.mlimfinan;
+                obj.sublimitriscoComercial = response.output.mlimcomer;
+                obj.Subprodutoml = response.output.cprodutoml;
+                //obj.tipologiaRiscoA = response.output.tplriscass;
+                //obj.tipologiaRiscoC = response.output.tplrisccom;
+                //obj.tipologiaRiscoF = response.output.tplriscfin;
+                obj.valorimpostocomabert = response.output.vicomissabe;
+                obj.valorimpostocomgestcontrato = response.output.vicomissgct;
+                obj.valorimpostocomgestrenovacao = response.output.vicomissren;
                 
                 obj.ProdutosRiscoAssinatura = new List<LM33_ContratoML.ProdutosRiscoA>();
                 obj.produtosRiscoC = new List<LM33_ContratoML.ProdutoRiscoC>();
@@ -228,36 +231,36 @@ namespace MultilinhaBusinessLayer
                 //listas
                 foreach (var a in response.row1)
                 {
-                    if (a.codprod_a_l != null && a.codprod_a_l != "")
+                    if (a.cfamprod_l_l != null && a.cproduto_l_l != "")
                     {
                         obj.ProdutosRiscoAssinatura.Add(new LM33_ContratoML.ProdutosRiscoA
                         {
-                            descritivo = a.subprod_a_l, //TO DO ir a tat buscar descritivo
-                            familiaproduto = a.famprod_a_l,
-                            prodsubproduto = string.Concat(a.codprod_a_l, a.subprod_a_l),
-                            tipologia = a.codtplo_a_l
+                            descritivo = a.csubprod_l_l, //TO DO ir a tat buscar descritivo
+                            familiaproduto = a.cfamprod_l_l,
+                            prodsubproduto = string.Concat(a.cproduto_l_l, a.csubprod_l_l),
+                            tipologia = a.irisco_l_l
                             //zSeq = 
                         });
                     }
-                    if (a.codprod_f_l != null && a.codprod_f_l != "")
+                    if (a.cfamprod_l_l != null && a.cproduto_l_l != "")
                     {
                         obj.produtosRiscoF.Add(new LM33_ContratoML.ProdutoRiscoF
                         {
-                            descritivo = a.subprod_f_l, //TO DO ir a tat buscar descritivo
-                            familiaproduto = a.famprod_f_l,
-                            prodsubproduto = string.Concat(a.codprod_f_l, a.subprod_f_l),
-                            tipologia = a.codtplo_f_l
+                            descritivo = a.csubprod_l_l, //TO DO ir a tat buscar descritivo
+                            familiaproduto = a.cfamprod_l_l,
+                            prodsubproduto = string.Concat(a.cproduto_l_l, a.csubprod_l_l),
+                            tipologia = a.irisco_l_l
                             //zSeq = 
                         });
                     }
-                    if (a.codprod_c_l != null && a.codprod_c_l != "")
+                    if (a.cfamprod_l_l != null && a.cproduto_l_l != "")
                     {
                         obj.produtosRiscoC.Add(new LM33_ContratoML.ProdutoRiscoC
                         {
-                            descritivo = a.subprod_c_l, //TO DO ir a tat buscar descritivo
-                            familiaproduto = a.famprod_c_l,
-                            prodsubproduto = string.Concat(a.codprod_c_l, a.subprod_c_l),
-                            tipologia = a.codtplo_c_l
+                            descritivo = a.csubprod_l_l, //TO DO ir a tat buscar descritivo
+                            familiaproduto = a.cfamprod_l_l,
+                            prodsubproduto = string.Concat(a.cproduto_l_l, a.csubprod_l_l),
+                            tipologia = a.irisco_l_l
                             //zSeq = 
                         });
                     }
