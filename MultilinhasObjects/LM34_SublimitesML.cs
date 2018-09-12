@@ -17,7 +17,7 @@ namespace MultilinhasObjects
         public string EstadoContrato { get; set; }
         public string ncontado { get; set; } //principal
         public decimal limiteglobalmultilinha { get; set; } //é o limite comprometido
-        public string idsimulacaoml { get; set; }
+        public string idSimulacao { get; set; }
         public decimal sublimiteriscoFinanceiro { get; set; }
         public decimal sublimitriscoComercial { get; set; }
         public decimal sublimiteriscoAssinatura { get; set; }

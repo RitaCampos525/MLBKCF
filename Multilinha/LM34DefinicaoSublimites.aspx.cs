@@ -38,7 +38,7 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRComercial);
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm24);
-                        Helper.AddRemoveHidden(true, hr1);
+                        //Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
 
                         //Contexto Visualização - Proveniente de Simulação HSimulacao
@@ -47,6 +47,10 @@ namespace Multilinha
                         {
                             Helper.CopyObjectToControls(camposChaveSubLim, lm37);
                             ViewState["HSimulacao"] = lm37;
+                            btnSimulacao.Visible = true;
+                            btnConsultar.Enabled = false;
+
+                            Helper.SetEnableControler(camposChaveSubLim, false);
                         }
                         break;
                     case "C":
@@ -59,7 +63,7 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRComercial);
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm24);
-                        Helper.AddRemoveHidden(true, hr1);
+                        //Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
 
 
@@ -77,7 +81,7 @@ namespace Multilinha
                         Helper.AddRemoveHidden(true, dvtitleAcordionRAssinatura);
                         Helper.AddRemoveHidden(true, dvtitleAcordionRComercial);
                         Helper.AddRemoveHidden(true, accoesfinais_criarlm24);
-                        Helper.AddRemoveHidden(true, hr1);
+                        //Helper.AddRemoveHidden(true, hr1);
                         Helper.AddRemoveHidden(true, hr2);
 
                         //Contexto Visualização - Proveniente de Historico

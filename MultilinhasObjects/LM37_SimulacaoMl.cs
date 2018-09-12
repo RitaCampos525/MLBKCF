@@ -12,7 +12,6 @@ namespace MultilinhasObjects
         public int Balcao { get; set; }
         public DateTime dataSimulacao { get; set; }
         public string tipoSimulacao { get; set; }
-
         public decimal limiteglobalmultilinhaNovo { get; set; }
         public decimal limiteglobalmultilinhaTotal { get; set; }
         public decimal sublimiteriscoFinanceiroNovo { get; set; }

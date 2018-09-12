@@ -51,10 +51,11 @@
                     <div class="col-sm-4">
                         <label id="bkidmultilinha" runat="server" class="col-sm-4 text-right lbl">* ID Multilinha: </label>
                         <div class="col-sm-2">
-                             <asp:TextBox ID="txtidmultilinha_balcao" MaxLength="9" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                             <asp:TextBox ID="txtidmultilinha_balcao" MaxLength="3" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         </div>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="txtidmultilinha" MaxLength="9" AutoPostBack="true" OnTextChanged="txtIdworkflow_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtidmultilinha" MaxLength="9" pattern="[A-Za-z0-9]{9}" title="Deve inserir um código alfanumérico com nove posições" oninvalid="setCustomValidity('Deve inserir um código alfanumérico com nove posições')"
+                            onchange="try{setCustomValidity('')}catch(e){}" AutoPostBack="true" OnTextChanged="txtIdworkflow_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>

@@ -52,7 +52,8 @@
                     <div class="col-sm-6">
                         <label id="lblIdMultinha" runat="server" class="col-sm-3 text-right lbl">* ID Multinha: </label>
                         <div class="col-sm-4">
-                            <asp:TextBox ID="txtidmultilinha" MaxLength="10" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtidmultilinha" MaxLength="12" pattern="[A-Za-z0-9]{12}" title="Deve inserir um código alfanumérico com doze posições" oninvalid="setCustomValidity('Deve inserir um código alfanumérico com doze posições')"
+                            onchange="try{setCustomValidity('')}catch(e){}" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqIDMultinha" ValidationGroup="ChaveProdutos" ControlToValidate="txtidmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>

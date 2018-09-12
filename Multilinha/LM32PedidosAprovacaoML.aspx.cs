@@ -154,9 +154,9 @@ namespace Multilinha
 
             lvhConsultaAprovacoes.DataBind();
             //dp retirar - teste
-            lvhConsultaAprovacoes.DataSource = TAT2.SearchLM32().PedidosAprovacao;
-            lvhConsultaAprovacoes.DataBind();
-            Helper.AddRemoveHidden(false, dvAcoes_V);
+            //lvhConsultaAprovacoes.DataSource = TAT2.SearchLM32().PedidosAprovacao;
+            //lvhConsultaAprovacoes.DataBind();
+            //Helper.AddRemoveHidden(false, dvAcoes_V);
         }
 
         protected void btnAprovarPedido_Click(object sender, EventArgs e)

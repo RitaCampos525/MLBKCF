@@ -293,7 +293,7 @@ namespace Multilinha
 
             Helper.CopyPropertiesTo(smSelected, lm37.SimulacaoSublimites[0]);
             lm37.idmultilinha = lm37.SimulacaoSublimites[0].cons_idMultilinha;
-            lm37.idsimulacaoml = lm37.SimulacaoSublimites[0].cons_idSimulacao;
+            lm37.idSimulacao = lm37.SimulacaoSublimites[0].cons_idSimulacao;
 
             string urlQueries = Request.Url.Query;
             Page.Transfer(ConfigurationManager.AppSettings["SublimitesML"] + urlQueries,

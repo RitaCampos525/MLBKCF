@@ -374,8 +374,8 @@ namespace MultilinhasDataLayer
             LM34.input.limriscom = _LM34.sublimitriscoComercial;
             LM34.input.limrisfin = _LM34.sublimiteriscoFinanceiro;
             LM34.input.zcliente = _LM34.Cliente.ToString();
-            LM34.input.indsimul = _LM34.idsimulacaoml.ToString();
-            LM34.input.idwrkflw = _LM34.idsimulacaoml.ToString();
+            LM34.input.indsimul = _LM34.idSimulacao.ToString();
+            LM34.input.idwrkflw = _LM34.idSimulacao.ToString();
 
             List<BCDWSProxy.LM34Row1> lstRow1 = new List<BCDWSProxy.LM34Row1>();
 

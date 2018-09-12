@@ -53,7 +53,8 @@
                 <div class="col-sm-4">
                     <label id="bkidmultilinha" runat="server" class="col-sm-4 text-right lbl">* ID Multilinha: </label>
                     <div class="col-sm-6">
-                        <asp:TextBox ID="txtidmultilinha" MaxLength="12" Enabled="false" AutoPostBack="true" OnTextChanged="txtIdworkflow_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtidmultilinha" MaxLength="12" pattern="[A-Za-z0-9]{12}" title="Deve inserir um código alfanumérico com doze posições" oninvalid="setCustomValidity('Deve inserir um código alfanumérico com doze posições')"
+                            onchange="try{setCustomValidity('')}catch(e){}" Enabled="false" AutoPostBack="true" OnTextChanged="txtIdworkflow_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="reqidmultilinha" ControlToValidate="txtidmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                     </div>
 
@@ -64,7 +65,7 @@
                     <div class="col-sm-4">
                         <label id="lbIdSimulacao" runat="server" class="col-sm-4 text-right lbl">ID Simulação ML: </label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtIdSimulacao" MaxLength="9" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtidSimulacao" MaxLength="9" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqIdSimulacao" ValidationGroup="valChavesSim" ControlToValidate="txtIdSimulacao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
@@ -72,8 +73,9 @@
             <div class="row form-group padding-row ">
                 <div class="col-sm-4">
                 </div>
-                <div class="col-sm-2 div-btns" >   
-                    <asp:button id="btnConsultar" class="btns text-center" runat="server" CausesValidation="true" OnClick="btnSearchCont_Click1" ValidationGroup="chaveContrato" Text="Consultar" ></asp:button>
+                <div class="col-sm-2 div-btns" > 
+                    <asp:Button ID="btnSimulacao" runat="server" class="btns text-center" OnClick="btnSearchCont_Click1" noChange="" Visible="false" CausesValidation="true" ValidationGroup="valChavesSim" Text="Carregar Simulação"></asp:Button>  
+                    <asp:button id="btnConsultar" class="btns text-center" runat="server" CausesValidation="true" noChange="" OnClick="btnSearchCont_Click1" ValidationGroup="chaveContrato" Text="Consultar" ></asp:button>
                 </div>
                  <hr class="hr" id="hr1" runat="server" /> 
             </div>

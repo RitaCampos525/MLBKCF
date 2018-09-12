@@ -84,7 +84,8 @@
                     <div class="col-sm-4">
                         <label id="lbidmultilinha" runat="server" class="col-sm-4 text-right lbl">* ID Multilinha ML: </label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txt_idmultilinha" MaxLength="12" AutoPostBack="true" OnTextChanged="txt_idmultilinha_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txt_idmultilinha" MaxLength="12" pattern="[A-Za-z0-9]{12}" title="Deve inserir um código alfanumérico com doze posições" oninvalid="setCustomValidity('Deve inserir um código alfanumérico com doze posições')"
+                            onchange="try{setCustomValidity('')}catch(e){}" AutoPostBack="true" OnTextChanged="txt_idmultilinha_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqidmultilinha" ValidationGroup="valChaves" ControlToValidate="txt_idmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>

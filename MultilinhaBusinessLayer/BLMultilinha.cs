@@ -287,7 +287,7 @@ namespace MultilinhaBusinessLayer
                 obj.Descritivo = response.output.cprod; //IR A TAT
                 obj.EstadoContrato = response.output.estctr;
                 obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.cprod, response.output.cta, response.output.dgt);
-                obj.idsimulacaoml = response.output.idwrkflw;
+                obj.idSimulacao = response.output.idwrkflw;
                 obj.limiteglobalmultilinha = response.output.limgloml;
                 obj.ncontado = string.Format("{0}{1}{2}{3}", response.output.cbalcaodo.ToString(), response.output.cproddo.ToString(), response.output.ctado.ToString(), response.output.dgtdo.ToString());
                 //obj.Nome =
@@ -425,7 +425,7 @@ namespace MultilinhaBusinessLayer
                 obj.Nome = response.output.gcliente;
 
                 obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.lcmv3701_cprod, response.output.ccta, response.output.cdgt);
-                obj.idsimulacaoml = response.output.cidsimulml;
+                obj.idSimulacao = response.output.cidsimulml;
                 obj.limiteglobalmultilinha = response.output.mlmglbmlatual;
                 obj.limiteglobalmultilinhaNovo = response.output.mlmglbmlnovo;
                 obj.limiteglobalmultilinhaTotal = response.output.mlmglbmltotal;

@@ -202,13 +202,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbIdSimulacao;
         
         /// <summary>
-        /// txtIdSimulacao control.
+        /// txtidSimulacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdSimulacao;
+        protected global::System.Web.UI.WebControls.TextBox txtidSimulacao;
         
         /// <summary>
         /// reqIdSimulacao control.
@@ -218,6 +218,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqIdSimulacao;
+        
+        /// <summary>
+        /// btnSimulacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSimulacao;
         
         /// <summary>
         /// btnConsultar control.
