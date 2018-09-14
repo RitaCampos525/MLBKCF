@@ -627,6 +627,46 @@ namespace MultilinhasDataLayer
             };
         }
 
+        public LM36_ContratosProduto SearchLM36(int cliente)
+        {
+            return new LM36_ContratosProduto()
+            {
+                Cliente = cliente,
+                Descritivo = "EMP 1",
+                DPD = 0,
+                EstadoContratoProduto = LM_EstadosContrato.GetEstadoContratos()[0].Code,
+                FamiliaProduto = ArvoreFamiliaProdutos.FamiliaProdutos.A_CreditoDocumentarioImportação.nomeFamProd,
+                GrauMorosidade = 0,
+                idmultilinha = "131414434",
+                limiteglobalmultilinha = 1000000,
+                Nome = "EMP",
+                Produtoml = "LM",
+                sublimiteriscoAssinatura = 1000000,
+                sublimiteriscoFinanceiro = 1000000,
+                sublimitriscoComercial = 1000000,
+                Subprodutoml = "01",
+                TipologiaRisco = "A",
+                ContratosProdutos = new List<LM36_ContratosProduto.ContratosProduto>
+                {
+                   new LM36_ContratosProduto.ContratosProduto
+                   {
+                       DPD = 30,
+                       EstadoContratoProduto = LM_EstadosContrato.GetEstadoContratos()[0].Code,
+                       ExposicaoAtual = 2000,
+                       FamiliaProduto = ArvoreFamiliaProdutos.FamiliaProdutos.A_CreditoDocumentarioImportação.descFamProd,
+                       GrauMorosidade = "001",
+                       NContratoProduto = "12431253",
+                       SubProduto = "01",
+                       TipoRisco = "A",
+                       ValorComprometido = 20111,
+                       ValorContratado = 231241
+                       
+                   }
+                }
+
+            };
+        }
+
         public LM37_SimulacaoMl SearchML37(int cliente, string idMult)
         {
             return new LM37_SimulacaoMl()

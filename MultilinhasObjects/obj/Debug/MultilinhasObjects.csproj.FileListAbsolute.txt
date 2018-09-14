@@ -23,6 +23,6 @@ C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObject
 C:\Users\Rita\Source\Repos\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.pdb
 C:\Projects\Roliveca\MLBKCF\MultilinhasObjects\bin\Debug\MultilinhasObjects.dll
 C:\Projects\Roliveca\MLBKCF\MultilinhasObjects\bin\Debug\MultilinhasObjects.pdb
+C:\Projects\Roliveca\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.csprojResolveAssemblyReference.cache
 C:\Projects\Roliveca\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.dll
 C:\Projects\Roliveca\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.pdb
-C:\Projects\Roliveca\MLBKCF\MultilinhasObjects\obj\Debug\MultilinhasObjects.csprojResolveAssemblyReference.cache

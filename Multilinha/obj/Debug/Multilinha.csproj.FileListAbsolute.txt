@@ -107,7 +107,6 @@ C:\Users\Rita\Source\Repos\MLBKCF\Multilinha\obj\Debug\Multilinha.csprojResolveA
 C:\Users\Rita\Source\Repos\MLBKCF\Multilinha\obj\Debug\Multilinha.csproj.CoreCompileInputs.cache
 C:\Users\Rita\Source\Repos\MLBKCF\Multilinha\obj\Debug\Multilinha.dll
 C:\Users\Rita\Source\Repos\MLBKCF\Multilinha\obj\Debug\Multilinha.pdb
-C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasDataLayer.pdb
 C:\Projects\Roliveca\MLBKCF\Multilinha\bin\ApplicationInsights.config
 C:\Projects\Roliveca\MLBKCF\Multilinha\bin\Multilinha.dll.config
 C:\Projects\Roliveca\MLBKCF\Multilinha\bin\Multilinha.dll
@@ -116,6 +115,7 @@ C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhaBusinessLayer.dll
 C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasDataLayer.dll
 C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasObjects.dll
 C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhaBusinessLayer.pdb
+C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasDataLayer.pdb
 C:\Projects\Roliveca\MLBKCF\Multilinha\bin\MultilinhasObjects.pdb
 C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.csprojResolveAssemblyReference.cache
 C:\Projects\Roliveca\MLBKCF\Multilinha\obj\Debug\Multilinha.dll
