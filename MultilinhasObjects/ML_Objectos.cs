@@ -168,12 +168,12 @@ namespace MultilinhasObjects
             return new List<ComboBox>(){
                  new ComboBox()
                 {
-                    Code = "T1",
+                    Code = "1",
                     Description = "T1 - Sublimites Produtos",
                 },
                   new ComboBox()
                 {
-                    Code = "T2",
+                    Code = "2",
                     Description = "T2 - Limites Globais e Sublimites",
                 },
 

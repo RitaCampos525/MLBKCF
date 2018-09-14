@@ -312,6 +312,10 @@ namespace Multilinha
                         else
                         {
                             lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
+                            if(String.IsNullOrEmpty(lberror.Text))
+                            {
+                                lberror.Text = response.mensagem;
+                            }
                             lberror.Visible = true;
                             lberror.ForeColor = System.Drawing.Color.Red;
                         }
@@ -347,6 +351,10 @@ namespace Multilinha
                         else
                         {
                             lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
+                            if (String.IsNullOrEmpty(lberror.Text))
+                            {
+                                lberror.Text = response.mensagem;
+                            }
                             lberror.Visible = true;
                             lberror.ForeColor = System.Drawing.Color.Red;
                         }
@@ -381,6 +389,10 @@ namespace Multilinha
                         else
                         {
                             lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
+                            if (String.IsNullOrEmpty(lberror.Text))
+                            {
+                                lberror.Text = response.mensagem;
+                            }
                             lberror.Visible = true;
                             lberror.ForeColor = System.Drawing.Color.Red;
                         }

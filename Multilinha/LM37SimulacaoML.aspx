@@ -23,10 +23,10 @@
         <div class="row titleTransaction menu">
             <ul>
                 <li id="liCriacao" runat="server" class=" ">
-                    <asp:LinkButton CssClass="atab "  ID="lblTransaction" Enabled="false" runat="server" Text="C - Simulação ML"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab "  ID="lblTransaction" Enabled="false" runat="server" Text="Simulação ML"></asp:LinkButton>
                 </li>               
                 <li id="liVisualizacao" runat="server" class=" ">               
-                    <asp:LinkButton CssClass="atab " ID="lblTransactionV" Enabled="false" runat="server" Text="V - Consulta de Simulações ML"></asp:LinkButton>
+                    <asp:LinkButton CssClass="atab " ID="lblTransactionV" Enabled="false" runat="server" Text="Consulta de Simulações ML"></asp:LinkButton>
                </li>                                  
             </ul>
         </div>
@@ -126,11 +126,12 @@
                     <div class="col-sm-4">
                         <label id="lblimiteglobalmultilinhaNovo" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtlimiteglobalmultilinhaNovo" Enabled="false" CssClass=" col-sm-4 form-control text-field" runat="server"></asp:TextBox>
-                           <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqlimiteglobalmultilinhaNovo" ControlToValidate="txtlimiteglobalmultilinhaNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtlimiteglobalmultilinhaNovo" MaxLength="18" Enabled="false" CssClass="number col-sm-4 form-control text-field" runat="server"></asp:TextBox>
+                           <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" InitialValue="0" runat="server" ID="reqlimiteglobalmultilinhaNovo" ValidationGroup="ValidaT2" ControlToValidate="txtlimiteglobalmultilinhaNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-sm-1">
-                             <span class="ui-icon ui-icon-check displayNone"></span>
+                             <span id="lmGlobalNovo" runat="server" class=""></span>
+                             <span id="textlmGlobalNovo" runat="server" class=""></span>
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -150,11 +151,12 @@
                     <div class="col-sm-4">
                         <label id="lbsublimiteriscoFinanceiroNovo" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtsublimiteriscoFinanceiroNovo" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimiteriscoFinanceiroNovo" ControlToValidate="txtsublimiteriscoFinanceiroNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtsublimiteriscoFinanceiroNovo" MaxLength="18" Enabled="false" CssClass="number form-control text-field" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" InitialValue="0" runat="server" ID="reqsublimiteriscoFinanceiroNovo" ValidationGroup="ValidaT2" ControlToValidate="txtsublimiteriscoFinanceiroNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-sm-1">
-                             <span class="ui-icon ui-icon-check displayNone"></span>
+                             <span id="sbRfinNovo" runat="server" class=""></span>
+                            <span id="textsbRfinNovo" runat="server" class=""></span>
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -174,11 +176,12 @@
                     <div class="col-sm-4">
                         <label id="lbsublimitriscoComercialNovo" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtsublimitriscoComercialNovo"  Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimitriscoComercialNovo" ControlToValidate="txtsublimitriscoComercialNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtsublimitriscoComercialNovo" MaxLength="18"  Enabled="false" CssClass="number form-control text-field" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator Display="Dynamic" InitialValue="0" CssClass="bklabel" ValidationGroup="ValidaT2" runat="server" ID="reqsublimitriscoComercialNovo" ControlToValidate="txtsublimitriscoComercialNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                          <div class="col-sm-1">
-                             <span class="ui-icon ui-icon-check displayNone"></span>
+                             <span id="sbRComNov" runat="server" class=""></span>
+                             <span id="txtsbRComNov" runat="server" class=""></span>
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -198,11 +201,12 @@
                     <div class="col-sm-4">
                         <label id="lbsublimiteriscoAssinaturaNovo" runat="server" class="col-sm-4 text-right lbl"></label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtsublimiteriscoAssinaturaNovo" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
-                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimiteriscoAssinaturaNovo" ControlToValidate="txtsublimiteriscoAssinaturaNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtsublimiteriscoAssinaturaNovo" MaxLength="18" Enabled="false" CssClass="number form-control text-field" runat="server"></asp:TextBox>
+                             <asp:RequiredFieldValidator Display="Dynamic" InitialValue="0" CssClass="bklabel" ValidationGroup="ValidaT2" runat="server" ID="reqsublimiteriscoAssinaturaNovo" ControlToValidate="txtsublimiteriscoAssinaturaNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                          <div class="col-sm-1">
-                             <span class="ui-icon ui-icon-check displayNone"></span>
+                             <span id="sbRassNovo" runat="server" class=""></span>
+                             <span id="textsbRassNovo" runat="server" class=""></span>
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -233,7 +237,7 @@
                                                         <label>Preço</label>
                                                     </div>
                                                     <div class="Cell Grid">
-                                                        <label>Subl. Comprometido Atual</label>
+                                                        <label>Subl. Comprometido</label>
                                                     </div>
                                                      <div class="Cell Grid">
                                                         <label>Subl. Contratado</label>
@@ -276,8 +280,9 @@
                                                         <asp:Label runat="server" ID="lbExposicaoAtual" CssClass="text-right bklabel" Text='<%# Eval("ExposicaoAtual") %>' ></asp:Label>
                                                     </div>
                                                 <div class="Cell Grid">
-                                                        <asp:TextBox runat="server" CssClass="form-control text-right bklabel" ID="lbSublimiteComprometidoNovo" AutoPostBack="true" OnTextChanged="lbSublimiteComprometidoNovo_TextChanged" Text='<%# Eval("SublimiteComprometidoNovo") %>' ></asp:TextBox>
-                                                    </div>
+                                                        <asp:TextBox runat="server" CssClass="number form-control text-right bklabel" ClientIDMode="Static" MaxLength="18" InitialValue="0" ID="txtSublimiteComprometidoNovo" AutoPostBack="true" OnTextChanged="lbSublimiteComprometidoNovo_TextChanged" Text='<%# Eval("SublimiteComprometidoNovo") %>' ></asp:TextBox>
+                                                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" ValidationGroup="ValidaT2" runat="server" ID="reqlbSublimiteComprometidoNovo" ControlToValidate="txtSublimiteComprometidoNovo" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                                                     </div>
                                                   <div class="Cell Grid">
                                                         <span id="simulcaovalido" runat="server" class=""></span>
                                                         <span id="textsimulcaovalido" runat="server" class=""></span>
@@ -289,7 +294,7 @@
                     </div>
             <div id="divSimular" runat="server" class="row form-group padding-row col-sm-12 text-right">
                 <div class="row div-btns">
-                     <asp:Button CssClass="normalButton col-4 btns" runat="server" ID="btnSimular" OnClick="btnSimular_Click" CausesValidation="false" Text="Simular" />
+                     <asp:Button CssClass="normalButton col-4 btns" runat="server" ID="btnSimular" ValidationGroup="ValidaT2" OnClientClick="return ValidaMontantesNovos();" OnClick="btnSimular_Click" CausesValidation="true" Text="Simular" />
                 </div>
                  <hr class="hr" id="hr2" runat="server" />      
            </div>
@@ -302,8 +307,8 @@
                                 <asp:TextBox ID="txtidsimulacaoml" Enabled="false" MaxLength="10" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             </div>
                             </div>
-                        <asp:Button ID="btnConsultarProdutos" class="btns" Text="Contratos Produtos ML" OnClick="btnConsultarProdutos_Click" CausesValidation="true" ValidationGroup="manterestecampo" runat="server"></asp:Button>
-                        <asp:Button ID="btnGuardarSimulacao" class="btns " runat="server" CausesValidation="true" ValidationGroup="ChaveProdutos" AutoPostBack="true" OnClick="btnGuardarSimulacao_Click" Text="Guardar Simulação"></asp:Button>
+                        <asp:Button ID="btnConsultarProdutos" noChange="" class="btns" Text="Contratos Produtos ML" OnClick="btnConsultarProdutos_Click" CausesValidation="true" ValidationGroup="manterestecampo" runat="server"></asp:Button>
+                        <asp:Button ID="btnGuardarSimulacao" noChange="" class="btns " runat="server" CausesValidation="true" Enabled="false" ValidationGroup="ChaveProdutos" AutoPostBack="true" OnClick="btnGuardarSimulacao_Click" Text="Guardar Simulação"></asp:Button>
                     </div>
                 </div>
             </div>
@@ -337,11 +342,11 @@
                     <div class="col-sm-6">
                         <label id="lbnBalcao" runat="server" class="col-sm-4 text-right lbl">* Balcão: </label>
                         <div class="col-sm-3">
-                            <asp:TextBox ID="txtBalcao" MaxLength="12" AutoPostBack="true" OnTextChanged="txtnBalcao_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtBalcao" MaxLength="3" AutoPostBack="true" OnTextChanged="txtnBalcao_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContratoV" ID="reqnBalcao" ControlToValidate="txtBalcao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-sm-4">
-                              <asp:TextBox ID="txtgBalcao" MaxLength="30" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                              <asp:TextBox ID="txtgbalcao" MaxLength="30" Enabled="false" CssClass="form-control text-field" runat="server"></asp:TextBox>
                         </div>
                     </div>
             </div>
@@ -440,7 +445,7 @@
                         <div id="dvAcoes_V" runat="server" class="row form-group padding-row ">
                             <div class="div-btns">
                                 <div class="col-sm-4" >  
-                                    <asp:Button ID="btnConsultarSm" CssClass="btns" Text="Consultar Simulação" Enabled="false" OnClick="btnConsultarSm_Click" CausesValidation="true" ValidationGroup="manterestecampo" runat="server"></asp:Button>
+                                    <asp:Button ID="btnConsultarSm" CssClass="btns" Text="Consultar Simulação" Enabled="false" noChange="" OnClick="btnConsultarSm_Click" CausesValidation="true" ValidationGroup="manterestecampo" runat="server"></asp:Button>
                                 </div>
                             </div>
                         </div>

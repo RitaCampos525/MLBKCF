@@ -436,8 +436,11 @@ $("[class*=number]").blur(function Numbers (e) {
     if (this.value.indexOf('.') != -1) {
         this.value = this.value.replace('.', ',');
     }
-
     var val = this.value.split(',');
+    if(val[0].length > 15)
+    {
+        return;
+    }
     if (val.length == 1 && val[0] == "")
         this.value = this.value + '0,00';
     else if (val.length == 1)
@@ -659,6 +662,49 @@ function ValidaMontantes()
     else {
         a = false
     }
+    return a;
+}
+
+function ValidaMontantesNovos() {
+    a = true;
+    
+    if ($('#txtlimiteglobalmultilinhaNovo').val() == null || $('#txtlimiteglobalmultilinhaNovo').val() == "" || $('#txtlimiteglobalmultilinhaNovo').val() == "0,00") {
+        $('#reqlimiteglobalmultilinhaNovo').show();
+        $('#lmGlobalNovo').addClass("ui-icon ui-icon-close")
+        a = false;
+    }
+    else {
+        $('#reqlimiteglobalmultilinhaNovo').hide();
+        $('#lmGlobalNovo').addClass("")
+    }
+    if ($('#txtsublimiteriscoFinanceiroNovo').val() == null || $('#txtsublimiteriscoFinanceiroNovo').val() == "" || $('#txtsublimiteriscoFinanceiroNovo').val() == "0,00") {
+        $('#reqsublimiteriscoFinanceiroNovo').show();
+        $('#sbRfinNovo').addClass("ui-icon ui-icon-close")
+        a = false;
+    }
+    else {
+        $('#reqsublimiteriscoFinanceiroNovo').hide();
+        $('#sbRfinNovo').addClass("")
+    }
+    if ($('#txtsublimitriscoComercialNovo').val() == null || $('#txtsublimitriscoComercialNovo').val() == "" || $('#txtsublimitriscoComercialNovo').val() == "0,00") {
+        $('#reqsublimitriscoComercialNovo').show();
+        $('#sbRComNov').addClass("ui-icon ui-icon-close")
+        a = false;
+    }
+    else {
+        $('#reqsublimitriscoComercialNovo').hide();
+        $('#sbRComNov').addClass("")
+    }
+    if ($('#txtsublimiteriscoAssinaturaNovo').val() == null || $('#txtsublimiteriscoAssinaturaNovo').val() == "" || $('#txtsublimiteriscoAssinaturaNovo').val() == "0,00") {
+        $('#reqsublimiteriscoAssinaturaNovo').show();
+        $('#sbRassNovo').addClass("ui-icon ui-icon-close")
+        a = false;
+    } else {
+        $('#reqsublimiteriscoAssinaturaNovo').hide();
+        $('#sbRassNovo').addClass("")
+    }
+
+ 
     return a;
 }
 

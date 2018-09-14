@@ -80,9 +80,9 @@ namespace MultilinhasDataLayer
             LM31.input.qminprod = _lm31.NumeroMinimoProdutos;
             LM31.input.mlimminml = _lm31.LimiteMinimoCredito;
             LM31.input.mlimmaxml = _lm31.LimiteMaximoCredito;
-            LM31.input.iestado = ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Description.ToUpper() == _lm31.Estado.ToUpper()).Code;
+            LM31.input.iestado = _lm31.Estado != null ? ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Description.ToUpper() == _lm31.Estado.ToUpper()).Code : "";
             LM31.input.qdiaincum = _lm31.NDiasIncumprimento;
-            LM31.input.irenovac = _lm31.IndRenovacao.ToString();
+            LM31.input.irenovac = _lm31.IndRenovacao != null ? _lm31.IndRenovacao.ToString() : "N";
             LM31.input.qperigest = Convert.ToInt32(_lm31.PeriocidadeCobranca);
             LM31.input.qprzrenov = _lm31.PrazoRenovacao;
             LM31.input.qdiapaviso = _lm31.NDiasPreAviso;
@@ -270,14 +270,14 @@ namespace MultilinhasDataLayer
             //LM33.input.tplriscfin = _lm33.tipologiaRiscoF;
             LM33.input.comissabe = _lm33.comissaoabertura;
             LM33.input.comissgct = _lm33.comissaogestaocontrato;
-            LM33.input.lmcv3301_comissren = _lm33.comissaorenovacao;
+            LM33.input.comissren = _lm33.comissaorenovacao;
             LM33.input.vicomissabe = _lm33.valorimpostocomabert;
             LM33.input.vicomissgct = _lm33.valorimpostocomgestcontrato;
-            LM33.input.lmcv3301_vicomissren = _lm33.valorimpostocomgestrenovacao;
+            LM33.input.vicomissren = _lm33.valorimpostocomgestrenovacao;
             LM33.input.zcliente = _lm33.Cliente.ToString();
             LM33.input.bicomissabe = _lm33.baseincidenciacomabert;
             LM33.input.bicomissgct = _lm33.baseincidenciacomgestcontrato;
-            LM33.input.lmcv3301_bicomissren = _lm33.baseincidenciacomgestrenovacao;
+            LM33.input.bicomissren = _lm33.baseincidenciacomgestrenovacao;
             LM33.input.qminprod = _lm33.NumeroMinimoProdutos;
    
 
@@ -289,10 +289,10 @@ namespace MultilinhasDataLayer
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
                 _row1.caccao = accao;
                 _row1.pedido_dados = false;
-                _row1.cproduto_l_l = f.prodsubproduto.Substring(0,2);
-                _row1.irisco_l_l = f.tipologia;
-                _row1.cfamprod_l_l = f.familiaproduto;
-                _row1.csubprod_l_l = f.prodsubproduto.Substring(2,2);
+                _row1.l_cproduto_l = f.prodsubproduto.Substring(0,2);
+                _row1.l_irisco_l = f.tipologia;
+                _row1.l_cfamprod_l = f.familiaproduto;
+                _row1.l_csubprod_l = f.prodsubproduto.Substring(2,2);
             }
 
             foreach (var a in _lm33.ProdutosRiscoAssinatura)
@@ -300,10 +300,10 @@ namespace MultilinhasDataLayer
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
                 _row1.caccao = accao;
                 _row1.pedido_dados = false;
-                _row1.cproduto_l_l = a.prodsubproduto.Substring(0, 2);
-                _row1.irisco_l_l = a.tipologia;
-                _row1.cfamprod_l_l = a.familiaproduto;
-                _row1.csubprod_l_l = a.prodsubproduto.Substring(2, 2);
+                _row1.l_cproduto_l = a.prodsubproduto.Substring(0, 2);
+                _row1.l_irisco_l = a.tipologia;
+                _row1.l_cfamprod_l = a.familiaproduto;
+                _row1.l_csubprod_l = a.prodsubproduto.Substring(2, 2);
             }
 
             foreach (var c in _lm33.produtosRiscoC)
@@ -311,10 +311,10 @@ namespace MultilinhasDataLayer
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
                 _row1.caccao = accao;
                 _row1.pedido_dados = false;
-                _row1.cproduto_l_l = c.prodsubproduto.Substring(0, 2);
-                _row1.irisco_l_l = c.tipologia;
-                _row1.cfamprod_l_l = c.familiaproduto;
-                _row1.csubprod_l_l = c.prodsubproduto.Substring(2, 2);
+                _row1.l_cproduto_l = c.prodsubproduto.Substring(0, 2);
+                _row1.l_irisco_l = c.tipologia;
+                _row1.l_cfamprod_l = c.familiaproduto;
+                _row1.l_csubprod_l = c.prodsubproduto.Substring(2, 2);
             }
 
             LM33.input.Row1 = lstRow1.ToArray();
@@ -534,11 +534,14 @@ namespace MultilinhasDataLayer
             LM37.input = new BCDWSProxy.LM37Input();
             LM37.input.pedido_dados = false;
             LM37.input.caccao = accao;
-
-            LM37.input.cbalcao = string.IsNullOrEmpty(_LM37.idmultilinha.ToString()) ? "" : _LM37.idmultilinha.ToString().Substring(0, 3);
+            if(_LM37.idmultilinha != null)
+            {
+                LM37.input.cbalcao = string.IsNullOrEmpty(_LM37.idmultilinha.ToString()) ? "" : _LM37.idmultilinha.ToString().Substring(0, 3);
+                LM37.input.ccta = string.IsNullOrEmpty(_LM37.idmultilinha.ToString()) ? "" : _LM37.idmultilinha.ToString().Substring(5, 6);
+                LM37.input.cdgt = string.IsNullOrEmpty(_LM37.idmultilinha.ToString()) ? "" : _LM37.idmultilinha.ToString().Substring(11, 1);
+            }
+           
             LM37.input.lcmv3700_cprod = _LM37.Produtoml;
-            LM37.input.ccta = string.IsNullOrEmpty(_LM37.idmultilinha.ToString()) ? "" : _LM37.idmultilinha.ToString().Substring(5, 6);
-            LM37.input.cdgt = string.IsNullOrEmpty(_LM37.idmultilinha.ToString()) ? "" : _LM37.idmultilinha.ToString().Substring(11, 1);
             LM37.input.csubprdml = _LM37.Subprodutoml;
             LM37.input.gdescml = _LM37.Descritivo;
             LM37.input.mlmglbmlatual = _LM37.limiteglobalmultilinha;
@@ -563,34 +566,39 @@ namespace MultilinhasDataLayer
 
             foreach (var f in _LM37.SimulacaoSublimites)
             {
-                BCDWSProxy.LM37Row1 _row1 = new BCDWSProxy.LM37Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
-                _row1.ntplprod_l = f.FamiliaProduto;
-                _row1.ntprisco_l = f.TipologiaRisco;
-                _row1.ccodtpl_l = f.CodigoTipologia; //com 4
-                _row1.mpexpoatual_l = f.ExposicaoAtual;
-                _row1.mpsublmcompnovo_l = f.SublimiteComprometidoNovo;
-                _row1.msublmcompatual_l = f.SublimiteComprometido;
-                _row1.msublmcontr_l = f.SublimiteContratado;
-                _row1.nindpreco_l = f.preco ? "S" : "N";
+                if (f.cons_Balcao != null || f.FamiliaProduto != null)
+                {
+                    BCDWSProxy.LM37Row1 _row1 = new BCDWSProxy.LM37Row1();
+                    _row1.caccao = accao;
+                    _row1.pedido_dados = false;
+                    _row1.ntplprod_l = f.FamiliaProduto;
+                    _row1.ntprisco_l = f.TipologiaRisco;
+                    _row1.ccodtpl_l = f.CodigoTipologia; //com 4
+                    _row1.mpexpoatual_l = f.ExposicaoAtual;
+                    _row1.mpsublmcompnovo_l = f.SublimiteComprometidoNovo;
+                    _row1.msublmcompatual_l = f.SublimiteComprometido;
+                    _row1.msublmcontr_l = f.SublimiteContratado;
+                    _row1.nindpreco_l = f.preco ? "S" : "N";
 
-                _row1.cons_cbalcao_l = f.cons_Balcao;
-                _row1.cons_ccta_l = string.IsNullOrEmpty(f.cons_idMultilinha.ToString()) ? "" : f.cons_idMultilinha.ToString().Substring(5, 6);
-                _row1.cons_cdgt_l = string.IsNullOrEmpty(f.cons_idMultilinha.ToString()) ? "" : f.cons_idMultilinha.ToString().Substring(11, 1);
-                _row1.cons_cidsimulml_l = f.cons_idSimulacao.ToString();
-                _row1.cons_cprod_l = string.IsNullOrEmpty(f.cons_idMultilinha.ToString()) ? "" : f.cons_idMultilinha.ToString().Substring(3, 2);
-                _row1.cons_cprodsubp_l = f.cons_ProdSub;
-                _row1.cons_cutulcria_l = f.cons_utilizador;
-                _row1.cons_dsimulml_l = f.cons_DataSimulacao.ToString("yyyyMMdd");
-                _row1.cons_mlmglbml_l = f.cons_limiteML;
-                _row1.cons_msublmra_l = f.cons_limiteRA;
-                _row1.cons_msublmra_l = f.cons_limiteRA;
-                _row1.cons_msublmrc_l = f.cons_limiteRC;
-                _row1.cons_msublmrf_l = f.cons_limiteRF;
-                _row1.cons_zcliente_l = f.cons_Cliente;
+                    _row1.cons_cbalcao_l = f.cons_Balcao;
+                    if (f.cons_idMultilinha != null)
+                    {
+                        _row1.cons_ccta_l = string.IsNullOrEmpty(f.cons_idMultilinha.ToString()) ? "" : f.cons_idMultilinha.ToString().Substring(5, 6);
+                        _row1.cons_cdgt_l = string.IsNullOrEmpty(f.cons_idMultilinha.ToString()) ? "" : f.cons_idMultilinha.ToString().Substring(11, 1);
+                        _row1.cons_cprod_l = string.IsNullOrEmpty(f.cons_idMultilinha.ToString()) ? "" : f.cons_idMultilinha.ToString().Substring(3, 2);
+                    }
+                    _row1.cons_cidsimulml_l = f.cons_idSimulacao.ToString();
+                    _row1.cons_cprodsubp_l = f.cons_ProdSub;
+                    _row1.cons_cutulcria_l = f.cons_utilizador;
+                    _row1.cons_dsimulml_l = f.cons_DataSimulacao.ToString("yyyyMMdd");
+                    _row1.cons_mlmglbml_l = f.cons_limiteML;
+                    _row1.cons_msublmra_l = f.cons_limiteRA;
+                    _row1.cons_msublmra_l = f.cons_limiteRA;
+                    _row1.cons_msublmrc_l = f.cons_limiteRC;
+                    _row1.cons_msublmrf_l = f.cons_limiteRF;
+                    _row1.cons_zcliente_l = f.cons_Cliente;
 
-
+                }
             }
 
             LM37.input.Row1 = lstRow1.ToArray();

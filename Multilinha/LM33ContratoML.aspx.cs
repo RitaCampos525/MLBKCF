@@ -158,6 +158,8 @@ namespace Multilinha
                             Helper.CopyObjectToControls(this, lm38);
                             Control ctr = this.FindControl(Helper.getControltoHighLight(lm38.HistoricoAlteracoes[0].Alteracao));
                             Helper.AddHightLight(ctr, true);
+
+                            Helper.SetEnableControler(camposChave, false);
                         }
 
                         //Contexto Visualização - Proveniente da Aprovação
@@ -167,6 +169,8 @@ namespace Multilinha
                             ViewState["HAprovacao"] = LM33;
                             Helper.CopyObjectToControls(camposChave, LM33);
                             txtCliente_TextChanged(sender, e);
+
+                            Helper.SetEnableControler(camposChave, false);
                         }
 
                         break;
@@ -422,7 +426,7 @@ namespace Multilinha
                     return;
                 }
 
-                //1º Verificar Valor Sublimites
+                //2º Verificar Valor Sublimites
                 bool val1 = validacaoSublimitesRisco();
                 if(!val1)
                 {
@@ -908,10 +912,12 @@ namespace Multilinha
             if (!string.IsNullOrEmpty(txtCliente.Text))
             {
                 reqidmultilinha.Enabled = false;
+                txt_idmultilinha.Enabled = false;
             }
             else
             {
                 reqidmultilinha.Enabled = true;
+                txt_idmultilinha.Enabled = true;
             }
         }
 
@@ -920,10 +926,12 @@ namespace Multilinha
             //desabilita / habilita os require fields
             if (!string.IsNullOrEmpty(txt_idmultilinha.Text))
             {
+                txtCliente.Enabled = false;
                 reqCliente.Enabled = false;
             }
             else
             {
+                txtCliente.Enabled = true;
                 reqCliente.Enabled = true;
 
             }

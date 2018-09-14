@@ -104,8 +104,8 @@
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4 div-btns text-center">
                         <div class="col-sm-6 div-btns">
-                            <asp:Button ID="btnSimulacao" runat="server" class="btns text-center" OnClick="btnSimulacao_Click" Visible="false" CausesValidation="true" ValidationGroup="valChavesSim" Text="Simulação"></asp:Button>
-                            <asp:Button ID="btnSearch" class="btns text-center" runat="server" CausesValidation="true" ValidationGroup="valChaves" AutoPostBack="True" OnClick="btnSearchDO_Click" Text="Consultar"></asp:Button>
+                            <asp:Button ID="btnSimulacao" runat="server" class="btns text-center" noChange="" OnClick="btnSimulacao_Click" Visible="false" CausesValidation="true" ValidationGroup="valChavesSim" Text="Simulação"></asp:Button>
+                            <asp:Button ID="btnSearch" class="btns text-center" runat="server" noChange="" CausesValidation="true" ValidationGroup="valChaves" AutoPostBack="True" OnClick="btnSearchDO_Click" Text="Consultar"></asp:Button>
                         </div>
                     </div>
                     <hr class="hr" id="hr" runat="server" />

@@ -50,13 +50,20 @@ namespace MultilinhaBusinessLayer
             LM31_CatalogoProdutoML obj = new LM31_CatalogoProdutoML();
             if (response.output != null)
             {
-                obj.DataFimComercializacao = Convert.ToDateTime(response.output.dtfimcomer);
-                obj.DataInicioComercializacao = Convert.ToDateTime(response.output.dtinicomer);
+
+                DateTime dtfimcomer;
+                DateTime.TryParseExact(response.output.dtfimcomer, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtfimcomer);
+                obj.DataFimComercializacao = dtfimcomer;
+
+                DateTime dtinicomer;
+                DateTime.TryParseExact(response.output.dtinicomer, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtinicomer);
+                obj.DataInicioComercializacao = dtinicomer;
+
                 obj.Estado = response.output.iestado;
                 obj.IndRenovacao = response.output.irenovac;
                 obj.LimiteMaximoCredito = response.output.mlimmaxml;
                 obj.LimiteMaximoCredito = response.output.mlimminml;
-                obj.NDiasIncumprimento = Convert.ToInt32(response.output.qdiaincum);
+                obj.NDiasIncumprimento =  Convert.ToInt32(response.output.qdiaincum);
                 obj.NDiasPreAviso = Convert.ToInt32(response.output.qdiapaviso);
                 obj.NumeroMinimoProdutos = Convert.ToInt32(response.output.qminprod);
                 obj.PeriocidadeCobranca = response.output.qperigest.ToString();
@@ -65,7 +72,10 @@ namespace MultilinhaBusinessLayer
                 obj.PrazoRenovacao = Convert.ToInt32(response.output.qprzrenov);
                 obj.ProductCode = response.output.cprodutoml;
                 obj.SubProdutoCode = response.output.csubprodml;
-                obj.DataVersao = Convert.ToDateTime(response.output.dtversao);
+
+                DateTime dtversao;
+                DateTime.TryParseExact(response.output.dtversao, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtversao);
+                obj.DataVersao = dtversao;
                 //obj.SubProductDescription = response.output.cdescprd; TO DO IR A TAT
 
                 obj.produtosA = new List<LM31_CatalogoProdutoML.ProdutoRisco>();
@@ -188,12 +198,31 @@ namespace MultilinhaBusinessLayer
                 obj.comissaoabertura = response.output.comissabe;
                 obj.comissaogestaocontrato = response.output.comissgct;
                 obj.comissaorenovacao = response.output.comissren;
-                obj.datafimcontrato = Convert.ToDateTime(response.output.dtfimcont);
-                obj.datainiciocontrato = Convert.ToDateTime(response.output.dtinicont);
-                obj.dataProcessamento = Convert.ToDateTime(response.output.dtprocess);
-                obj.dataproximacobrancagestcontrato = Convert.ToDateTime(response.output.dproxgest);
-                obj.dataproximacobrancagestrenovacao = Convert.ToDateTime(response.output.dtrenov);
-                obj.datarenovacao = Convert.ToDateTime(response.output.dtrenov);
+
+                DateTime dtfimcont;
+                DateTime.TryParseExact(response.output.dtfimcont, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtfimcont);
+                obj.datafimcontrato = dtfimcont;
+
+                DateTime dtinicont;
+                DateTime.TryParseExact(response.output.dtinicont, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtinicont);
+                obj.datainiciocontrato = dtinicont;
+
+                DateTime dtprocess;
+                DateTime.TryParseExact(response.output.dtprocess, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtprocess);
+                obj.dataProcessamento = dtprocess;
+
+                DateTime dproxgest;
+                DateTime.TryParseExact(response.output.dproxgest, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dproxgest);
+                obj.dataproximacobrancagestcontrato = dproxgest;
+
+                DateTime dproxrenov;
+                DateTime.TryParseExact(response.output.dproxrenov, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dproxrenov);
+                obj.dataproximacobrancagestrenovacao = dproxrenov;
+
+                DateTime dtrenov;
+                DateTime.TryParseExact(response.output.dtrenov, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtrenov);
+                obj.datarenovacao = dtrenov;
+                
                 //obj.Descritivo = response.output.su
                 obj.EstadoContrato = response.output.iestado;
                 obj.graumorosidade = Convert.ToInt32(response.output.qgrau);
@@ -231,36 +260,36 @@ namespace MultilinhaBusinessLayer
                 //listas
                 foreach (var a in response.row1)
                 {
-                    if (a.cfamprod_l_l != null && a.cproduto_l_l != "")
+                    if (a.l_cfamprod_l != null && a.l_cproduto_l != "")
                     {
                         obj.ProdutosRiscoAssinatura.Add(new LM33_ContratoML.ProdutosRiscoA
                         {
-                            descritivo = a.csubprod_l_l, //TO DO ir a tat buscar descritivo
-                            familiaproduto = a.cfamprod_l_l,
-                            prodsubproduto = string.Concat(a.cproduto_l_l, a.csubprod_l_l),
-                            tipologia = a.irisco_l_l
+                            descritivo = a.l_csubprod_l, //TO DO ir a tat buscar descritivo
+                            familiaproduto = a.l_cfamprod_l,
+                            prodsubproduto = string.Concat(a.l_cproduto_l, a.l_csubprod_l),
+                            tipologia = a.l_irisco_l
                             //zSeq = 
                         });
                     }
-                    if (a.cfamprod_l_l != null && a.cproduto_l_l != "")
+                    if (a.l_cfamprod_l != null && a.l_cproduto_l != "")
                     {
                         obj.produtosRiscoF.Add(new LM33_ContratoML.ProdutoRiscoF
                         {
-                            descritivo = a.csubprod_l_l, //TO DO ir a tat buscar descritivo
-                            familiaproduto = a.cfamprod_l_l,
-                            prodsubproduto = string.Concat(a.cproduto_l_l, a.csubprod_l_l),
-                            tipologia = a.irisco_l_l
+                            descritivo = a.l_csubprod_l, //TO DO ir a tat buscar descritivo
+                            familiaproduto = a.l_cfamprod_l,
+                            prodsubproduto = string.Concat(a.l_cproduto_l, a.l_csubprod_l),
+                            tipologia = a.l_irisco_l
                             //zSeq = 
                         });
                     }
-                    if (a.cfamprod_l_l != null && a.cproduto_l_l != "")
+                    if (a.l_cfamprod_l != null && a.l_cproduto_l != "")
                     {
                         obj.produtosRiscoC.Add(new LM33_ContratoML.ProdutoRiscoC
                         {
-                            descritivo = a.csubprod_l_l, //TO DO ir a tat buscar descritivo
-                            familiaproduto = a.cfamprod_l_l,
-                            prodsubproduto = string.Concat(a.cproduto_l_l, a.csubprod_l_l),
-                            tipologia = a.irisco_l_l
+                            descritivo = a.l_csubprod_l, //TO DO ir a tat buscar descritivo
+                            familiaproduto = a.l_cfamprod_l,
+                            prodsubproduto = string.Concat(a.l_cproduto_l, a.l_csubprod_l),
+                            tipologia = a.l_irisco_l
                             //zSeq = 
                         });
                     }

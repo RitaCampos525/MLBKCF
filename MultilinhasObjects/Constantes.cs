@@ -27,7 +27,8 @@ namespace MultilinhasObjects
             public const string LM33ContratoModificado = "Contrato ML modificado. Continue o processo seleccionando 'Seguinte'";
             public const string LM34SublimiteCriado = "Sublimite Criado. Continue o processo seleccionando 'Seguinte'";
             public const string LM33PropostaInexistente = "Nº da Proposta da Workflow não encontrado";
-            public const string LM37SimulacaoCriado = "Simulação ML criada";
+            public const string LM37SimulacaoCriado = "LM - Simulação ML criada";
+            public const string LM37Formularioinvalido = "LM - Verifique os valores do formulário.";
             public const string ProdutoMLNIdentificado = "Produto não identificado como produto Multilinha. A descrição do produto deverá indicar se o produto é Base ou Avançado";
             public const string NMinimoProdutosCredito = "Selecione no máximo 100 produtos de risco";
             public const string NMinimoProdutosRiscoA = "Selecione no máximo 17 produtos de risco";

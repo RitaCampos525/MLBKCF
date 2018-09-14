@@ -643,7 +643,7 @@ namespace MultilinhasDataLayer
                 Nome = "NOME 1",
                 Produtoml = "LM",
                 Subprodutoml = "01",
-                tipoSimulacao = ML_Objectos.GetTiposSimulacao()[0].Code,
+                tipoSimulacao = ML_Objectos.GetTiposSimulacao()[1].Code,
                 sublimiteriscoAssinatura = 100000,
                 sublimiteriscoFinanceiro = 100000,
                 sublimitriscoComercial = 100000,
