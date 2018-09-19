@@ -633,10 +633,10 @@ namespace MultilinhasDataLayer
             {
                 Cliente = cliente,
                 Descritivo = "EMP 1",
-                DPD = 0,
+                DPD = true,
                 EstadoContratoProduto = LM_EstadosContrato.GetEstadoContratos()[0].Code,
                 FamiliaProduto = ArvoreFamiliaProdutos.FamiliaProdutos.A_CreditoDocumentarioImportação.nomeFamProd,
-                GrauMorosidade = 0,
+                GrauMorosidade = 101,
                 idmultilinha = "131414434",
                 limiteglobalmultilinha = 1000000,
                 Nome = "EMP",
@@ -644,7 +644,7 @@ namespace MultilinhasDataLayer
                 sublimiteriscoAssinatura = 1000000,
                 sublimiteriscoFinanceiro = 1000000,
                 sublimitriscoComercial = 1000000,
-                Subprodutoml = "01",
+                Subprodutoml = "02",
                 TipologiaRisco = "A",
                 ContratosProdutos = new List<LM36_ContratosProduto.ContratosProduto>
                 {

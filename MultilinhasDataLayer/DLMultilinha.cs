@@ -69,7 +69,7 @@ namespace MultilinhasDataLayer
 
             LM31.input = new BCDWSProxy.LM31Input();
             LM31.input.caccao = accao;
-            LM31.input.pedido_dados = false;
+            LM31.input.pedido_dados = true;
             LM31.input.cprodutoml = _lm31.ProductCode;
             LM31.input.csubprodml = _lm31.SubProdutoCode;
             //LM31.input.C = _lm31.SubProductDescription;
@@ -248,7 +248,7 @@ namespace MultilinhasDataLayer
             LM33.input.dproxgest = _lm33.dataproximacobrancagestcontrato.ToString("yyyyMMdd");
             LM33.input.dproxrenov = _lm33.dataproximacobrancagestrenovacao.ToString("yyyyMMdd");
             LM33.input.dtrenov = _lm33.datarenovacao.ToString("yyyyMMdd");
-            LM33.input.iestado = _lm33.EstadoContrato != null ? ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Description.ToUpper() == _lm33.EstadoContrato.ToUpper()).Code : "";
+            LM33.input.iestadoc = _lm33.EstadoContrato != null ? ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Description.ToUpper() == _lm33.EstadoContrato.ToUpper()).Code : "";
             LM33.input.qgrau = _lm33.graumorosidade.ToString();
             LM33.input.irenovac = _lm33.IndRenovacao == true ? "S" : "N";
             LM33.input.idwf = _lm33.idproposta;
@@ -357,59 +357,61 @@ namespace MultilinhasDataLayer
 
             LM34.input = new BCDWSProxy.LM34Input();
             LM34.input.caccao = accao;
-            LM34.input.pedido_dados = false;
+            LM34.input.pedido_dados = true;
 
-            LM34.input.cbalcao = string.IsNullOrEmpty(_LM34.idmultilinha.ToString()) ? "" : _LM34.idmultilinha.ToString().Substring(0, 3);
-            LM34.input.cprod = _LM34.Produtoml;
-            LM34.input.cta = string.IsNullOrEmpty(_LM34.idmultilinha.ToString()) ? "" : _LM34.idmultilinha.ToString().Substring(5, 6);
-            LM34.input.dgt = string.IsNullOrEmpty(_LM34.idmultilinha.ToString()) ? "" : _LM34.idmultilinha.ToString().Substring(11, 1);
-            LM34.input.cbalcaodo = string.IsNullOrEmpty(_LM34.ncontado) ? "" : _LM34.ncontado.Split('-')[0];
-            LM34.input.cproddo = string.IsNullOrEmpty(_LM34.ncontado) ? "" : _LM34.ncontado.Split('-')[1].Replace("-", "").Trim().Substring(0, 2);
-            LM34.input.ctado = string.IsNullOrEmpty(_LM34.ncontado) ? "" : _LM34.ncontado.Split('-')[1].Replace("-", "").Trim().Substring(2, 6);
-            LM34.input.dgtdo = string.IsNullOrEmpty(_LM34.ncontado) ? "" : _LM34.ncontado.Split('-')[1].Replace("-", "").Trim().Substring(8, 1);
-            LM34.input.csubprdml = _LM34.Subprodutoml;
-            LM34.input.estctr = _LM34.EstadoContrato;
-            LM34.input.limgloml = _LM34.limiteglobalmultilinha;
-            LM34.input.limrisass = _LM34.sublimiteriscoAssinatura;
-            LM34.input.limriscom = _LM34.sublimitriscoComercial;
-            LM34.input.limrisfin = _LM34.sublimiteriscoFinanceiro;
+            LM34.input.cbalcaoml = string.IsNullOrEmpty(_LM34.idmultilinha.ToString()) ? "" : _LM34.idmultilinha.ToString().Substring(0, 3);
+            LM34.input.cprodutoml = _LM34.Produtoml;
+            LM34.input.cnumectaml = string.IsNullOrEmpty(_LM34.idmultilinha.ToString()) ? "" : _LM34.idmultilinha.ToString().Substring(5, 6);
+            LM34.input.cdigictaml = string.IsNullOrEmpty(_LM34.idmultilinha.ToString()) ? "" : _LM34.idmultilinha.ToString().Substring(11, 1);
+            LM34.input.cbalcaoml = string.IsNullOrEmpty(_LM34.ncontado) ? "" : _LM34.ncontado.Split('-')[0];
+            //LM34.input.n = string.IsNullOrEmpty(_LM34.ncontado) ? "" : _LM34.ncontado.Split('-')[1].Replace("-", "").Trim().Substring(0, 2);
+            //LM34.input.ctado = string.IsNullOrEmpty(_LM34.ncontado) ? "" : _LM34.ncontado.Split('-')[1].Replace("-", "").Trim().Substring(2, 6);
+            //LM34.input.dgtdo = string.IsNullOrEmpty(_LM34.ncontado) ? "" : _LM34.ncontado.Split('-')[1].Replace("-", "").Trim().Substring(8, 1);
+            LM34.input.csubprod = _LM34.Subprodutoml;
+            LM34.input.iestadoc = _LM34.EstadoContrato;
+            LM34.input.mlimtotal = _LM34.limiteglobalmultilinha;
+            LM34.input.mlimassin = _LM34.sublimiteriscoAssinatura;
+            LM34.input.mlimcomer = _LM34.sublimitriscoComercial;
+            LM34.input.mlimfinan = _LM34.sublimiteriscoFinanceiro;
             LM34.input.zcliente = _LM34.Cliente.ToString();
-            LM34.input.indsimul = _LM34.idSimulacao.ToString();
-            LM34.input.idwrkflw = _LM34.idSimulacao.ToString();
+            LM34.input.isimula = _LM34.idSimulacao.ToString();
+            LM34.input.gnome = _LM34.Nome;
+            LM34.input.zcliente = _LM34.Cliente.ToString();
+            LM34.input.zsequen = _LM34.zseq;
+            
+            //LM34.input.i = _LM34.idSimulacao.ToString();
 
             List<BCDWSProxy.LM34Row1> lstRow1 = new List<BCDWSProxy.LM34Row1>();
 
             foreach (var f in _LM34.produtosRiscoF)
             {
                 BCDWSProxy.LM34Row1 _row1 = new BCDWSProxy.LM34Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
-                _row1.codprod_f_l = f.prodsubproduto.Substring(0, 2);
-                _row1.codtplo_f_l = f.tipologia;
-                _row1.famprod_f_l = f.familiaproduto;
-                _row1.subprod_f_l = f.prodsubproduto.Substring(2, 2);
+               
+                _row1.l_irisco_l = f.tipologia;
+                _row1.l_famprod_l = f.familiaproduto;
+                _row1.l_mlimcomp_l = f.sublimitecomprometido;
+                _row1.l_mlimcont_l = f.sublimiteContratado;
+                _row1.l_mlimtotal_l = f.sublimiteAtual;
             }
 
             foreach (var a in _LM34.ProdutosRiscoAssinatura)
             {
                 BCDWSProxy.LM34Row1 _row1 = new BCDWSProxy.LM34Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
-                _row1.codprod_a_l = a.prodsubproduto.Substring(0, 2);
-                _row1.codtplo_a_l = a.tipologia;
-                _row1.famprod_a_l = a.familiaproduto;
-                _row1.subprod_a_l = a.prodsubproduto.Substring(2, 2);
+                _row1.l_irisco_l = a.tipologia;
+                _row1.l_famprod_l = a.familiaproduto;
+                _row1.l_mlimcomp_l = a.sublimitecomprometido;
+                _row1.l_mlimcont_l = a.sublimiteContratado;
+                _row1.l_mlimtotal_l = a.sublimiteAtual;
             }
 
             foreach (var c in _LM34.produtosRiscoC)
             {
                 BCDWSProxy.LM34Row1 _row1 = new BCDWSProxy.LM34Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
-                _row1.codprod_c_l = c.prodsubproduto.Substring(0, 2); ;
-                _row1.codtplo_c_l = c.tipologia;
-                _row1.famprod_c_l = c.familiaproduto;
-                _row1.subprod_c_l = c.prodsubproduto.Substring(2, 2);
+                _row1.l_irisco_l = c.tipologia;
+                _row1.l_famprod_l = c.familiaproduto;
+                _row1.l_mlimcomp_l = c.sublimitecomprometido;
+                _row1.l_mlimcont_l = c.sublimiteContratado;
+                _row1.l_mlimtotal_l = c.sublimiteAtual;
             }
 
             LM34.input.Row1 = lstRow1.ToArray();
@@ -441,7 +443,7 @@ namespace MultilinhasDataLayer
         }
 
         BCDWSProxy.LM36SUBPRODUTOSMLRequest LM36 = new BCDWSProxy.LM36SUBPRODUTOSMLRequest();
-        public BCDWSProxy.LM36Transaction LM36Request(ABUtil.ABCommandArgs AbArgs, LM36_ContratosProduto _LM36, string accao)
+        public BCDWSProxy.LM36Transaction LM36Request(ABUtil.ABCommandArgs AbArgs, LM36_ContratosProduto _LM36, LM36_ContratosProduto.ContratosProduto rotLM36, string accao)
         {
             BCDWSProxy.LM36Transaction response = new BCDWSProxy.LM36Transaction();
 
@@ -457,42 +459,54 @@ namespace MultilinhasDataLayer
 
             LM36.input.cbalcao = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(0, 3);
             LM36.input.cprodml = _LM36.Produtoml;
-            LM36.input.ccta = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(5, 6);
-            LM36.input.cdgt = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(11, 1);
-            LM36.input.csubprdml = _LM36.Subprodutoml;
+            LM36.input.cnumectaml = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(5, 6);
+            LM36.input.cdigictaml = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(11, 1);
+            LM36.input.csubprodml = _LM36.Subprodutoml;
             LM36.input.gdescml = _LM36.Descritivo;
-            LM36.input.mlmglbml = _LM36.limiteglobalmultilinha;
-            LM36.input.msublmra = _LM36.sublimiteriscoAssinatura;
-            LM36.input.msublmrc = _LM36.sublimitriscoComercial;
-            LM36.input.msublmrf = _LM36.sublimiteriscoFinanceiro;
+            LM36.input.mlimglobal = _LM36.limiteglobalmultilinha;
+            LM36.input.mlimassin = _LM36.sublimiteriscoAssinatura;
+            LM36.input.mlimcomer = _LM36.sublimitriscoComercial;
+            LM36.input.mlimfinan = _LM36.sublimiteriscoFinanceiro;
             LM36.input.zcliente = _LM36.Cliente.ToString();
             LM36.input.gdescml = _LM36.Nome;
-            LM36.input.cgraumorml = _LM36.GrauMorosidade.ToString();
-            LM36.input.ntprisco = _LM36.TipologiaRisco;
-            LM36.input.ntplprod = _LM36.FamiliaProduto;
-            LM36.input.ndpdml = _LM36.DPD.ToString();
+            LM36.input.cgraumor = _LM36.GrauMorosidade.ToString();
+            LM36.input.irisco = _LM36.TipologiaRisco;
+            LM36.input.cfamiprod = _LM36.FamiliaProduto;
+            LM36.input.dpd = _LM36.DPD.ToString();
+            LM36.input.gcliente = _LM36.Nome;
+            LM36.input.zcliente = _LM36.Cliente.ToString();
+            LM36.input.rot_ccontrprod = rotLM36.NContratoProduto;
+            LM36.input.rot_cfamiprod = rotLM36.FamiliaProduto;
+            LM36.input.rot_cgraumor = rotLM36.GrauMorosidade;
+            LM36.input.rot_cprodsubpml = rotLM36.SubProduto;
+            LM36.input.rot_dpd = rotLM36.DPD.ToString();
+            LM36.input.rot_iestadocp = rotLM36.EstadoContratoProduto;
+            LM36.input.rot_irisco = rotLM36.TipoRisco;
+            LM36.input.rot_mexpoact = rotLM36.ExposicaoAtual;
+            LM36.input.rot_mvlrcompr = rotLM36.ValorComprometido;
+            LM36.input.rot_mvlrcontr = rotLM36.ValorContratado;
+            
+            //List<BCDWSProxy.LM36Row1> lstRow1 = new List<BCDWSProxy.LM36Row1>();
 
-            List<BCDWSProxy.LM36Row1> lstRow1 = new List<BCDWSProxy.LM36Row1>();
+            //foreach (var f in _LM36.ContratosProdutos)
+            //{
+            //    BCDWSProxy.LM36Row1 _row1 = new BCDWSProxy.LM36Row1();
 
-            foreach (var f in _LM36.ContratosProdutos)
-            {
-                BCDWSProxy.LM36Row1 _row1 = new BCDWSProxy.LM36Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
-                _row1.cgraumor_l = f.GrauMorosidade;
-                _row1.cidctrprod_l = f.NContratoProduto;
-                _row1.cprodsubp_l = f.SubProduto;
-                _row1.mexpoatual_l = f.ExposicaoAtual;
-                _row1.mvlcompr_l = f.ValorComprometido;
-                _row1.ndpd_l = f.DPD.ToString();
-                _row1.nestctrprd_l = f.EstadoContratoProduto;
-                _row1.ntplprod_l = f.FamiliaProduto;
-                _row1.ntprisco_l = f.TipoRisco;
-                _row1.lmcv3700_mvlcontr_l = f.ValorContratado;
+            //    _row1.lista_ccontrprod_l = f.NContratoProduto;
+            //    _row1.lista_cgraumor_l = f.GrauMorosidade;
+            //    _row1.lista_cfamiprod_l = f.FamiliaProduto;
+            //    _row1.lista_cprodsubpml_l = f.SubProduto; 
+            //    _row1.lista_dpd_l = f.DPD.ToString();
+            //    _row1.lista_iestadocp_l = f.EstadoContratoProduto;
+            //    _row1.lista_irisco_l = f.TipoRisco;
+            //    _row1.lista_mexpoact_l = f.ExposicaoAtual;
+            //    _row1.lista_mvlrcompr_l = f.ValorComprometido;
+            //    _row1.lista_mvlrcontr_l = f.ValorContratado;
+           
                 
-            }
+            //}
 
-            LM36.input.Row1 = lstRow1.ToArray();
+            //LM36.input. = lstRow1.ToArray();
             BCDWSProxy.BarclaysBTSSoapClient client = new BCDWSProxy.BarclaysBTSSoapClient();
             bool bRetry = false;
             atempt = 0;

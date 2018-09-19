@@ -64,8 +64,8 @@
                           <label id="lbTipoRisco" runat="server" class="col-sm-4 text-right lbl">* Tipo de Risco: </label>
                          <div class="col-sm-6">
                              <asp:DropDownList OnTextChanged="ddlTipoRisco_TextChanged" AutoPostBack="true" runat="server" CssClass="form-control text-field" ID="ddlTipoRisco">
-                                 <asp:ListItem Text="Comercial" Value="Risco Comercial"></asp:ListItem>
                                  <asp:ListItem Text="Assinatura" Value="Risco Assinatura"></asp:ListItem>
+                                 <asp:ListItem Text="Comercial" Value="Risco Comercial"></asp:ListItem>
                                  <asp:ListItem Text="Financeiro" Value="Risco Financeiro"></asp:ListItem>
                              </asp:DropDownList>
                          </div>
@@ -77,7 +77,7 @@
                             </div>
                     </div>
                        <div class="col-sm-4">
-                        <label id="lbEstadoContrato" runat="server" class="col-sm-4 text-right lbl"> * Estado Contrato</label>
+                        <label id="lbEstadoContrato" runat="server" class="col-sm-4 text-right lbl"> * Estado da Relação ML - Contrato Produto</label>
                         <div class="col-sm-6">
                              <asp:DropDownList runat="server" ID="ddlEstadoContrato" CssClass="form-control text-field">
                                   <asp:ListItem Text="TODOS" Value=""></asp:ListItem>
@@ -100,8 +100,91 @@
             <hr class="hr" id="hr1" runat="server" />
             <br />
             <div id="dpOK" runat="server">
-                  <div id="dvConsultaProdutos" class="row form-group col-sm-12" style="padding-left:40px" runat="server">
-             <asp:ListView ID="lvConsultaProdutos" runat="server" class="row form-group padding-row">
+                <div id="dvLimites" runat="server">
+                    <div id="divProduto" runat="server" class="row form-group padding-row col-sm-12">
+                        <div class="col-sm-4">
+                            <label id="bkProduto" runat="server" class="col-sm-4 text-right lbl">* Produto: </label>
+                            <div class="col-sm-6">
+                                <asp:TextBox ID="txtProdutoml" MaxLength="2" Text="01" Enabled="false"
+                                    CssClass="form-control text-field" runat="server"></asp:TextBox>
+                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqProdutoml" ControlToValidate="txtProdutoml" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label id="bkSubProduto" runat="server" class="col-sm-4 text-right lbl">* Sub-Produto: </label>
+                            <div class="col-sm-6">
+                                <asp:DropDownList ID="ddlSubprodutoml" Enabled="false"
+                                    MaxLength="2" CssClass="form-control text-field" runat="server" DataValueField="Code" DataTextField="Description">
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label id="lblProdutoDesc" runat="server" class="col-sm-4 text-right lbl">* Descritivo:</label>
+                            <div class="col-sm-6">
+                                <asp:TextBox ID="txtDescritivo" runat="server" Enabled="false" CssClass="form-control text-field"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group padding-row col-sm-12">
+                        <div class="col-sm-4">
+                            <label id="lbtxtGrauMorosidade" runat="server" class="col-sm-4 text-right lbl">* Grau Morosidade: </label>
+                            <div class="col-sm-6">
+                                <asp:TextBox ID="txtGrauMorosidade" MaxLength="3" Enabled="false"
+                                    CssClass="form-control text-field" runat="server"></asp:TextBox>
+                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="RequiredFieldValidator1" ControlToValidate="txtProdutoml" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label id="lbDPD" runat="server" class="col-sm-4 text-right lbl">* DPD: </label>
+                            <div class="col-sm-6">
+                                <asp:CheckBox ID="chDPD" Enabled="false"
+                                    MaxLength="2" CssClass="" runat="server" >
+                                </asp:CheckBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group padding-row col-sm-12">
+                             <div class="col-sm-4">
+                                <label id="bkllimglobalmultilinha" runat="server" class="col-sm-4 text-right lbl">* Limite Global Multilinha: </label>
+                                <div class="col-sm-6">
+                                    <asp:TextBox ID="txtlimiteglobalmultilinha" CssClass="form-control text-field number" Enabled="false" Text="0,00" MaxLength="16" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqLimMaxCredito" ControlToValidate="txtlimiteglobalmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row form-group padding-row col-sm-12">
+                            <div class="col-sm-4">
+                                <label id="bkllimRiscoFinanceiro" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Financeiro: </label>
+                                <div class="col-sm-6">
+                                    <asp:TextBox ID="txtsublimiteriscoFinanceiro" CssClass="form-control text-field number" Enabled="false" MaxLength="16" AutoPostBack="true"  runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimiteriscoFinanceiro" ControlToValidate="txtsublimiteriscoFinanceiro" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                                    <asp:Label ID="lberrorSRF" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row form-group padding-row col-sm-12">
+                        <div class="col-sm-4">
+                            <label id="bkllimRiscoComercial" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Comercial: </label>
+                            <div class="col-sm-6">
+                                <asp:TextBox ID="txtsublimitriscoComercial" CssClass="form-control text-field number" Enabled="false" MaxLength="16" AutoPostBack="true"  runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimitriscoComercial" ControlToValidate="txtsublimitriscoComercial" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lberrorSRC" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group padding-row col-sm-12">
+                        <div class="col-sm-4">
+                            <label id="bkllimiteriscoassinatura" runat="server" class="col-sm-4 text-right lbl">* Sublimite Risco Assinatura: </label>
+                            <div class="col-sm-6">
+                                <asp:TextBox ID="txtsublimiteriscoAssinatura" CssClass="number form-control text-field" Enabled="false" MaxLength="16" AutoPostBack="true" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="valChavesClienteContrato" ID="reqsublimiteriscoAssinatura" ControlToValidate="txtsublimiteriscoAssinatura" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                                <asp:Label ID="lberrorSRA" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dvConsultaProdutos" class="row form-group col-sm-12" style="padding-left:40px" runat="server">
+                 <asp:ListView ID="lvConsultaProdutos" runat="server" class="row form-group padding-row">
                 <EmptyDataTemplate>Não foram encontrados resultados</EmptyDataTemplate>
                 <LayoutTemplate>
                     <div class="Table Grid col-sm-12" id="tbAprovacoes">
@@ -119,7 +202,7 @@
                                 <label>Nº Contrato</label>
                             </div>
                               <div class="Cell Grid">
-                                <label>Estado Contrato</label>
+                                <label>Estado Relação</label>
                             </div>
                               <div class="Cell Grid">
                                 <label>Grau Morosidade</label>
@@ -147,7 +230,7 @@
                                 <asp:Label runat="server" ID="lbTipoRisco" CssClass="text-center bklabel" Text='<%# Eval("TipoRisco") %>'></asp:Label>
                             </div>
                          <div class="Cell Grid">
-                                <asp:Label runat="server" ID="lbFamiliaProduto" Width="250px" CssClass="text-center bklabel" Text='<%# Eval("FamiliaProduto") %>'></asp:Label>
+                                <asp:Label runat="server" ID="lbFamiliaProduto" CssClass="text-center bklabel" Text='<%# Eval("FamiliaProduto") %>'></asp:Label>
                             </div>
                          <div class="Cell Grid">
                                 <asp:Label runat="server" ID="lbSubProduto"  CssClass="text-center bklabel" Text='<%# Eval("SubProduto") %>'></asp:Label>
@@ -177,11 +260,11 @@
                         </div>
                 </ItemTemplate>
             </asp:ListView>
-            <div style="text-align:center">
-                <asp:linkbutton runat="server" id="lkpaginaanterior" OnClick="lkpaginaanterior_Click" Text="Página Anterior" visible="false"></asp:linkbutton>
-                <asp:linkbutton runat="server" id="lkpaginaseguinte" OnClick="lkpaginaseguinte_Click" Text="Página Seguinte" visible="false"></asp:linkbutton>
-            </div>
-            </div>
+                <div style="text-align:center">
+                    <asp:linkbutton runat="server" id="lkpaginaanterior" OnClick="lkpaginaanterior_Click" Text="Página Anterior" visible="false"></asp:linkbutton>
+                    <asp:linkbutton runat="server" id="lkpaginaseguinte" OnClick="lkpaginaseguinte_Click" Text="Página Seguinte" visible="false"></asp:linkbutton>
+                </div>
+                </div>
             </div>
         </div>
         </div>

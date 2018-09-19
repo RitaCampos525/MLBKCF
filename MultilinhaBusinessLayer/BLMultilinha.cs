@@ -145,7 +145,7 @@ namespace MultilinhaBusinessLayer
                 Int32.TryParse(response.output.zcliente, out _cliente);
                 obj.Cliente = _cliente;
                 obj.gBalcao = response.output.gbalcao;
-                obj.idmultilinha = string.Concat(response.output.cprodutoml, response.output.cnumectaml, response.output.cdigictaml);
+                obj.idmultilinha = string.Concat(response.output.cprodml, response.output.cnumectaml, response.output.cdigictaml);
                 int _balcao;
                 Int32.TryParse(response.output.cbalcao, out _balcao);
                 obj.nBalcao = _balcao;
@@ -224,7 +224,7 @@ namespace MultilinhaBusinessLayer
                 obj.datarenovacao = dtrenov;
                 
                 //obj.Descritivo = response.output.su
-                obj.EstadoContrato = response.output.iestado;
+                obj.EstadoContrato = response.output.iestadoc;
                 obj.graumorosidade = Convert.ToInt32(response.output.qgrau);
                 obj.idmultilinha = response.output.idwf;
                 obj.IndRenovacao = response.output.irenovac == "S" ? true : false;
@@ -313,56 +313,54 @@ namespace MultilinhaBusinessLayer
                 int cliente = 0;
                 Int32.TryParse(response.output.zcliente, out cliente);
                 obj.Cliente = cliente;
-                obj.Descritivo = response.output.cprod; //IR A TAT
-                obj.EstadoContrato = response.output.estctr;
-                obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.cprod, response.output.cta, response.output.dgt);
-                obj.idSimulacao = response.output.idwrkflw;
-                obj.limiteglobalmultilinha = response.output.limgloml;
-                obj.ncontado = string.Format("{0}{1}{2}{3}", response.output.cbalcaodo.ToString(), response.output.cproddo.ToString(), response.output.ctado.ToString(), response.output.dgtdo.ToString());
+                obj.Descritivo = response.output.cproduto; //IR A TAT
+                obj.EstadoContrato = response.output.iestadoc;
+                obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcaoml, response.output.cproduto, response.output.cproduto, response.output.cdigictaml);
+                obj.idSimulacao = response.output.idsimulacao.ToString();
+                obj.limiteglobalmultilinha = response.output.mlimtotal;
+                //obj.ncontado = string.Format("{0}{1}{2}{3}", response.output.cbalcaoml.ToString(), response.output.cprodutoml.ToString(), response.output.ct.ToString(), response.output.dgtdo.ToString());
                 //obj.Nome =
-                obj.Produtoml = response.output.cprod;
-                obj.sublimiteriscoAssinatura = response.output.limrisass;
-                obj.sublimiteriscoFinanceiro = response.output.limrisfin;
-                obj.sublimitriscoComercial = response.output.limriscom;
-                obj.Subprodutoml = response.output.csubprdml;
+                obj.Produtoml = response.output.cprodutoml;
+                obj.sublimiteriscoAssinatura = response.output.mlimassin;
+                obj.sublimiteriscoFinanceiro = response.output.mlimfinan;
+                obj.sublimitriscoComercial = response.output.mlimcomer;
+                obj.Subprodutoml = response.output.csubprod;
 
                 //listas
                 foreach (var a in response.row1)
                 {
-                    if (a.codprod_a_l != null && a.codprod_a_l != "")
+                    if (a.l_famprod_l != null && a.l_irisco_l != "")
                     {
                         obj.ProdutosRiscoAssinatura.Add(new LM34_SublimitesML.ProdutosRisco
                         {
-                            descritivo = a.subprod_a_l, //TO DO ir a tat buscar descritivo
-                            familiaproduto = a.famprod_a_l,
-                            prodsubproduto = string.Concat(a.codprod_a_l, a.subprod_a_l),
-                            tipologia = a.codtplo_a_l,
-                            //sublimitecomprometido = a //em FALTA
-                            //zSeq = 
+                            codfamiliaproduto = Convert.ToInt32(a.l_famprod_l),
+                            sublimiteAtual = a.l_mlimtotal_l,
+                            sublimitecomprometido = a.l_mlimcomp_l,
+                            sublimiteContratado = a.l_mlimcont_l,
+                            tipologia = a.l_irisco_l,
+                            
                         });
                     }
-                    if (a.codprod_f_l != null && a.codprod_f_l != "")
+                    if (a.l_famprod_l != null && a.l_irisco_l != "")
                     {
                         obj.produtosRiscoF.Add(new LM34_SublimitesML.ProdutosRisco
                         {
-                            descritivo = a.subprod_f_l, //TO DO ir a tat buscar descritivo
-                            familiaproduto = a.famprod_f_l,
-                            prodsubproduto = string.Concat(a.codprod_f_l, a.subprod_f_l),
-                            tipologia = a.codtplo_f_l
-                            //sublimitecomprometido = a //em FALTA
-                            //zSeq = 
+                            codfamiliaproduto = Convert.ToInt32(a.l_famprod_l),
+                            sublimiteAtual = a.l_mlimtotal_l,
+                            sublimitecomprometido = a.l_mlimcomp_l,
+                            sublimiteContratado = a.l_mlimcont_l,
+                            tipologia = a.l_irisco_l,
                         });
                     }
-                    if (a.codprod_c_l != null && a.codprod_c_l != "")
+                    if (a.l_famprod_l != null && a.l_irisco_l != "")
                     {
                         obj.produtosRiscoC.Add(new LM34_SublimitesML.ProdutosRisco
                         {
-                            descritivo = a.subprod_c_l, //TO DO ir a tat buscar descritivo
-                            familiaproduto = a.famprod_c_l,
-                            prodsubproduto = string.Concat(a.codprod_c_l, a.subprod_c_l),
-                            tipologia = a.codtplo_c_l
-                            //sublimitecomprometido = a //em FALTA
-                            //zSeq = 
+                            codfamiliaproduto = Convert.ToInt32(a.l_famprod_l),
+                            sublimiteAtual = a.l_mlimtotal_l,
+                            sublimitecomprometido = a.l_mlimcomp_l,
+                            sublimiteContratado = a.l_mlimcont_l,
+                            tipologia = a.l_irisco_l,
                         });
                     }
                 }
@@ -371,10 +369,10 @@ namespace MultilinhaBusinessLayer
             return msgOut;
         }
 
-        public MensagemOutput<LM36_ContratosProduto> LM36Request(LM36_ContratosProduto _LM36, ABUtil.ABCommandArgs abargs, string accao)
+        public MensagemOutput<LM36_ContratosProduto> LM36Request(LM36_ContratosProduto _LM36, LM36_ContratosProduto.ContratosProduto rotLM36, ABUtil.ABCommandArgs abargs, string accao)
         {
             MensagemOutput<LM36_ContratosProduto> msgOut = new MensagemOutput<LM36_ContratosProduto>();
-            MultilinhasDataLayer.BCDWSProxy.LM36Transaction response = dl.LM36Request(abargs, _LM36, accao);
+            MultilinhasDataLayer.BCDWSProxy.LM36Transaction response = dl.LM36Request(abargs, _LM36, rotLM36, accao);
 
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
@@ -386,44 +384,43 @@ namespace MultilinhaBusinessLayer
                 Int32.TryParse(response.output.zcliente, out cliente);
                 obj.Cliente = cliente;
                 obj.Descritivo = response.output.gdescml;
-                int DPD = 0;
-                Int32.TryParse(response.output.ndpdml, out DPD);
-                obj.DPD = DPD;
+
+                obj.DPD = response.output.dpd == "N" ? false : true;
                 //obj.EstadoContratoProduto = response.output.e
-                obj.FamiliaProduto = response.output.ntplprod;
+                obj.FamiliaProduto = response.output.cfamiprod;
                 int graumorosidade = 0;
-                Int32.TryParse(response.output.cgraumorml, out graumorosidade);
+                Int32.TryParse(response.output.cgraumor, out graumorosidade);
                 obj.GrauMorosidade = graumorosidade;
-                obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.cprodml, response.output.ccta, response.output.cdgt);
-                obj.limiteglobalmultilinha = response.output.mlmglbml;
-                obj.Nome = response.output.gliente;
+                obj.idmultilinha = string.Format("{0}{1}{2}{3}", response.output.cbalcao, response.output.cprodml, response.output.cnumectaml, response.output.cdigictaml);
+                obj.limiteglobalmultilinha = response.output.mlimglobal;
+                obj.Nome = response.output.gcliente;
                 obj.Produtoml = response.output.cprodml;
-                obj.sublimiteriscoAssinatura = response.output.msublmra;
-                obj.sublimiteriscoFinanceiro = response.output.msublmrf;
-                obj.sublimitriscoComercial = response.output.msublmrc;
-                obj.Subprodutoml = response.output.csubprdml;
-                obj.TipologiaRisco = response.output.ntprisco;
+                obj.sublimiteriscoAssinatura = response.output.mlimassin;
+                obj.sublimiteriscoFinanceiro = response.output.mlimfinan;
+                obj.sublimitriscoComercial = response.output.mlimcomer;
+                obj.Subprodutoml = response.output.csubprodml;
+                obj.TipologiaRisco = response.output.irisco;
 
                 //listas
                 foreach (var a in response.row1)
                 {
-                    if (a.cprodsubp_l != null)
+                    if (a.lista_ccontrprod_l != null)
                     {
                         LM36_ContratosProduto.ContratosProduto ctr = new LM36_ContratosProduto.ContratosProduto();
 
                         int dpd = 0;
-                        Int32.TryParse(a.ndpd_l, out dpd);
+                        Int32.TryParse(response.output.dpd, out dpd);
                         ctr.DPD = dpd;
-                        ctr.EstadoContratoProduto = a.nestctrprd_l;
-                        ctr.ExposicaoAtual = a.mexpoatual_l;
-                        ctr.FamiliaProduto = a.ntplprod_l;
-                        ctr.GrauMorosidade = a.cgraumor_l;
-                        ctr.NContratoProduto = a.cidctrprod_l;
-                        ctr.SubProduto = a.cprodsubp_l; // com 4
-                        ctr.TipoRisco = a.ntprisco_l;
-                        ctr.ValorComprometido = a.mvlcompr_l;
-                        ctr.ValorContratado = a.lmcv3700_mvlcontr_l;
-                        ctr.ExposicaoAtual = a.mexpoatual_l;
+                        ctr.EstadoContratoProduto = a.lista_iestadocp_l;
+                        ctr.ExposicaoAtual = a.lista_mexpoact_l;
+                        ctr.FamiliaProduto = a.lista_cfamiprod_l;
+                        ctr.GrauMorosidade = a.lista_cgraumor_l;
+                        ctr.NContratoProduto = a.lista_ccontrprod_l;
+                        ctr.SubProduto = a.lista_cprodsubpml_l; // com 4
+                        ctr.TipoRisco = a.lista_irisco_l;
+                        ctr.ValorComprometido = a.lista_mvlrcompr_l;
+                        ctr.ValorContratado = a.lista_mvlrcontr_l;
+                        ctr.ExposicaoAtual = a.lista_mexpoact_l;
 
 
                         obj.ContratosProdutos.Add(ctr);

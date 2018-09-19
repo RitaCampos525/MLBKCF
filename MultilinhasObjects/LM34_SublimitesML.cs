@@ -22,6 +22,8 @@ namespace MultilinhasObjects
         public decimal sublimitriscoComercial { get; set; }
         public decimal sublimiteriscoAssinatura { get; set; }
 
+        public int zseq { get; set; }
+
         public List<ProdutosRisco> ProdutosRiscoAssinatura = new List<ProdutosRisco>();
 
         public List<ProdutosRisco> produtosRiscoF = new List<ProdutosRisco>();
@@ -38,6 +40,8 @@ namespace MultilinhasObjects
             public string prodsubproduto { get; set; }
             public string descritivo { get; set; }
             public decimal sublimitecomprometido { get; set; } //Aquele q é editavel
+            public decimal sublimiteAtual { get; set; }
+            public decimal sublimiteContratado { get; set; }
 
             public int zSeq { get; set; }
         }

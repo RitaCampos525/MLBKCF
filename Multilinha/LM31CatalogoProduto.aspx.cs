@@ -185,10 +185,13 @@ namespace Multilinha
                             lberror.Text = Constantes.Mensagens.LM31CatalogoCriado;
                             lberror.Visible = true;
                             lberror.ForeColor = System.Drawing.Color.Green;
+
+                            txtEstado.Text = ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Code == response.ResultResult.Estado).Description;
+                            Helper.SetEnableControler(this, false);
                         }
                         else
                         {
-                            lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
+                            lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs) == "" ? response.erro.ToString() : TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
                             lberror.Visible = true;
                             lberror.ForeColor = System.Drawing.Color.Red;
                         }
@@ -291,7 +294,7 @@ namespace Multilinha
 
                         //Chamar ML01 - V
                         ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                        MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "V");
+                        MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "C");
 
                         //Sucesso
                         if (response.ResultResult != null && response.ResultResult.ProductCode != null)
@@ -326,7 +329,7 @@ namespace Multilinha
 
                         //Chamar ML01 - V
                         abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                        response = bl.LM31Request(lm31, abargs, "V");
+                        response = bl.LM31Request(lm31, abargs, "M");
 
                         //Sucesso
                         if (response.ResultResult != null && response.ResultResult.ProductCode != null)
@@ -574,9 +577,22 @@ namespace Multilinha
                     ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
                     MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "M");
 
-                    lberror.Text = Constantes.Mensagens.LM31CatalogoModificado;
-                    lberror.Visible = true;
-                    lberror.ForeColor = System.Drawing.Color.Green;
+                    if (response.ResultResult != null && response.ResultResult.ProductCode != null)
+                    {
+
+                        lberror.Text = Constantes.Mensagens.LM31CatalogoModificado;
+                        lberror.Visible = true;
+                        lberror.ForeColor = System.Drawing.Color.Green;
+
+                        txtEstado.Text = ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Code == response.ResultResult.Estado).Description;
+                        Helper.SetEnableControler(this, false);
+                    }
+                    else
+                    {
+                        lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs) == "" ? response.erro.ToString() : TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
+                        lberror.Visible = true;
+                        lberror.ForeColor = System.Drawing.Color.Red;
+                    }
                 }
             }
         }

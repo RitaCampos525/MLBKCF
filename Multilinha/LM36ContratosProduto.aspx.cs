@@ -32,6 +32,7 @@ namespace Multilinha
                     case "C":
                         break;
                     case "V":
+                        Helper.AddRemoveHidden(true, dvLimites);
                         break;
                     default:
                         lberror.Text = "Página sem contexto. Execute a transação na Aplicação Bancária";
@@ -60,13 +61,20 @@ namespace Multilinha
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
             LM36_ContratosProduto lm36 = TAT2.SearchLM36(1234124);
-            lvConsultaProdutos.DataSource = lm36.ContratosProdutos;
-            lvConsultaProdutos.DataBind();
+          
 
-            if(lvConsultaProdutos.Items.Count > 0)
+            if(lm36.ContratosProdutos.Count > 0 && lm36.ContratosProdutos[0].NContratoProduto != null)
             {
-                lkpaginaanterior.Visible = true;
-                lkpaginaseguinte.Visible = true;
+                Helper.AddRemoveHidden(false, dvLimites);
+                Helper.CopyObjectToControls(dvLimites, lm36);
+
+                lvConsultaProdutos.DataSource = lm36.ContratosProdutos;
+                lvConsultaProdutos.DataBind();
+                if (lm36.ContratosProdutos.Count > 10)
+                {
+                    lkpaginaanterior.Visible = true;
+                    lkpaginaseguinte.Visible = true;
+                }
             }
 
         }

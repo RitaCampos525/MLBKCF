@@ -19,7 +19,7 @@ namespace MultilinhasObjects
         {
             #region ML
 
-            public const string LM31CatalogoCriado =  "Produto ML criado em Catalogo.";
+            public const string LM31CatalogoCriado = "LM - PRODUTO ML CRIADO EM CATALOGO";
             public const string LM31CatalogoModificado = "Produto ML modificado em Catalogo";
             public const string LM32PedidoAprovado = "LM - Pedido Aprovado";
             public const string LM32PedidoRejeitado = "LM - Pedido Rejeitado";

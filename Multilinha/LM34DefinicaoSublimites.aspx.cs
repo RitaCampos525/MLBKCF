@@ -146,9 +146,14 @@ namespace Multilinha
                         //rever
                         lm34C.EstadoContrato = lm33.EstadoContrato;
                     }
-                    MensagemOutput<LM34_SublimitesML> respOut = bl.LM34Request(lm34C, abargs, "V");
+                    MensagemOutput<LM34_SublimitesML> respOut = bl.LM34Request(lm34C, abargs, "C");
                     Helper.CopyObjectToControls(ml04_criar, respOut.ResultResult);
-
+                    if(respOut == null || respOut.ResultResult == null)
+                    {
+                        lberror.Text = TAT2.GetMsgErroTATDescription(respOut.erro.ToString(), abargs) == "" ? respOut.erro.ToString() : TAT2.GetMsgErroTATDescription(respOut.erro.ToString(), abargs);
+                        lberror.Visible = true;
+                        lberror.ForeColor = System.Drawing.Color.Red;
+                    }
 
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, respOut.ResultResult);
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RC, lvProdutosRiscoC, respOut.ResultResult);
@@ -182,7 +187,14 @@ namespace Multilinha
                         //rever
                         lm34M.EstadoContrato = lm33M.EstadoContrato;
                     }
-                    MensagemOutput<LM34_SublimitesML> respOutM = bl.LM34Request(lm34M, abargs, "V");
+                    MensagemOutput<LM34_SublimitesML> respOutM = bl.LM34Request(lm34M, abargs, "M");
+                    if (respOutM == null || respOutM.ResultResult == null)
+                    {
+                        lberror.Text = TAT2.GetMsgErroTATDescription(respOutM.erro.ToString(), abargs) == "" ? respOutM.erro.ToString() : TAT2.GetMsgErroTATDescription(respOutM.erro.ToString(), abargs);
+                        lberror.Visible = true;
+                        lberror.ForeColor = System.Drawing.Color.Red;
+                    }
+
                     Helper.CopyObjectToControls(ml04_criar, respOutM.ResultResult);
 
                     listViewFamProdutosESubLim(Constantes.tipologiaRisco.RF, lvProdutosRiscoF, respOutM.ResultResult);
@@ -230,6 +242,12 @@ namespace Multilinha
                         lm34V.EstadoContrato = lm33V.EstadoContrato;
                     }
                     MensagemOutput<LM34_SublimitesML> respOutV = bl.LM34Request(lm34V, abargs, "V");
+                    if (respOutV == null || respOutV.ResultResult == null)
+                    {
+                        lberror.Text = TAT2.GetMsgErroTATDescription(respOutV.erro.ToString(), abargs) == "" ? respOutV.erro.ToString() : TAT2.GetMsgErroTATDescription(respOutV.erro.ToString(), abargs);
+                        lberror.Visible = true;
+                        lberror.ForeColor = System.Drawing.Color.Red;
+                    }
 
                     Helper.CopyObjectToControls(ml04_criar, respOutV.ResultResult);
 
