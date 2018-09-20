@@ -38,10 +38,10 @@ namespace MultilinhaBusinessLayer
 
         }
 
-        public MensagemOutput<LM31_CatalogoProdutoML> LM31Request(LM31_CatalogoProdutoML _lm31 , ABUtil.ABCommandArgs abargs, string accao)
+        public MensagemOutput<LM31_CatalogoProdutoML> LM31Request(LM31_CatalogoProdutoML _lm31 , ABUtil.ABCommandArgs abargs, string accao, bool pedido)
         {
             MensagemOutput<LM31_CatalogoProdutoML> msgOut = new MensagemOutput<LM31_CatalogoProdutoML>();
-            MultilinhasDataLayer.BCDWSProxy.LM31Transaction response = dl.LM31Request(abargs, _lm31, accao );
+            MultilinhasDataLayer.BCDWSProxy.LM31Transaction response = dl.LM31Request(abargs, _lm31, accao, pedido);
 
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
@@ -128,10 +128,10 @@ namespace MultilinhaBusinessLayer
 
         }
 
-        public MensagemOutput<LM32_PedidosContratoML> LM32Request(LM32_PedidosContratoML _lm32, ABUtil.ABCommandArgs abargs, string accao)
+        public MensagemOutput<LM32_PedidosContratoML> LM32Request(LM32_PedidosContratoML _lm32, ABUtil.ABCommandArgs abargs, string accao, bool pedido)
         {
             MensagemOutput<LM32_PedidosContratoML> msgOut = new MensagemOutput<LM32_PedidosContratoML>();
-            MultilinhasDataLayer.BCDWSProxy.LM32Transaction response = dl.LM32Request(abargs, _lm32, accao);
+            MultilinhasDataLayer.BCDWSProxy.LM32Transaction response = dl.LM32Request(abargs, _lm32, accao, pedido);
 
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
@@ -180,10 +180,10 @@ namespace MultilinhaBusinessLayer
             return msgOut;
         }
 
-        public MensagemOutput<LM33_ContratoML> LM33Request(LM33_ContratoML _lm33, ABUtil.ABCommandArgs abargs, string accao, string acesso)
+        public MensagemOutput<LM33_ContratoML> LM33Request(LM33_ContratoML _lm33, ABUtil.ABCommandArgs abargs, string accao, string acesso, bool pedido)
         {
             MensagemOutput<LM33_ContratoML> msgOut = new MensagemOutput<LM33_ContratoML>();
-            MultilinhasDataLayer.BCDWSProxy.LM33Transaction response = dl.LM33Request(abargs, _lm33, accao, acesso);
+            MultilinhasDataLayer.BCDWSProxy.LM33Transaction response = dl.LM33Request(abargs, _lm33, accao, acesso, pedido);
 
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
@@ -299,10 +299,10 @@ namespace MultilinhaBusinessLayer
             return msgOut;
         }
 
-        public  MensagemOutput<LM34_SublimitesML> LM34Request(LM34_SublimitesML _LM34, ABUtil.ABCommandArgs abargs, string accao)
+        public  MensagemOutput<LM34_SublimitesML> LM34Request(LM34_SublimitesML _LM34, ABUtil.ABCommandArgs abargs, string accao, bool pedido)
         {
             MensagemOutput<LM34_SublimitesML> msgOut = new MensagemOutput<LM34_SublimitesML>();
-            MultilinhasDataLayer.BCDWSProxy.LM34Transaction response = dl.LM34Request(abargs, _LM34, accao);
+            MultilinhasDataLayer.BCDWSProxy.LM34Transaction response = dl.LM34Request(abargs, _LM34, accao, pedido);
 
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
@@ -369,10 +369,10 @@ namespace MultilinhaBusinessLayer
             return msgOut;
         }
 
-        public MensagemOutput<LM36_ContratosProduto> LM36Request(LM36_ContratosProduto _LM36, LM36_ContratosProduto.ContratosProduto rotLM36, ABUtil.ABCommandArgs abargs, string accao)
+        public MensagemOutput<LM36_ContratosProduto> LM36Request(LM36_ContratosProduto _LM36, LM36_ContratosProduto.ContratosProduto rotLM36, ABUtil.ABCommandArgs abargs, string accao, bool pedido)
         {
             MensagemOutput<LM36_ContratosProduto> msgOut = new MensagemOutput<LM36_ContratosProduto>();
-            MultilinhasDataLayer.BCDWSProxy.LM36Transaction response = dl.LM36Request(abargs, _LM36, rotLM36, accao);
+            MultilinhasDataLayer.BCDWSProxy.LM36Transaction response = dl.LM36Request(abargs, _LM36, rotLM36, accao, pedido);
 
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
@@ -431,10 +431,10 @@ namespace MultilinhaBusinessLayer
             return msgOut;
         }
 
-        public MensagemOutput<LM37_SimulacaoMl> LM37Request(LM37_SimulacaoMl _LM37, ABUtil.ABCommandArgs abargs, string accao)
+        public MensagemOutput<LM37_SimulacaoMl> LM37Request(LM37_SimulacaoMl _LM37, ABUtil.ABCommandArgs abargs, string accao, bool pedido)
         {
             MensagemOutput<LM37_SimulacaoMl> msgOut = new MensagemOutput<LM37_SimulacaoMl>();
-            MultilinhasDataLayer.BCDWSProxy.LM37Transaction response = dl.LM37Request(abargs, _LM37, accao);
+            MultilinhasDataLayer.BCDWSProxy.LM37Transaction response = dl.LM37Request(abargs, _LM37, accao, pedido);
 
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
@@ -505,10 +505,10 @@ namespace MultilinhaBusinessLayer
             return msgOut;
         }
 
-        public MensagemOutput<LM38_HistoricoAlteracoes> LM38Request(LM38_HistoricoAlteracoes _LM38, ABUtil.ABCommandArgs abargs, string accao)
+        public MensagemOutput<LM38_HistoricoAlteracoes> LM38Request(LM38_HistoricoAlteracoes _LM38, ABUtil.ABCommandArgs abargs, string accao, bool pedido)
         {
             MensagemOutput<LM38_HistoricoAlteracoes> msgOut = new MensagemOutput<LM38_HistoricoAlteracoes>();
-            MultilinhasDataLayer.BCDWSProxy.LM38Transaction response = dl.LM38Request(abargs, _LM38, accao);
+            MultilinhasDataLayer.BCDWSProxy.LM38Transaction response = dl.LM38Request(abargs, _LM38, accao, pedido);
 
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";

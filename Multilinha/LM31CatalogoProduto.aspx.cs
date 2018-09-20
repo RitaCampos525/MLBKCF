@@ -178,7 +178,7 @@ namespace Multilinha
                     {
                         //Chamar ML01 - C
                         ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                        MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "C");
+                        MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "C", false);
 
                         if (response.ResultResult != null && response.ResultResult.ProductCode != null)
                         {
@@ -294,7 +294,7 @@ namespace Multilinha
 
                         //Chamar ML01 - V
                         ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                        MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "C");
+                        MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "C", true);
 
                         //Sucesso
                         if (response.ResultResult != null && response.ResultResult.ProductCode != null)
@@ -329,7 +329,7 @@ namespace Multilinha
 
                         //Chamar ML01 - V
                         abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                        response = bl.LM31Request(lm31, abargs, "M");
+                        response = bl.LM31Request(lm31, abargs, "M", true);
 
                         //Sucesso
                         if (response.ResultResult != null && response.ResultResult.ProductCode != null)
@@ -367,7 +367,7 @@ namespace Multilinha
                     case "V":
                         //Chamar ML01 - V
                         abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                        response = bl.LM31Request(lm31, abargs, "V");
+                        response = bl.LM31Request(lm31, abargs, "V", true);
 
                         //Sucesso
                         if (response.ResultResult != null && response.ResultResult.ProductCode != null)
@@ -575,7 +575,7 @@ namespace Multilinha
                     getprodutostoLM31(lm31);
                     //Chamar ML01 - M
                     ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                    MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "M");
+                    MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "M", false);
 
                     if (response.ResultResult != null && response.ResultResult.ProductCode != null)
                     {

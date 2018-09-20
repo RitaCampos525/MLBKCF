@@ -146,7 +146,7 @@ namespace Multilinha
                         //rever
                         lm34C.EstadoContrato = lm33.EstadoContrato;
                     }
-                    MensagemOutput<LM34_SublimitesML> respOut = bl.LM34Request(lm34C, abargs, "C");
+                    MensagemOutput<LM34_SublimitesML> respOut = bl.LM34Request(lm34C, abargs, "C", true);
                     Helper.CopyObjectToControls(ml04_criar, respOut.ResultResult);
                     if(respOut == null || respOut.ResultResult == null)
                     {
@@ -187,7 +187,7 @@ namespace Multilinha
                         //rever
                         lm34M.EstadoContrato = lm33M.EstadoContrato;
                     }
-                    MensagemOutput<LM34_SublimitesML> respOutM = bl.LM34Request(lm34M, abargs, "M");
+                    MensagemOutput<LM34_SublimitesML> respOutM = bl.LM34Request(lm34M, abargs, "M", true);
                     if (respOutM == null || respOutM.ResultResult == null)
                     {
                         lberror.Text = TAT2.GetMsgErroTATDescription(respOutM.erro.ToString(), abargs) == "" ? respOutM.erro.ToString() : TAT2.GetMsgErroTATDescription(respOutM.erro.ToString(), abargs);
@@ -241,7 +241,7 @@ namespace Multilinha
                         //rever
                         lm34V.EstadoContrato = lm33V.EstadoContrato;
                     }
-                    MensagemOutput<LM34_SublimitesML> respOutV = bl.LM34Request(lm34V, abargs, "V");
+                    MensagemOutput<LM34_SublimitesML> respOutV = bl.LM34Request(lm34V, abargs, "V", true);
                     if (respOutV == null || respOutV.ResultResult == null)
                     {
                         lberror.Text = TAT2.GetMsgErroTATDescription(respOutV.erro.ToString(), abargs) == "" ? respOutV.erro.ToString() : TAT2.GetMsgErroTATDescription(respOutV.erro.ToString(), abargs);

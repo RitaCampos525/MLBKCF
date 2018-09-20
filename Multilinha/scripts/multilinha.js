@@ -437,11 +437,12 @@ $("[class*=number]").blur(function Numbers (e) {
         this.value = this.value.replace('.', ',');
     }
     var val = this.value.split(',');
-    if(val[0].length > 15)
+    if(val[0].length > 12)
     {
-        return;
+        this.value = val[0].substring(0, 12);
+        this.value = this.value + ',00';
     }
-    if (val.length == 1 && val[0] == "")
+    else if (val.length == 1 && val[0] == "")
         this.value = this.value + '0,00';
     else if (val.length == 1)
         this.value = this.value + ',00';

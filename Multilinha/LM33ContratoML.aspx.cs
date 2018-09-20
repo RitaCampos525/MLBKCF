@@ -233,7 +233,7 @@ namespace Multilinha
                     LM31_CatalogoProdutoML lm31 = new LM31_CatalogoProdutoML();
                     Helper.CopyPropertiesTo(camposChave, lm31);
 
-                    MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "V");
+                    MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "V", true);
                     Helper.CopyObjectToControls(this, response);
 
                     ViewState["LM31"] = response;
@@ -262,7 +262,7 @@ namespace Multilinha
                     {
                         acesso = "";
                     }
-                    MensagemOutput<LM33_ContratoML> respOut = bl.LM33Request(LM33, abargs, "V", acesso);
+                    MensagemOutput<LM33_ContratoML> respOut = bl.LM33Request(LM33, abargs, "V", acesso, true);
                     if (respOut == null || respOut.ResultResult == null || respOut.ResultResult.Cliente == null)
                     {
                         lberror.Text = TAT2.GetMsgErroTATDescription(respOut.erro.ToString(), abargs) ?? respOut.erro.ToString() ;
@@ -324,7 +324,7 @@ namespace Multilinha
                     {
                         acesso = "";
                     }
-                    respOut = bl.LM33Request(LM33M, abargs, "V", acesso);
+                    respOut = bl.LM33Request(LM33M, abargs, "V", acesso, true);
 
                     Helper.CopyObjectToControls(this.Page, respOut);
 
@@ -444,7 +444,7 @@ namespace Multilinha
                     getSublimites(_LM33);
 
                     ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-                    MensagemOutput<LM33_ContratoML> response = bl.LM33Request(_LM33, abargs, "C", "");
+                    MensagemOutput<LM33_ContratoML> response = bl.LM33Request(_LM33, abargs, "C", "",false);
 
                     if (response.ResultResult != null && response.ResultResult.Cliente != null)
                     {

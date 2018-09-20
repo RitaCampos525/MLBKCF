@@ -39,7 +39,7 @@ namespace Multilinha
 
             //Call LM38
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            MensagemOutput<LM38_HistoricoAlteracoes> response = bl.LM38Request(LM38, abargs, "V");
+            MensagemOutput<LM38_HistoricoAlteracoes> response = bl.LM38Request(LM38, abargs, "V", true);
 
             if(response != null && response.ResultResult != null 
                 && response.ResultResult.HistoricoAlteracoes != null 

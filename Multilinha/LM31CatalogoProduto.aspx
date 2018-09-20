@@ -145,14 +145,14 @@
                     <div class="col-sm-4">
                         <label id="lblLimiteMin" runat="server" class="col-sm-4 text-right lbl">* Limite mínimo crédito:</label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtLimiteMinimoCredito" CssClass="form-control text-field number" MaxLength="18" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtLimiteMinimoCredito" CssClass="form-control text-field number" MaxLength="15" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqLimMinCredito" ControlToValidate="txtLimiteMinimoCredito" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <label id="lblLimiteMax" runat="server" class="col-sm-4 text-right lbl">* Limite máximo crédito:</label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtLimiteMaximoCredito" CssClass="form-control text-field number" MaxLength="18"  runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtLimiteMaximoCredito" CssClass="form-control text-field number" MaxLength="15"  runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" runat="server" ID="reqLimMaxCredito" CssClass="bklabel" ControlToValidate="txtLimiteMaximoCredito" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             <asp:Label ID="lberrorlim" runat="server" CssClass="bklabel" Visible="false" ForeColor="red"></asp:Label>
                         </div>

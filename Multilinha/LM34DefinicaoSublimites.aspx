@@ -111,7 +111,7 @@
                         <div class="col-sm-4">
                             <Label id="bklimitecomprometido" runat="server" class="col-sm-4 text-right lbl">* Limite Global Comprometido: </Label>
                             <div class="col-sm-6">
-                                <asp:TextBox ID="txtlimiteglobalmultilinha" Enabled="false" ReadOnly="true" CssClass="form-control text-field number" MaxLength="18" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtlimiteglobalmultilinha" Enabled="false" ReadOnly="true" CssClass="form-control text-field number" MaxLength="15" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqlimitecomprometido" ControlToValidate="txtlimiteglobalmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                             <label id="bklabelTipoR" runat="server" class="col-sm-4 text-right lbl">* Tipo de Risco Sublimite: </label>
                             <div class="col-sm-6">
                                 <Label id="bklsublimiteriscoFinanceiro" runat="server" class="col-sm-8 text-right lbl">* Risco Financeiro: </Label>
-                                <asp:TextBox ID="txtsublimiteriscoFinanceiro" Enabled="false" ReadOnly="true"  CssClass="form-control text-field number" MaxLength="18" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtsublimiteriscoFinanceiro" Enabled="false" ReadOnly="true"  CssClass="form-control text-field number" MaxLength="15" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimiteriscoFinanceiro" ControlToValidate="txtsublimiteriscoFinanceiro" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                             </div>
                         </div>
@@ -199,7 +199,7 @@
                         <label id="bkRiscoSublimiteCom" runat="server" class="col-sm-4 text-right lbl">* Tipo de Risco Sublimite: </label>
                         <div class="col-sm-6">
                             <Label id="bkRiscoCom" runat="server" class="col-sm-8 text-right lbl">* Risco Comercial: </Label>
-                            <asp:TextBox ID="txtsublimitriscoComercial" Enabled="false" ReadOnly="true"  CssClass="form-control text-field number" MaxLength="18" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtsublimitriscoComercial" Enabled="false" ReadOnly="true"  CssClass="form-control text-field number" MaxLength="15" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimitriscoComercial" ControlToValidate="txtsublimitriscoComercial" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
@@ -257,7 +257,7 @@
                         <label id="bkRiscoSublimiteAss" runat="server" class="col-sm-4 text-right lbl">* Tipo de Risco Sublimite: </label>
                         <div class="col-sm-6">
                             <Label id="lbRiscoSublimiteAssinatura" runat="server" class="col-sm-8 text-right lbl">* Risco Assinatura: </Label>
-                            <asp:TextBox ID="txtsublimiteriscoAssinatura" Enabled="false" ReadOnly="true"  CssClass="form-control text-field number text-center" MaxLength="18" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtsublimiteriscoAssinatura" Enabled="false" ReadOnly="true"  CssClass="form-control text-field number text-center" MaxLength="15" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqsublimiteriscoAssinatura" ControlToValidate="txtsublimiteriscoAssinatura" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>

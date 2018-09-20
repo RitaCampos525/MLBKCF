@@ -132,7 +132,7 @@ namespace Multilinha
 
             //Call LM32
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            MensagemOutput<LM32_PedidosContratoML> response = bl.LM32Request(LM32, abargs, "V");
+            MensagemOutput<LM32_PedidosContratoML> response = bl.LM32Request(LM32, abargs, "V", true);
             userAb = abargs.CUTILIZA;
 
             if (response != null && response.ResultResult != null
@@ -168,7 +168,7 @@ namespace Multilinha
 
             //Call LM32
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            MensagemOutput<LM32_PedidosContratoML> response = bl.LM32Request(LM32, abargs, "M");
+            MensagemOutput<LM32_PedidosContratoML> response = bl.LM32Request(LM32, abargs, "M", false);
 
             if (response != null && response.ResultResult != null)
             {
@@ -194,7 +194,7 @@ namespace Multilinha
 
             //Call LM32
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            MensagemOutput<LM32_PedidosContratoML> response = bl.LM32Request(LM32, abargs, "M");
+            MensagemOutput<LM32_PedidosContratoML> response = bl.LM32Request(LM32, abargs, "M", false);
 
             if (response != null && response.ResultResult != null)
             {

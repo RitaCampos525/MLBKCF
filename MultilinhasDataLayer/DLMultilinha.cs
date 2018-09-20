@@ -58,7 +58,7 @@ namespace MultilinhasDataLayer
         }
 
         BCDWSProxy.LM31CATALOGOMLRequest LM31 = new BCDWSProxy.LM31CATALOGOMLRequest();
-        public BCDWSProxy.LM31Transaction LM31Request(ABUtil.ABCommandArgs AbArgs, LM31_CatalogoProdutoML _lm31, string accao)
+        public BCDWSProxy.LM31Transaction LM31Request(ABUtil.ABCommandArgs AbArgs, LM31_CatalogoProdutoML _lm31, string accao, bool pedido)
         {
             BCDWSProxy.LM31Transaction response = new BCDWSProxy.LM31Transaction();
 
@@ -69,7 +69,7 @@ namespace MultilinhasDataLayer
 
             LM31.input = new BCDWSProxy.LM31Input();
             LM31.input.caccao = accao;
-            LM31.input.pedido_dados = true;
+            LM31.input.pedido_dados = pedido;
             LM31.input.cprodutoml = _lm31.ProductCode;
             LM31.input.csubprodml = _lm31.SubProdutoCode;
             //LM31.input.C = _lm31.SubProductDescription;
@@ -166,7 +166,7 @@ namespace MultilinhasDataLayer
         }
 
         BCDWSProxy.LM32APROVACOESMLRequest LM32 = new BCDWSProxy.LM32APROVACOESMLRequest();
-        public BCDWSProxy.LM32Transaction LM32Request(ABUtil.ABCommandArgs AbArgs, LM32_PedidosContratoML _lm32, string accao)
+        public BCDWSProxy.LM32Transaction LM32Request(ABUtil.ABCommandArgs AbArgs, LM32_PedidosContratoML _lm32, string accao, bool pedido)
         {
             BCDWSProxy.LM32Transaction response = new BCDWSProxy.LM32Transaction();
 
@@ -189,7 +189,7 @@ namespace MultilinhasDataLayer
             LM32.input.gbalcao = _lm32.gBalcao;
             LM32.input.gcliente = _lm32.Nome;
             LM32.input.gdescml = _lm32.SubProductDescription;
-            LM32.input.pedido_dados = false;
+            LM32.input.pedido_dados = pedido;
             LM32.input.tppedido = _lm32.TipoPedido;
             LM32.input.zcliente = _lm32.Cliente.ToString();
             
@@ -223,7 +223,7 @@ namespace MultilinhasDataLayer
         }
 
         BCDWSProxy.LM33CONTRATOMLRequest LM33 = new BCDWSProxy.LM33CONTRATOMLRequest();
-        public BCDWSProxy.LM33Transaction LM33Request(ABUtil.ABCommandArgs AbArgs, LM33_ContratoML _lm33, string accao, string acesso)
+        public BCDWSProxy.LM33Transaction LM33Request(ABUtil.ABCommandArgs AbArgs, LM33_ContratoML _lm33, string accao, string acesso, bool pedido)
         {
             BCDWSProxy.LM33Transaction response = new BCDWSProxy.LM33Transaction();
 
@@ -234,7 +234,7 @@ namespace MultilinhasDataLayer
 
             LM33.input = new BCDWSProxy.LM33Input();
             LM33.input.caccao = accao;
-            LM33.input.pedido_dados = false;
+            LM33.input.pedido_dados = pedido;
             LM33.input.acesso = acesso;
             LM33.input.cbalcaoml = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(0, 3);
             LM33.input.cprodutoml = _lm33.Produtoml;
@@ -346,7 +346,7 @@ namespace MultilinhasDataLayer
         }
 
         BCDWSProxy.LM34SUBLIMITESMLRequest LM34 = new BCDWSProxy.LM34SUBLIMITESMLRequest();
-        public BCDWSProxy.LM34Transaction LM34Request(ABUtil.ABCommandArgs AbArgs, LM34_SublimitesML _LM34, string accao)
+        public BCDWSProxy.LM34Transaction LM34Request(ABUtil.ABCommandArgs AbArgs, LM34_SublimitesML _LM34, string accao, bool pedido)
         {
             BCDWSProxy.LM34Transaction response = new BCDWSProxy.LM34Transaction();
 
@@ -357,7 +357,7 @@ namespace MultilinhasDataLayer
 
             LM34.input = new BCDWSProxy.LM34Input();
             LM34.input.caccao = accao;
-            LM34.input.pedido_dados = true;
+            LM34.input.pedido_dados = pedido;
 
             LM34.input.cbalcaoml = string.IsNullOrEmpty(_LM34.idmultilinha.ToString()) ? "" : _LM34.idmultilinha.ToString().Substring(0, 3);
             LM34.input.cprodutoml = _LM34.Produtoml;
@@ -443,7 +443,7 @@ namespace MultilinhasDataLayer
         }
 
         BCDWSProxy.LM36SUBPRODUTOSMLRequest LM36 = new BCDWSProxy.LM36SUBPRODUTOSMLRequest();
-        public BCDWSProxy.LM36Transaction LM36Request(ABUtil.ABCommandArgs AbArgs, LM36_ContratosProduto _LM36, LM36_ContratosProduto.ContratosProduto rotLM36, string accao)
+        public BCDWSProxy.LM36Transaction LM36Request(ABUtil.ABCommandArgs AbArgs, LM36_ContratosProduto _LM36, LM36_ContratosProduto.ContratosProduto rotLM36, string accao, bool pedido)
         {
             BCDWSProxy.LM36Transaction response = new BCDWSProxy.LM36Transaction();
 
@@ -454,7 +454,7 @@ namespace MultilinhasDataLayer
            
 
             LM36.input = new BCDWSProxy.LM36Input();
-            LM36.input.pedido_dados = false;
+            LM36.input.pedido_dados = pedido;
             LM36.input.caccao = accao;
 
             LM36.input.cbalcao = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(0, 3);
@@ -535,7 +535,7 @@ namespace MultilinhasDataLayer
         }
 
         BCDWSProxy.LM37SIMULACAOMLRequest LM37 = new BCDWSProxy.LM37SIMULACAOMLRequest();
-        public BCDWSProxy.LM37Transaction LM37Request(ABUtil.ABCommandArgs AbArgs, LM37_SimulacaoMl _LM37, string accao)
+        public BCDWSProxy.LM37Transaction LM37Request(ABUtil.ABCommandArgs AbArgs, LM37_SimulacaoMl _LM37, string accao, bool pedido)
         {
             BCDWSProxy.LM37Transaction response = new BCDWSProxy.LM37Transaction();
 
@@ -546,7 +546,7 @@ namespace MultilinhasDataLayer
          
 
             LM37.input = new BCDWSProxy.LM37Input();
-            LM37.input.pedido_dados = false;
+            LM37.input.pedido_dados = pedido;
             LM37.input.caccao = accao;
             if(_LM37.idmultilinha != null)
             {
@@ -644,7 +644,7 @@ namespace MultilinhasDataLayer
         }
 
         BCDWSProxy.LM38HISTORICOMLRequest LM38 = new BCDWSProxy.LM38HISTORICOMLRequest();
-        public BCDWSProxy.LM38Transaction LM38Request(ABUtil.ABCommandArgs AbArgs, LM38_HistoricoAlteracoes _LM38, string accao)
+        public BCDWSProxy.LM38Transaction LM38Request(ABUtil.ABCommandArgs AbArgs, LM38_HistoricoAlteracoes _LM38, string accao, bool pedido)
         {
             BCDWSProxy.LM38Transaction response = new BCDWSProxy.LM38Transaction();
 
@@ -655,7 +655,7 @@ namespace MultilinhasDataLayer
            
 
             LM38.input = new BCDWSProxy.LM38Input();
-            LM38.input.pedido_dados = false;
+            LM38.input.pedido_dados = pedido;
             LM38.input.caccao = accao;
 
             LM38.input.cbalcao = string.IsNullOrEmpty(_LM38.idmultilinha.ToString()) ? "" : _LM38.idmultilinha.ToString().Substring(0, 3);

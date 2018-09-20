@@ -139,7 +139,7 @@ namespace Multilinha
                     LM37_SimulacaoMl sim = new LM37_SimulacaoMl();
                     Helper.CopyPropertiesTo(camposChaveSim, sim);
 
-                    MensagemOutput<LM37_SimulacaoMl> respOut = bl.LM37Request(sim, abargs, "V");
+                    MensagemOutput<LM37_SimulacaoMl> respOut = bl.LM37Request(sim, abargs, "V", true);
 
                     //Insucesso
                     if (respOut == null || respOut.ResultResult == null || respOut.ResultResult.Cliente == 0)
@@ -154,7 +154,7 @@ namespace Multilinha
                         lberror.ForeColor = System.Drawing.Color.Red;
 
                         //teste retirar dp 
-                        respOut.ResultResult =  TAT2.SearchML37(0001004, "510092588522");
+                        //respOut.ResultResult =  TAT2.SearchML37(0001004, "510092588522");
 
                     }
 
@@ -174,7 +174,7 @@ namespace Multilinha
                     LM37_SimulacaoMl simCon = new LM37_SimulacaoMl();
                     Helper.CopyPropertiesTo(camposchaveConsulta, simCon);
 
-                    MensagemOutput<LM37_SimulacaoMl> respOutw = bl.LM37Request(simCon, abargs, "V");
+                    MensagemOutput<LM37_SimulacaoMl> respOutw = bl.LM37Request(simCon, abargs, "V", true);
 
                     //Insucesso
                     if (respOutw == null || respOutw.ResultResult == null || respOutw.ResultResult.Cliente == 0)
@@ -467,7 +467,7 @@ namespace Multilinha
 
             //Call lm37 BCDWSProxy.LM37
             ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
-            MensagemOutput<LM37_SimulacaoMl> respOut = bl.LM37Request(lm37, abargs, "C");
+            MensagemOutput<LM37_SimulacaoMl> respOut = bl.LM37Request(lm37, abargs, "C", false);
 
 
             if (respOut != null && respOut.ResultResult != null)

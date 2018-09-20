@@ -776,6 +776,19 @@ namespace Multilinha
                 }
             }
         }
-        
+
+        public static Dictionary<int, T> AddPageFirstItem<T>(Dictionary<int, T> dic, T obj)
+        {
+            if (dic.Count() < 1)
+            {
+                dic.Add(1, obj);
+            }
+            else
+            {
+                dic.Add(dic.Last().Key + 1, obj);
+            }
+
+            return dic;
+        }
     }
 }
