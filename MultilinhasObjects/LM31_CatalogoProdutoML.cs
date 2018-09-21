@@ -45,6 +45,7 @@ namespace MultilinhasObjects
 
         }
         public string PeriocidadeCobranca { get; set; }
+        public string PeriocidadeCobComiRenovacao { get; set; }
         public string zSequencial { get; set; }
     }
 

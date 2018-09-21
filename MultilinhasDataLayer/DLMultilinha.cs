@@ -73,8 +73,8 @@ namespace MultilinhasDataLayer
             LM31.input.cprodutoml = _lm31.ProductCode;
             LM31.input.csubprodml = _lm31.SubProdutoCode;
             //LM31.input.C = _lm31.SubProductDescription;
-            LM31.input.dtinicomer = _lm31.DataInicioComercializacao.ToString("yyyyMMdd");
-            LM31.input.dtfimcomer = _lm31.DataFimComercializacao.ToString("yyyyMMdd"); ;
+            LM31.input.dtinicomer = _lm31.DataInicioComercializacao.ToString("yyyy-MM-dd");
+            LM31.input.dtfimcomer = _lm31.DataFimComercializacao.ToString("yyyy-MM-dd"); ;
             LM31.input.qprzminml = _lm31.PrazoMinimo;
             LM31.input.qprzmaxml = _lm31.PrazoMaximo;
             LM31.input.qminprod = _lm31.NumeroMinimoProdutos;
@@ -86,7 +86,8 @@ namespace MultilinhasDataLayer
             LM31.input.qperigest = Convert.ToInt32(_lm31.PeriocidadeCobranca);
             LM31.input.qprzrenov = _lm31.PrazoRenovacao;
             LM31.input.qdiapaviso = _lm31.NDiasPreAviso;
-            LM31.input.dtversao = _lm31.DataVersao.ToString("yyyyMMdd");
+            LM31.input.dtversao = _lm31.DataVersao.ToString("yyyy-MM-dd");
+            LM31.input.qperirnov = Convert.ToInt32(_lm31.PeriocidadeCobComiRenovacao);
 
             List<BCDWSProxy.LM31Row1> lstRow1 = new List<BCDWSProxy.LM31Row1>();
 
@@ -242,12 +243,12 @@ namespace MultilinhasDataLayer
             LM33.input.cdigictaml = string.IsNullOrEmpty(_lm33.idmultilinha) ? "" : _lm33.idmultilinha.ToString().Substring(11, 1);
             LM33.input.ccontado = _lm33.ncontado;
             LM33.input.csubprodml = _lm33.Subprodutoml;
-            LM33.input.dtfimcont = _lm33.datafimcontrato.ToString("yyyyMMdd");
-            LM33.input.dtinicont = _lm33.datainiciocontrato.ToString("yyyyMMdd");
-            LM33.input.dtprocess = _lm33.dataProcessamento.ToString("yyyyMMdd");
-            LM33.input.dproxgest = _lm33.dataproximacobrancagestcontrato.ToString("yyyyMMdd");
-            LM33.input.dproxrenov = _lm33.dataproximacobrancagestrenovacao.ToString("yyyyMMdd");
-            LM33.input.dtrenov = _lm33.datarenovacao.ToString("yyyyMMdd");
+            LM33.input.dtfimcont = _lm33.datafimcontrato.ToString("yyyy-MM-dd");
+            LM33.input.dtinicont = _lm33.datainiciocontrato.ToString("yyyy-MM-dd");
+            LM33.input.dtprocess = _lm33.dataProcessamento.ToString("yyyy-MM-dd");
+            LM33.input.dproxgest = _lm33.dataproximacobrancagestcontrato.ToString("yyyy-MM-dd");
+            LM33.input.dproxrenov = _lm33.dataproximacobrancagestrenovacao.ToString("yyyy-MM-dd");
+            LM33.input.dtrenov = _lm33.datarenovacao.ToString("yyyy-MM-dd");
             LM33.input.iestadoc = _lm33.EstadoContrato != null ? ML_Objectos.GetEstadosDoCatalogo().FirstOrDefault(x => x.Description.ToUpper() == _lm33.EstadoContrato.ToUpper()).Code : "";
             LM33.input.qgrau = _lm33.graumorosidade.ToString();
             LM33.input.irenovac = _lm33.IndRenovacao == true ? "S" : "N";

@@ -247,8 +247,8 @@
             <div class="col-sm-6">
                 <label class="col-sm-6 text-right lbl">* Periocidade de cobrança da comissão de renovação (meses):</label>
                 <div class="col-sm-6">
-                    <asp:DropDownList runat="server" ID="ddlPeriocidadeCobrancaRenovacao" CssClass="form-control text-field" DataTextField="Description" DataValueField="Code"></asp:DropDownList>
-                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqPeriocidadeCobranca" ControlToValidate="ddlPeriocidadeCobrancaRenovacao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
+                    <asp:DropDownList runat="server" ID="ddlPeriocidadeCobComiRenovacao" CssClass="form-control text-field" DataTextField="Description" DataValueField="Code"></asp:DropDownList>
+                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqPeriocidadeCobranca" ControlToValidate="ddlPeriocidadeCobComiRenovacao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                 </div>
             </div>
              <div class="col-sm-6">
