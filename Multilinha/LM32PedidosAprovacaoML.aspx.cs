@@ -80,32 +80,34 @@ namespace Multilinha
             if (!string.IsNullOrEmpty(txtCliente.Text))
             {
                 reqnBalcao.Enabled = false;
+
+                txtidmultilinha.Enabled = false;
+                txtidmultilinha_balcao.Enabled = false;
             }
-            else if (!string.IsNullOrEmpty(txtidmultilinha.Text))
-            {
-                reqnBalcao.Enabled = false;
-            }
+           
             else
             {
                 reqnBalcao.Enabled = true;
+              
+                txtidmultilinha.Enabled = true;
+                txtidmultilinha_balcao.Enabled = true;
+                txtCliente.Enabled = false;
             }
                 
         }
 
         protected void txtIdworkflow_TextChanged(object sender, EventArgs e)
         {
-            //desabilita / habilita o require field nBalcao
-            if (!string.IsNullOrEmpty(txtCliente.Text))
+          
+            if (!string.IsNullOrEmpty(txtidmultilinha.Text))
             {
                 reqnBalcao.Enabled = false;
-            }
-            else if (!string.IsNullOrEmpty(txtidmultilinha.Text))
-            {
-                reqnBalcao.Enabled = false;
+                txtCliente.Enabled = false;
             }
             else
             {
                 reqnBalcao.Enabled = true;
+                txtCliente.Enabled = true;
             }
         }
 

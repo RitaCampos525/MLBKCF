@@ -121,6 +121,15 @@ namespace Multilinha {
         protected global::System.Web.UI.WebControls.TextBox txtCliente;
         
         /// <summary>
+        /// reqCliente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqCliente;
+        
+        /// <summary>
         /// txtNome control.
         /// </summary>
         /// <remarks>
@@ -155,6 +164,15 @@ namespace Multilinha {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtidmultilinha;
+        
+        /// <summary>
+        /// reqidmultilinha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqidmultilinha;
         
         /// <summary>
         /// lbnBalcao control.

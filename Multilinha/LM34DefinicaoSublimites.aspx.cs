@@ -420,9 +420,11 @@ namespace Multilinha
             if (!string.IsNullOrEmpty(txtCliente.Text))
             {
                 reqidmultilinha.Enabled = false;
+                txtidmultilinha.Enabled = false;
             }
             else
                 reqidmultilinha.Enabled = true;
+                txtidmultilinha.Enabled = true;
         }
 
         protected void txtIdworkflow_TextChanged(object sender, EventArgs e)
@@ -431,10 +433,12 @@ namespace Multilinha
             if (!string.IsNullOrEmpty(txtidmultilinha.Text))
             {
                 reqCliente.Enabled = false;
+                txtCliente.Enabled = false;
             }
             else
             {
                 reqCliente.Enabled = true;
+                txtCliente.Enabled = true;
 
             }
         }

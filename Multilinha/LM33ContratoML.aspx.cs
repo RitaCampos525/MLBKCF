@@ -207,36 +207,42 @@ namespace Multilinha
             switch (op.ToUpper())
             {
                 case "C":
-               
-                    Helper.SetEnableControler(camposChave, false);
-                    Helper.AddRemoveHidden(false, dpOK);
 
-                    //Chamada CL55 para Get DOs Cliente
-                    int ncliente;
-                    Int32.TryParse(txtCliente.Text, out ncliente);
-                    MensagemOutput<List<string>> trans = bl.CL55Request(ncliente, abargs);
-
-                    if (trans.mensagem != null)
+                    //Chamada LM33
+                    LM33_ContratoML lm33V = new LM33_ContratoML();
+                    Helper.CopyPropertiesTo(camposChave, lm33V);
+                    MensagemOutput<LM33_ContratoML> response = bl.LM33Request(lm33V, abargs, "C", "", true);
+                    
+                    //Sucesso
+                    if (response != null && response.ResultResult != null)
                     {
-                        lberror.Text = trans.mensagem;
+                        ViewState["LM33"] = response;
+                        Helper.CopyObjectToControls(this, response);
+                        Helper.SetEnableControler(camposChave, false);
+                        Helper.AddRemoveHidden(false, dpOK);
+
+                        //Chamada CL55 para Get DOs Cliente
+                        int ncliente;
+                        Int32.TryParse(txtCliente.Text, out ncliente);
+                        MensagemOutput<List<string>> trans = bl.CL55Request(ncliente, abargs);
+
+                        if (trans.mensagem != null)
+                        {
+                            lberror.Text = trans.mensagem;
+                            lberror.Visible = true;
+                            lberror.ForeColor = System.Drawing.Color.Red;
+                        }
+
+                        //BIND DROPDDOWNLIST Contas DO
+                        ddlncontado.DataSource = bl.CL55Request(ncliente, abargs).ResultResult.AsEnumerable();
+                        ddlncontado.DataBind();
+                    }
+                    else
+                    {
+                        lberror.Text = TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs) == "" ? response.mensagem : TAT2.GetMsgErroTATDescription(response.erro.ToString(), abargs);
                         lberror.Visible = true;
                         lberror.ForeColor = System.Drawing.Color.Red;
                     }
-
-                    //BIND DROPDDOWNLIST Contas DO
-                    ddlncontado.DataSource = bl.CL55Request(ncliente, abargs).ResultResult.AsEnumerable();
-                    ddlncontado.DataBind();
-
-                    //Chamada ao Catalogo!
-                    //LM31_CatalogoProdutoML res = TAT2.SearchLM31("01", 01);
-
-                    LM31_CatalogoProdutoML lm31 = new LM31_CatalogoProdutoML();
-                    Helper.CopyPropertiesTo(camposChave, lm31);
-
-                    MensagemOutput<LM31_CatalogoProdutoML> response = bl.LM31Request(lm31, abargs, "V", true);
-                    Helper.CopyObjectToControls(this, response);
-
-                    ViewState["LM31"] = response;
 
                     break;
 
@@ -311,7 +317,7 @@ namespace Multilinha
                     break;
 
                 case "M":
-                    //CALL ML03
+                    //CALL LM33
                     LM33_ContratoML LM33M = new LM33_ContratoML();
                     Helper.CopyPropertiesTo(camposChave, LM33M);
 
@@ -324,38 +330,47 @@ namespace Multilinha
                     {
                         acesso = "";
                     }
-                    respOut = bl.LM33Request(LM33M, abargs, "V", acesso, true);
+                    respOut = bl.LM33Request(LM33M, abargs, "M", acesso, true);
 
-                    Helper.CopyObjectToControls(this.Page, respOut);
+                    if (respOut == null || respOut.ResultResult == null || respOut.ResultResult.Cliente == null)
+                    {
+                        lberror.Text = TAT2.GetMsgErroTATDescription(respOut.erro.ToString(), abargs) ?? respOut.erro.ToString();
+                        lberror.Visible = true;
+                        lberror.ForeColor = System.Drawing.Color.Red;
+                    }
+                    //Sucesso
+                    else
+                    {
+                        Helper.CopyObjectToControls(this.Page, respOut);
 
-                    Helper.SetEnableControler(camposChave, false);
-                    Helper.AddRemoveHidden(false, dpOK);
-                    Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
-                    Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
-                    Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
-                    Helper.AddRemoveHidden(false, dvtitleComissoes);
-                    Helper.AddRemoveHidden(false, accoesfinais_criarml03);
-                    Helper.AddRemoveHidden(false, hr3);
-                    Helper.AddRemoveHidden(false, hr4);
-                    Helper.AddRemoveHidden(false, divVersoesML);
-                    btnConfirmar.Enabled = false;
+                        Helper.SetEnableControler(camposChave, false);
+                        Helper.AddRemoveHidden(false, dpOK);
+                        Helper.AddRemoveHidden(false, dvtitleAcordionRFinanceiro);
+                        Helper.AddRemoveHidden(false, dvtitleAcordionRAssinatura);
+                        Helper.AddRemoveHidden(false, dvtitleAcordionRComercial);
+                        Helper.AddRemoveHidden(false, dvtitleComissoes);
+                        Helper.AddRemoveHidden(false, accoesfinais_criarml03);
+                        Helper.AddRemoveHidden(false, hr3);
+                        Helper.AddRemoveHidden(false, hr4);
+                        Helper.AddRemoveHidden(false, divVersoesML);
+                        btnConfirmar.Enabled = false;
 
 
-                    #region tabelas de produtos de riscos
+                        #region tabelas de produtos de riscos
 
-                    //Get Produtos
-                    // e Popula CG e CP . Quando seleccionado ficam enable! Não é possivel deseleccionar
-                    List<ArvoreFamiliaProdutos>  lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                    listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM33M, false);
+                        //Get Produtos
+                        // e Popula CG e CP . Quando seleccionado ficam enable! Não é possivel deseleccionar
+                        List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
+                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM33M, false);
 
-                    List<ArvoreFamiliaProdutos>  lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                    listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM33M, false);
+                        List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
+                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM33M, false);
 
-                    List<ArvoreFamiliaProdutos>  lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                    listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM33M, false);
+                        List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
+                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM33M, false);
 
-                    #endregion
-                    
+                        #endregion
+                    }
                     break;
             }
         }
@@ -383,25 +398,25 @@ namespace Multilinha
 
 
                         //Call LM31 (viewState) para obtencao de produtos do produto ML introduzido! E seleccionar CP correspondentes
-                        LM31_CatalogoProdutoML LM31 = ViewState["LM31"] as LM31_CatalogoProdutoML;
+                        LM33_ContratoML LM33 = ViewState["LM33"] as LM33_ContratoML;
 
                         #region tabelas de produtos de riscos
 
                         //Get Produtos
 
                         List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM31, true);
+                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM33, true);
 
                         List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM31, true);
+                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM33, true);
 
                         List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM31, true);
+                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM33, true);
 
                         #endregion
 
-                        //Call LM33 para obtencao do valor das comissoes do produto ML introduzido!
-                        LM33_ContratoML LM33 = TAT2.SearchML03(1004, "");
+                        //Preenchimento do valor das comissoes do produto ML introduzido!
+                        //TAT2.SearchML03(1004, "");
                         Helper.CopyObjectToControls(this.MC33C, LM33);
 
 

@@ -41,6 +41,7 @@
                     <label id="bkCliente" runat="server" class="col-sm-4 text-right lbl">* Cliente: </label>
                     <div class="col-sm-3">
                         <asp:TextBox ID="txtCliente" MaxLength="7" onkeypress="return isNumber(event)" OnTextChanged="txtCliente_TextChanged" AutoPostBack="true" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="reqCliente" ControlToValidate="txtnBalcao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                     </div>
                      <div class="col-sm-5">
                         <asp:TextBox ID="txtNome" CssClass="form-control text-field" ReadOnly="true" Enabled="false" MaxLength="40" runat="server"></asp:TextBox>
@@ -56,6 +57,7 @@
                         <div class="col-sm-4">
                             <asp:TextBox ID="txtidmultilinha" MaxLength="9" pattern="[A-Za-z0-9]{9}" title="Deve inserir um código alfanumérico com nove posições" oninvalid="setCustomValidity('Deve inserir um código alfanumérico com nove posições')"
                             onchange="try{setCustomValidity('')}catch(e){}" AutoPostBack="true" OnTextChanged="txtIdworkflow_TextChanged" CssClass="form-control text-field" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ValidationGroup="chaveContrato" ID="reqidmultilinha" ControlToValidate="txtnBalcao" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>

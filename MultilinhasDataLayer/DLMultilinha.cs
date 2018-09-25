@@ -443,6 +443,64 @@ namespace MultilinhasDataLayer
             return response;
         }
 
+        BCDWSProxy.LM35CONTASDOMLRequest LM35 = new BCDWSProxy.LM35CONTASDOMLRequest();
+        public BCDWSProxy.LM35Transaction LM35Request(ABUtil.ABCommandArgs AbArgs, LM35_AssociacaoContasDO _LM35, string accao, bool pedido)
+        {
+            BCDWSProxy.LM35Transaction response = new BCDWSProxy.LM35Transaction();
+
+            LM35.BarclaysBankAccountSettings = new BCDWSProxy.BarclaysBankAccountSettings();
+            LM35.BarclaysBankAccountSettings.ApplicationID = ConfigurationManager.AppSettings["ApplicationID"];
+            LM35.BarclaysBankAccountSettings.UserRequester = AbArgs.USERNT;
+            LM35.BarclaysBankAccountSettings.ClientName = AbArgs.SN_HOSTNAME;
+
+            LM35.input = new BCDWSProxy.LM35Input();
+            LM35.input.caccao = accao;
+            LM35.input.pedido_dados = pedido;
+
+            //LM35.input.cbalcao = 
+            LM35.input.cbalcaoml = string.IsNullOrEmpty(_LM35.idmultilinha) ? "" : _LM35.idmultilinha.ToString().Substring(0, 3);
+            LM35.input.cprodutoml = string.IsNullOrEmpty(_LM35.idmultilinha) ? "" : _LM35.idmultilinha.ToString().Substring(3, 3);
+            LM35.input.cnumectaml = string.IsNullOrEmpty(_LM35.idmultilinha) ? "" : _LM35.idmultilinha.ToString().Substring(5, 6);
+            LM35.input.cdigictaml = string.IsNullOrEmpty(_LM35.idmultilinha) ? "" : _LM35.idmultilinha.ToString().Substring(11, 1);
+
+            LM35.input.cbalcao = string.IsNullOrEmpty(_LM35.ncontado) ? "" : _LM35.ncontado.ToString().Substring(0, 3);
+            LM35.input.cproduto = string.IsNullOrEmpty(_LM35.ncontado) ? "" : _LM35.ncontado.ToString().Substring(3, 3);
+            LM35.input.cnumecta = string.IsNullOrEmpty(_LM35.ncontado) ? "" : _LM35.ncontado.ToString().Substring(5, 6);
+            LM35.input.cdigicta = string.IsNullOrEmpty(_LM35.ncontado) ? "" : _LM35.ncontado.ToString().Substring(11, 1);
+
+            //LM35.input.cproduto = _LM35.c
+            LM35.input.zcliente = _LM35.Cliente.ToString();
+            LM35.input.gnome = _LM35.Nome;
+            LM35.input.zsequen = _LM35.zSeq;
+            
+
+            BCDWSProxy.BarclaysBTSSoapClient client = new BCDWSProxy.BarclaysBTSSoapClient();
+            bool bRetry = false;
+            atempt = 0;
+            do
+            {
+                try
+                {
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, MultilinhasObjects.LogTypeName.WsSoapRequest, LM35.input.SerializeToString(), AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+
+                    response = client.LM35CONTASDOML(LM35.BarclaysBankAccountSettings, LM35.input);
+                    string sresponse = response.SerializeToString();
+
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Error, LogTypeName.WsSoapRequest, sresponse, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                    atempt++;
+                }
+                catch (Exception ex)
+                {
+                    WriteLog.Log(System.Diagnostics.TraceLevel.Verbose, LogTypeName.WsSoapResponse, ex, AbArgs.USERNT, AbArgs.SN_HOSTNAME);
+                    response.Erro = new BCDWSProxy.TransactionError();
+                    response.Erro.MensagemErro = tratamentoExcepcoes(ex, AbArgs, out bRetry);
+
+                }
+            } while (bRetry && atempt <= 1);
+
+            return response;
+        }
+
         BCDWSProxy.LM36SUBPRODUTOSMLRequest LM36 = new BCDWSProxy.LM36SUBPRODUTOSMLRequest();
         public BCDWSProxy.LM36Transaction LM36Request(ABUtil.ABCommandArgs AbArgs, LM36_ContratosProduto _LM36, LM36_ContratosProduto.ContratosProduto rotLM36, string accao, bool pedido)
         {

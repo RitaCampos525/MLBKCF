@@ -13,6 +13,7 @@ namespace Multilinha
     {
         public DateTime dtfechas = Global.dtfechasG;
         MultilinhasDataLayer.boMultilinhas TAT2 = new MultilinhasDataLayer.boMultilinhas();
+        MultilinhaBusinessLayer.BLMultilinha bl = new MultilinhaBusinessLayer.BLMultilinha();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -99,15 +100,32 @@ namespace Multilinha
         {
             //Call ML35
             //if sucess
+            //MultilinhasObjects.LM35_AssociacaoContasDO lst = TAT2.SearchML35(1, "2");
+            ABUtil.ABCommandArgs abargs = Session["ABCommandArgs"] as ABUtil.ABCommandArgs;
 
-            Helper.AddRemoveHidden(false, dpOK);
-            Helper.AddRemoveHidden(false, accoesfinais_criarlm35);
-            Helper.AddRemoveHidden(false, hr1);
-            Helper.AddRemoveHidden(false, hr2);
+            LM35_AssociacaoContasDO lm35 = new LM35_AssociacaoContasDO();
+            Helper.CopyPropertiesTo(camposChave, lm35);
 
-            MultilinhasObjects.LM35_AssociacaoContasDO lst =  TAT2.SearchML35(1, 2);
-            lvAssociados.DataSource = lst.Lista;
-            lvAssociados.DataBind();
+            MensagemOutput<LM35_AssociacaoContasDO> resp = bl.LM35Request(lm35, abargs, "V", true);
+
+            if (resp != null && resp.ResultResult != null)
+            {
+                Helper.AddRemoveHidden(false, dpOK);
+                Helper.AddRemoveHidden(false, accoesfinais_criarlm35);
+                Helper.AddRemoveHidden(false, hr1);
+                Helper.AddRemoveHidden(false, hr2);
+
+
+                lvAssociados.DataSource = resp.ResultResult.Lista;
+                lvAssociados.DataBind();
+            }
+
+            else
+            {
+                lberror.Text = TAT2.GetMsgErroTATDescription(resp.erro.ToString(), abargs) ?? resp.erro.ToString();
+                lberror.Visible = true;
+                lberror.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
         protected void btnEnviarContrato(object sender, EventArgs e)

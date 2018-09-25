@@ -13,7 +13,7 @@ namespace MultilinhasObjects
 
         public int Cliente { get; set; }
 
-        public int idmultilinha { get; set; }
+        public string idmultilinha { get; set; }
 
         public string Nome { get; set; }
 
@@ -26,6 +26,10 @@ namespace MultilinhasObjects
         public string ConsultaHistorico { get; set; }
 
         public string IndAprov { get; set; }
+
+        public long zSeq { get; set; }
+
+
 
 
         public List<listaContaDO> Lista
@@ -45,6 +49,8 @@ namespace MultilinhasObjects
         public DateTime DataAssociada { get; set; }
 
         public DateTime DataFimAssociacao { get; set; }
+
+        public string Moeda { get; set; }
 
         public int zSeq { get; set; }
 

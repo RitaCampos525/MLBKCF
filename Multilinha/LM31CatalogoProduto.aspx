@@ -273,7 +273,7 @@
             <div class="Table">
                 <div class="Row">
                     <div class="CellNoBorder">
-                        <h4>Linqs úteis</h4>
+                        <h4>Links úteis</h4>
                         <ul>
                             <li>
                                 <a id="lqComissaoAberura" runat="server" target="_blank" href='<%= ConfigurationSettings.AppSettings["LinqComissaoAberura"] %>'>Comissão de abertura Multilinha</a>

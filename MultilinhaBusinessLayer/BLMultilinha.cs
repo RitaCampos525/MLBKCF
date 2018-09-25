@@ -47,9 +47,10 @@ namespace MultilinhaBusinessLayer
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
             
 
-            LM31_CatalogoProdutoML obj = new LM31_CatalogoProdutoML();
+            
             if (response.output != null)
             {
+                LM31_CatalogoProdutoML obj = new LM31_CatalogoProdutoML();
 
                 DateTime dtfimcomer;
                 DateTime.TryParseExact(response.output.dtfimcomer, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtfimcomer);
@@ -62,7 +63,7 @@ namespace MultilinhaBusinessLayer
                 obj.Estado = response.output.iestado;
                 obj.IndRenovacao = response.output.irenovac;
                 obj.LimiteMaximoCredito = response.output.mlimmaxml;
-                obj.LimiteMaximoCredito = response.output.mlimminml;
+                obj.LimiteMinimoCredito = response.output.mlimminml;
                 obj.NDiasIncumprimento =  Convert.ToInt32(response.output.qdiaincum);
                 obj.NDiasPreAviso = Convert.ToInt32(response.output.qdiapaviso);
                 obj.NumeroMinimoProdutos = Convert.ToInt32(response.output.qminprod);
@@ -121,9 +122,11 @@ namespace MultilinhaBusinessLayer
                 obj.tipologiaRiscoA = obj.produtosA.Count() > 0 ? "A" : "";
                 obj.tipologiaRiscoF = obj.produtosF.Count() > 0 ? "F" : "";
                 obj.tipologiaRiscoC = obj.produtosC.Count() > 0 ? "C" : "";
+
+                msgOut.ResultResult = obj;
             }
 
-            msgOut.ResultResult = obj;
+          
             return msgOut;
 
         }
@@ -136,9 +139,11 @@ namespace MultilinhaBusinessLayer
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
 
-            LM32_PedidosContratoML obj = new LM32_PedidosContratoML();
+           
             if (response.output != null)
             {
+                LM32_PedidosContratoML obj = new LM32_PedidosContratoML();
+
                 obj.btnAccept = response.output.btn_accept == "S"? true : false;
                 obj.btnReject = response.output.btn_reject == "S" ? true: false;
                 int _cliente;
@@ -175,8 +180,10 @@ namespace MultilinhaBusinessLayer
                         obj.PedidosAprovacao.Add(pd1);
                     }
                 }
+
+                msgOut.ResultResult = obj;
             }
-            msgOut.ResultResult = obj;
+          
             return msgOut;
         }
 
@@ -188,9 +195,11 @@ namespace MultilinhaBusinessLayer
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
 
-            LM33_ContratoML obj = new LM33_ContratoML();
+           
             if (response.output != null)
             {
+                LM33_ContratoML obj = new LM33_ContratoML();
+
                 obj.baseincidenciacomabert = response.output.bicomissabe;
                 obj.baseincidenciacomgestcontrato = response.output.bicomissgct;
                 obj.baseincidenciacomgestrenovacao = response.output.bicomissren;
@@ -294,8 +303,10 @@ namespace MultilinhaBusinessLayer
                         });
                     }
                 }
+
+                msgOut.ResultResult = obj;
             }
-            msgOut.ResultResult = obj;
+           
             return msgOut;
         }
 
@@ -307,9 +318,11 @@ namespace MultilinhaBusinessLayer
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
 
-            LM34_SublimitesML obj = new LM34_SublimitesML();
+            
             if (response.output != null)
             {
+                LM34_SublimitesML obj = new LM34_SublimitesML();
+
                 int cliente = 0;
                 Int32.TryParse(response.output.zcliente, out cliente);
                 obj.Cliente = cliente;
@@ -364,8 +377,53 @@ namespace MultilinhaBusinessLayer
                         });
                     }
                 }
+
+                msgOut.ResultResult = obj;
             }
-            msgOut.ResultResult = obj;
+           
+            return msgOut;
+        }
+
+        public MensagemOutput<LM35_AssociacaoContasDO> LM35Request(LM35_AssociacaoContasDO LM35, ABUtil.ABCommandArgs abargs, string accao, bool pedido)
+        {
+            MensagemOutput<LM35_AssociacaoContasDO> msgOut = new MensagemOutput<LM35_AssociacaoContasDO>();
+            MultilinhasDataLayer.BCDWSProxy.LM35Transaction response = dl.LM35Request(abargs, LM35, accao, pedido);
+
+            msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
+            msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
+
+
+            if (response.output != null)
+            {
+                LM35_AssociacaoContasDO obj = new LM35_AssociacaoContasDO();
+                obj.Cliente = response.output.zcliente != null ? Convert.ToInt32(response.output.zcliente) : 0;
+                //obj.DataAssociada = response.output.
+                obj.ncontado = string.Concat(response.output.cbalcao, response.output.cproduto, response.output.cnumecta, response.output.cdigicta);
+                obj.idmultilinha = string.Concat(response.output.cbalcaoml, response.output.cprodutoml, response.output.cnumectaml, response.output.cdigictaml);
+                obj.Nome = response.output.gnome;
+                obj.zSeq = response.output.zsequen;
+
+                foreach(var a in response.row1)
+                {
+                    listaContaDO it = new listaContaDO();
+                    if (a.l_cnumecta_l != null)
+                    {
+                        it.Associado = a.l_iassocia_l != "S" ? false : true;
+                        DateTime dtiniass;
+                        DateTime.TryParseExact(a.l_diniass_l, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtiniass);
+                        DateTime dtfimass;
+                        DateTime.TryParseExact(a.l_dfimass_l, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dtfimass);
+                        it.DataAssociada = dtiniass;
+                        it.DataFimAssociacao = dtfimass;
+                        it.NumContaDO = string.Concat(a.l_cbalcao_l, a.l_cproduto_l, a.l_cnumecta_l, a.l_cdigicta_l);
+                        it.Moeda = a.l_cmoeda_l;
+           
+                    };
+
+                    obj.Lista.Add(it);
+                }
+            }
+
             return msgOut;
         }
 
@@ -377,9 +435,10 @@ namespace MultilinhaBusinessLayer
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
 
-            LM36_ContratosProduto obj = new LM36_ContratosProduto();
             if (response.output != null)
             {
+                LM36_ContratosProduto obj = new LM36_ContratosProduto();
+
                 int cliente = 0;
                 Int32.TryParse(response.output.zcliente, out cliente);
                 obj.Cliente = cliente;
@@ -426,8 +485,9 @@ namespace MultilinhaBusinessLayer
                         obj.ContratosProdutos.Add(ctr);
                     };
                 }
+                msgOut.ResultResult = obj;
             }
-            msgOut.ResultResult = obj;
+          
             return msgOut;
         }
 
@@ -439,9 +499,11 @@ namespace MultilinhaBusinessLayer
             msgOut.erro = response.Erro != null ? response.Erro.CodigoErro : 999;
             msgOut.mensagem = response.Erro != null ? response.Erro.MensagemErro : "";
 
-            LM37_SimulacaoMl obj = new LM37_SimulacaoMl();
+            
             if (response.output != null)
             {
+                LM37_SimulacaoMl obj = new LM37_SimulacaoMl();
+
                 int balcao = 0;
                 Int32.TryParse(response.output.cbalcao, out balcao);
                 obj.Balcao = balcao;
@@ -499,9 +561,8 @@ namespace MultilinhaBusinessLayer
 
                     }
                 }
+                msgOut.ResultResult = obj;
             }
-
-            msgOut.ResultResult = obj;
             return msgOut;
         }
 
@@ -526,7 +587,7 @@ namespace MultilinhaBusinessLayer
                 //listas
                 foreach (var a in response.row1)
                 {
-                    if (a.zaltera_l != null && a.gtipo_l != null)
+                    if (a.zaltera_l != 0 && a.gtipo_l != null)
                     {
                         LM38_HistoricoAlteracoes.historicoAlteracoes his = new LM38_HistoricoAlteracoes.historicoAlteracoes();
                         his.campoAlterado = a.gtipo_l;

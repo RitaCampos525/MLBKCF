@@ -348,6 +348,9 @@ namespace Multilinha
                             Helper.AddRemoveHidden(false, hr);
                             Helper.AddRemoveHidden(false, hr1);
 
+                            Helper.CopyObjectToControls(this, response.ResultResult);
+                            selectprodutosLM31(response.ResultResult);
+
                             btnEdit.Visible = true;
                         }
                         //Insucesso
@@ -387,6 +390,9 @@ namespace Multilinha
                             Helper.AddRemoveHidden(true, acoes_ml01); //manter acoes escondidas
                             Helper.AddRemoveHidden(true, hr);
                             Helper.AddRemoveHidden(true, hr1);
+
+                            Helper.CopyObjectToControls(this, response.ResultResult);
+                            selectprodutosLM31(response.ResultResult);
                         }
                         //Insucesso
                         else
@@ -608,6 +614,10 @@ namespace Multilinha
 
         }
 
+        /// <summary>
+        /// A ser usado como input na transacao
+        /// </summary>
+        /// <param name="lm31"></param>
         internal void getprodutostoLM31(LM31_CatalogoProdutoML lm31)
         {
             lm31.produtosF = new List<LM31_CatalogoProdutoML.ProdutoRisco>();
@@ -684,25 +694,73 @@ namespace Multilinha
             }
         }
 
-        //protected void txtLimiteMaximoCredito_TextChanged(object sender, EventArgs e)
-        //{
-        //    decimal limMax = Convert.ToDecimal(txtLimiteMaximoCredito.Text);
-        //    decimal limMin = Convert.ToDecimal(txtLimiteMinimoCredito.Text);
+        /// <summary>
+        ///    A ser usado com a resposta de output da transacao
+        /// </summary>
+        /// <param name="lm31"></param>
+        internal void selectprodutosLM31(LM31_CatalogoProdutoML lm31)
+        {
 
-        //    if (limMax < limMin)
-        //    {
-        //        lberrorlim.Text = "Limite máximo inferior ao limite mínimo";
-        //        lberrorlim.Visible = true;
-                
-        //        return;
+            //Risco Financeiro
+            if (lm31.produtosF.Count() > 0)
+            {
+                foreach (var a in lm31.produtosF)
+                {
+                    int cod = Convert.ToInt32(a.familia);
+                    ArvoreFamiliaProdutos codfam = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF).FirstOrDefault(x => x.codfamiliaProduto == cod);
 
-        //    }
-        //    else
-        //    {
-        //        lberrorlim.Text = "";
-        //        lberrorlim.Visible = false;
-        //    }
-        //}
+                    TreeNode todosF = trtipologiaProdutosRFTree.Nodes[0];
+                    foreach (TreeNode tr in todosF.ChildNodes)
+                    {
+                        if (tr.Text.Replace("-", "").ToUpper().Trim() == codfam.familiaProduto.ToUpper())
+                        {
+                            tr.Checked = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            //Risco Comercial
+            if (lm31.produtosC.Count() > 0)
+            {
+                foreach (var a in lm31.produtosC)
+                {
+                    int cod = Convert.ToInt32(a.familia);
+                    ArvoreFamiliaProdutos codfam = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC).FirstOrDefault(x => x.codfamiliaProduto == cod);
+
+                    TreeNode todosC = trtipologiaProdutosRCTree.Nodes[0];
+                    foreach (TreeNode tr in todosC.ChildNodes)
+                    {
+                        if (tr.Text.Replace("-", "").ToUpper().Trim() == codfam.familiaProduto.ToUpper())
+                        {
+                            tr.Checked = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            //Risco Assinatura
+            if (lm31.produtosA.Count() > 0)
+            {
+               foreach(var a in lm31.produtosA)
+                {
+                    int cod = Convert.ToInt32(a.familia);
+                    ArvoreFamiliaProdutos codfam = ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA).FirstOrDefault(x => x.codfamiliaProduto == cod);
+
+                    TreeNode todosA = trtipologiaProdutosRATree.Nodes[0];
+                    foreach (TreeNode tr in todosA.ChildNodes)
+                    {
+                        if(tr.Text.Replace("-","").ToUpper().Trim() == codfam.familiaProduto.ToUpper())
+                        {
+                            tr.Checked = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+       
     }
 
 }
