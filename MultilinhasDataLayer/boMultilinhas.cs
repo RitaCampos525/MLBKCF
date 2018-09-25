@@ -633,7 +633,7 @@ namespace MultilinhasDataLayer
             {
                 Cliente = cliente,
                 Descritivo = "EMP 1",
-                DPD = true,
+                DPD = 3,
                 EstadoContratoProduto = LM_EstadosContrato.GetEstadoContratos()[0].Code,
                 FamiliaProduto = ArvoreFamiliaProdutos.FamiliaProdutos.A_CreditoDocumentarioImportação.nomeFamProd,
                 GrauMorosidade = 101,

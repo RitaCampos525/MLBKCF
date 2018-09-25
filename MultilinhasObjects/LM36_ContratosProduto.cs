@@ -17,7 +17,7 @@ namespace MultilinhasObjects
         public string TipologiaRisco { get; set; }
         public string FamiliaProduto { get; set; }
         public int GrauMorosidade { get; set; }
-        public bool DPD { get; set; }
+        public int DPD { get; set; }
 
         public decimal limiteglobalmultilinha { get; set; }
         public decimal sublimiteriscoFinanceiro { get; set; }

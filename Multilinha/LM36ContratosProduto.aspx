@@ -26,7 +26,7 @@
         <div class="row titleTransaction menu">
                     <ul>
                         <li>
-                            <asp:LinkButton CssClass="atab " ID="lblTransaction" Enabled="false" runat="server" Text="Contrato ML - Contratos de Produtos Associados"></asp:LinkButton>
+                            <asp:LinkButton CssClass="atab " ID="lblTransaction" Enabled="false" runat="server" Text="Contrato ML - Contratos de Produto Associados"></asp:LinkButton>
                         </li>
                     </ul>
         </div>
@@ -52,7 +52,7 @@
                     <div class="col-sm-4">
                         <label id="lblIdMultinha" runat="server" class="col-sm-4 text-right lbl">* ID Multinha: </label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="txtidmultilinha" MaxLength="12" OnTextChanged="txtidmultilinha_TextChanged" pattern="[A-Za-z0-9]{12}" title="Deve inserir um código alfanumérico com doze posições" oninvalid="setCustomValidity('Deve inserir um código alfanumérico com doze posições')"
+                            <asp:TextBox ID="txtidmultilinha" MaxLength="12" OnTextChanged="txtidmultilinha_TextChanged" AutoPostBack="true" pattern="[A-Za-z0-9]{12}" title="Deve inserir um código alfanumérico com doze posições" oninvalid="setCustomValidity('Deve inserir um código alfanumérico com doze posições')"
                             onchange="try{setCustomValidity('')}catch(e){}" CssClass="form-control text-field" runat="server"></asp:TextBox>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="bklabel" runat="server" ID="reqIDMultinha" ValidationGroup="ChaveProdutos" ControlToValidate="txtidmultilinha" ForeColor="Red" ErrorMessage="Campo Obrigatório"></asp:RequiredFieldValidator>
                         </div>
@@ -63,7 +63,8 @@
                      <div class="col-sm-4">
                           <label id="lbTipoRisco" runat="server" class="col-sm-4 text-right lbl">* Tipo de Risco: </label>
                          <div class="col-sm-6">
-                             <asp:DropDownList OnTextChanged="ddlTipoRisco_TextChanged" AutoPostBack="true" runat="server" CssClass="form-control text-field" ID="ddlTipoRisco">
+                             <asp:DropDownList OnTextChanged="ddlTipoRisco_TextChanged" AutoPostBack="true" runat="server" CssClass="form-control text-field" ID="ddlTipologiaRisco">
+                                 <asp:ListItem Text="TODOS" Value=""></asp:ListItem>
                                  <asp:ListItem Text="Assinatura" Value="Risco Assinatura"></asp:ListItem>
                                  <asp:ListItem Text="Comercial" Value="Risco Comercial"></asp:ListItem>
                                  <asp:ListItem Text="Financeiro" Value="Risco Financeiro"></asp:ListItem>
@@ -73,13 +74,14 @@
                     <div class="col-sm-4">
                         <label id="lbTipoFamilia" runat="server" class="col-sm-4 text-right lbl"> * Tipologia</label>
                         <div class="col-sm-6">
-                             <asp:DropDownList runat="server" ID="ddlTipoFam" CssClass="form-control text-field" ></asp:DropDownList>
-                            </div>
+                             <asp:DropDownList runat="server" ID="ddlFamiliaProduto" CssClass="form-control text-field" >
+                             </asp:DropDownList>
+                         </div>
                     </div>
                        <div class="col-sm-4">
                         <label id="lbEstadoContrato" runat="server" class="col-sm-4 text-right lbl"> * Estado da Relação ML - Contrato Produto</label>
                         <div class="col-sm-6">
-                             <asp:DropDownList runat="server" ID="ddlEstadoContrato" CssClass="form-control text-field">
+                             <asp:DropDownList runat="server" ID="ddlEstadoContratoProduto" CssClass="form-control text-field">
                                   <asp:ListItem Text="TODOS" Value=""></asp:ListItem>
                                  <asp:ListItem Text="ACTIVO" Value="A"></asp:ListItem>
                                  <asp:ListItem Text="INATIVO" Value="I"></asp:ListItem>

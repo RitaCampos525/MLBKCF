@@ -276,7 +276,8 @@ namespace MultilinhaBusinessLayer
                             descritivo = a.l_csubprod_l, //TO DO ir a tat buscar descritivo
                             familiaproduto = a.l_cfamprod_l,
                             prodsubproduto = string.Concat(a.l_cproduto_l, a.l_csubprod_l),
-                            tipologia = a.l_irisco_l
+                            tipologia = a.l_irisco_l,
+                            selecionada = a.l_iseleciona_l == "S" ,
                             //zSeq = 
                         });
                     }
@@ -287,7 +288,8 @@ namespace MultilinhaBusinessLayer
                             descritivo = a.l_csubprod_l, //TO DO ir a tat buscar descritivo
                             familiaproduto = a.l_cfamprod_l,
                             prodsubproduto = string.Concat(a.l_cproduto_l, a.l_csubprod_l),
-                            tipologia = a.l_irisco_l
+                            tipologia = a.l_irisco_l,
+                            selecionada = a.l_iseleciona_l == "S",
                             //zSeq = 
                         });
                     }
@@ -298,7 +300,8 @@ namespace MultilinhaBusinessLayer
                             descritivo = a.l_csubprod_l, //TO DO ir a tat buscar descritivo
                             familiaproduto = a.l_cfamprod_l,
                             prodsubproduto = string.Concat(a.l_cproduto_l, a.l_csubprod_l),
-                            tipologia = a.l_irisco_l
+                            tipologia = a.l_irisco_l,
+                            selecionada = a.l_iseleciona_l == "S",
                             //zSeq = 
                         });
                     }
@@ -444,7 +447,9 @@ namespace MultilinhaBusinessLayer
                 obj.Cliente = cliente;
                 obj.Descritivo = response.output.gdescml;
 
-                obj.DPD = response.output.dpd == "N" ? false : true;
+                int DPD = 0;
+                Int32.TryParse(response.output.dpd, out DPD);
+                obj.DPD = DPD;
                 //obj.EstadoContratoProduto = response.output.e
                 obj.FamiliaProduto = response.output.cfamiprod;
                 int graumorosidade = 0;

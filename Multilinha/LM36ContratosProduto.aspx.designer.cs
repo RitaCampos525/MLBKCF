@@ -148,13 +148,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbTipoRisco;
         
         /// <summary>
-        /// ddlTipoRisco control.
+        /// ddlTipologiaRisco control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoRisco;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipologiaRisco;
         
         /// <summary>
         /// lbTipoFamilia control.
@@ -166,13 +166,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbTipoFamilia;
         
         /// <summary>
-        /// ddlTipoFam control.
+        /// ddlFamiliaProduto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoFam;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFamiliaProduto;
         
         /// <summary>
         /// lbEstadoContrato control.
@@ -184,13 +184,13 @@ namespace Multilinha {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbEstadoContrato;
         
         /// <summary>
-        /// ddlEstadoContrato control.
+        /// ddlEstadoContratoProduto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoContrato;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoContratoProduto;
         
         /// <summary>
         /// btnLimpar control.

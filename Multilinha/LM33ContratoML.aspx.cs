@@ -361,13 +361,13 @@ namespace Multilinha
                         //Get Produtos
                         // e Popula CG e CP . Quando seleccionado ficam enable! Não é possivel deseleccionar
                         List<ArvoreFamiliaProdutos> lstF = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RF);
-                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, LM33M, false);
+                        listViewProdutos(lstF, Constantes.tipologiaRisco.RF, lvProdutosRisco, respOut.ResultResult, false);
 
                         List<ArvoreFamiliaProdutos> lstC = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RC);
-                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, LM33M, false);
+                        listViewProdutos(lstC, Constantes.tipologiaRisco.RC, lvProdutosRiscoComercial, respOut.ResultResult, false);
 
                         List<ArvoreFamiliaProdutos> lstA = MultilinhasObjects.ArvoreFamiliaProdutos.SearchFamiliaProduto(Constantes.tipologiaRisco.RA);
-                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, LM33M, false);
+                        listViewProdutos(lstA, Constantes.tipologiaRisco.RA, lvProdutosRiscoAssinatura, respOut.ResultResult, false);
 
                         #endregion
                     }
@@ -634,7 +634,6 @@ namespace Multilinha
                 itemTreeProduto item = new itemTreeProduto();
 
                 item.produto = row;
-                //Selecciona
                 item.isGeral = true;
                 item.cGEnable = mudaCG;
                 item.cPEnable = false; //fecha seleccao as condicoes particulares
@@ -642,19 +641,18 @@ namespace Multilinha
                 _lst.Add(item);
 
                 //Procura subprodutos da familia
-                var dtSubProdutos = lstF.FindAll(x => x.familiaProduto == row);
+                //var dtSubProdutos = lstF.FindAll(x => x.familiaProduto == row);
 
                 //nivel 2
-                for (int i = 0; i < dtSubProdutos.Count; i++)
+                for (int i = 0; i < LM33.produtosRiscoF.Count(); i++)
                 {
                     itemTreeProduto subitem = new itemTreeProduto();
 
-                    subitem.subproduto = dtSubProdutos[i].produto.ToString() + dtSubProdutos[i].subproduto.ToString() +
-                        " - " + dtSubProdutos[i].descricao.ToString(); //(codigo + descritivo)
+                    subitem.subproduto = LM33.produtosRiscoF[i].prodsubproduto.ToString() + 
+                        " - " + LM33.produtosRiscoF[i].prodsubproduto.ToString(); //(codigo + descritivo)
 
-                    subitem.isParticular = false;
+                    subitem.isParticular = LM33.produtosRiscoF[i].selecionada;
                     subitem.isGeral = false;
-
                     subitem.cGEnable = false;  //fecha seleccao as condicoes gerais
                     subitem.cPEnable = true;  //abre seleccao as condicoes particulares
 
@@ -844,6 +842,7 @@ namespace Multilinha
                         prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
                         tipologia = "A",
                         descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1],
+                        selecionada = true,
                     });
                 }
             }
@@ -858,6 +857,7 @@ namespace Multilinha
                         prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
                         tipologia = "A",
                         descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1],
+                        selecionada = true,
                     });
                 }
             }
@@ -872,6 +872,7 @@ namespace Multilinha
                         prodsubproduto = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[0],
                         tipologia = "A",
                         descritivo = (fm.FindControl("lbSubproduto") as Label).Text.Split('-')[1].Replace("-", ""),
+                        selecionada = true,
                     });
                 }
             }

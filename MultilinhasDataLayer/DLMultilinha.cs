@@ -288,34 +288,34 @@ namespace MultilinhasDataLayer
             foreach (var f in _lm33.produtosRiscoF)
             {
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
+             
                 _row1.l_cproduto_l = f.prodsubproduto.Substring(0,2);
                 _row1.l_irisco_l = f.tipologia;
                 _row1.l_cfamprod_l = f.familiaproduto;
                 _row1.l_csubprod_l = f.prodsubproduto.Substring(2,2);
+                _row1.l_iseleciona_l = f.selecionada == true? "S" : "N";
             }
 
             foreach (var a in _lm33.ProdutosRiscoAssinatura)
             {
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
+              
                 _row1.l_cproduto_l = a.prodsubproduto.Substring(0, 2);
                 _row1.l_irisco_l = a.tipologia;
                 _row1.l_cfamprod_l = a.familiaproduto;
                 _row1.l_csubprod_l = a.prodsubproduto.Substring(2, 2);
+                _row1.l_iseleciona_l = a.selecionada == true ? "S" : "N";
             }
 
             foreach (var c in _lm33.produtosRiscoC)
             {
                 BCDWSProxy.LM33Row1 _row1 = new BCDWSProxy.LM33Row1();
-                _row1.caccao = accao;
-                _row1.pedido_dados = false;
+              
                 _row1.l_cproduto_l = c.prodsubproduto.Substring(0, 2);
                 _row1.l_irisco_l = c.tipologia;
                 _row1.l_cfamprod_l = c.familiaproduto;
                 _row1.l_csubprod_l = c.prodsubproduto.Substring(2, 2);
+                _row1.l_iseleciona_l = c.selecionada == true ? "S" : "N";
             }
 
             LM33.input.Row1 = lstRow1.ToArray();
@@ -517,7 +517,7 @@ namespace MultilinhasDataLayer
             LM36.input.caccao = accao;
 
             LM36.input.cbalcao = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(0, 3);
-            LM36.input.cprodml = _LM36.Produtoml;
+            LM36.input.cprodml = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(3, 2);
             LM36.input.cnumectaml = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(5, 6);
             LM36.input.cdigictaml = string.IsNullOrEmpty(_LM36.idmultilinha.ToString()) ? "" : _LM36.idmultilinha.ToString().Substring(11, 1);
             LM36.input.csubprodml = _LM36.Subprodutoml;
@@ -529,8 +529,15 @@ namespace MultilinhasDataLayer
             LM36.input.zcliente = _LM36.Cliente.ToString();
             LM36.input.gdescml = _LM36.Nome;
             LM36.input.cgraumor = _LM36.GrauMorosidade.ToString();
-            LM36.input.irisco = _LM36.TipologiaRisco;
-            LM36.input.cfamiprod = _LM36.FamiliaProduto;
+            LM36.input.iestado = _LM36.EstadoContratoProduto;
+            LM36.input.irisco = _LM36.TipologiaRisco != "" ? ML_Objectos.GetTipologiasRisco().FirstOrDefault(x => x.Description == _LM36.TipologiaRisco).Code: "";
+            try
+            {
+                LM36.input.cfamiprod = _LM36.FamiliaProduto != "" ? ArvoreFamiliaProdutos.SearchFamiliaProduto(_LM36.TipologiaRisco).FirstOrDefault(x => x.familiaProduto == _LM36.FamiliaProduto).codfamiliaProduto.ToString() : "";
+            }
+            catch
+            {
+            }
             LM36.input.dpd = _LM36.DPD.ToString();
             LM36.input.gcliente = _LM36.Nome;
             LM36.input.zcliente = _LM36.Cliente.ToString();

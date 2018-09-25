@@ -253,5 +253,31 @@ namespace MultilinhasObjects
             public string tipoAlteracaoNome { get; set; }
             public string tipoAlteracaoCodigo { get; set; } 
         }
+
+        public static List<MultilinhaObjects.ComboBox> GetTipologiasRisco()
+        {
+            return new List<ComboBox>(){
+                new ComboBox()
+                {
+                    Code = "",
+                    Description = "TODOS",
+                },
+                 new ComboBox()
+                {
+                    Code = "A",
+                    Description = "Risco Assinatura",
+                },
+                  new ComboBox()
+                {
+                    Code = "C",
+                    Description = "Risco Comercial",
+                },
+                   new ComboBox()
+                {
+                    Code = "F",
+                    Description = "Risco Financeiro",
+                },
+            };
+        }
     }
 }

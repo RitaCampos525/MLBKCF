@@ -67,6 +67,8 @@ namespace MultilinhasObjects
             public string descritivo { get; set; }
 
             public int zSeq { get; set; }
+
+            public bool selecionada { get; set; }
         }
 
         public List<ProdutoRiscoF> produtosRiscoF = new List<ProdutoRiscoF>();
@@ -79,6 +81,7 @@ namespace MultilinhasObjects
             public string descritivo { get; set; }
 
             public int zSeq { get; set; }
+            public bool selecionada { get; set; }
         }
 
         public List<ProdutoRiscoC> produtosRiscoC = new List<ProdutoRiscoC>();
@@ -91,6 +94,7 @@ namespace MultilinhasObjects
             public string descritivo { get; set; }
 
             public int zSeq { get; set; }
+            public bool selecionada { get; set; }
         }
 
     }

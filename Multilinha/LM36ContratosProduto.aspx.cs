@@ -21,8 +21,9 @@ namespace Multilinha
                 MultilinhasDataLayer.WriteLog.Log(System.Diagnostics.TraceLevel.Info, LogTypeName.PageLoad, this.Page.AppRelativeVirtualPath, abargs.USERNT, abargs.SN_HOSTNAME);
 
                 //Bind DDls
-                ddlTipoFam.DataSource = ArvoreFamiliaProdutos.SearchFamiliaProduto(ddlTipoRisco.SelectedValue).Select(x => x.familiaProduto).Distinct();
-                ddlTipoFam.DataBind();
+                ddlFamiliaProduto.DataSource = ArvoreFamiliaProdutos.SearchFamiliaProduto(ddlTipologiaRisco.SelectedValue).Select(x => x.familiaProduto).Distinct();
+                ddlFamiliaProduto.DataBind();
+                ddlFamiliaProduto.Items.Insert(0, new ListItem("TODOS", ""));
 
                 //Show hide fields 
                 string op = Request.QueryString["OP"] ?? "FF";
@@ -257,8 +258,9 @@ namespace Multilinha
 
         protected void ddlTipoRisco_TextChanged(object sender, EventArgs e)
         {
-            ddlTipoFam.DataSource = ArvoreFamiliaProdutos.SearchFamiliaProduto(ddlTipoRisco.SelectedValue).Select(x => x.familiaProduto).Distinct();
-            ddlTipoFam.DataBind();
+            ddlFamiliaProduto.DataSource = ArvoreFamiliaProdutos.SearchFamiliaProduto(ddlTipologiaRisco.SelectedValue).Select(x => x.familiaProduto).Distinct();
+            ddlFamiliaProduto.DataBind();
+            ddlFamiliaProduto.Items.Insert(0, new ListItem("TODOS", ""));
         }
     }
 }
